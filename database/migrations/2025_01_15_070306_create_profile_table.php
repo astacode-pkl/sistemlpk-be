@@ -11,13 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contact', function (Blueprint $table) {
+        Schema::create('profile', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('phone_number');
+            $table->string('slogan');
             $table->string('email');
-            $table->text('message');
-            $table->time('sent_at');
+            $table->text('instagram');
+            $table->text('whatsapp');
+            $table->text('tiktok');
+            $table->text('address');
+            $table->text('map');
+            $table->string('logo');
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contact');
+        Schema::dropIfExists('profile');
     }
 };
