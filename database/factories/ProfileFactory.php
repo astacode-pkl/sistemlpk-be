@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Profile>
  */
 class ProfileFactory extends Factory
 {
@@ -18,13 +18,15 @@ class ProfileFactory extends Factory
     {
         return [
             'name' => 'lpk tsukuba indonesia',
+            'slogan' => '職業訓練機関つくばインドネシア',
+            'history' => fake()->text(500),
             'email' => 'tsukubaindonesia@gmail.com',
             'instagram' => fake()->url(),
             'whatsapp' => fake()->url(),
             'tiktok' => fake()->url(),
             'address' => fake()->text(),
             'map' => fake()->url(),
-            'logo' => fake()->file()
+            'logo' => fake()->mimeType()
         ];
     }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained('categories', 'galery_category_id');
+            $table->foreignId('category_id')->constrained('categories', 'id');
             $table->string('images');
             $table->string('title');
             $table->timestamps();
