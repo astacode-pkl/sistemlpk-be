@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\galleryController;
+use App\Http\Controllers\regulationController;
 use App\Models\User;
 use App\Models\Gallery;
 use App\Models\Profile;
@@ -22,5 +23,8 @@ Route::get('/about', function () {
 Route::get('/', function () {
     return view('/html/main/index');
 });
-// Route::post('/gallery/save', [GalleryController::class, 'insert']);
+
 Route::get('/contact/delete/{id}', function ($id) {});
+
+Route::resource('/gallery',galleryController::class);
+Route::resource('/regulation',regulationController::class);
