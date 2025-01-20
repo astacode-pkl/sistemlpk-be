@@ -1,0 +1,146 @@
+// ----------------------------------------------
+// Dark Theme Style
+// ----------------------------------------------
+
+body {
+  background-color: $body-bg !important;
+
+  .page-wrapper:before {
+    background-color: #1f2738;
+  }
+
+  .theme-dark-mode {
+    display: none;
+  }
+
+  // Font color
+  .text-dark,
+  .link-dark,
+  .nav-tabs .nav-link,
+  .nav-pills .nav-link,
+  .select2-container--default .select2-search--dropdown .select2-search__field,
+  .select2-container--default .select2-selection--multiple,
+  .select2-container--classic .select2-selection--single,
+  .wizard>.steps .disabled a,
+  .wizard>.steps .disabled a:hover,
+  .wizard>.steps .disabled a:active,
+  .btn-light {
+    color: $custom-gray !important;
+  }
+
+  //   border color
+  .bootstrap-switch,
+  .select2-container--default .select2-selection--single .select2-selection__rendered,
+  .select2-container--default .select2-search--dropdown .select2-search__field,
+  .select2-dropdown,
+  .select2-container--default .select2-selection--multiple,
+  .select2-container--classic .select2-selection--single {
+    border-color: $border-color !important;
+  }
+
+  .wizard-content .wizard.wizard-circle>.steps .step {
+    border-color: $border-color;
+  }
+
+  //   background color
+
+  .acedamic-box,
+  .select2-container--default .select2-selection--single,
+  .select2-dropdown,
+  .select2-container--default .select2-search--dropdown .select2-search__field,
+  .select2-container--default .select2-selection--multiple,
+  .select2-container--classic .select2-selection--single,
+  .wizard-content .wizard>.steps>ul>li.current .step {
+    background-color: $body-bg !important;
+  }
+
+  .wizard-content .wizard.wizard-circle>.steps>ul>li.current:after,
+  .wizard-content .wizard.wizard-circle>.steps>ul>li.current~li:after,
+  .wizard-content .wizard.wizard-circle>.steps>ul>li.current~li:before {
+    background-color: $border-color !important;
+  }
+
+  .wizard-content .wizard.wizard-circle>.steps .step {
+    background-color: $body-bg;
+  }
+
+  .bootstrap-switch .bootstrap-switch-label,
+  .preloader {
+    background: $body-bg !important;
+  }
+
+  .accordion-button.collapsed::after,
+  .btn-close {
+    filter: brightness(0) invert(1);
+  }
+
+  // Tabs
+  .nav-tabs, .nav-pills {
+    .nav-link{
+      &.active{
+        color: $white !important;
+      }
+    }
+  }
+
+  // Quill Editor
+  .ql-toolbar.ql-snow, .ql-container.ql-snow{
+    border: 1px solid $border-color;
+  }
+  .ql-snow .ql-picker{
+    color: $muted;
+  }
+  .ql-snow .ql-stroke{
+    stroke: $muted;
+  }
+
+  //   form wizard
+  .wizard>.steps .disabled a,
+  .wizard>.steps .disabled a:hover,
+  .wizard>.steps .disabled a:active,
+  .wizard>.content {
+    background: transparent !important;
+  }
+
+  .table-light {
+    --bs-table-bg: $body-bg !important;
+  }
+
+  .table .bg-light {
+    background-color: $card-bg !important;
+  }
+
+  #main-wrapper[data-layout="vertical"] .app-header.fixed-header .navbar {
+    background: $card-bg;
+  }
+
+  .btn-light,
+  .btn.show {
+    background-color: $card-bg;
+    border-color: $card-bg;
+
+    &:hover {
+      background-color: $card-bg;
+      border-color: $card-bg;
+    }
+  }
+
+  .app-chat-offcanvas {
+    background-color: $body-bg;
+  }
+
+  @include media-breakpoint-down(lg) {
+    .app-email-chatting-box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $card-bg;
+    }
+
+    .navbar-collapse {
+      background-color: $card-bg;
+    }
+  }
+}

@@ -1,0 +1,297 @@
+
+/* Modal CSS */
+.calendar-container {
+    padding: 30px 30px;
+    background-color: $primary;
+    border-radius: 8px;
+    border: 1px solid #e0e6ed;
+}
+
+.app-calendar {
+    .fc-event-title{
+        font-weight: $font-weight-normal;
+    }
+    .fc {
+        .fc-col-header-cell-cushion,.fc-daygrid-day-number{
+            color: $body-color;
+            text-decoration: none;
+        }
+        
+        .fc-button-primary {
+            background-color: $white;
+            border-color: $primary ;
+            letter-spacing: 1px;
+            font-size: 14px;
+            color: $white;
+
+            &:not(:disabled).fc-button-active {
+                background-color: $primary;
+                font-weight: $font-weight-normal;
+                border-color:$primary;
+            }
+            &:hover {
+                background-color:  $primary;
+                color: $white;
+                border-color: $primary;;
+            }
+
+            &:not(:disabled) {
+                &:active {
+                    background-color:$border-color;
+                    border-color: $border-color;
+                }
+            }
+
+            &:focus {
+                box-shadow: none !important;
+            }
+
+            &:active {
+                &:focus {
+                    box-shadow: none !important;
+                }
+            }
+        }
+
+        .fc-list-sticky {
+            .fc-list-day {
+                >* {
+                    background-color: $white;
+                }
+            }
+        }
+
+        .fc-daygrid-body {
+            width: 100% !important;
+        }
+
+        .fc-scrollgrid-section {
+            table {
+                width: 100% !important;
+            }
+        }
+        .fc-scrollgrid-section-body {
+            table {
+                width: 100% !important;
+            }
+        }
+
+        .fc-button {
+            border-radius: 8px;
+            padding: 7px 20px;
+            text-transform: capitalize;
+            color: $primary;
+            &:hover {
+                background-color:  $primary;
+                color: $white;
+                border-color: $primary;;
+            }
+        }
+
+        .fc-addEventButton-button {
+            background-color: $primary ;
+            border-color: $primary ;
+            color: $white;
+            font-weight:$font-weight-normal;
+            &:hover {
+                background-color: $primary ;
+                border-color: $primary ;
+                box-shadow: none;
+                color: $white;
+            }
+
+            &:not(:disabled) {
+                &:active {
+                    background-color: $primary;
+                    box-shadow: none;
+                    color: $white;
+                }
+            }
+        }
+
+        .fc-daygrid-day.fc-day-today {
+            background-color: $input-bg;
+            padding: 3px;
+            border-radius: 23px;
+
+            .fc-daygrid-day-frame {
+                background-color: $gray-100;
+                border-radius: 8px;
+
+                .fc-daygrid-day-number {
+                    font-size: 15px;
+                    font-weight: 800;
+                }
+            }
+        }
+
+        .fc-list-event {
+            &:hover {
+                td {
+                    background-color: $gray-100;
+                }
+            }
+        }
+    }
+   
+    .fc-theme-standard {
+        .fc-list-day-cushion {
+            background-color: $white;
+        }
+
+        .fc-list {
+            border: 1px solid $border-color;
+        }
+
+        .fc-scrollgrid {
+            border: 0px solid $border-color;
+            border-width: 0px;
+        }
+
+        td {
+            border: 1px solid $border-color;
+        }
+
+        th {
+            border: 1px solid $border-color;
+            border-bottom: 0;
+            border-width: 0px;
+            
+        }
+    }
+
+    .fc-v-event {
+        .fc-event-main {
+            color: $gray-200;
+        }
+    }
+
+    .fc-timegrid-event-harness-inset {
+        .fc-timegrid-event {
+            box-shadow: none;
+        }
+    }
+
+    .fc-timegrid-event.fc-event-mirror {
+        box-shadow: none;
+    }
+
+    .fc-timegrid-more-link {
+        box-shadow: none;
+    }
+
+    .event-fc-color {
+        background-color: $light-secondary;
+        border: none;
+        padding: 4px 10px;
+        margin-bottom: 1px;
+        font-size: 13px;
+        letter-spacing: 1px;
+        font-weight: 300;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $gray-100;
+        }
+    }
+
+    .fc-daygrid-event-dot {
+        margin: 0 6px 0 0;
+    }
+
+    .fc-bg-primary {
+        color: $primary;
+        background-color: $light-primary;
+
+        .fc-daygrid-event-dot {
+            border-color: $primary;
+        }
+    }
+
+    .fc-bg-primary.fc-h-event {
+        .fc-event-main {
+            color: $primary;
+        }
+    }
+
+
+    .fc-bg-success {
+        color: $success;
+        background-color: $light-success;
+
+        .fc-daygrid-event-dot {
+            border-color: $success;
+        }
+    }
+
+    .fc-bg-success.fc-h-event {
+        .fc-event-main {
+            color: $success;
+        }
+    }
+
+    .fc-bg-warning {
+        color: $warning;
+        background-color:$light-warning;
+
+        .fc-daygrid-event-dot {
+            border-color: $warning;
+        }
+    }
+
+    .fc-bg-warning.fc-h-event {
+        .fc-event-main {
+            color: $warning;
+        }
+    }
+
+    .fc-bg-danger {
+        color: $danger ;
+        background-color: $light-danger;
+
+        .fc-daygrid-event-dot {
+            border-color: $danger;
+        }
+    }
+
+
+    .fc-bg-danger.fc-h-event {
+        .fc-event-main {
+            color: $danger;
+        }
+    }
+
+    .btn-update-event {
+        display: none;
+    }
+
+    @media (max-width: 1199px) {
+        .calendar-container {
+            padding: 30px 0 0 0;
+        }
+
+        .fc-theme-standard {
+            .fc-list {
+                border: none;
+            }
+        }
+
+        .fc {
+            .fc-toolbar {
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .fc-toolbar.fc-header-toolbar {
+                margin-bottom: 50px;
+            }
+        }
+
+        .fc-toolbar-chunk {
+            &:not(:first-child) {
+                margin-top: 35px;
+            }
+        }
+    }
+
+}

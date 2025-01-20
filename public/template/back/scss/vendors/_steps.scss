@@ -1,0 +1,486 @@
+/*
+Template Name: Monster Admin
+Author: Themedesigner
+Email: niravjoshi87@gmail.com
+File: css
+*/
+
+.wizard-content {
+	.wizard {
+		>.steps {
+			>ul {
+				>li {
+					&:after {
+						content: '';
+						z-index: 0;
+						display: block;
+						position: absolute;
+						right: 0;
+					}
+					&:before {
+
+						content: '';
+						z-index: 0;
+						display: block;
+						position: absolute;
+						left: 0;
+					}
+					float: none;
+					display: table-cell;
+					width: auto;
+					vertical-align: top;
+					text-align: center;
+					position: relative;
+					a {
+						position: relative;
+						padding-top: 52px;
+						margin-top: 20px;
+						margin-bottom: 20px;
+						display: block;
+					}
+					&:first-child {
+						&:before {
+							content: none;
+						}
+					}
+					&:last-child {
+						&:after {
+							content: none;
+						}
+					}
+				}
+				display: table;
+				width: 100%;
+				table-layout: fixed;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				>li.current {
+					>a {
+						color:  $muted;
+						cursor: default;
+					}
+					.step {
+						border-color: $primary;
+						background-color: $white;
+						color: $primary;
+					}
+				}
+				>li.disabled {
+					a {
+						color: $muted;
+						cursor: default;
+						&:focus {
+							color: $muted;
+							cursor: default;
+						}
+						&:hover {
+							color: $muted;
+							cursor: default;
+						}
+					}
+				}
+				>li.done {
+					a {
+						color: $muted;
+						&:focus {
+							color: $muted;
+						}
+						&:hover {
+							color: $muted;
+						}
+					}
+					.step {
+						background-color: $primary;
+						border-color: $primary;
+						color: $white;
+					}
+				}
+				>li.error {
+					.step {
+						border-color: $danger;
+						color: $danger;
+					}
+				}
+			}
+			position: relative;
+			display: block;
+			width: 100%;
+			.current-info {
+				position: absolute;
+				left: -99999px;
+			}
+			.current {
+				a {
+					background: transparent;
+				}
+			}
+			.disabled {
+				a {
+					background: transparent;
+					&:hover {
+						background: transparent;
+					}
+					&:active {
+						background: transparent;
+					}
+				}
+			}
+			.done {
+				a {
+					background: transparent;
+					&:hover {
+						background: transparent;
+					}
+					&:active {
+						background: transparent;
+					}
+				}
+			}
+			.step {
+				background-color: $white;
+				display: inline-block;
+				position: absolute;
+				top: 0;
+				left: 50%;
+				margin-left: -24px;
+				z-index: 1;
+				text-align: center;
+
+			}
+		}
+		width: 100%;
+		overflow: hidden;
+		.content {
+			margin-left: 0 !important;
+		}
+		>.actions {
+			a {
+				background: transparent;
+				&:hover {
+					background: transparent;
+				}
+			}
+			>ul {
+				>li {
+					float: none;
+					float: left;
+					>a {
+						background: #615dff;
+						color: $white;
+						display: block;
+						padding: 7px 12px;
+						border-radius: 4px;
+						border: 1px solid transparent;
+						&:focus {
+							-webkit-box-shadow: 0 0 0 100px rgba(0, 0, 0, .05) inset;
+							box-shadow: 0 0 0 100px rgba(0, 0, 0, .05) inset;
+						}
+						&:hover {
+							-webkit-box-shadow: 0 0 0 100px rgba(0, 0, 0, .05) inset;
+							box-shadow: 0 0 0 100px rgba(0, 0, 0, .05) inset;
+						}
+						&:active {
+							-webkit-box-shadow: 0 0 0 100px rgba(0, 0, 0, .1) inset;
+							box-shadow: 0 0 0 100px rgba(0, 0, 0, .1) inset;
+						}
+					}
+					>a[href="#previous"] {
+						background-color: $white;
+						color: $dark;
+						border: 1px solid #d9d9d9;
+						&:focus {
+							-webkit-box-shadow: 0 0 0 100px rgba(0, 0, 0, .02) inset;
+							box-shadow: 0 0 0 100px rgba(0, 0, 0, .02) inset;
+						}
+						&:hover {
+							-webkit-box-shadow: 0 0 0 100px rgba(0, 0, 0, .02) inset;
+							box-shadow: 0 0 0 100px rgba(0, 0, 0, .02) inset;
+						}
+						&:active {
+							-webkit-box-shadow: 0 0 0 100px rgba(0, 0, 0, .04) inset;
+							box-shadow: 0 0 0 100px rgba(0, 0, 0, .04) inset;
+						}
+					}
+				}
+				float: right;
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				&:after {
+					content: '';
+					display: table;
+					clear: both;
+				}
+				>li+li {
+					margin-left: 10px;
+				}
+				>li.disabled {
+					>a {
+						color: $muted;
+						&:focus {
+							color: $muted;
+						}
+						&:hover {
+							color: $muted;
+						}
+					}
+					>a[href="#previous"] {
+						-webkit-box-shadow: none;
+						box-shadow: none;
+						&:focus {
+							-webkit-box-shadow: none;
+							box-shadow: none;
+						}
+						&:hover {
+							-webkit-box-shadow: none;
+							box-shadow: none;
+						}
+					}
+				}
+			}
+			position: relative;
+			display: block;
+			text-align: right;
+			padding: 0 20px 20px;
+		}
+		>.content {
+			background: transparent;
+			overflow: hidden;
+			position: relative;
+			width: auto;
+			padding: 0;
+			margin: 0;
+			>.title {
+				position: absolute;
+				left: -99999px;
+			}
+			>.body {
+				padding: 0 20px;
+			}
+			>iframe {
+				border: 0;
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+	.wizard.wizard-circle {
+		>.steps {
+			>ul {
+				>li {
+					&:after {
+						top: 45px;
+						width: 50%;
+						height: 3px;
+						background-color: $primary;
+					}
+					&:before {
+						top: 45px;
+						width: 50%;
+						height: 3px;
+						background-color: $primary;
+					}
+				}
+				>li.current {
+					&:after {
+						background-color: $light;
+					}
+				}
+				>li.current~li {
+					&:after {
+						background-color: $light;
+					}
+					&:before {
+						background-color: $light;
+					}
+				}
+			}
+			.step {
+				width: 50px;
+				height: 50px;
+				line-height: 45px;
+				border: 3px solid $light;
+				font-size: 1.3rem;
+				border-radius: 50%;
+			}
+		}
+	}
+	.wizard.wizard-notification {
+		>.steps {
+			>ul {
+				>li {
+					&:after {
+						top: 39px;
+						width: 50%;
+						height: 2px;
+						background-color: $primary;
+					}
+					&:before {
+						top: 39px;
+						width: 50%;
+						height: 2px;
+						background-color: $primary;
+					}
+				}
+				>li.current {
+					.step {
+						border: 2px solid $primary;
+						color: $primary;
+						line-height: 36px;
+						&:after {
+							border-top-color: $primary;
+						}
+					}
+					&:after {
+						background-color: $light;
+					}
+				}
+				>li.done {
+					.step {
+						&:after {
+							border-top-color: $primary;
+						}
+						color: $white;
+					}
+				}
+				>li.current~li {
+					&:after {
+						background-color: $light;
+					}
+					&:before {
+						background-color: $light;
+					}
+				}
+			}
+			.step {
+				width: 40px;
+				height: 40px;
+				line-height: 40px;
+				font-size: 1.3rem;
+				border-radius: 15%;
+				background-color: $light;
+				&:after {
+					content: "";
+					width: 0;
+					height: 0;
+					position: absolute;
+					bottom: 0;
+					left: 50%;
+					margin-left: -8px;
+					margin-bottom: -8px;
+					border-left: 7px solid transparent;
+					border-right: 7px solid transparent;
+					border-top: 8px solid $light;
+				}
+			}
+		}
+	}
+	.wizard.vertical {
+		>.steps {
+			display: inline;
+			float: left;
+			width: 20%;
+			>ul {
+				>li {
+					display: block;
+					width: 100%;
+					&:after {
+						background-color: transparent;
+					}
+					&:before {
+						background-color: transparent;
+					}
+				}
+				>li.current {
+					&:after {
+						background-color: transparent;
+					}
+					&:before {
+						background-color: transparent;
+					}
+				}
+				>li.current~li {
+					&:after {
+						background-color: transparent;
+					}
+					&:before {
+						background-color: transparent;
+					}
+				}
+			}
+		}
+	}
+	.wizard.vertical.wizard {
+		>.content {
+			min-width: 80%;
+		}
+	}
+}
+@media (max-width:768px) {
+	.wizard-content {
+		.wizard {
+			>.steps {
+				>ul {
+					margin-bottom: 20px;
+					>li {
+						display: block;
+						float: left;
+						width: 50%;
+						>a {
+							margin-bottom: 0;
+						}
+						&:first-child {
+							&:before {
+								content: '';
+							}
+						}
+						&:last-child {
+							&:after {
+								content: '';
+								background-color: $primary;
+							}
+						}
+					}
+				}
+			}
+		}
+		.wizard.vertical {
+			>.steps {
+				width: 15%;
+			}
+		}
+	}
+}
+@media (max-width:480px) {
+	.wizard-content {
+		.wizard {
+			>.steps {
+				>ul {
+					>li {
+						width: 100%;
+					}
+					>li.current {
+						&:after {
+							background-color: $primary;
+						}
+					}
+				}
+			}
+		}
+		.wizard.vertical {
+			>.steps {
+				>ul {
+					>li {
+						display: block;
+						float: left;
+						width: 50%;
+					}
+				}
+				width: 100%;
+				float: none;
+			}
+		}
+	}
+}
+

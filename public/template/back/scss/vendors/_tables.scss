@@ -1,0 +1,195 @@
+//
+// Footable
+//
+#demo-foo-accordion .open > .dropdown-menu,
+#demo-foo-accordion2 .open > .dropdown-menu,
+#footable-addrow .open > .dropdown-menu {
+  display: block;
+}
+
+table.footable {
+  thead {
+    tr.footable-filtering {
+      th {
+        ul.dropdown-menu {
+          li {
+            a.checkbox {
+              padding-left: 0;
+            }
+            a.checkbox input[type="checkbox"] {
+              position: relative;
+              margin-right: 10px;
+              margin-left: -20px;
+              left: 0;
+              opacity: 1;
+            }
+            .checkbox label::before {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.footable .pagination {
+  li {
+    a {
+      position: relative;
+      margin-left: -1px;
+      border: 1px solid $border-color;
+      color: $info;
+      background-color: $white;
+      padding: 0.5rem 0.75rem;
+      display: block;
+      line-height: 1.25;
+    }
+    &.active a {
+      z-index: 2;
+      border-color: $info;
+      color: $white;
+      background-color: $info;
+    }
+  }
+  li.disabled {
+    a {
+      border-color: $gray-100;
+      color: $gray-200;
+      background-color: $white;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+  }
+  li:first-child {
+    a {
+      border-radius: 0.25rem 0 0 0.25rem;
+      margin-left: 0;
+    }
+  }
+}
+
+
+
+
+//
+// Jsgrid table
+//
+
+.jsgrid-pager-page a,
+.jsgrid-pager-current-page,
+.jsgrid-pager-nav-button a {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  min-width: 1.5em;
+  padding: 0.5em 1em;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  color: #67757c;
+  border: 1px solid #ddd;
+}
+
+.jsgrid-pager-page a:hover,
+.jsgrid-pager-nav-button a:hover {
+  background-color: $primary;
+  color: $white;
+}
+
+.jsgrid-pager-current-page {
+  background-color: $primary;
+  color: $white;
+}
+
+.jsgrid-pager-page,
+.jsgrid-pager-nav-button {
+  padding: 0;
+}
+
+.jsgrid-pager-page.jsgrid-pager-current-page {
+  padding: 0.5em 1em !important;
+}
+
+.jsgrid {
+  .jsgrid-button {
+    background-image: url(../../dist/images/backgrounds/table-jsgrid.png);
+    background-repeat: repeat;
+  }
+}
+.jsgrid-button.jsgrid-search-mode-button,
+.jsgrid-button.jsgrid-search-button {
+  background-position: top 49px left 6px;
+}
+
+.jsgrid-button.jsgrid-clear-filter-button {
+  background-position: top 153px left 5px;
+}
+
+.jsgrid-button.jsgrid-edit-button {
+  background-position: top 100px left -3px;
+}
+
+.jsgrid-button.jsgrid-delete-button {
+  background-position: top 125px left -3px;
+}
+
+.jsgrid-button.jsgrid-update-button {
+  background-position: top 23px left -5px;
+}
+
+.jsgrid-button.jsgrid-cancel-edit-button {
+  background-position: top 181px left -5px;
+}
+.jsgrid-header-cell, .jsgrid-cell{
+  background-color: $white !important;
+}
+
+
+//
+// editable table
+//
+
+
+#editable-datatable_wrapper{
+  .dataTables_length{
+    float: left;
+    margin-bottom: 20px;
+    select{
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+      padding-left: 0.5rem;
+      padding-right: 0.625rem;
+      font-size: .765625rem;
+      border-radius: 5px;
+      border-color: $gray-200;
+    }
+  }
+  .dataTables_filter{
+    float: right;
+    margin-bottom: 20px;
+    input{
+      padding: 0.25rem 0.5rem;
+      font-size: .765625rem;
+      border-radius: 5px;
+      border: 1px solid $gray-200;
+    }
+  }
+  .dataTables_paginate{
+    margin-top: 12px;
+    text-align: end;
+    .paginate_button {
+        .previous{
+            border-radius: 7px 0 0 7px;
+            background-color: $gray-200;
+        }
+        padding: 6px 12px;
+        border: 1px solid $gray-200;
+        &.current{
+            color: $white;
+            background-color: $blue;
+            border-color: $blue;
+        }
+    }
+}
+}

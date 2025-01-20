@@ -1,0 +1,38 @@
+// ----------------------------------------------
+// Apexchart Style
+// ----------------------------------------------
+
+body {
+    .apexcharts-xaxistooltip {
+        padding: 9px 10px;
+        border-radius: 9px;
+    }
+
+    .apexcharts-tooltip {
+        border-radius: 13px;
+    }
+
+    .apexcharts-tooltip-marker {
+        border-radius: 4px;
+    }
+
+    .apexcharts-tooltip.apexcharts-theme-dark {
+        background: rgba(17, 28, 45, 0.8);
+    }
+
+    .apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-title {
+        border-bottom: 0;
+        background: rgba(17, 28, 45, 0.7);
+    }
+
+    .apexcharts-xaxistooltip.apexcharts-theme-dark {
+        background: rgb(17, 28, 45);
+        border: 1px solid rgba(17, 28, 45, 0.7);
+    }
+    .sales-chart .apexcharts-bar-series.apexcharts-plot-series .apexcharts-series path {
+        clip-path: inset(0 0 15% 0 round 20px);
+    }
+    .revenue-chart .apexcharts-bar-series.apexcharts-plot-series .apexcharts-series path {
+        clip-path: inset(0 0 5% 0 round 20px);
+    }
+}

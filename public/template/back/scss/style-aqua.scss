@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+
+
+//
+// All the extended and custom variables(Required file)
+//
+@import "themecolors/aqua-theme";
+@import "variables/variables";
+@import "variables/theme-variables";
+
+
+
+//
+// Import Bootstrap source files (Required file)
+@import "../scss/bootstrap/scss/bootstrap.scss";  
+// 
+// Scrollbar style (Required file)
+// 
+@import "../libs/simplebar/dist/simplebar.min.css";
+
+//
+//This is for the horizontal version if you are not using horizontal version you can remove this
+//
+@import "demos/horizontal/horizontal";
+@import "demos/rtl/rtl";
+
+// 
+// Theme Layouts style (Required file)
+// 
+@import "layouts/header";
+@import "layouts/sidebar";
+@import "layouts/customizer";  
+@import "layouts/layouts";
+@import "layouts/spinner";
+
+// 
+// Pages style (Required file)
+// 
+@import "pages/dashboard";
+@import "pages/dashboard2";
+@import "pages/apps";
+@import "pages/blog";
+@import "pages/shop";
+@import "pages/shop-detail";
+@import "pages/checkout";
+@import "pages/calender";
+@import "pages/widget";
+@import "pages/form";
+@import "pages/kanban";
+
+
+// 	
+// Vendors style (Required file)	
+// 	
+@import "vendors/jplayer-flat";	
+@import "vendors/datatables";	
+@import "vendors/steps";	
+@import "vendors/jquery-steps";	
+@import "vendors/apexcharts";	
+@import "vendors/select2";	
+@import "vendors/switch";	
+@import "vendors/touchspin";
+@import "vendors/charts";
+@import "vendors/nestable";
+@import "vendors/noui-slider.min";
+@import "vendors/toastr";
+@import "vendors/date-paginator-custom";
+@import "vendors/typeahead";
+@import "vendors/tables";
+@import "vendors/animation";
+@import "vendors/gallery-cards";
+
+
+// 
+// Component style (Required file)
+// 
+@import "component/accordion";
+@import "component/buttons";
+@import "component/form";
+@import "component/tabs";
+@import "component/card";
+@import "component/tables";
+@import "component/reboot";
+
+
+
+// 
+// Utilities style (Required file)
+// 
+@import "utilities/icon-size";
+@import "utilities/background";
+@import "utilities/override";
+
+
+@import "icons/crypto-icons/cryptocoins.css";
+@import "icons/tabler-icons/tabler-icons.min.css";
+@import "icons/flag-icon-css/flag-icon.min.css";
+@import "icons/font-awesome/css/fontawesome-all.css"; 

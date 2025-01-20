@@ -1,0 +1,75 @@
+// ----------------------------------------------
+// Costomizer Style
+// ----------------------------------------------
+
+.customizer {
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.04);
+  width: 320px !important;
+
+  .customizer-box {
+    box-shadow: rgb(0 0 0 / 5%) 0px 9px 17.5px;
+    transition: all 0.1s ease-in 0s;
+    border: 1px solid rgba(145, 158, 171, 0.12);
+  }
+  .customizer-bgcolor {
+    width: 25px;
+    height: 25px;
+  }
+  .theme-colors {
+    .customizer-box {
+      width: 100%;
+      max-width: 80px;
+    }
+
+    .skin1-bluetheme-primary {
+      background-color: $skin1-bluetheme-primary;
+    }
+
+    .skin2-aquatheme-primary {
+      background-color: $skin2-aquatheme-primary;
+    }
+
+    .skin3-purpletheme-primary {
+      background-color: $skin3-purpletheme-primary;
+    }
+
+    .skin4-greentheme-primary {
+      background-color: $skin4-greentheme-primary;
+    }
+
+    .skin5-cyantheme-primary {
+      background-color: $skin5-cyantheme-primary;
+    }
+
+    .skin6-orangetheme-primary {
+      background-color: $skin6-orangetheme-primary;
+    }
+  }
+}
+.customizer-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+
+}
+.mw-100{
+  max-width: 100%;
+}
+/*customizer current theme selection*/
+.change-colors{
+  li{
+    a{
+      i{
+        opacity: 0;
+        line-height: 25px;
+      }
+      &.active-theme{
+        i{
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+

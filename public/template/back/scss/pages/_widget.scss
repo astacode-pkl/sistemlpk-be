@@ -1,0 +1,76 @@
+/*******************/
+/*Comment widgets*/
+/*******************/
+
+.comment-widgets {
+    .comment-row {
+      background: transparent;
+  
+      &:hover,
+      &.active {
+        background: rgba(0, 0, 0, 0.025);
+      }
+    }
+  }
+  
+  .comment-text {
+  
+    &:hover .comment-footer,
+    &.active .comment-footer {
+      .action-icons {
+        visibility: visible;
+      }
+    }
+  }
+  
+  .comment-footer {
+    .action-icons {
+      visibility: hidden;
+  
+      a {
+        color: $text-muted;
+  
+        &:hover,
+        &.active {
+          color: $info;
+        }
+      }
+    }
+  }
+
+
+/*******************/
+/*table-stylish widgets*/
+/*******************/
+.stylish-table {
+    tbody tr {
+      border-left: 4px solid transparent;
+      &:hover,
+      &.active {
+        border-left: 4px solid $info;
+      }
+    }
+    tbody td {
+      small {
+        line-height: 12px;
+      }
+    }
+  }
+
+
+  /*******************/
+/*To do widgets*/
+/*******************/
+
+.todo-list {
+    li {
+      .assignedto {
+        li {
+          margin-right: 2px;
+          img {
+            width: 30px;
+          }
+        }
+      }
+    }
+  }

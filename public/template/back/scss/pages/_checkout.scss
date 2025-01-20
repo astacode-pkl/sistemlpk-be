@@ -1,0 +1,112 @@
+// ----------------------------------------------
+// Checkout Style
+// ----------------------------------------------
+
+.checkout {
+    .wizard-content {
+        .tab-wizard {
+            .steps {
+                ul {
+                    li {
+                        &.done {
+                            .step {
+                                background-color: $primary !important;
+                            }
+                        }
+
+                        &.current {
+                            .step {
+                                background-color: $primary !important;
+                            }
+
+                            a {
+                                color: $muted;
+                            }
+                        }
+
+                        &::after,
+                        &::before {
+                            height: 1px;
+                            width: 44%;
+                        }
+
+                        a {
+                            margin-top: 32px;
+                            padding-top: 36px;
+                            font-size: 12px;
+
+                            .step {
+                                margin-left: -14px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 24px;
+                                height: 24px;
+                                border: 0;
+                                font-size: 13px;
+                                color: $white;
+                                background-color: rgba(0, 0, 0, 0.38);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .actions {
+                ul {
+                    li {
+                        a {
+                            &:hover {
+                                background-color: $primary;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .payment-method {
+        .btn-group-active {
+            .btn-group {
+                input:checked+label {
+                    background-color: $light-primary;
+                    border-color: $primary;
+                    box-shadow: inherit;
+                }
+
+                label {
+                    border-color: $border-color;
+                }
+            }
+        }
+    }
+
+    .payment-method-list {
+        display: none;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .checkout {
+        .wizard-content {
+            .tab-wizard {
+                .steps {
+                    ul {
+                        li {
+                            display: table-cell;
+                            width: auto;
+                            float: none;
+
+                            &:first-child::before,
+                            &:last-child::after {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

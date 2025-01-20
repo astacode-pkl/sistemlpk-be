@@ -1,0 +1,86 @@
+// ----------------------------------------------
+// Dashboard Style
+// ----------------------------------------------
+
+.school-img {
+  position: absolute;
+  bottom: 0;
+  right: -30px;
+
+  @include media-breakpoint-down(lg) {
+    right: -10px;
+  }
+}
+
+.warning-card {
+  background: url("../../dist/images/shaps/warning-shap.png") no-repeat top right $primary;
+}
+
+.danger-card {
+  background: url("../../dist/images/shaps/danger-shap.png") no-repeat top right $primary;
+}
+
+.info-card {
+  background: url("../../dist/images/shaps/info-shap.png") no-repeat top right $primary;
+}
+
+.gift-card {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.figma-card {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.user-profile {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    right: -5px;
+    top: 15px;
+    content: "";
+    width: 15px;
+    height: 15px;
+    background-color: $success;
+    border-radius: 50%;
+    border: 2px solid $white;
+  }
+}
+
+.nav-tabs,
+.nav-tabs .nav-link {
+  border-radius: 10px;
+}
+
+.acedamic-card {
+  border-left: 5px solid $indigo;
+}
+
+.acedamic-box {
+  background-color: $gray-400;
+}
+
+.acedamic .tab-content {
+  height: 365px;
+  overflow-x: hidden;
+}
+
+.course {
+  .course-badge {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+  }
+}
+
+.bg-theme-primary-gredient {
+  background: $primary;
+  background: linear-gradient(267deg, $primary 41%, $danger 100%);
+}
+
+.hide {
+  display: none;
+}

@@ -1,0 +1,196 @@
+// ----------------------------------------------
+// Kanban Css
+// ----------------------------------------------
+
+
+
+/* Delete Modal*/
+#deleteConformation .modal-content {
+    padding: 30px;
+}
+
+#deleteConformation .modal-content .modal-header {
+    padding: 0;
+}
+
+#deleteConformation .modal-content .modal-header .btn-close {
+    color: $white;
+    background: none;
+    opacity: 1;
+    width: auto;
+    height: auto;
+    font-size: 20px;
+}
+
+#deleteConformation .modal-content .modal-body {
+    padding: 28px 0;
+}
+
+#deleteConformation .modal-content .modal-footer {
+    padding: 0;
+    border: none;
+}
+
+.task-list-section {
+    display: flex;
+    gap: 24px;
+    flex-wrap: nowrap;
+}
+
+.task-list-container {
+    width: 270px;
+    flex-shrink: 0;
+}
+
+.connect-sorting-todo {
+    background: $gray-200 !important;
+}
+
+.connect-sorting-inprogress {
+    background-color: $light-secondary !important;
+}
+
+.connect-sorting-pending {
+    background-color: $light-info !important;
+}
+
+.connect-sorting-done {
+    background-color: $light-success !important;
+}
+
+.connect-sorting {
+    padding: 20px;
+    background: $gray-200;
+    border-radius: $border-radius-xl;
+}
+
+.connect-sorting .task-container-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 3px 18px;
+}
+
+.connect-sorting .task-container-header .dropdown-toggle::after {
+    display: none;
+}
+
+.connect-sorting .add-s-task .addTask,
+.connect-sorting .task-container-header .dropdown .dropdown-toggle {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    box-shadow: $box-shadow;
+    border-radius: 100%;
+    background-color: $card-bg;
+    font-weight: $font-weight-bolder;
+}
+
+.scrumboard .task-header {
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 11px 13px;
+}
+
+.scrumboard .task-content {
+    padding: 11px 13px;
+}
+
+.scrumboard .task-header .dropdown .dropdown-toggle::after {
+    display: none;
+}
+
+.scrumboard .task-header h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.scrumboard .task-header h4:hover {
+    cursor: move;
+}
+
+.scrumboard .card {
+    background: $card-bg;
+    border: none;
+    border-radius: $border-radius-xl;
+    margin-bottom: 15px;
+    border: none;
+}
+
+.scrumboard .card .card-body {
+    padding: 0;
+}
+
+.scrumboard .card .card-body .task-body .task-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 15px;
+}
+
+.scrumboard .card .card-body .task-body .task-bottom div.tb-section-1 span:hover {
+    color: $primary;
+    cursor: pointer;
+}
+
+.scrumboard .card .card-body .task-body .task-bottom div.tb-section-2 i.ti-pencil:hover {
+    color: $primary;
+}
+
+.scrumboard .card.img-task .card-body .task-content img {
+    height: 106px;
+    width: 100%;
+}
+
+.scrumboard .card.simple-title-task .card-body .task-header {
+    margin-bottom: 0;
+    padding: 11px 13px;
+}
+
+.scrumboard .card.simple-title-task .card-body .task-header div:nth-child(1) {
+    width: 70%;
+}
+
+.scrumboard .card.simple-title-task .card-body .task-header div:nth-child(2) {
+    width: 30%;
+    text-align: right;
+}
+
+.scrumboard .card.simple-title-task .card-body .task-body .task-bottom {
+    padding: 3px 15px 11px 15px;
+}
+
+/* On Drag Task */
+.ui-state-highlight {
+    position: relative;
+    border-color: $primary;
+    height: 141px;
+    margin-bottom: 36px;
+    border-radius: 15px;
+    border: 2px dashed $primary;
+    background-color: $card-bg;
+    box-shadow: $card-box-shadow;
+    background-image: linear-gradient(45deg, rgba(93, 135, 255, 0.09) 25%, transparent 25%, transparent 50%, rgba(93, 135, 255, 0.09) 50%, rgba(93, 135, 255, 0.09) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+    -webkit-animation: progress-bar-stripes 1s linear infinite;
+    animation: progress-bar-stripes 1s linear infinite;
+}
+
+
+.connect-sorting-content {
+    min-height: 60px;
+}
+
+@keyframes progress-bar-stripes {
+    0% {
+        background-position: 1rem 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}

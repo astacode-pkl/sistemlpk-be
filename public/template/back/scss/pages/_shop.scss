@@ -1,0 +1,46 @@
+// ----------------------------------------------
+// Shop Style
+// ----------------------------------------------
+
+.shop-part {
+    .shop-filters {
+        width: 250px;
+
+        .by-colors {
+            .shop-color-list {
+                .shop-colors-item {
+                    width: 24px;
+                    height: 24px;
+
+                    &.shop-colors-1 {
+                        background-color: #1890ff;
+                    }
+
+                    &.shop-colors-2 {
+                        background-color: #94d82d;
+                    }
+
+                    &.shop-colors-3 {
+                        background-color: #ff4842;
+                    }
+
+                    &.shop-colors-4 {
+                        background-color: #ffc107;
+                    }
+
+                    &.shop-colors-5 {
+                        background-color: #00ab55;
+                    }
+
+                    &.shop-colors-6 {
+                        background-color: #000000;
+                    }
+
+                    &.shop-colors-7 {
+                        background-color: #ffc0cb;
+                    }
+                }
+            }
+        }
+    }
+}

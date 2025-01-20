@@ -1,0 +1,34 @@
+// ----------------------------------------------
+// Form Style
+// ----------------------------------------------
+
+.attendance {
+  .form-select {
+    max-width: 120px;
+  }
+}
+
+.form-check-input.success:checked {
+  background-color: $success;
+  border: $success;
+}
+
+.form-check-input.danger:checked {
+  background-color: $danger;
+  border: $danger;
+}
+
+.form-check-input.warning:checked {
+  background-color: $warning;
+  border: $warning;
+}
+
+.form-check-input.primary:checked {
+  background-color: $primary;
+  border: $primary;
+}
+
+.form-check-input.secondary:checked {
+  background-color: $secondary;
+  border: $secondary;
+}

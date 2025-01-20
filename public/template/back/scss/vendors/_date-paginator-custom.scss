@@ -1,0 +1,25 @@
+.datepaginator-sm .pagination li a,
+.datepaginator-lg .pagination li a,
+.datepaginator .pagination li a {
+    padding: 0 5px;
+    height: 75px;
+    border: 1px solid #e9ecef;
+    float: left;
+    position: relative;
+}
+.datepaginator{
+    .pagination{
+        .dp-item {
+            padding: 15px 0!important;
+        }
+    }
+}
+.dp-item{
+    color: inherit;
+}
+.glyphicon.glyphicon-calendar{
+    display: none;
+}
+.datepaginator .dp-selected, .datepaginator-lg .dp-selected, .datepaginator-sm .dp-selected{
+    background-color: $primary !important;
+}

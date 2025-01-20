@@ -1,0 +1,132 @@
+// ----------------------------------------------
+// Buttons Style
+// ----------------------------------------------
+
+.btn-circle {
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
+  padding: 5px;
+  line-height: 30px;
+
+  &.btn-sm {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.btn .text-active {
+  display: none;
+}
+
+.btn.active .text {
+  display: none;
+}
+
+.btn.active .text-active {
+  display: inline-block;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.dataTables_length,
+.dataTables_filter {
+  margin-bottom: 15px;
+}
+
+.button-group .btn {
+  margin-bottom: 8px;
+  margin-right: 8px;
+}
+
+.btn-transparent {
+  transition: all 0.4s;
+
+  &:hover {
+    background-color: $light;
+  }
+}
+
+.btn-default {
+  background-color: $primary;
+  color: $white;
+}
+
+
+@-webkit-keyframes animation-dropdown-menu-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes animation-dropdown-menu-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes animation-dropdown-menu-move-up {
+  from {
+    top: 71px;
+  }
+
+  to {
+    top: 70px;
+  }
+}
+
+@keyframes animation-dropdown-menu-move-up {
+  from {
+    top: 71px;
+  }
+
+  to {
+    top: 70px;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  @-webkit-keyframes animation-dropdown-menu-move-up {
+    from {
+      top: 145px;
+    }
+
+    to {
+      top: 144px;
+    }
+  }
+
+  @keyframes animation-dropdown-menu-move-up {
+    from {
+      top: 145px;
+    }
+
+    to {
+      top: 144px;
+    }
+  }
+}
+
+.dropdown-menu-animate-up {
+  -webkit-animation: animation-dropdown-menu-fade-in 0.2s ease 1,
+    animation-dropdown-menu-move-up 0.2s ease-out 1;
+  animation: animation-dropdown-menu-fade-in 0.2s ease 1,
+    animation-dropdown-menu-move-up 0.2s ease-out 1;
+}

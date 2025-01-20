@@ -1,0 +1,45 @@
+.datatables {
+    .table-responsive {
+        overflow-x: clip;
+    }
+}
+
+.table-responsive{
+    // overflow-x: clip;
+    .dataTables_wrapper{
+        .dataTables_length{
+            select{
+                padding-top: 0.25rem;
+                padding-bottom: 0.25rem;
+                padding-left: 0.5rem;
+                padding-right: 0.625rem;
+                font-size: .765625rem;
+                border-radius: 5px;
+                border-color: $gray-300;
+            }
+        }
+        .dataTables_filter{
+            input{
+                padding: 0.25rem 0.5rem;
+                font-size: .765625rem;
+                border-radius: 5px;
+                border: 1px solid $gray-300;
+            }
+        }  
+        .dataTables_paginate{
+            .paginate_button {
+                .previous{
+                    border-radius: 7px 0 0 7px;
+                    background-color: $gray-200;
+                }
+                padding: 6px 12px;
+                border: 1px solid $gray-300;
+                &.current{
+                    color: $white;
+                    background-color: $primary;
+                    border-color: $primary;
+                }
+            }
+        }
+    }
+}

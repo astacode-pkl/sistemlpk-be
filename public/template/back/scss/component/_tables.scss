@@ -1,0 +1,22 @@
+// ----------------------------------------------
+// Tables Style
+// ----------------------------------------------
+
+.hover-table-border {
+    td:hover {
+        &:first-child {
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                background: $primary;
+                height: 25px;
+                width: 3px;
+                top: 25px;
+                border-radius: 3px;
+            }
+        }
+    }
+}

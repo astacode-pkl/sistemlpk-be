@@ -1,0 +1,47 @@
+// ----------------------------------------------
+// Dark Sidebar Style
+// ----------------------------------------------
+
+.left-sidebar {
+  border-right: 1px solid rgb(51, 63, 85) !important;
+  background-color: #2A3447 !important;
+
+  .nav-small-cap {
+    color: $custom-gray;
+  }
+
+  .sidebar-nav {
+    ul {
+      >.sidebar-item {
+        .sidebar-link {
+          color: $custom-gray;
+
+          &.has-arrow::after {
+            border-color: $custom-gray;
+          }
+        }
+
+        .first-level {
+          .sidebar-item {
+            border-bottom: 0;
+          }
+        }
+
+        &.selected {
+
+          .first-level {
+            .sidebar-item {
+              .active {
+                .sidebar-link {
+                  &.active {
+                    color: rgba(255, 255, 255, 0.5);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+// ----------------------------------------------
+// Shop Datails Style
+// ----------------------------------------------
+
+#sync2 {
+    .item {
+        cursor: pointer;
+    }
+
+    .current .item {
+        border: 2px solid $black;
+    }
+}
+
+#sync1.owl-theme {
+    position: relative;
+
+    .owl-next,
+    .owl-prev {
+        width: 20px;
+        height: 20px;
+        top: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: rgb(43 43 43 / 75%);
+        position: absolute;
+        transform: translateY(-50%);
+    }
+
+    .owl-prev {
+        left: 10px;
+    }
+
+    .owl-next {
+        right: 10px;
+    }
+}
