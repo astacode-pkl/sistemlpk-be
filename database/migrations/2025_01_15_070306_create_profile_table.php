@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('slogan');
             $table->text('history');
+            $table->text('vision');
+            $table->text('mission');
             $table->string('email');
             $table->text('instagram');
             $table->text('whatsapp');

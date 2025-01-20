@@ -20,6 +20,8 @@ class ProfileFactory extends Factory
             'name' => 'lpk tsukuba indonesia',
             'slogan' => '職業訓練機関つくばインドネシア',
             'history' => fake()->text(500),
+            'vision' => fake()->text(500),
+            'mission' => fake()->text(500),
             'email' => 'tsukubaindonesia@gmail.com',
             'instagram' => fake()->url(),
             'whatsapp' => fake()->url(),
