@@ -2,9 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <!-- ---------------------
-                                                                                start Person Info
-                                                                            ---------------- -->
+            <!-- --------------------- start Person Info ---------------- -->
             <div class="card">
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Company Profile</h4>
@@ -106,9 +104,7 @@ LPK Tsukuba Indonesia membuka kelas pendidikan Bahasa Jepang yang berorientasi m
                                     <img
                                         src="{{ asset('images/logo.png') }}"
                                         class="img-fluid rounded-top w-20 w-xs-100"
-                                        alt=""
-                                        
-                                    />
+                                        alt=""/>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
@@ -137,9 +133,7 @@ LPK Tsukuba Indonesia membuka kelas pendidikan Bahasa Jepang yang berorientasi m
                     </div>
                 </form>
             </div>
-            <!-- ---------------------
-                                                                                end Person Info
-                                                                            ---------------- -->
+            <!-- --------------------- end Person Info ---------------- -->
         </div>
     </div>
 @endsection

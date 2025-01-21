@@ -16,19 +16,23 @@ use App\Http\Controllers\RegulationController;
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/gallery', [GalleryController::class, 'index']);
 Route::get('/profile', [ProfileController::class, 'index']);
+Route::get('/program', [ProgramController::class, 'index']);
 
-<<<<<<< HEAD
+// Post
+Route::post('/program', [ProgramController::class, 'store']);
+
+// HEAD
 // Route::get('/contact', function () {
 //     $profile = Profile::all();
 //     return view('welcome');
 // });
-Route::get('/about', function () {
-    $profile = Profile::select('history')->get();
-    return response()->json($profile);
-});
-=======
+// Route::get('/about', function () {
+//     $profile = Profile::select('history')->get();
+//     return response()->json($profile);
+// });
 
->>>>>>> 9d9f328f65264e464bf7ee5e0eb6f18dd2b7f5b2
+
+//9d9f328f65264e464bf7ee5e0eb6f18dd2b7f5b2
 
     Route::resource('/galleries',galleryController::class)->except('show');
 

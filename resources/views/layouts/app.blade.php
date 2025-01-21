@@ -12,7 +12,7 @@
     <!-- <link rel="stylesheet" href="https://bootstrapdemos.adminmart.com/modernize/dist/assets/css/styles.css" /> -->
     <link id="themeColors" rel="stylesheet" href="{{ asset('template/back') }}/dist/css/styles.css" />
 
-    <title>Modernize Bootstrap Admin</title>
+    <title></title>
     <!-- Owl Carousel  -->
     <link rel="stylesheet" href="{{ asset('template/back') }}/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
 </head>
@@ -245,4 +245,3 @@
 </body>
 
 </html>
->>>>>>> 45a1516e815b39536ffe302eba2db1297b622b7a
