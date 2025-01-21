@@ -1,5 +1,6 @@
 <header class="topbar">
-    <div class="with-vertical"><!-- ---------------------------------- -->
+    <div class="with-vertical">
+        <!-- ---------------------------------- -->
         <!-- Start Vertical Layout Header -->
         <!-- ---------------------------------- -->
         <nav class="navbar navbar-expand-lg p-0">

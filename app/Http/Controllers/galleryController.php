@@ -12,9 +12,10 @@ class GalleryController extends Controller
      */
     public function index( Request $request)
     {
-        $data = Gallery::with('categories')->get();
+        // $data = Gallery::with('categories')->get();
 
-        return view('index', compact('data'));
+        // return view('index', compact('data'));
+        return view('layouts.gallery');
         
     }
 
