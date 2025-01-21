@@ -9,7 +9,6 @@ use App\Http\Controllers\regulationController;
 // Templating
 Route::get('/', [DashboardController::class, 'index']);
 
-
 // Route::get('/contact', function () {
 //     $profile = Profile::all();
 //     return view('welcome');
