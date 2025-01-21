@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
+    
+    protected $guarded = ['id'];
+    
     public function galeries(){
 
         return $this->hasMany(Gallery::class,'category_id');

@@ -21,7 +21,7 @@
                         <!-- ---------------------------------- -->
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">Home</span>
+                            <span class="hide-menu">DashBoard</span>
                         </li>
                         <!-- ---------------------------------- -->
                         <!-- Dashboard -->
@@ -29,52 +29,79 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="" id="get-url" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-aperture"></i>
+                                    <i class="ti ti-home"></i>
                                 </span>
-                                <span class="hide-menu">Modern</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="../main/index2.html" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-shopping-cart"></i>
-                                </span>
-                                <span class="hide-menu">eCommerce</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="../main/index3.html" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-currency-dollar"></i>
-                                </span>
-                                <span class="hide-menu">NFT</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="../main/index4.html" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-cpu"></i>
-                                </span>
-                                <span class="hide-menu">Crypto</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="../main/index5.html" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-activity-heartbeat"></i>
-                                </span>
-                                <span class="hide-menu">General</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="../main/index6.html" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-playlist"></i>
-                                </span>
-                                <span class="hide-menu">Music</span>
+                                <span class="hide-menu">Home</span>
                             </a>
                         </li>
                         <!-- ---------------------------------- -->
+                        <!-- Data -->
+                        <!-- ---------------------------------- -->
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Data</span>
+                        </li>
+                        <!-- ---------------------------------- -->
+                        <!-- Gallery -->
+                        <!-- ---------------------------------- -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/gallery" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-photo"></i>
+                                </span>
+                                <span class="hide-menu">Galleries</span>
+                            </a>
+                        </li>
+                        <!-- ---------------------------------- -->
+                        <!-- Chat -->
+                        <!-- ---------------------------------- -->
+                       <li class="sidebar-item">
+                            <a class="sidebar-link" href="../main/app-chat.html" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-message-dots"></i>
+                                </span>
+                                <span class="hide-menu">Chat</span>
+                            </a>
+                        </li>
+                        
+                        <!-- ---------------------------------- -->
+                        <!-- Profile -->
+                        <!-- ---------------------------------- -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/profile" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-id-badge"></i>
+                                </span>
+                                <span class="hide-menu">Company Profile</span>
+                            </a>
+                        </li>
+
+                        <!-- ---------------------------------- -->
+                        <!-- Regulations -->
+                        <!-- ---------------------------------- -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/regulation" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-book"></i>
+                                </span>
+                                <span class="hide-menu">Regulations</span>
+                            </a>
+                        </li>
+
+                        <!-- ---------------------------------- -->
+                        <!-- Programs -->
+                        <!-- ---------------------------------- -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/program" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-layout"></i>
+                                </span>
+                                <span class="hide-menu">Programs</span>
+                            </a>
+                        </li>
+
+
+                        {{-- <!--------------------------------- -->
                         <!-- Apps -->
                         <!-- ---------------------------------- -->
                         <li class="nav-small-cap">
@@ -86,7 +113,7 @@
                                 <span>
                                     <i class="ti ti-calendar"></i>
                                 </span>
-                                <span class="hide-menu">Calendar</span>
+                                <span class="hide-menu">Galleries</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -94,7 +121,7 @@
                                 <span>
                                     <i class="ti ti-layout-kanban"></i>
                                 </span>
-                                <span class="hide-menu">Kanban</span>
+                                <span class="hide-menu">Contact</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -102,7 +129,7 @@
                                 <span>
                                     <i class="ti ti-message-dots"></i>
                                 </span>
-                                <span class="hide-menu">Chat</span>
+                                <span class="hide-menu">Profile</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -110,7 +137,7 @@
                                 <span>
                                     <i class="ti ti-mail"></i>
                                 </span>
-                                <span class="hide-menu">Email</span>
+                                <span class="hide-menu">Reasons</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -118,7 +145,7 @@
                                 <span>
                                     <i class="ti ti-notes"></i>
                                 </span>
-                                <span class="hide-menu">Notes</span>
+                                <span class="hide-menu">Regulations</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -126,7 +153,7 @@
                                 <span>
                                     <i class="ti ti-phone"></i>
                                 </span>
-                                <span class="hide-menu">Contact Table</span>
+                                <span class="hide-menu">Programs</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -1138,7 +1165,7 @@
                                 </span>
                                 <span class="hide-menu">External Link</span>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </nav>
 

@@ -5,16 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 
-class galleryController extends Controller
+class GalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index( Request $request)
     {
-        $data = Gallery::with('categories')->get();
+        // $data = Gallery::with('categories')->get();
 
-        return view('index', compact('data'));
+        // return view('index', compact('data'));
+        return view('layouts.gallery');
         
     }
 
@@ -23,6 +24,7 @@ class galleryController extends Controller
      */
     public function create()
     {
+        // return view('index');
         
     }
 
@@ -40,9 +42,9 @@ class galleryController extends Controller
         );
         $path =  $request->file('image')->store();
 
-        $galery = Gallery::create(['category_id' => $validated['category_id'], 'title' => $validated['title'],'image' => $path]);
+        Gallery::create(['category_id' => $validated['category_id'], 'title' => $validated['title'],'image' => $path]);
         
-        return redirect()->back()->with('success', 'User created successfully!');
+        return redirect()->with('success', 'image created successfully!');
     }
 
     /**
@@ -50,8 +52,7 @@ class galleryController extends Controller
      */
     public function show(string $id)
     {
-        $galery = Gallery::find($id);
-        return response()->json($galery);
+
     }
 
     /**
@@ -59,7 +60,8 @@ class galleryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $galery = Gallery::find($id);
+        // return view('',compact('gallery'));
     }
 
     /**
@@ -73,15 +75,7 @@ class galleryController extends Controller
         $galery->image = $request->image;
         $galery->update();
 
-        if ($request->wantsJson()) {
-            // Respon JSON untuk permintaan API
-            return response()->json([
-                'message' => 'User updated successfully!',
-                'data' => $galery,
-            ]);
-        }
-
-        return redirect()->back()->with('success', 'User updated successfully!');
+        return redirect()->with('success', 'Gallery updated successfully!');
     }
 
     /**
@@ -91,6 +85,6 @@ class galleryController extends Controller
     {
         $galery = Gallery::find($id);
         $galery->delete();
-        return response()->json(['message'=> 'data dihapus','data' => $galery]);
+        return redirect()->back()->with('success', 'Gallery updated successfully!');
     }
 }
