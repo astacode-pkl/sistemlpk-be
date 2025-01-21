@@ -14,9 +14,6 @@ use App\Http\Controllers\RegulationController;
 
 // Templating
 Route::get('/', [DashboardController::class, 'index']);
-
-
-
     Route::resource('/galleries',galleryController::class)->except('show');
 
     Route::resource('/regulations',RegulationController::class)->except('show');
