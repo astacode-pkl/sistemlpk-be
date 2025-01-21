@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 
-class GalleryController extends Controller
+class GalleriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class GalleryController extends Controller
         // $data = Gallery::with('categories')->get();
 
         // return view('index', compact('data'));
-        return view('layouts.gallery');
+        return view('layouts.galleries');
         
     }
 

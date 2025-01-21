@@ -45,7 +45,7 @@
                         <!-- Gallery -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/gallery" aria-expanded="false">
+                            <a class="sidebar-link" href="/galleries" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-photo"></i>
                                 </span>
@@ -56,11 +56,11 @@
                         <!-- Chat -->
                         <!-- ---------------------------------- -->
                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="../main/app-chat.html" aria-expanded="false">
+                            <a class="sidebar-link" href="/inbox" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-message-dots"></i>
+                                    <i class="ti ti-inbox"></i>
                                 </span>
-                                <span class="hide-menu">Chat</span>
+                                <span class="hide-menu">Inbox</span>
                             </a>
                         </li>
                         
