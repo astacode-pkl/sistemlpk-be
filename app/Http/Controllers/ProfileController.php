@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
+    public function index()
+    {
+        return view('layouts.profile');
+    }
     public function insert(Request $request)
     {
         $contact = $request->validate([

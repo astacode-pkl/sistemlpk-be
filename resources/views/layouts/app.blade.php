@@ -32,7 +32,7 @@
             @include('components.topbar')
             <!--  Header End -->
 
-            {{-- <aside class="left-sidebar with-horizontal">
+            <aside class="left-sidebar with-horizontal">
                 <!-- Sidebar scroll-->
                 <div>
                     <!-- Sidebar navigation-->
@@ -742,7 +742,7 @@
                 </div>
                 <!-- End Sidebar scroll-->
 
-            </aside> --}}
+            </aside>
 
             <div class="body-wrapper">
                 <div class="container-fluid">

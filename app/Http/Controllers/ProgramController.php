@@ -29,6 +29,31 @@ class ProgramController extends Controller
         return redirect()->back();
     }
 
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'images' => 'required|mimes:png, jpg, |max:2048',
+            'title' => 'required',
+            'description' => 'required'
+        ], [
+            'images.required' => 'Image is required',
+            'images.mimes' => 'Image must be a file of type: png, jpg',
+            'images.max' => 'Image size must not exceed 2048 kilobytes',
+            'title.required' => 'Title is required',
+            'description.required' => 'Description is required'
+        ]);
+
+        $path = $request->file('image')->store('program_images');
+
+        Program::create([
+            'images' => $path,
+            'title' => $validatedData['title'],
+            'description' => $validatedData['description']
+        ]);
+
+        return redirect()->back();
+    }
+
     public function edit(Request $request)
     {
         if (!$request->file('image')->isValid()) {
@@ -42,7 +67,12 @@ class ProgramController extends Controller
             'images.required' => 'images wajid di isi'
         ]);
         // $request->image->store('image');
-        Program::create($program);
+        $path = $request->file('image')->store('program_images');
+        Program::create([
+            'images' => $path,
+            'title' => ['title'],
+            'description' => ['description ']
+        ]);
         return redirect()->back();
     }
     public function delete(Program $program)

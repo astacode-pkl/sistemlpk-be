@@ -5,16 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 
-class galleryController extends Controller
+class GalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index( Request $request)
     {
-        $data = Gallery::with('categories')->get();
+        // $data = Gallery::with('categories')->get();
 
-        return view('index', compact('data'));
+        // return view('index', compact('data'));
+        return view('layouts.gallery');
         
     }
 
