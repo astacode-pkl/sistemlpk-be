@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Regulation extends Model
 {
-    //
+    protected $table = 'regulations';
+
+    protected $guarded = ['id'];
 }

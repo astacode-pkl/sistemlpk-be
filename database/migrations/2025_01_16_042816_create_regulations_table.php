@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('regulations', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('regulation');
             $table->string('icon');
             $table->timestamps();
         });

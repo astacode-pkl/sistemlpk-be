@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
 {
-    protected $guarded =[
-        'id'
-    ];
+    protected $table = 'contacts';
+    protected $guarded = ['id'];
 }

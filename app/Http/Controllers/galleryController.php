@@ -24,6 +24,7 @@ class GalleryController extends Controller
      */
     public function create()
     {
+        // return view('index');
         
     }
 
@@ -41,9 +42,9 @@ class GalleryController extends Controller
         );
         $path =  $request->file('image')->store();
 
-        $galery = Gallery::create(['category_id' => $validated['category_id'], 'title' => $validated['title'],'image' => $path]);
+        Gallery::create(['category_id' => $validated['category_id'], 'title' => $validated['title'],'image' => $path]);
         
-        return redirect()->back()->with('success', 'User created successfully!');
+        return redirect()->with('success', 'image created successfully!');
     }
 
     /**
@@ -51,8 +52,7 @@ class GalleryController extends Controller
      */
     public function show(string $id)
     {
-        $galery = Gallery::find($id);
-        return response()->json($galery);
+
     }
 
     /**
@@ -60,7 +60,8 @@ class GalleryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $galery = Gallery::find($id);
+        // return view('',compact('gallery'));
     }
 
     /**
@@ -74,15 +75,7 @@ class GalleryController extends Controller
         $galery->image = $request->image;
         $galery->update();
 
-        if ($request->wantsJson()) {
-            // Respon JSON untuk permintaan API
-            return response()->json([
-                'message' => 'User updated successfully!',
-                'data' => $galery,
-            ]);
-        }
-
-        return redirect()->back()->with('success', 'User updated successfully!');
+        return redirect()->with('success', 'Gallery updated successfully!');
     }
 
     /**
@@ -92,6 +85,6 @@ class GalleryController extends Controller
     {
         $galery = Gallery::find($id);
         $galery->delete();
-        return response()->json(['message'=> 'data dihapus','data' => $galery]);
+        return redirect()->back()->with('success', 'Gallery updated successfully!');
     }
 }

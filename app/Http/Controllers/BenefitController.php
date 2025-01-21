@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Regulation;
+use App\Models\Benefit;
 use Illuminate\Http\Request;
 
-class RegulationController extends Controller
+class BenefitController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $regulations = Regulation::get();
-        // return view('',compact('regulations'));
+        $benefits = Benefit::get();
+        // return view('',compact('benefits'));
     }
 
     /**
@@ -29,15 +29,12 @@ class RegulationController extends Controller
      */
     public function store(Request $request)
     {
-        $validateData = $request->validate([
-            'title' =>'required|max:255',
-            'icon' => 'required|mimetypes:text/plain,image/png,image/jpeg,image/svg',
-            'email' => 'required|email|unique:users',
-        
+        $validator = validator()->make($request->all(),[
+            'title' => 'required',
+            'icon' => 'required'
         ]);
-        Regulation::create($validateData);
 
-        Regulation::create($request->all());
+        Benefit::create($request->all());
         return redirect('')->with('success','data success created');
     }
 
@@ -62,7 +59,7 @@ class RegulationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $table = Regulation::find($id);
+        $table = Benefit::find($id);
         $table->title = $request->title;
         $table->icon = $request->icon;
         $table->update();
@@ -75,7 +72,7 @@ class RegulationController extends Controller
      */
     public function destroy(string $id)
     {
-        $table = Regulation::find($id);
+        $table = Benefit::find($id);
         $table->delete();
         return redirect()->back()->with('success','data success deleted');
 

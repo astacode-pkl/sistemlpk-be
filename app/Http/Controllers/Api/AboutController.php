@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Program;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 
-class ProgramController extends Controller
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $program = Program::all();
-        return response()->json($program);
+        $profile = Profile::get();
+        return response()->json($profile);
     }
 
     /**
