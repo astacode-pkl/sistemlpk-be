@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class categoryController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $regulations = Category::get();
+        // return view('',compact('regulations'));
     }
 
     /**
@@ -19,7 +21,7 @@ class categoryController extends Controller
      */
     public function create()
     {
-        //
+        // return view('');
     }
 
     /**
@@ -27,7 +29,13 @@ class categoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = validator()->make($request->all(),[
+            'title' => 'required',
+            'slug' => 'required'
+        ]);
+
+        Category::create($request->all());
+        return redirect('')->with('success','data success created');
     }
 
     /**
@@ -43,7 +51,7 @@ class categoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // return view('');
     }
 
     /**
@@ -51,7 +59,12 @@ class categoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $table = Category::find($id);
+        $table->title = $request->title;
+        $table->slug = $request->slug;
+        $table->update();
+        return redirect('')->with('success','data success updated');
+
     }
 
     /**
@@ -59,6 +72,9 @@ class categoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
-    }
+        $table = Category::find($id);
+        $table->delete();
+        return redirect()->back()->with('success','data success deleted');
+
+     }
 }
