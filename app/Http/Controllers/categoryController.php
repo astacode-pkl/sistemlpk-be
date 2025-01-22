@@ -12,8 +12,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $regulations = Category::get();
-        // return view('',compact('regulations'));
+        $categories = Category::latest()->paginate(5);
+        return view('layouts.categories.categories',compact('categories'));
     }
 
     /**
@@ -21,7 +21,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        // return view('');
+        return view('layouts.categories.create');
     }
 
     /**
@@ -29,13 +29,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = validator()->make($request->all(),[
-            'title' => 'required',
-            'slug' => 'required'
-        ]);
+        $validated = $request->validate([
+            'slug' => 'required',
+            'title' =>'required'
+            ]
+        );
 
-        Category::create($request->all());
-        return redirect('')->with('success','data success created');
+        Category::create($validated);
+        return redirect('/categories')->with('success', 'Regulation created successfully!');
     }
 
     /**
@@ -51,7 +52,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        // return view('');
+        $category = Category::find($id);
+        return view('layouts.categories.edit',compact('category'));
     }
 
     /**
@@ -63,7 +65,7 @@ class CategoryController extends Controller
         $table->title = $request->title;
         $table->slug = $request->slug;
         $table->update();
-        return redirect('')->with('success','data success updated');
+        return redirect('/categories')->with('success','data success updated');
 
     }
 
@@ -73,6 +75,7 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         $table = Category::find($id);
+     
         $table->delete();
         return redirect()->back()->with('success','data success deleted');
 

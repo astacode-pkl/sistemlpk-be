@@ -1,4 +1,5 @@
-<aside class="left-sidebar with-vertical">
+
+<aside class="left-sidebar with-vertical position-fixed">
             <div><!-- ---------------------------------- -->
                 <!-- Start Vertical Layout Sidebar -->
                 <!-- ---------------------------------- -->
@@ -41,6 +42,17 @@
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">Data</span>
                         </li>
+                         <!-- ---------------------------------- -->
+                        <!-- Categories -->
+                        <!-- ---------------------------------- -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/categories" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-list-details"></i>
+                                  </span>
+                                <span class="hide-menu">Categories</span>
+                            </a>
+                        </li>
                         <!-- ---------------------------------- -->
                         <!-- Gallery -->
                         <!-- ---------------------------------- -->
@@ -67,20 +79,13 @@
                         <!-- ---------------------------------- -->
                         <!-- Profile -->
                         <!-- ---------------------------------- -->
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="/profile" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-id-badge"></i>
-                                </span>
-                                <span class="hide-menu">Company Profile</span>
-                            </a>
-                        </li>
+                      
 
                         <!-- ---------------------------------- -->
                         <!-- Regulations -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/regulation" aria-expanded="false">
+                            <a class="sidebar-link" href="/regulations" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-book"></i>
                                 </span>
@@ -99,8 +104,28 @@
                                 <span class="hide-menu">Programs</span>
                             </a>
                         </li>
-
-
+                        <!-- ---------------------------------- -->
+                        <!-- Benefits -->
+                        <!-- ---------------------------------- -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/benefits" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-chart-pie"></i>
+                                  </span>
+                                <span class="hide-menu">Benefits</span>
+                            </a>
+                        </li>
+                         <!-- ---------------------------------- -->
+                        <!-- Company Profile -->
+                        <!-- ---------------------------------- -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/profile" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-id-badge"></i>
+                                </span>
+                                <span class="hide-menu">Company Profile</span>
+                            </a>
+                        </li>
                         {{-- <!--------------------------------- -->
                         <!-- Apps -->
                         <!-- ---------------------------------- -->

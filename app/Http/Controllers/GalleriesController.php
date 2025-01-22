@@ -14,7 +14,7 @@ class GalleriesController extends Controller
      */
     public function index( Request $request)
     {
-        $galleries =  Gallery::paginate(10)->withQueryString() ;
+        $galleries =  Gallery::latest()->paginate(10)->withQueryString() ;
         return view('layouts.galleries.galleries',compact('galleries'));
 
         

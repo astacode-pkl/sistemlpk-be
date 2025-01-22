@@ -19,6 +19,8 @@ Route::get('/', [DashboardController::class, 'index']);
 Route::resource('/galleries',GalleriesController::class)->except('show');
     
     Route::resource('/benefits',BenefitController::class)->except('show');
+    Route::resource('/regulations',RegulationController::class)->except('show');
+
 
     Route::resource('/contacts',ContactController::class)->except('show');
     

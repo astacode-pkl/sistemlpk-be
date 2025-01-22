@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+<x-layout>
+
 <div class="row">
     <div class="col-lg-12">
         <!-- ---------------------
@@ -16,9 +16,7 @@
                     <div class="row pt-3">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <div class="position-relative d-block" id="display">
-                                    <img src="{{ asset('storage/'.$gallery->image)}}" class="card-img-top rounded-0 d-block" id="preview" alt="...">
-                                </div>
+                                
                                 <input type="hidden" name="oldImage" value="{{$gallery->image}}">
                                 <label class="control-label" for="image">Image</label>
                                 <div class="input-group">
@@ -28,7 +26,9 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="position-relative d-block" id="display">
+                                <img src="{{ asset('storage/'.$gallery->image)}}" class="card-img-top rounded-0 d-block" id="preview" alt="...">
+                            </div>
                             <div class="mb-3">
                                 <label class="control-label" for="title">Title</label>
                                 <input type="text" id="title" class="form-control" value="{{ $gallery->title }}" name="title">
@@ -75,29 +75,4 @@
     </div>
 </div>
 
-<script>
-    const fileInput = document.getElementById('fileInput');
-     const preview = document.getElementById('preview');
-     const display = document.getElementById('display');
-
-
-     fileInput.addEventListener('change', (event) => {
-         const file = event.target.files[0];
-         if (file) {
-             const reader = new FileReader();
-
-             reader.onload = (e) => {
-                 preview.src = e.target.result;
-                 preview.style.display = 'block';
-                 display.classList.remove('d-none') = 'block';
-
-             };
-
-             reader.readAsDataURL(file);
-         } else {
-             preview.style.display = 'none';
-             preview.src = '';
-         }
-     });
- </script>
-@endsection
+</x-layout>

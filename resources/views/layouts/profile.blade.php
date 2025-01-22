@@ -1,6 +1,4 @@
-@extends('layouts.app')
-@section('content')
-
+<x-layout>
 
 <x-card-header>
     Company Profile
@@ -111,16 +109,17 @@
                             <div class="col">
                                 
                                 <div class="mb-3">
-                                    <label class="control-label" id="fileInput" for="address">Logo</label>
+                                    <label class="control-label"  for="address">Logo</label>
+                                    
                                     <img
                                         src="{{ asset('storage/'.$profile->logo) }}"
                                         class="img-fluid rounded-top w-20 w-xs-100"
-                                        alt="" id="preview" onchange="imagePreview()"
+                                        alt="" id="preview"
                                         
                                     />
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="form-control" name="logo" id="inputGroupFile01"
+                                            <input type="file" id="fileInput" class="form-control" name="logo" id="inputGroupFile01"
                                                 aria-describedby="inputGroupFileAddon01">
                                         </div>
                                     </div>
@@ -137,9 +136,11 @@
                                         Save
                                     </div>
                                 </button>
+                                <a href="/profile">
                                 <button type="button" class="btn btn-danger rounded-pill px-4 ms-2 text-white">
                                     Cancel
                                 </button>
+                            </a>
                             </div>
                         </div>
                     </div>
@@ -150,4 +151,4 @@
                                                                             ---------------- -->
         </div>
     </div>
-@endsection
+</x-layout>

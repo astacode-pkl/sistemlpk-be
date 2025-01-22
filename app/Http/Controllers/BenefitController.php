@@ -12,8 +12,8 @@ class BenefitController extends Controller
      */
     public function index()
     {
-        $benefits = Benefit::get();
-        // return view('',compact('benefits'));
+        $benefits = Benefit::latest()->paginate(10);
+        return view('layouts.benefits.benefits',compact('benefits'));
     }
 
     /**
@@ -21,7 +21,7 @@ class BenefitController extends Controller
      */
     public function create()
     {
-        // return view('');
+        return view('layouts.benefits.create');
     }
 
     /**
@@ -29,13 +29,14 @@ class BenefitController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = validator()->make($request->all(),[
+        $validated = $request->validate([
             'title' => 'required',
-            'icon' => 'required'
-        ]);
+            'icon' =>'required'
+            ]
+        );
 
-        Benefit::create($request->all());
-        return redirect('')->with('success','data success created');
+        Benefit::create([ 'title' => $validated['title'], 'icon' => $validated['icon']]);
+        return redirect('/benefits')->with('success', 'Regulation created successfully!');
     }
 
     /**
@@ -51,7 +52,8 @@ class BenefitController extends Controller
      */
     public function edit(string $id)
     {
-        // return view('');
+        $benefit = Benefit::find($id);
+        return view('layouts.benefits.edit',compact('benefit'));
     }
 
     /**
@@ -63,7 +65,7 @@ class BenefitController extends Controller
         $table->title = $request->title;
         $table->icon = $request->icon;
         $table->update();
-        return redirect('')->with('success','data success updated');
+        return redirect('/benefits')->with('success','data success updated');
 
     }
 

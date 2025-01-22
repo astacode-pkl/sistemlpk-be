@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+<x-layout>
     <!--  Owl carousel -->
     <div class="owl-carousel counter-carousel owl-theme">
         <div class="item">
@@ -605,4 +604,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-layout>
