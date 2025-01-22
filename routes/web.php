@@ -16,11 +16,11 @@ use App\Http\Controllers\RegulationController;
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/galleries', [GalleriesController::class, 'index']);
 Route::get('/profile', [ProfileController::class, 'index']);
-Route::get('/program', [ProgramController::class, 'index']);
+// Route::get('/program', [ProgramController::class, 'index']);
+Route::get('/regulation', [RegulationController::class, 'index']);
 
 // Post
 Route::post('/program', [ProgramController::class, 'store']);
-
 // HEAD
 // Route::get('/contact', function () {
 //     $profile = Profile::all();
@@ -47,4 +47,4 @@ Route::get('/inbox', [ContactController::class, 'index']);
     
     Route::resource('/categories',CategoryController::class)->except('show');
     
-    Route::resource('/programs',ProgramController::class)->except('show');
+    Route::resource('/program',ProgramController::class)->except('show');

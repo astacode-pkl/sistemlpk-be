@@ -13,6 +13,7 @@ class ProgramController extends Controller
      */
     public function index()
     {
+        // $program = Program::all();
         return view('layouts.program');
     }
 
@@ -29,27 +30,17 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'image' => 'required|mimes:png,jpg|max:2048',
+        $validated = $request->validate([
+            'image' =>'required|image|mimes:jpeg,png,jpg',
             'title' => 'required',
-            'description' => 'required'
-        ], [
-            'image.required' => 'Image is required',
-            'image.mimes' => 'Image must be a file of type: png, jpg',
-            'image.max' => 'Image size must not exceed 2 MB',
-            'title.required' => 'Title is required',
-            'description.required' => 'Description is required'
-        ]);
+            'description' => 'required',
+            ]
+        );
+        $path =  $request->file('image')->store();
 
-        $path = $request->file('image')->store('program_images');
-
-        Program::create([
-            'images' => $path,
-            'title' => $validatedData['title'],
-            'description' => $validatedData['description']
-        ]);
-
-        return redirect()->back()->with('success','Data successfully created');
+        Program::create(['title' => $validated['title'],'description' => $validated['description'],'image' => $path]);
+        
+        return redirect()->with('success', 'image created successfully!');
     }
 
     /**
@@ -66,21 +57,22 @@ class ProgramController extends Controller
      */
     public function edit(string $id)
     {
-        // $table = Program::find($id);
-        // return view('layouts.program', compact('table'));
+        $table = Program::find($id);
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        $table = Program::find($id);
-        $table->title = $request->title;
-        $table->description = $request->description;
-        $table->update();
-        return redirect()->back()->with('success','data success updated');
-    }
+{
+    $program = Program::find($id);
+    $program->image = $request->image;
+    $program->title = $request->title;
+    $program->description = $request->description;
+    $program->update();
+    return redirect()->with('success', 'Program updated successfully!');
+}
+
 
     /**
      * Remove the specified resource from storage.
@@ -89,6 +81,6 @@ class ProgramController extends Controller
     {
         $table = Program::find($id);
         $table->delete();
-        return redirect()->back()->with('success','data success deleted');
+        return redirect()->back()->with('success','Program success deleted');
     }
 }

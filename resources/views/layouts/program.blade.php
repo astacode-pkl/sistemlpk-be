@@ -109,9 +109,9 @@
         //     }
         // }
 
-        function dragOverHandler(event) {
-            event.preventDefault();
-        }
+        // function dragOverHandler(event) {
+        //     event.preventDefault();
+        // }
 
         function previewImage(event) {
             var reader = new FileReader();
