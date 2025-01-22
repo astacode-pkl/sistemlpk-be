@@ -3,18 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Gallery extends Model
 {
     protected $guarded = ['id'];
-    protected $table = 'galleries';
+    // protected $table = 'galleries';
     protected $with = ['categories'];
 
-    public function categories(){
-       return $this->belongsTo(Category::class,'id');
-    }
-    
-    public function getImageUrlAttribute(){
-        return asset('stroge/'.$this->image);
+    public function categories() : BelongsTo {
+       return $this->belongsTo(Category::class,'category_id');
     }
 }

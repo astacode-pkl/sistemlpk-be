@@ -53,6 +53,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        
         $table = Profile::find($id);
         $table->name = $request->name;
         $table->slogan = $request->slogan;
@@ -66,13 +67,12 @@ class ProfileController extends Controller
         $table->address = $request->address;
         $table->map = $request->map;
         if ($request->file('logo')) {
-            
             $table->logo = $request->file('logo')->store('logo.profile');
         }
       
         $table->update();
 
-        return redirect()->back()->with('success', 'Gallery updated successfully!');
+        return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 
     /**
