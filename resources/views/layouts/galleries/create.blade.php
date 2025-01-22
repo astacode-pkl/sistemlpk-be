@@ -37,7 +37,7 @@
                             <div class="form-group mb-4">
                                 <label class="mr-sm-2" for="inlineFormCustomSelect">Select</label>
                                 <select class="form-select mr-sm-2" name="category_id" id="inlineFormCustomSelect">
-                                    <option selected>Choose...</option>
+                                    <option selected>Choose: Category</option>
                                     @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->title}}</option>
                                     @endforeach

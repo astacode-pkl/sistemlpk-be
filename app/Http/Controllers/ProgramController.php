@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Program;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
 
 class ProgramController extends Controller
 {
@@ -13,7 +15,8 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        return view('layouts.program');
+        $program = Program::all();
+        return view('layouts.programs.program', compact('program'));
     }
 
     /**
@@ -21,7 +24,8 @@ class ProgramController extends Controller
      */
     public function create()
     {
-        //
+        $program = Program::all();
+        return view('layouts.programs.create', ['program' => $program]);
     }
 
     /**
@@ -29,27 +33,24 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'image' => 'required|mimes:png,jpg|max:2048',
+        // dd($request->all());
+        $validated = $request->validate([
+            'imageUpload' =>'required|image|mimes:jpeg,png,jpg',
             'title' => 'required',
-            'description' => 'required'
-        ], [
-            'image.required' => 'Image is required',
-            'image.mimes' => 'Image must be a file of type: png, jpg',
-            'image.max' => 'Image size must not exceed 2 MB',
-            'title.required' => 'Title is required',
-            'description.required' => 'Description is required'
+            'description' => 'required',
         ]);
 
-        $path = $request->file('image')->store('program_images');
+        $extension = $request->file('imageUpload')->extension();
+        // store image \
+        $imgname = date('dmyHis').'.'.$extension;
+        // move to public file
+        $request->file('imageUpload')->move(public_path('images/programs_images'), $imgname);
+        Program::create(['title' => $validated['title'],'description' => $validated['description'],'images' => $imgname]);
+        return redirect('/program')->withSuccess("Data succes Created");
 
-        Program::create([
-            'images' => $path,
-            'title' => $validatedData['title'],
-            'description' => $validatedData['description']
-        ]);
-
-        return redirect()->back()->with('success','Data successfully created');
+        // Program::create(['title' => $validated['title'],'description' => $validated['description'],'image' => $image]);
+        
+        // return redirect()->with('success', 'image created successfully!');
     }
 
     /**
@@ -66,29 +67,65 @@ class ProgramController extends Controller
      */
     public function edit(string $id)
     {
-        // $table = Program::find($id);
-        // return view('layouts.program', compact('table'));
+        $program = Program::find($id);
+        return view('layouts.programs.edit', compact('program'));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        $table = Program::find($id);
-        $table->title = $request->title;
-        $table->description = $request->description;
-        $table->update();
-        return redirect()->back()->with('success','data success updated');
+{
+    $program = Program::find($id);
+
+    // Hapus gambar lama jika ada
+    if ($program->images && file_exists(public_path('images/programs_images/' . $program->images))) {
+        unlink(public_path('images/programs_images/' . $program->images));
+    } else {
+        logger('File tidak ditemukan atau tidak bisa dihapus: ' . public_path('images/programs_images/' . $program->images));
     }
+
+    // Update data program
+    $program->title = $request->title;
+    $program->description = $request->description;
+
+    // Simpan gambar baru
+    if ($request->hasFile('imageUpload')) {
+        // Ambil nama asli file tanpa ekstensi
+        $originalName = pathinfo($request->file('imageUpload')->getClientOriginalName(), PATHINFO_FILENAME);
+        $extension = $request->file('imageUpload')->getClientOriginalExtension();
+        $imgname = time() . '-' . sha1($originalName) . '.' . $extension;
+        $request->file('imageUpload')->move(public_path('images/programs_images'), $imgname);
+    
+        // Simpan nama file ke database
+        $program->images = $imgname;
+    }
+
+    $program->update();
+
+    return redirect('/program')->with('success', 'Program updated successfully!');
+}
+
+
+
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $table = Program::find($id);
-        $table->delete();
-        return redirect()->back()->with('success','data success deleted');
+        $program = Program::find($id);
+    
+        // Hapus file dari public folder jika ada
+        if ($program->images && file_exists(public_path('images/programs_images/' . $program->images))) {
+            unlink(public_path('images/programs_images/' . $program->images));
+        }
+    
+        // Hapus data program dari database
+        $program->delete();
+    
+        return redirect()->back()->with('success', 'Program successfully deleted');
     }
+
 }
