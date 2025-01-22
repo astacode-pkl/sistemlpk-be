@@ -17,6 +17,8 @@ Route::get('/', [DashboardController::class, 'index']);
 Route::get('/galleries', [GalleriesController::class, 'index']);
 Route::get('/profile', [ProfileController::class, 'index']);
 Route::get('/inbox', [ContactController::class, 'index']);
+Route::get('/inbox/{id}', [ContactController::class, 'show']);
+Route::get('/inbox/delete/{id}', [ContactController::class, 'destroy']);
 
 
 
