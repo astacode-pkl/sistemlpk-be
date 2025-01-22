@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GalleriesController extends Controller
 {
@@ -12,10 +14,9 @@ class GalleriesController extends Controller
      */
     public function index( Request $request)
     {
-        // $data = Gallery::with('categories')->get();
+        $galleries =  Gallery::paginate(10)->withQueryString() ;
+        return view('layouts.galleries.galleries',compact('galleries'));
 
-        // return view('index', compact('data'));
-        return view('layouts.galleries');
         
     }
 
@@ -24,8 +25,9 @@ class GalleriesController extends Controller
      */
     public function create()
     {
-        // return view('index');
-        
+        $categories = Category::get();
+        return view('layouts.galleries.create',compact('categories'));
+
     }
 
     /**
@@ -40,11 +42,11 @@ class GalleriesController extends Controller
             'image' =>'required|image|mimes:jpeg,png,jpg'
             ]
         );
-        $path =  $request->file('image')->store();
+        $path =  $request->file('image')->store('galleries');
 
         Gallery::create(['category_id' => $validated['category_id'], 'title' => $validated['title'],'image' => $path]);
-        
-        return redirect()->with('success', 'image created successfully!');
+        return redirect('/galleries')->with('success', 'Gallery created successfully!');
+    
     }
 
     /**
@@ -60,8 +62,9 @@ class GalleriesController extends Controller
      */
     public function edit(string $id)
     {
-        $galery = Gallery::find($id);
-        // return view('',compact('gallery'));
+        $gallery = Gallery::find($id);
+        $categories =Category::get();
+        return view('layouts.galleries.edit',['gallery' => $gallery,'categories' => $categories]);
     }
 
     /**
@@ -72,10 +75,11 @@ class GalleriesController extends Controller
         $galery = Gallery::find($id);
         $galery->title = $request->title;
         $galery->category_id = $request->category_id;
-        $galery->image = $request->image;
+        Storage::delete($galery->image);
+        $galery->image = $request->file('image')->store('galleries');
         $galery->update();
 
-        return redirect()->with('success', 'Gallery updated successfully!');
+        return redirect('/galleries')->with('success', 'Gallery updated successfully!');
     }
 
     /**
@@ -83,8 +87,9 @@ class GalleriesController extends Controller
      */
     public function destroy(string $id)
     {
-        $galery = Gallery::find($id);
-        $galery->delete();
-        return redirect()->back()->with('success', 'Gallery updated successfully!');
+        $gallery = Gallery::find($id);
+        Storage::delete($gallery->image);
+        $gallery->delete();
+        return redirect()->back()->with('success', 'Gallery deleied successfully!');
     }
 }
