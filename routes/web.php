@@ -17,10 +17,10 @@ Route::get('/', [DashboardController::class, 'index']);
 Route::get('/galleries', [GalleriesController::class, 'index']);
 Route::get('/profile', [ProfileController::class, 'index']);
 // Route::get('/program', [ProgramController::class, 'index']);
-Route::get('/regulation', [RegulationController::class, 'index']);
+// Route::get('/regulation', [RegulationController::class, 'index']);
 
 // Post
-Route::post('/program', [ProgramController::class, 'store']);
+// Route::post('/program', [ProgramController::class, 'store']);
 // HEAD
 // Route::get('/contact', function () {
 //     $profile = Profile::all();
@@ -33,11 +33,7 @@ Route::post('/program', [ProgramController::class, 'store']);
 Route::get('/inbox', [ContactController::class, 'index']);
 
 
-//9d9f328f65264e464bf7ee5e0eb6f18dd2b7f5b2
-
-    Route::resource('/galleries',GalleriesController::class)->except('show');
-
-    Route::resource('/regulations',RegulationController::class)->except('show');
+Route::resource('/galleries',GalleriesController::class)->except('show');
     
     Route::resource('/benefits',BenefitController::class)->except('show');
 

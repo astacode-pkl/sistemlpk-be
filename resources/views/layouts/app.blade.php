@@ -12,7 +12,8 @@
     <!-- <link rel="stylesheet" href="https://bootstrapdemos.adminmart.com/modernize/dist/assets/css/styles.css" /> -->
     <link id="themeColors" rel="stylesheet" href="{{ asset('template/back') }}/dist/css/styles.css" />
 
-    <title></title>
+    <title>Modernize Bootstrap Admin</title>
+    
     <!-- Owl Carousel  -->
     <link rel="stylesheet" href="{{ asset('template/back') }}/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
 </head>
@@ -234,9 +235,27 @@
     <script src="{{ asset('template/back') }}/dist/libs/simplebar/dist/simplebar.min.js"></script>
     <script src="{{ asset('template/back') }}/dist/js/theme/app.init.js"></script>
     <script src="{{ asset('template/back') }}/dist/js/theme/theme.js"></script>
+    <script src="{{ asset('template/back') }}/dist/js/script.js"></script>
+    <script>
+        function previewImage(){
+            const image = document.querySelector('#preview');
+            const input = document.querySelector('#fileInput');
+            image.style.display = 'block';
+
+            const oFReader  = new FileReader();
+            oFReader.readAsDataURL(image.file[0]);
+
+            oFReader.onload = function(oFREvent){
+                image.src = oFREvent.target.result;
+            }
+
+
+        }
+    </script>
     <script src="{{ asset('template/back') }}/dist/js/theme/app.min.js"></script>
     <script src="{{ asset('template/back') }}/dist/js/theme/sidebarmenu.js"></script>
-
+    {{-- alert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- solar icons -->
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
     <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
@@ -245,3 +264,4 @@
 </body>
 
 </html>
+
