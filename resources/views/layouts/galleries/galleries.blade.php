@@ -48,7 +48,7 @@
                               <form action="/galleries/{{ $galleries->id}}" method="POST" class="d-inline">
                                  @csrf
                                  @method('delete')
-                                <button type="submit" class="btn btn-danger px-4 py-2" onclick="return confirm('are you sure')">Delete</button>
+                                <button type="submit" class="btn btn-danger px-4 py-2" id="delete">Delete</button>
                               </form>
                                <a href="/galleries/{{ $galleries->id }}/edit"><button class="btn btn-primary px-4 ">Edit</button></a> 
                             </td>
@@ -66,6 +66,6 @@
         <div class="dark-transparent sidebartoggler"></div>
         
     
-    
+       
     
         </x-layout>

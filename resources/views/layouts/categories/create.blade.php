@@ -19,8 +19,13 @@
                             </div>
                             <div class="mb-3">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" name="title" id="floatingInput" placeholder="name@example.com">
+                                    <input type="text" class="form-control  @error('title') is-invalid  @enderror" name="title" id="floatingInput" placeholder="name@example.com">
                                     <label for="floatingInput">title</label>
+                                    @error('title')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                      {{$message}}
+                                      </div>
+                                    @enderror
                                   </div>
                             </div>
                            
@@ -51,29 +56,5 @@
     </div>
 </div>
 
-<script>
-    const fileInput = document.getElementById('fileInput');
-     const preview = document.getElementById('preview');
-     const display = document.getElementById('display');
 
-
-     fileInput.addEventListener('change', (event) => {
-         const file = event.target.files[0];
-         if (file) {
-             const reader = new FileReader();
-
-             reader.onload = (e) => {
-                 preview.src = e.target.result;
-                 preview.style.display = 'block';
-                 display.classList.remove('d-none') = 'block';
-
-             };
-
-             reader.readAsDataURL(file);
-         } else {
-             display.style.display = 'none';
-             preview.src = '';
-         }
-     });
- </script>
  </x-layout>

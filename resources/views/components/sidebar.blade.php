@@ -97,7 +97,7 @@
                         <!-- Programs -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/program" aria-expanded="false">
+                            <a class="sidebar-link" href="/programs" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-layout"></i>
                                 </span>

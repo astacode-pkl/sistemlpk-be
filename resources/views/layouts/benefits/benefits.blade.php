@@ -54,7 +54,7 @@
                         <button type="submit" class="btn btn-danger px-4 py-2" onclick="return confirm('are you sure')">Delete</button>
                         </form>
 
-                      <a href="/benefits/{{ $benefits->id }}/edit"><button class="btn btn-primary px-4 ">Edit</button></a>
+                      <a href="/benefits/{{ $benefits->id }}/edit"><button  class="btn btn-primary px-4 ">Edit</button></a>
 
                       </td>
                     </tr>    

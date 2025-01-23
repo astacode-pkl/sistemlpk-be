@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+<x-layout>
     <div class="card overflow-hidden chat-application">
         <div class="d-flex align-items-center justify-content-between gap-3 m-3 d-lg-none">
 
@@ -187,4 +186,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-layout>

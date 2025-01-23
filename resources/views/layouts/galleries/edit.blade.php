@@ -26,9 +26,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="position-relative d-block" id="display">
-                                <img src="{{ asset('storage/'.$gallery->image)}}" class="card-img-top rounded-0 d-block" id="preview" alt="...">
-                            </div>
                             <div class="mb-3">
                                 <label class="control-label" for="title">Title</label>
                                 <input type="text" id="title" class="form-control" value="{{ $gallery->title }}" name="title">
@@ -50,6 +47,10 @@
                             </div>
                         </div>
                         <!--/span-->
+                        
+                        <div class="position-relative col-md-6 d-block w-50"  id="display">
+                            <img src="{{ asset('storage/'.$gallery->image)}}" class="card-img-top rounded-0 d-block" id="preview" alt="...">
+                        </div>
                     </div>
                     <div class="form-actions text-end">
                         <div class="card-body border-top">

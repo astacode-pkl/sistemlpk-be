@@ -16,35 +16,13 @@ use App\Http\Controllers\RegulationController;
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/galleries', [GalleriesController::class, 'index']);
 Route::get('/profile', [ProfileController::class, 'index']);
-// Route::get('/program', [ProgramController::class, 'index']);
-// Route::get('/regulation', [RegulationController::class, 'index']);
-
-// Post
-// Route::post('/program', [ProgramController::class, 'store']);
-// HEAD
-// Route::get('/contact', function () {
-//     $profile = Profile::all();
-//     return view('welcome');
-// });
-// Route::get('/about', function () {
-//     $profile = Profile::select('history')->get();
-//     return response()->json($profile);
-// });
 Route::get('/inbox', [ContactController::class, 'index']);
 Route::get('/inbox/{id}', [ContactController::class, 'show']);
 Route::get('/inbox/delete/{id}', [ContactController::class, 'destroy']);
-
-
 Route::resource('/galleries',GalleriesController::class)->except('show');
-    
-    Route::resource('/benefits',BenefitController::class)->except('show');
-    Route::resource('/regulations',RegulationController::class)->except('show');
-
-
-    Route::resource('/contacts',ContactController::class)->except('show');
-    
-    Route::resource('/profile',ProfileController::class)->except('show');
-    
-    Route::resource('/categories',CategoryController::class)->except('show');
-    
-    Route::resource('/program',ProgramController::class)->except('show');
+Route::resource('/benefits',BenefitController::class)->except('show');
+Route::resource('/regulations',RegulationController::class)->except('show');
+Route::resource('/contacts',ContactController::class)->except('show'); 
+Route::resource('/profile',ProfileController::class)->except('show'); 
+Route::resource('/categories',CategoryController::class)->except('show'); 
+Route::resource('/programs',ProgramController::class)->except('show');

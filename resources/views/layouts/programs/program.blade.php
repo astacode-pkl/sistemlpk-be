@@ -1,48 +1,73 @@
-@extends('layouts.app')
-@section('content')
-<div class="row">
-    <div class="col-lg-12">
-        <!-- ---------------------
-                                                                                                        start Person Info
-                                                                                                    ---------------- -->
-        <div class="card">
-            <div class="card-header bg-primary">
-                <h4 class="mb-0 text-white">Program</h4>
-            </div>
-            <div class="card-body d-flex justify-content-end">
-                <a href="/program/create" class="btn btn-success mb-3">Add Program</a>
-            </div>
-            @foreach ($program as $data)
-              <div class="card-body">
-                  <div class="row pt-3">
-                      <div class="col-md-12">
-                          <div class="card mb-3">
-                              <div class="row g-0">
-                                  <div class="col-md-4">
-                                      <img src="{{ asset('images/programs_images/'.$data->images) }}" 
-                                           class="img-fluid rounded-2 m-3" 
-                                           alt="{{$data->images}}">
-                                  </div>
-                                  <div class="col-md-8">
-                                      <div class="card-body">
-                                          <h5 class="card-title">{{$data->title}}</h5>
-                                          <p class="card-text">{{$data->description}}</p>
-                                      </div>
-                                  </div>
-                                  <div class="d-flex justify-content-end">
-                                    <a href="/program/{{ $data->id }}/edit"><button class="btn btn-primary px-3 py-2 me-2">Edit</button></a>
-                                    <form action="/program/{{ $data->id}}" method="POST" class="d-inline">
-                                      @csrf
-                                      @method('delete')
-                                  <button type="submit" class="btn btn-danger px-3 py-2 me-2" onclick="return confirm('are you sure')">Delete</button>
-                                  </form>
-          
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+<x-layout>
+
+    <x-card-header>
+        Programs
+    </x-card-header>
+    @if (session('success'))
+        
+    <div class="alert alert-info alert-dismissible fade show mb-3" role="alert">
+        <div class="text-primary">{{ session('success') }}</div>
+    
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card">  
+                    <div class="border-bottom title-part-padding d-flex justify-content-between  align-items-center">
+                    <h4 class="card-title mb-0">Programs</h4>
+                    <a href="/programs/create">
+                        <button class="btn btn-primary">Create</button>
+                    </a>
                   </div>
+                    <div class="card-body ">
+                     
+                      <table
+                        class="table  table-striped table-bordered text-center"
+                        id="editable-datatable"
+                      >
+                        <thead>
+                          <tr>
+                            <th>No</th>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>description</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($programs as $programs)
+                              
+                          <tr id="{{$loop->iteration}}" class="gradeC">
+                            <td>{{$loop->iteration}}</td>
+                            <td><a href="{{'storage/'.$programs->image}}"><img src="{{'storage/'.$programs->image}}" alt="img-gallery"  width="200"></a></td>
+                            <td>{{$programs->title}}</td>
+                            <td class="center">
+                              {{$programs->description}}
+                            </td>
+                            <td class="center">
+                              <form action="/programs/{{ $programs->id}}" method="POST" class="d-inline">
+                                 @csrf
+                                 @method('delete')
+                                <button type="submit" class="btn btn-danger px-4 py-2" onclick="return confirm('are you sure')">Delete</button>
+                              </form>
+                               <a href="/programs/{{ $programs->id }}/edit"><button class="btn btn-primary px-4 ">Edit</button></a> 
+                            </td>
+                          </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
               </div>
-              @endforeach
-        </div>
-@endsection
+            </div>
+          </div>
+        <div class="dark-transparent sidebartoggler"></div>
+        <div class="dark-transparent sidebartoggler"></div>
+        
+    
+    
+    
+        </x-layout>
