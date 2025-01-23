@@ -25,7 +25,7 @@
                     @method('put')
                     <div class="card-body">
                         <div class="row pt-3">
-                            @foreach ($profile as $profile)
+                            @foreach ($companyProfile as $profile)
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="control-label" for="name">Name</label>
