@@ -32,15 +32,60 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {  
+        
         $validated = $request->validate([
         'image' => 'required|image|mimes:jpeg,png,jpg',
         'title' => 'required',
         'description' =>'required'
+        ],
+        [
+            'image.required' => 'Image is required',
+            'image.image' => 'Image must be an image',
+            'image.mimes' => 'Image must be a JPEG, PNG, or JPG',
+            'title.required' => 'Title is required',
+            'description.required' => 'Description is required',
         ]
     );
-    $path =  $request->file('image')->store('images.program');
+    // convert to web 
 
-    Program::create(['image' => $path,'title' => $validated['title'], 'description' => $validated['description']]);
+    if ($image = $request->file('image')) {
+        $destinationPath = 'images/programs/';
+
+        $originalFileName = $image->getClientOriginalName();
+        $imageMimeType = $image->getMimeType();
+
+        if (strpos($imageMimeType, 'image/') === 0) {
+            $imageName = date('YmdHis') . '' . str_replace(' ', '', $originalFileName);
+            $image->move($destinationPath, $imageName);
+            
+            $sourceImagePath = public_path($destinationPath . $imageName);
+            $webpImagePath = $destinationPath . pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
+
+            switch ($imageMimeType) {
+                case 'image/jpeg':
+                    $sourceImage = @imagecreatefromjpeg($sourceImagePath);
+                    break;
+                case 'image/png':
+                    $sourceImage = @imagecreatefrompng($sourceImagePath);
+                    break;
+                default:
+                    $sourceImage = false;
+                    break;
+            }
+
+            if ($sourceImage !== false) {
+                imagewebp($sourceImage, $webpImagePath);
+                imagedestroy($sourceImage);
+                @unlink($sourceImagePath);
+
+                $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
+            }
+        }
+    } else {
+        $imageName = '';
+    }
+
+    Program::create(['images' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
     return redirect('/programs')->with('success', 'Program created successfully!');
 
     }
@@ -71,8 +116,8 @@ class ProgramController extends Controller
         $program = Program::find($id);
         $program->title = $request->title;
         $program->description = $request->description;
-        Storage::delete($program->image);
-        $program->image = $request->file('image')->store('images.program');
+        Storage::delete($program->images);
+        $program->images = $request->file('image')->store('images.program');
         $program->update();
 
         return redirect('/programs')->with('success', 'Gallery updated successfully!');
@@ -88,7 +133,7 @@ class ProgramController extends Controller
     public function destroy(string $id)
     {
         $program = Program::find($id);
-        Storage::delete($program->image);
+        Storage::delete($program->images);
         $program->delete();
         return redirect()->back()->with('success', 'Program successfully deleted');
     }

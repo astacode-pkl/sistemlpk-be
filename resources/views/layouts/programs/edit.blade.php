@@ -7,7 +7,7 @@
                                                                                                         ---------------- -->
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h4 class="mb-0 text-white">Add Photo</h4>
+                    <h4 class="mb-0 text-white">Edit Image</h4>
                 </div>
                 <form action="/programs" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -43,7 +43,7 @@
                             <!--/span-->
                             
                             <div class="position-relative col-md-6 " id="display">
-                                <img src="{{asset('storage/'.$program->image)}}" class="card-img-top rounded-0 " id="preview" alt="...">
+                                <img src="{{ asset('images/programs/'.$program->images)}}" class="card-img-top rounded-0 " id="preview" alt="{{$program->images}}">
                             </div>
                         </div>
                         <div class="form-actions text-end">

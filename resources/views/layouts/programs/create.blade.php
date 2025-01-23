@@ -16,29 +16,47 @@
                             <div class="col-md-6">
                                 <div class="mb-3 d-flex">
                                     <div>
-                                         <label class="control-label" for="image">Image</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="form-control" id="fileInput"
-                                            aria-describedby="inputGroupFileAddon01" name="image">
+                                        <label class="control-label" for="image">Image</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="form-control @error('image') is-invalid @enderror" id="fileInput"
+                                                aria-describedby="inputGroupFileAddon01" name="image">
+                                            </div>
                                         </div>
-                                    </div>
                                     </div>
     
                                     <div>
+                                        @error('image')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
                                 </div>
      
-                                </div>
-    
+                                
+
                                 <div class="mb-3">
                                     <label class="control-label" for="title">Title</label>
-                                    <input type="text" id="title" class="form-control" value="" name="title">
+                                    <input type="text" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="Title..." name="title">
                                 </div>
+                                @error('title')
+                                        <div class="invalid-feedback" id="validationServer04Feedback">
+                                            {{ $message }}
+                                        </div>
+                                @enderror
                                 
-                                <div class="form-floating mb-3">
-                                    <textarea class="form-control" id="floatingTextarea" name="description"></textarea>
-                                    <label for="floatingTextarea">description</label>
+                                <div class="mb-3">
+                                    <label class="control-label" for="description">description</label>
+                                    <textarea class="form-control @error('description') is-invalid @enderror" placeholder="Description..." name="description" oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
                                  </div>
+                                 @error('description')
+                                        <div class="feedback">
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                              </div>
+                                        </div>
+                                @enderror
                             </div>
                             <!--/span-->
                             
