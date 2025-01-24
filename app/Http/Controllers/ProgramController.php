@@ -41,11 +41,10 @@ class ProgramController extends Controller
     // convert to web 
 
     if ($image = $request->file('image')) {
-        $destinationPath = 'storage';
+        $destinationPath = 'storage/';
         
         //sh1 file name
         $sha1FileName = sha1($image->getClientOriginalName());
-
 
         $imageMimeType = $image->getMimeType();
 
@@ -171,7 +170,7 @@ class ProgramController extends Controller
     public function destroy(string $id)
     {
         $program = Program::find($id);
-        Storage::delete($program->images);
+        Storage::delete('storage/'.$program->images);
         $program->delete();
         return redirect()->back()->with('success', 'Program successfully deleted');
     }
