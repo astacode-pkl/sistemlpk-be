@@ -1,5 +1,5 @@
 <x-layout>
-  
+
     <div class="row">
         <div class="col-lg-12">
      
@@ -30,7 +30,7 @@
                                 </div>
     
                                 <div class="mb-3">
-                                    <label class="control-label    @error('title') is-invalid   @enderror" for="title">Title</label>
+                                    <label class="control-label @error('title') is-invalid   @enderror" for="title">Title</label>
                                     <input type="text" id="title" class="form-control" value="{{$program->title}}" name="title">
                                     @error('title')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
@@ -39,9 +39,9 @@
                                     @enderror
                                 </div>
                                 
-                                <div class="form-floating mb-3">
+                                <div class=" mb-3">
+                                    <label for="floatingTextarea">Description</label>
                                     <textarea class="form-control @error('description') is-invalid   @enderror " id="floatingTextarea" name="description">{{$program->description}}</textarea>
-                                    <label for="floatingTextarea">description</label>
                                     @error('description')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                       {{$message}}
@@ -78,7 +78,5 @@
                                                                                                         ---------------- -->
         </div>
     </div>
-    
-    
     </x-layout>
     

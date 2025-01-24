@@ -26,8 +26,8 @@
 </head>
 <body>
     <!-- Preloader -->
-    <div class="preloader">
-        <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" />
+    <div class="preloader "style="display: flex; justify-content: center;">
+        <iframe src="https://lottie.host/embed/d44cd16e-3d5d-439a-a3cf-82f79966d2d1/xL9AeMjQ3p.json"></iframe>
     </div>
     
     <div id="main-wrapper">
@@ -184,6 +184,8 @@
                 textarea.style.height = '';
                 textarea.style.height = textarea.scrollHeight + 'px'
             });
+            
+
             
         </script>
     

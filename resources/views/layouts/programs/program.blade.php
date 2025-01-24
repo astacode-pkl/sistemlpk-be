@@ -95,3 +95,8 @@
 }
         </script>
         </x-layout>
+<script>//5 detik notifikasi hilang
+  setTimeout(function() {
+      document.getElementById('success-alert').style.display = 'none';
+  }, 4500);
+</script>

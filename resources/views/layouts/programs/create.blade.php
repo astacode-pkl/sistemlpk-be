@@ -19,8 +19,7 @@
                                          <label class="control-label" for="image">Image</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="form-control  @error('image') is-invalid   @enderror " id="fileInput"
-                                            aria-describedby="inputGroupFileAddon01" name="image" required>
+                                            <input type="file" class="form-control  @error('image') is-invalid  @enderror" id="fileInput" aria-describedby="inputGroupFileAddon01" name="image" required>
                                             @error('image')
                                             <div id="validationServer04Feedback" class="invalid-feedback">
                                               {{$message}}
@@ -43,7 +42,7 @@
 
                                 <div class="mb-3">
                                     <label class="control-label" for="title">Title</label>
-                                    <input type="text" id="title" class="form-control @error('title') is-invalid   @enderror " value="" name="title" required>
+                                    <input type="text" id="title" class="form-control @error('title') is-invalid   @enderror " value="" name="title" placeholder="Title..." required>
                                     @error('title')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                       {{$message}}
@@ -51,9 +50,9 @@
                                     @enderror
                                 </div>
                                 
-                                <div class="form-floating mb-3">
-                                    <textarea class="form-control  @error('description') is-invalid   @enderror" id="floatingTextarea" name="description" required></textarea>
+                                <div class="mb-3">
                                     <label for="floatingTextarea">description</label>
+                                    <textarea class="form-control  @error('description') is-invalid   @enderror" id="floatingTextarea" name="description" placeholder="Description..." required></textarea>
                                     @error('description')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                       {{$message}}
@@ -71,7 +70,7 @@
                             <!--/span-->
                             
                             <div class="position-relative col-md-6 d-none" id="display">
-                                <img src="" class="card-img-top rounded-0 " id="preview" alt="...">
+                                <img src="" class="card-img-top rounded-1 w-35" id="preview" alt="...">
                             </div>
                         </div>
                         <div class="form-actions text-end">
