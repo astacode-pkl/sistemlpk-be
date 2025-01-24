@@ -41,18 +41,19 @@
                               
                           <tr id="{{$loop->iteration}}" class="gradeC">
                             <td>{{$loop->iteration}}</td>
-                            <td><a href="{{'storage/'.$programs->image}}"><img src="{{'storage/'.$programs->image}}" alt="img-gallery" width="100"></a></td>
+                            <td><a href="{{asset('storage/'.$programs->images)}}"><img src="{{asset('storage/'.$programs->images)}}" alt="img-gallery" width="100"></a></td>
                             <td >{{$programs->title}}</td>
                             <td class="center" style="max-width: 250px; ">
                               {{$programs->description}}
                             </td>
                             <td class="center">
+                              <a href="/programs/{{ $programs->id }}/edit"><button class="btn btn-primary px-4 ">Edit</button></a> 
+
                               <form action="/programs/{{ $programs->id}}" method="POST" class="d-inline">
                                  @csrf
                                  @method('delete')
                                 <button type="submit" class="btn btn-danger px-4 py-2" onclick="return confirm('are you sure')">Delete</button>
                               </form>
-                               <a href="/programs/{{ $programs->id }}/edit"><button class="btn btn-primary px-4 ">Edit</button></a> 
                             </td>
                           </tr>
                           @endforeach

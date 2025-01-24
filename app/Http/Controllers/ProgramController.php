@@ -16,7 +16,7 @@ class ProgramController extends Controller
     public function index()
     {
         $programs = Program::latest()->get();
-        return view('layouts.programs.program', compact('programs'));
+        return view('layouts.programs.program', ['programs' =>$programs]);
     }
 
     /**
@@ -50,12 +50,15 @@ class ProgramController extends Controller
 
     if ($image = $request->file('image')) {
         $destinationPath = 'images/programs/';
+        
+        //sh1 file name
+        $sha1FileName = sha1($image->getClientOriginalName());
 
-        $originalFileName = $image->getClientOriginalName();
+
         $imageMimeType = $image->getMimeType();
 
         if (strpos($imageMimeType, 'image/') === 0) {
-            $imageName = date('YmdHis') . '' . str_replace(' ', '', $originalFileName);
+            $imageName = date('YmdHis') . '' . str_replace(' ', '', $sha1FileName);
             $image->move($destinationPath, $imageName);
             
             $sourceImagePath = public_path($destinationPath . $imageName);
@@ -113,15 +116,58 @@ class ProgramController extends Controller
      */
     public function update(Request $request, string $id)
 {
-        $program = Program::find($id);
-        $program->title = $request->title;
-        $program->description = $request->description;
-        Storage::delete($program->images);
-        $program->images = $request->file('image')->store('images.program');
-        $program->update();
+    // Start of Selection
+    $program = Program::find($id);
+    $program->title = $request->title;
+    $program->description = $request->description;
 
-        return redirect('/programs')->with('success', 'Gallery updated successfully!');
+    if ($request->hasFile('image')) {
+        // Hapus gambar lama jika ada
+        if ($program->images && file_exists(public_path('storage/' . $program->images))) {
+            unlink(public_path('storage/' . $program->images));
+        }
+
+        // Proses upload dan konversi gambar
+        $image = $request->file('image');
+        $sha1FileName = sha1($image->getClientOriginalName());
+        $imageMimeType = $image->getMimeType();
+        $destinationPath = 'storage/';
+        
+        if (strpos($imageMimeType, 'image/') === 0) {
+            $imageName = date('YmdHis') . str_replace(' ', '', $sha1FileName);
+            $image->move(public_path($destinationPath), $imageName);
+
+            // Proses konversi ke WebP
+            $sourceImagePath = public_path($destinationPath . $imageName);
+            $webpImagePath = public_path($destinationPath . pathinfo($imageName, PATHINFO_FILENAME) . '.webp');
+
+            $sourceImage = null;
+            switch ($imageMimeType) {
+                case 'image/jpeg':
+                    $sourceImage = imagecreatefromjpeg($sourceImagePath);
+                    break;
+                case 'image/png':
+                    $sourceImage = imagecreatefrompng($sourceImagePath);
+                    break;
+                default:
+                    break;
+            }
+
+            if ($sourceImage !== false) {
+                imagewebp($sourceImage, $webpImagePath);
+                imagedestroy($sourceImage);
+                unlink($sourceImagePath);  // Hapus gambar asli setelah konversi
+                $program->images = pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
+            }
+        }
+    }
+
+    // Simpan perubahan
+    $program->save();
+
+    return redirect('/programs')->with('success', 'Program updated successfully!');
 }
+
 
 
 

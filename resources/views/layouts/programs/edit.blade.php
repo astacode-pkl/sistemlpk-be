@@ -52,7 +52,7 @@
                             <!--/span-->
                             
                             <div class="position-relative col-md-6 " id="display">
-                                <img src="{{ asset('storage/'.$program->image)}}" class="card-img-top rounded-0 " id="preview" alt="{{$program->images}}">
+                                <img src="{{ asset('storage/'.$program->images)}}" class="card-img-top rounded-0 " id="preview" alt="{{$program->images}}">
                             </div>
                         </div>
                         <div class="form-actions text-end">
