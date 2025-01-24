@@ -7,7 +7,7 @@
                                                                                                         ---------------- -->
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h4 class="mb-0 text-white">Add Photo</h4>
+                    <h4 class="mb-0 text-white">Create Program</h4>
                 </div>
                 <form action="/programs" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -19,8 +19,13 @@
                                          <label class="control-label" for="image">Image</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="form-control" id="fileInput"
-                                            aria-describedby="inputGroupFileAddon01" name="image">
+                                            <input type="file" class="form-control  @error('image') is-invalid   @enderror " id="fileInput"
+                                            aria-describedby="inputGroupFileAddon01" name="image" required>
+                                            @error('image')
+                                            <div id="validationServer04Feedback" class="invalid-feedback">
+                                              {{$message}}
+                                              </div>
+                                            @enderror
                                         </div>
                                     </div>
                                     </div>
@@ -32,12 +37,22 @@
     
                                 <div class="mb-3">
                                     <label class="control-label" for="title">Title</label>
-                                    <input type="text" id="title" class="form-control" value="" name="title">
+                                    <input type="text" id="title" class="form-control @error('title') is-invalid   @enderror " value="" name="title" required>
+                                    @error('title')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                      {{$message}}
+                                      </div>
+                                    @enderror
                                 </div>
                                 
                                 <div class="form-floating mb-3">
-                                    <textarea class="form-control" id="floatingTextarea" name="description"></textarea>
+                                    <textarea class="form-control  @error('description') is-invalid   @enderror" id="floatingTextarea" name="description" required></textarea>
                                     <label for="floatingTextarea">description</label>
+                                    @error('description')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                      {{$message}}
+                                      </div>
+                                    @enderror
                                  </div>
                             </div>
                             <!--/span-->
@@ -48,14 +63,14 @@
                         </div>
                         <div class="form-actions text-end">
                             <div class="card-body border-top">
-                                <button type="submit" class="btn btn-primary rounded-pill px-4">
+                                <button type="submit" class="btn btn-primary  px-4">
                                     <div class="d-flex align-items-center">
                                         <i class="ti ti-plus me-1 fs-4"></i>
-                                        Add
+                                        Create
                                     </div>
                                 </button>
                                 <a href="/galleries">
-                                <button type="button" class="btn btn-danger rounded-pill px-4 ms-2 text-white">
+                                <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                     Cancel
                                 </button>
                             </a>

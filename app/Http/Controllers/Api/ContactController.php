@@ -23,10 +23,10 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $validator = validator()->make($request->all(),[
-        'name' => 'required|max:250',
-        'phone_number' => 'required|min:12|numeric',
-        'email' => 'required|email|unique',
-        'message' => 'required'
+            'name' => 'required|max:255',
+            'phone_number' => 'required|min:12',
+            'email' => 'required|email|unique:users',
+            'message' => 'required'
         ]);
 
         if ($validator->fails()) {

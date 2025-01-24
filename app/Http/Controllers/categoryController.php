@@ -7,13 +7,10 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $categories = Category::latest()->paginate(5);
-        return view('layouts.categories.categories',compact('categories'));
+        $categories = Category::latest()->get();
+        return view('layouts.categories.categories', compact('categories'));
     }
 
     /**
@@ -21,6 +18,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+       
         return view('layouts.categories.create');
     }
 
@@ -28,15 +26,15 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    {  
         $validated = $request->validate([
-            'slug' => 'required',
-            'title' =>'required'
-            ]
-        );
+        'title' => 'required',
+        'slug' =>'required|unique:categories'
+        ]
+    );
+    Category::create(['title' => $validated['title'], 'slug' => $validated['slug']]);
+    return redirect('/categories')->with('success', 'Category created successfully!');
 
-        Category::create($validated);
-        return redirect('/categories')->with('success', 'Regulation created successfully!');
     }
 
     /**
@@ -44,7 +42,8 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // $table = Program::find($id);
+        // return view('layouts.program', compact('table'));
     }
 
     /**
@@ -53,31 +52,35 @@ class CategoryController extends Controller
     public function edit(string $id)
     {
         $category = Category::find($id);
-        return view('layouts.categories.edit',compact('category'));
+        return view('layouts.categories.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        $table = Category::find($id);
-        $table->title = $request->title;
-        $table->slug = $request->slug;
-        $table->update();
-        return redirect('/categories')->with('success','data success updated');
+{
+        $category = Category::find($id);
+        $category->title = $request->title;
+        $category->slug = $request->slug;
+        $category->update();
 
-    }
+        return redirect('/categories')->with('success', 'Caregory updated successfully!');
+}
+
+
+
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $table = Category::find($id);
-     
-        $table->delete();
-        return redirect()->back()->with('success','data success deleted');
+        $category = Category::find($id);
+        $category->delete();
+        return redirect()->back()->with('success', 'Category deleted successfully');
+    }
 
-     }
+    
 }

@@ -41,9 +41,9 @@
                               
                           <tr id="{{$loop->iteration}}" class="gradeC">
                             <td>{{$loop->iteration}}</td>
-                            <td><a href="{{'storage/'.$programs->image}}"><img src="{{'storage/'.$programs->image}}" alt="img-gallery"  width="200"></a></td>
-                            <td>{{$programs->title}}</td>
-                            <td class="center">
+                            <td><a href="{{'storage/'.$programs->image}}"><img src="{{'storage/'.$programs->image}}" alt="img-gallery" width="100"></a></td>
+                            <td >{{$programs->title}}</td>
+                            <td class="center" style="max-width: 250px; ">
                               {{$programs->description}}
                             </td>
                             <td class="center">

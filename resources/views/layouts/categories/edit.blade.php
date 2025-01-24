@@ -1,6 +1,5 @@
 <x-layout>
-
-<div class="row">
+    <div class="row">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header bg-primary">
@@ -14,14 +13,25 @@
                            
                             <div class="mb-3">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" name="slug" id="floatingInput" value="{{$category->slug}}" placeholder="name@example.com">
+                                    <input type="text" class="form-control  @error('slug') is-invalid  @enderror" name="slug" id="floatingInput" value="{{$category->slug}}" placeholder="name@example.com" required>
                                     <label for="floatingInput">slug</label>
+                                    @error('slug')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                      {{$message}}
+                                      </div>
+                                    @enderror
                                   </div>
                             </div>
                             <div class="mb-3">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" name="title" id="floatingInput" value="{{$category->title}}" placeholder="name@example.com">
+                                    <input type="text" class="form-control    @error('title') is-invalid
+                                    @enderror" name="title" id="floatingInput" value="{{$category->title}}" placeholder="name@example.com" required>
                                     <label for="floatingInput">title</label>
+                                    @error('title')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                      {{$message}}
+                                      </div>
+                                    @enderror
                                   </div>
                             </div>
                            
@@ -51,4 +61,4 @@
                                                                                                     ---------------- -->
     </div>
 </div>
-<x-layout>
+</x-layout>

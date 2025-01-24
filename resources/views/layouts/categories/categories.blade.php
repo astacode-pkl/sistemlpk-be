@@ -31,6 +31,7 @@
                  
                   <table
                     class="table table-striped table-bordered text-center " id="editable-datatable" >
+                  
                     <thead>
                       <tr>
                         <th >No</th>
@@ -40,26 +41,27 @@
                       </tr>
                     </thead>
                    <tbody>
-                    {{ $categories->links()}}
-                    @foreach ($categories as $categories)
+                    
+                    @foreach ($categories as $category)
                     <tr id="25" class="gradeA">
                       <td>{{$loop->iteration}}</td>
-                      <td>{{$categories->slug}}</td>
-                     <td>{{ $categories->title}}</td>
+                      <td>{{$category->slug}}</td>
+                     <td>{{ $category->title}}</td>
                 
                       <td class="center ">
-                        <form action="/categories/{{ $categories->id}}" method="POST" class="d-inline">
+                        <form action="/categories/{{ $category->id}}" method="POST" class="d-inline">
                             @csrf
                             @method('delete')
                         <button type="submit" class="btn btn-danger px-4 py-2" onclick="return confirm('are you sure')">Delete</button>
                         </form>
 
-                      <a href="/categories/{{ $categories->id }}/edit"><button class="btn btn-primary px-4 ">Edit</button></a>
+                      <a href="/categories/{{ $category->id }}/edit"><button class="btn btn-primary px-4 ">Edit</button></a>
 
                       </td>
                     </tr>    
                     @endforeach
                     
+               
                    </tbody>
                   
                   </table>

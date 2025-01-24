@@ -14,7 +14,7 @@ class GalleriesController extends Controller
      */
     public function index( Request $request)
     {
-        $galleries =  Gallery::latest()->paginate(10)->withQueryString() ;
+        $galleries =  Gallery::latest()->get() ;
         return view('layouts.galleries.galleries',compact('galleries'));
 
         
@@ -42,6 +42,7 @@ class GalleriesController extends Controller
             'image' =>'required|image|mimes:jpeg,png,jpg'
             ]
         );
+        
         $path =  $request->file('image')->store('galleries');
 
         Gallery::create(['category_id' => $validated['category_id'], 'title' => $validated['title'],'image' => $path]);
@@ -90,6 +91,6 @@ class GalleriesController extends Controller
         $gallery = Gallery::find($id);
         Storage::delete($gallery->image);
         $gallery->delete();
-        return redirect()->back()->with('success', 'Gallery deleied successfully!');
+        return redirect()->back()->with('success', 'Gallery deleted successfully!');
     }
 }

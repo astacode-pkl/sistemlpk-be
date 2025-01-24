@@ -7,7 +7,7 @@
                                                                                                     ---------------- -->
         <div class="card">
             <div class="card-header bg-primary">
-                <h4 class="mb-0 text-white">Add Photo</h4>
+                <h4 class="mb-0 text-white">Create Gallery</h4>
             </div>
             <form action="/galleries" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -18,9 +18,14 @@
                                 <div>
                                      <label class="control-label" for="image">Image</label>
                                 <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="form-control" id="fileInput"
-                                        aria-describedby="inputGroupFileAddon01" name="image">
+                                    <div class="custom-file ">
+                                        <input type="file" class="form-control  @error('title') is-invalid @enderror" id="fileInput"
+                                        aria-describedby="inputGroupFileAddon01" name="image"      required >
+                                        @error('image')
+                                        <div id="validationServer04Feedback" class="invalid-feedback">
+                                          {{$message}}
+                                          </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 </div>
@@ -32,16 +37,26 @@
 
                             <div class="mb-3">
                                 <label class="control-label" for="title">Title</label>
-                                <input type="text" id="title" class="form-control" value="" name="title">
+                                <input type="text" id="title" class="form-control @error('title') is-invalid @enderror" value="" name="title" required>
+                                @error('title')
+                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                  {{$message}}
+                                  </div>
+                                @enderror
                             </div>
                             <div class="form-group mb-4">
                                 <label class="mr-sm-2" for="inlineFormCustomSelect">Select</label>
-                                <select class="form-select mr-sm-2" name="category_id" id="inlineFormCustomSelect">
+                                <select class="form-select mr-sm-2  @error('category_id') is-invalid @enderror" name="category_id" id="inlineFormCustomSelect" required>
                                     <option selected>Choose: Category</option>
                                     @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->title}}</option>
                                     @endforeach
                                 </select>
+                                @error('category_id')
+                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                  {{$message}}
+                                  </div>
+                                @enderror
                             </div>
                         </div>
                         <!--/span-->
@@ -52,14 +67,14 @@
                     </div>
                     <div class="form-actions text-end">
                         <div class="card-body border-top">
-                            <button type="submit" class="btn btn-primary rounded-pill px-4">
+                            <button type="submit" class="btn btn-primary  px-4">
                                 <div class="d-flex align-items-center">
                                     <i class="ti ti-plus me-1 fs-4"></i>
-                                    Add
+                                    Create
                                 </div>
                             </button>
                             <a href="/galleries">
-                            <button type="button" class="btn btn-danger rounded-pill px-4 ms-2 text-white">
+                            <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                 Cancel
                             </button>
                         </a>
