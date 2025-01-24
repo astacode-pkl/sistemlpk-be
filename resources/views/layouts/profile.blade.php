@@ -5,13 +5,7 @@
 </x-card-header>
     <div class="row">
         <div class="col-lg-12">
-            @if (session('success'))
-            <div class="alert alert-info alert-dismissible fade show" role="alert">
-                <strong >{{ session('success') }}</strong>
-                
-                    {{-- <p>hsisa</p> --}}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                @endif
+         
                 
               </div>
             <div class="card">
