@@ -30,7 +30,7 @@
                                 </div>
     
                                 <div class="mb-3">
-                                    <label class="control-label    @error('title') is-invalid   @enderror" for="title">Title</label>
+                                    <label class="control-label @error('title') is-invalid   @enderror" for="title">Title</label>
                                     <input type="text" id="title" class="form-control" value="{{$program->title}}" name="title">
                                     @error('title')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
@@ -39,9 +39,9 @@
                                     @enderror
                                 </div>
                                 
-                                <div class="form-floating mb-3">
+                                <div class=" mb-3">
+                                    <label for="floatingTextarea">Description</label>
                                     <textarea class="form-control @error('description') is-invalid   @enderror " id="floatingTextarea" name="description">{{$program->description}}</textarea>
-                                    <label for="floatingTextarea">description</label>
                                     @error('description')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                       {{$message}}
@@ -51,8 +51,13 @@
                             </div>
                             <!--/span-->
                             
-                            <div class="position-relative col-md-6 " id="display">
-                                <img src="{{ asset('storage/'.$program->images)}}" class="card-img-top rounded-0 " id="preview" alt="{{$program->images}}">
+                            <div class="position-relative col-md-6" id="display">
+                                <div id="loading" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                    <div class="spinner-border" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                                <img src="{{ asset('storage/'.$program->images)}}" class="card-img-top rounded-0" id="preview" alt="{{$program->images}}" onload="document.getElementById('loading').style.display='none';" onerror="document.getElementById('loading').style.display='none';">
                             </div>
                         </div>
                         <div class="form-actions text-end">

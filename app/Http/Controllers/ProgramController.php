@@ -49,7 +49,7 @@ class ProgramController extends Controller
     // convert to web 
 
     if ($image = $request->file('image')) {
-        $destinationPath = 'images/programs/';
+        $destinationPath = 'storage';
         
         //sh1 file name
         $sha1FileName = sha1($image->getClientOriginalName());

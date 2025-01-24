@@ -5,11 +5,12 @@
     </x-card-header>
     @if (session('success'))
         
-    <div class="alert alert-info alert-dismissible fade show mb-3" role="alert">
+    <div class="alert alert-info alert-dismissible fade show mb-3" role="alert" id="success-alert">
         <div class="text-primary">{{ session('success') }}</div>
     
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+    
     @endif
             <div class="container-fluid">
               <div class="row">
@@ -24,7 +25,7 @@
                     <div class="card-body ">
                      
                       <table
-                        class="table  table-striped table-bordered text-center"
+                        class="table table-striped table-bordered text-center"
                         id="editable-datatable"
                       >
                         <thead>
@@ -72,3 +73,8 @@
     
     
         </x-layout>
+<script>//5 detik notifikasi hilang
+  setTimeout(function() {
+      document.getElementById('success-alert').style.display = 'none';
+  }, 4500);
+</script>
