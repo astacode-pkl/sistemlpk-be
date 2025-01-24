@@ -1,11 +1,12 @@
-<aside class="left-sidebar with-vertical">
+
+<aside class="left-sidebar with-vertical position-fixed">
             <div><!-- ---------------------------------- -->
                 <!-- Start Vertical Layout Sidebar -->
                 <!-- ---------------------------------- -->
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="../main/index.html" class="text-nowrap logo-img">
-                        <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/logos/dark-logo.svg" class="dark-logo" alt="Logo-Dark" />
-                        <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/logos/light-logo.svg" class="light-logo" alt="Logo-light" />
+                    <a href="/">
+                        <img src="{{ asset('storage') }}/{{ Cache::get('logo') }}" width="90%"/>
+                       
                     </a>
                     <a href="javascript:void(0)"
                         class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
@@ -41,6 +42,17 @@
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">Data</span>
                         </li>
+                         <!-- ---------------------------------- -->
+                        <!-- Categories -->
+                        <!-- ---------------------------------- -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/categories" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-list-details"></i>
+                                  </span>
+                                <span class="hide-menu">Categories</span>
+                            </a>
+                        </li>
                         <!-- ---------------------------------- -->
                         <!-- Gallery -->
                         <!-- ---------------------------------- -->
@@ -52,35 +64,17 @@
                                 <span class="hide-menu">Galleries</span>
                             </a>
                         </li>
-                        <!-- ---------------------------------- -->
-                        <!-- Chat -->
-                        <!-- ---------------------------------- -->
-                       <li class="sidebar-item">
-                            <a class="sidebar-link" href="/inbox" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-inbox"></i>
-                                </span>
-                                <span class="hide-menu">Inbox</span>
-                            </a>
-                        </li>
                         
                         <!-- ---------------------------------- -->
                         <!-- Profile -->
                         <!-- ---------------------------------- -->
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="/companyprofile" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-id-badge"></i>
-                                </span>
-                                <span class="hide-menu">Company Profile</span>
-                            </a>
-                        </li>
+                      
 
                         <!-- ---------------------------------- -->
                         <!-- Regulations -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/regulation" aria-expanded="false">
+                            <a class="sidebar-link" href="/regulations" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-book"></i>
                                 </span>
@@ -99,8 +93,28 @@
                                 <span class="hide-menu">Programs</span>
                             </a>
                         </li>
-
-
+                        <!-- ---------------------------------- -->
+                        <!-- Benefits -->
+                        <!-- ---------------------------------- -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/benefits" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-chart-pie"></i>
+                                  </span>
+                                <span class="hide-menu">Benefits</span>
+                            </a>
+                        </li>
+                         <!-- ---------------------------------- -->
+                        <!-- Company Profile -->
+                        <!-- ---------------------------------- -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/companyprofile" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-id-badge"></i>
+                                </span>
+                                <span class="hide-menu">Company Profile</span>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>

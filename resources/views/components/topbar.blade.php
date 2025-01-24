@@ -15,21 +15,25 @@
                         <i class="ti ti-search"></i>
                     </a>
                 </li>
+                <li class="nav-item nav-icon-hover-bg rounded-circle d-none d-lg-flex">
+                    <a class="nav-link" href="/inbox">
+                        <i class="ti ti-inbox"></i>
+                    </a>
+                </li>
             </ul>
 
 
             <div class="d-block d-lg-none py-4">
                 <a href="../main/index.html" class="text-nowrap logo-img">
-                    <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/logos/dark-logo.svg"
-                        class="dark-logo" alt="Logo-Dark" />
-                    <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/logos/light-logo.svg"
-                        class="light-logo" alt="Logo-light" />
+                    <img src="{{ asset('storage') }}/{{ Cache::get('logo') }}" width="90%" />
                 </a>
             </div>
             <div class="ms-lg-auto justify-content-end" id="navbarNav">
                 <div class="d-flex align-items-center justify-content-between">
-                    
+
+
                     <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
+                        {{-- ------------------------------- --> --}}
                         <!-- ------------------------------- -->
                         <!-- start language Dropdown -->
                         <!-- ------------------------------- -->
@@ -51,8 +55,8 @@
                             <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" aria-expanded="false">
                                 <div class="d-flex align-items-center">
                                     <div class="user-profile-img">
-                                        <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/profile/user-1.jpg"
-                                            class="rounded-circle" width="35" height="35"
+                                        <img src="{{ asset('storage') }}/{{ Cache::get('logo') }}"
+                                            class="rounded-circle border" width="35" height="35"
                                             alt="modernize-img" />
                                     </div>
                                 </div>
@@ -64,22 +68,22 @@
                                         <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
                                     </div>
                                     <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                                        <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/profile/user-1.jpg"
-                                            class="rounded-circle" width="80" height="80"
-                                            alt="modernize-img" />
+                                        <img src="{{ asset('storage') }}/{{ Cache::get('logo') }}"
+                                            class="rounded-circle" width="80" height="80" alt="modernize-img" />
                                         <div class="ms-3">
-                                            <h5 class="mb-1 fs-3">Mathew Anderson</h5>
-                                            <span class="mb-1 d-block">Designer</span>
+                                            <h5 class="mb-1 fs-3">{{ Auth::user()->name }}</h5>
                                             <p class="mb-0 d-flex align-items-center gap-2">
-                                                <i class="ti ti-mail fs-4"></i> info@modernize.com
+                                                <i class="ti ti-mail fs-4"></i> {{ Auth::user()->email }}
                                             </p>
                                         </div>
                                     </div>
-                                    
-                                    <div class="d-grid py-4 px-7 pt-8">
-                                        <a href="../main/authentication-login.html"
-                                            class="btn btn-outline-primary">Log Out</a>
-                                    </div>
+
+                                    <form action="/logout" method="post">
+                                        <div class="d-grid py-4 px-7 pt-8">
+                                            @csrf
+                                            <button type="submit" class="btn btn-outline-primary">Log Out</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </li>
@@ -116,8 +120,7 @@
                     </a>
                 </li>
                 <li class="nav-item nav-icon-hover-bg rounded-circle d-none d-xl-flex">
-                    <a class="nav-link" href="javascript:void(0)" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
+                    <a class="nav-link" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <i class="ti ti-search"></i>
                     </a>
                 </li>
@@ -350,8 +353,7 @@
             </ul>
             <div class="d-block d-xl-none">
                 <a href="../main/index.html" class="text-nowrap nav-link">
-                    <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/logos/dark-logo.svg"
-                        width="180" alt="modernize-img" />
+                    <img src="{{ asset('storage') }}/{{ Cache::get('logo') }}" width="180" alt="modernize-img" />
                 </a>
             </div>
             <a class="navbar-toggler nav-icon-hover-bg rounded-circle p-0 mx-0 border-0" href="javascript:void(0)"

@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+<x-layout>
     <div class="card overflow-hidden chat-application">
         <div class="d-flex align-items-center justify-content-between gap-3 m-3 d-lg-none">
 
@@ -82,8 +81,9 @@
                                 <div class="p-9 py-3 border-bottom chat-meta-user">
                                     <ul class="list-unstyled mb-0 d-flex align-items-center">
                                         <li class="me-3 d-lg-none">
-                                            <button class="btn btn-primary d-flex" type="button" data-bs-toggle="offcanvas"
-                                                data-bs-target="#chat-sidebar" aria-controls="chat-sidebar">
+                                            <button class="btn btn-primary d-flex" type="button"
+                                                data-bs-toggle="offcanvas" data-bs-target="#chat-sidebar"
+                                                aria-controls="chat-sidebar">
                                                 <i class="ti ti-inbox fs-5"></i>
                                             </button>
                                         </li>
@@ -119,7 +119,9 @@
                                             </div>
                                         </div>
                                     @else
-                                        <h2 class="fw-light text-body position-absolute top-50 start-50 translate-middle">No
+                                        <h2
+                                            class="fw-light text-body position-absolute top-50 start-50 translate-middle">
+                                            No
                                             inbox is selected</h2>
                                     @endif
                                 </div>
@@ -187,4 +189,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-layout>

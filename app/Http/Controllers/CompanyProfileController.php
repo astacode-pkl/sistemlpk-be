@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CompanyProfile;
 use Illuminate\Http\Request;
+use App\Models\CompanyProfile;
+use Illuminate\Support\Facades\File;
 
 class CompanyProfileController extends Controller
 {
@@ -66,12 +67,51 @@ class CompanyProfileController extends Controller
         $table->tiktok = $request->tiktok;
         $table->address = $request->address;
         $table->map = $request->map;
+
+        //         if ($image = $request->file('logo')) {
+        //             $destinationPath = 'storage/logo';
+
+        //             $originalFileName = $image->getClientOriginalName();
+        //             $imageMimeType = $image->getMimeType();
+        //             if (strpos($imageMimeType, 'image/') === 0) {
+        //                 $imageName = date('YmdHis') . '' . str_replace(' ', '', $originalFileName);
+        //                 $image->move($destinationPath, $imageName);
+
+        //                 $sourceImagePath = public_path($destinationPath . $imageName);
+        //                 $webpImagePath = $destinationPath . pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
+
+        //                 switch ($imageMimeType) {
+        //                     case 'image/jpeg':
+        //                         $sourceImage = @imagecreatefromjpeg($sourceImagePath);
+        //                         break;
+        //                     case 'image/png':
+        //                         $sourceImage = @imagecreatefrompng($sourceImagePath);
+        //                         break;
+        //                     default:
+        //                         $sourceImage = false;
+        //                         break;
+        //                 }
+
+        //                 if ($sourceImage !== false) {
+        //                     imagewebp($sourceImage, $webpImagePath);
+        //                     imagedestroy($sourceImage);
+        //                     @unlink($sourceImagePath);
+        //                     // File::delete($sourceImagePath);
+        // // dd($sourceImage);
+        //                     $request['logo'] = pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
+        //                 }
+        //                 // dd($sourceImage);
+        //             }
+        //         } else {
+        //             $request['logo'] = '';
+        //         }
+
+
         if ($request->file('logo')) {
-            $table->logo = $request->file('logo')->store('logo.profile');
+            $table->logo = $request->file('logo')->store('logo');
         }
 
         $table->update();
-
         return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 

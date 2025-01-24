@@ -12,8 +12,8 @@ class RegulationController extends Controller
      */
     public function index()
     {
-        $regulations = Regulation::get();
-        // return view('',compact('regulations'));
+        $regulations = Regulation::latest()->paginate(2);
+        return view('layouts.regulations.regulations',compact('regulations'));
     }
 
     /**
@@ -21,7 +21,7 @@ class RegulationController extends Controller
      */
     public function create()
     {
-        // return view('');
+        return view('layouts.regulations.create');
     }
 
     /**
@@ -29,16 +29,14 @@ class RegulationController extends Controller
      */
     public function store(Request $request)
     {
-        $validateData = $request->validate([
-            'title' =>'required|max:255',
-            'icon' => 'required|mimetypes:text/plain,image/png,image/jpeg,image/svg',
-            'email' => 'required|email|unique:users',
-        
-        ]);
-        Regulation::create($validateData);
+        $validated = $request->validate([
+            'title' => 'required',
+            'icon' =>'required'
+            ]
+        );
 
-        Regulation::create($request->all());
-        return redirect('')->with('success','data success created');
+        Regulation::create([ 'title' => $validated['title'], 'icon' => $validated['icon']]);
+        return redirect('/regulations')->with('success', 'Regulation created successfully!');
     }
 
     /**
@@ -54,7 +52,9 @@ class RegulationController extends Controller
      */
     public function edit(string $id)
     {
-        // return view('');
+        
+        $regulation = Regulation::find($id);
+        return view('layouts.regulations.edit',compact('regulation'));
     }
 
     /**
@@ -66,7 +66,7 @@ class RegulationController extends Controller
         $table->title = $request->title;
         $table->icon = $request->icon;
         $table->update();
-        return redirect('')->with('success','data success updated');
+        return redirect('regulations')->with('success','data success updated');
 
     }
 

@@ -7,7 +7,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a class="text-muted " href="./index.html">Dashboard</a>
+                            <a class="text-muted " href="/">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item" aria-current="page">
                             {{ $slot }}
@@ -17,7 +17,7 @@
             </div>
             <div class="col-3">
                 <div class="text-center mb-n5">
-                    <img src="../../dist/images/breadcrumb/ChatBc.png" alt="" class="img-fluid mb-n4" />
+                    <img src="{{ asset('template/back/dist/images/breadcrumb/ChatBc.png')}}" alt="" class="img-fluid mb-n4" />
                 </div>
             </div>
         </div>

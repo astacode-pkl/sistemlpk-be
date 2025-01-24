@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+<x-layout>
+
 <div class="row">
     <div class="col-lg-12">
         <!-- ---------------------
@@ -14,17 +14,20 @@
                 <div class="card-body">
                     <div class="row pt-3">
                         <div class="col-md-6">
-                            <div class="mb-3">
-                                <div class="position-relative d-none" id="display">
-                                    <img src="" class="card-img-top rounded-0 d-block" id="preview" alt="...">
-                                </div>
-                                <label class="control-label" for="image">Image</label>
+                            <div class="mb-3 d-flex">
+                                <div>
+                                     <label class="control-label" for="image">Image</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="form-control" id="fileInput"
-                                            aria-describedby="inputGroupFileAddon01" name="image">
+                                        aria-describedby="inputGroupFileAddon01" name="image">
                                     </div>
                                 </div>
+                                </div>
+
+                                <div>
+                            </div>
+ 
                             </div>
 
                             <div class="mb-3">
@@ -42,6 +45,10 @@
                             </div>
                         </div>
                         <!--/span-->
+                        
+                        <div class="position-relative col-md-6 d-none" id="display">
+                            <img src="" class="card-img-top rounded-0 " id="preview" alt="...">
+                        </div>
                     </div>
                     <div class="form-actions text-end">
                         <div class="card-body border-top">
@@ -66,30 +73,4 @@
                                                                                                     ---------------- -->
     </div>
 </div>
-
-<script>
-    const fileInput = document.getElementById('fileInput');
-     const preview = document.getElementById('preview');
-     const display = document.getElementById('display');
-
-
-     fileInput.addEventListener('change', (event) => {
-         const file = event.target.files[0];
-         if (file) {
-             const reader = new FileReader();
-
-             reader.onload = (e) => {
-                 preview.src = e.target.result;
-                 preview.style.display = 'block';
-                 display.classList.remove('d-none') = 'block';
-
-             };
-
-             reader.readAsDataURL(file);
-         } else {
-             display.style.display = 'none';
-             preview.src = '';
-         }
-     });
- </script>
-@endsection
+</x-layout>
