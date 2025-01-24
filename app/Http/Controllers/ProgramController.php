@@ -37,15 +37,7 @@ class ProgramController extends Controller
         'image' => 'required|image|mimes:jpeg,png,jpg',
         'title' => 'required',
         'description' =>'required'
-        ],
-        [
-            'image.required' => 'Image is required',
-            'image.image' => 'Image must be an image',
-            'image.mimes' => 'Image must be a JPEG, PNG, or JPG',
-            'title.required' => 'Title is required',
-            'description.required' => 'Description is required',
-        ]
-    );
+        ]);
     // convert to web 
 
     if ($image = $request->file('image')) {
@@ -85,7 +77,7 @@ class ProgramController extends Controller
         $imageName = '';
     }
 
-    Program::create(['images' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
+    Program::create(['image' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
     return redirect('/programs')->with('success', 'Program created successfully!');
 
     }

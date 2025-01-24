@@ -25,7 +25,7 @@
                      
                       <table
                         class="table  table-striped table-bordered text-center"
-                        id="editable-datatable"
+                        id="datatable"
                       >
                         <thead>
                           <tr>

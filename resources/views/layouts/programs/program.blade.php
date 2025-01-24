@@ -25,7 +25,7 @@
                      
                       <table
                         class="table  table-striped table-bordered text-center"
-                        id="editable-datatable"
+                       id="datatable"  
                       >
                         <thead>
                           <tr>
@@ -67,7 +67,4 @@
         <div class="dark-transparent sidebartoggler"></div>
         <div class="dark-transparent sidebartoggler"></div>
         
-    
-    
-    
         </x-layout>
