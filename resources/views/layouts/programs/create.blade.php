@@ -31,10 +31,16 @@
                                     </div>
     
                                     <div>
+                                        @error('image')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
                                 </div>
      
-                                </div>
-    
+                                
+
                                 <div class="mb-3">
                                     <label class="control-label" for="title">Title</label>
                                     <input type="text" id="title" class="form-control @error('title') is-invalid   @enderror " value="" name="title" required>
@@ -54,6 +60,13 @@
                                       </div>
                                     @enderror
                                  </div>
+                                 @error('description')
+                                        <div class="feedback">
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                              </div>
+                                        </div>
+                                @enderror
                             </div>
                             <!--/span-->
                             
