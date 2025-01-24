@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Profile;
 use App\Models\User;
+use App\Models\Profile;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\CompanyProfile;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
-        Profile::factory()->create([
+        CompanyProfile::factory()->create([
             'name' => 'lpk tsukuba indonesia',
             'slogan' => '職業訓練機関つくばインドネシア',
             'history' => 'LPK Tsukuba Indonesia didirikan pada bulan Agustus 2024 di Ciawi, Kabupaten Tasikmalaya, Jawa Barat Indonesia. LPK Tsukuba Indonesia adalah lembaga pendidikan bahasa Jepang untuk Program Pemagang ke Jepang, dan telah mendapatkan izin resmi dari pemerintah Indonesia.

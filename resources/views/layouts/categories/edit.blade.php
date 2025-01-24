@@ -1,27 +1,26 @@
 <x-layout>
-
-<div class="row">
+    <div class="row">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header bg-primary">
                 <h4 class="mb-0 text-white">Add Photo</h4>
             </div>
-            <form action="/categories" method="POST" enctype="multipart/form-data">
+            <form action="/categories/{{ $category->id }}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('put')
                 <div class="card-body">
                     <div class="row pt-3">
                         <div class="col-md-6">
-                           
                             <div class="mb-3">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" name="slug" id="floatingInput" value="{{$category->slug}}" placeholder="name@example.com">
-                                    <label for="floatingInput">slug</label>
-                                  </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" name="title" id="floatingInput" value="{{$category->title}}" placeholder="name@example.com">
+                                    <input type="text" class="form-control    @error('title') is-invalid
+                                    @enderror" name="title" id="floatingInput" value="{{$category->title}}" placeholder="name@example.com" required>
                                     <label for="floatingInput">title</label>
+                                    @error('title')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                      {{$message}}
+                                      </div>
+                                    @enderror
                                   </div>
                             </div>
                            
@@ -51,4 +50,4 @@
                                                                                                     ---------------- -->
     </div>
 </div>
-<x-layout>
+</x-layout>

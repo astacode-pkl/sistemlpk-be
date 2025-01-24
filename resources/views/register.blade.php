@@ -19,12 +19,8 @@
   </head>
   <body>
     <!-- Preloader -->
-    <div class="preloader">
-      <img src="{{ asset('template/back') }}/dist/images/logos/favicon.ico" alt="loader" class="lds-ripple img-fluid" />
-    </div>
-    <!-- Preloader -->
-    <div class="preloader">
-      <img src="{{ asset('template/back') }}/dist/images/logos/favicon.ico" alt="loader" class="lds-ripple img-fluid" />
+    <div class="preloader "style="display: flex; justify-content: center;">
+        <iframe src="https://lottie.host/embed/d44cd16e-3d5d-439a-a3cf-82f79966d2d1/xL9AeMjQ3p.json"></iframe>
     </div>
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">

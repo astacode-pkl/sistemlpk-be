@@ -13,8 +13,8 @@ class DashboardController extends Controller
 
     public function index()
     {
-        // $logo = CompanyProfile::select('logo')->first();
-        $logo = 'logo.profile/Y7dLxp7IIQ2KElyXDNMPNbXy3AlimL0BbdiacpWt.png';
+        $logo = CompanyProfile::select('logo')->first();
+        // $logo = 'logo.profile/Y7dLxp7IIQ2KElyXDNMPNbXy3AlimL0BbdiacpWt.png';
         Cache::put('logo', $logo);
         if (!Auth::check()) {
             return view('login');

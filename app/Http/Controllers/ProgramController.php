@@ -15,8 +15,8 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        $program = Program::all();
-        return view('layouts.programs.program', compact('program'));
+        $programs = Program::latest()->get();
+        return view('layouts.programs.program', compact('programs'));
     }
 
     /**
@@ -24,33 +24,25 @@ class ProgramController extends Controller
      */
     public function create()
     {
-        $program = Program::all();
-        return view('layouts.programs.create', ['program' => $program]);
+        return view('layouts.programs.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        // dd($request->all());
+    {  
         $validated = $request->validate([
-            'imageUpload' =>'required|image|mimes:jpeg,png,jpg',
-            'title' => 'required',
-            'description' => 'required',
-        ]);
+        'image' => 'required|image|mimes:jpeg,png,jpg',
+        'title' => 'required',
+        'description' =>'required'
+        ]
+    );
+    $path =  $request->file('image')->store('images.program');
 
-        $extension = $request->file('imageUpload')->extension();
-        // store image \
-        $imgname = date('dmyHis').'.'.$extension;
-        // move to public file
-        $request->file('imageUpload')->move(public_path('images/programs_images'), $imgname);
-        Program::create(['title' => $validated['title'],'description' => $validated['description'],'images' => $imgname]);
-        return redirect('/program')->withSuccess("Data succes Created");
+    Program::create(['image' => $path,'title' => $validated['title'], 'description' => $validated['description']]);
+    return redirect('/programs')->with('success', 'Program created successfully!');
 
-        // Program::create(['title' => $validated['title'],'description' => $validated['description'],'image' => $image]);
-        
-        // return redirect()->with('success', 'image created successfully!');
     }
 
     /**
@@ -76,34 +68,14 @@ class ProgramController extends Controller
      */
     public function update(Request $request, string $id)
 {
-    $program = Program::find($id);
+        $program = Program::find($id);
+        $program->title = $request->title;
+        $program->description = $request->description;
+        Storage::delete($program->image);
+        $program->image = $request->file('image')->store('images.program');
+        $program->update();
 
-    // Hapus gambar lama jika ada
-    if ($program->images && file_exists(public_path('images/programs_images/' . $program->images))) {
-        unlink(public_path('images/programs_images/' . $program->images));
-    } else {
-        logger('File tidak ditemukan atau tidak bisa dihapus: ' . public_path('images/programs_images/' . $program->images));
-    }
-
-    // Update data program
-    $program->title = $request->title;
-    $program->description = $request->description;
-
-    // Simpan gambar baru
-    if ($request->hasFile('imageUpload')) {
-        // Ambil nama asli file tanpa ekstensi
-        $originalName = pathinfo($request->file('imageUpload')->getClientOriginalName(), PATHINFO_FILENAME);
-        $extension = $request->file('imageUpload')->getClientOriginalExtension();
-        $imgname = time() . '-' . sha1($originalName) . '.' . $extension;
-        $request->file('imageUpload')->move(public_path('images/programs_images'), $imgname);
-    
-        // Simpan nama file ke database
-        $program->images = $imgname;
-    }
-
-    $program->update();
-
-    return redirect('/program')->with('success', 'Program updated successfully!');
+        return redirect('/programs')->with('success', 'Gallery updated successfully!');
 }
 
 
@@ -116,15 +88,8 @@ class ProgramController extends Controller
     public function destroy(string $id)
     {
         $program = Program::find($id);
-    
-        // Hapus file dari public folder jika ada
-        if ($program->images && file_exists(public_path('images/programs_images/' . $program->images))) {
-            unlink(public_path('images/programs_images/' . $program->images));
-        }
-    
-        // Hapus data program dari database
+        Storage::delete($program->image);
         $program->delete();
-    
         return redirect()->back()->with('success', 'Program successfully deleted');
     }
 

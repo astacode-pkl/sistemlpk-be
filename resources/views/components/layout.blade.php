@@ -1,8 +1,3 @@
-@if (!Auth::check())
-    <script>
-        window.location = '/login';
-    </script>
-@else
 
     <head>
         <!-- Required meta tags -->
@@ -13,11 +8,11 @@
         <!-- Favicon icon-->
         <link rel="shortcut icon" type="image/png" href="" />
 
-        <!-- Core Css -->
-        <!-- <link rel="stylesheet" href="https://bootstrapdemos.adminmart.com/modernize/dist/assets/css/styles.css" /> -->
-        <link rel="stylesheet" href="{{ asset('template/back') }}/dist/css/style.min.css" />
-
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <!-- Core Css -->
+    <!-- <link rel="stylesheet" href="https://bootstrapdemos.adminmart.com/modernize/dist/assets/css/styles.css" /> -->
+    {{-- <link rel="stylesheet" href="{{ asset('template/back') }}/dist/css/style.min.css" /> --}}
+    
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
         <link id="themeColors" rel="stylesheet" href="{{ asset('template/back') }}/dist/css/styles.css" />
 
@@ -29,24 +24,22 @@
 
         <!-- Owl Carousel  -->
 
-    </head>
-
-    <body>
-        <!-- Preloader -->
-        <div class="preloader">
-            <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/logos/favicon.png"
-                alt="loader" class="lds-ripple img-fluid" />
-        </div>
-
-        <div id="main-wrapper">
-            <!-- Sidebar Start -->
-            <x-sidebar></x-sidebar>
-            <!--  Sidebar End -->
-            <div class="page-wrapper">
-                <!--  Header Start -->
-                <x-topbar></x-topbar>
-                <!--  Header End -->
-                <x-sidebarhorizontal></x-sidebarhorizontal>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader "style="display: flex; justify-content: center;">
+        <iframe src="https://lottie.host/embed/d44cd16e-3d5d-439a-a3cf-82f79966d2d1/xL9AeMjQ3p.json"></iframe>
+    </div>
+    
+    <div id="main-wrapper">
+        <!-- Sidebar Start -->
+        <x-sidebar></x-sidebar>
+        <!--  Sidebar End -->
+        <div class="page-wrapper">
+            <!--  Header Start -->
+            <x-topbar></x-topbar>
+            <!--  Header End -->
+            <x-sidebarhorizontal></x-sidebarhorizontal>
 
                 <div class="body-wrapper">
                     <div class="container-fluid">
@@ -65,46 +58,17 @@
                     <i class="icon ti ti-settings fs-7"></i>
                 </button>
 
-                <div class="offcanvas customizer offcanvas-end" tabindex="-1" id="offcanvasExample"
-                    aria-labelledby="offcanvasExampleLabel">
-                    <div class="d-flex align-items-center justify-content-between p-3 border-bottom">
-                        <h4 class="offcanvas-title fw-semibold" id="offcanvasExampleLabel">
-                            Settings
-                        </h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body h-n80" data-simplebar>
-                        <h6 class="fw-semibold fs-4 mb-2">Theme</h6>
+            <div class="offcanvas customizer offcanvas-end" tabindex="-1" id="offcanvasExample"
+                aria-labelledby="offcanvasExampleLabel">
+                <div class="d-flex align-items-center justify-content-between p-3 border-bottom">
+                    <h4 class="offcanvas-title fw-semibold" id="offcanvasExampleLabel">
+                        Settings
+                    </h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body h-n80" data-simplebar>
 
-                        <div class="d-flex flex-row gap-3 customizer-box" role="group">
-                            <input type="radio" class="btn-check light-layout" name="theme-layout" id="light-layout"
-                                autocomplete="off" />
-                            <label class="btn p-9 btn-outline-primary rounded-2" for="light-layout">
-                                <i class="icon ti ti-brightness-up fs-7 me-2"></i>Light
-                            </label>
 
-                            <input type="radio" class="btn-check dark-layout" name="theme-layout" id="dark-layout"
-                                autocomplete="off" />
-                            <label class="btn p-9 btn-outline-primary rounded-2" for="dark-layout">
-                                <i class="icon ti ti-moon fs-7 me-2"></i>Dark
-                            </label>
-                        </div>
-
-                        <h6 class="mt-5 fw-semibold fs-4 mb-2">Theme Direction</h6>
-                        <div class="d-flex flex-row gap-3 customizer-box" role="group">
-                            <input type="radio" class="btn-check" name="direction-l" id="ltr-layout"
-                                autocomplete="off" />
-                            <label class="btn p-9 btn-outline-primary" for="ltr-layout">
-                                <i class="icon ti ti-text-direction-ltr fs-7 me-2"></i>LTR
-                            </label>
-
-                            <input type="radio" class="btn-check" name="direction-l" id="rtl-layout"
-                                autocomplete="off" />
-                            <label class="btn p-9 btn-outline-primary" for="rtl-layout">
-                                <i class="icon ti ti-text-direction-rtl fs-7 me-2"></i>RTL
-                            </label>
-                        </div>
 
                         <h6 class="mt-5 fw-semibold fs-4 mb-2">Theme Colors</h6>
 
@@ -176,111 +140,53 @@
                             </label>
                         </div>
 
-                        <h6 class="mt-5 fw-semibold fs-4 mb-2">Layout Type</h6>
-                        <div class="d-flex flex-row gap-3 customizer-box" role="group">
-                            <div>
-                                <input type="radio" class="btn-check" name="page-layout" id="vertical-layout"
-                                    autocomplete="off" />
-                                <label class="btn p-9 btn-outline-primary" for="vertical-layout">
-                                    <i class="icon ti ti-layout-sidebar-right fs-7 me-2"></i>Vertical
-                                </label>
-                            </div>
-                            <div>
-                                <input type="radio" class="btn-check" name="page-layout" id="horizontal-layout"
-                                    autocomplete="off" />
-                                <label class="btn p-9 btn-outline-primary" for="horizontal-layout">
-                                    <i class="icon ti ti-layout-navbar fs-7 me-2"></i>Horizontal
-                                </label>
-                            </div>
-                        </div>
-
-                        <h6 class="mt-5 fw-semibold fs-4 mb-2">Container Option</h6>
-
-                        <div class="d-flex flex-row gap-3 customizer-box" role="group">
-                            <input type="radio" class="btn-check" name="layout" id="boxed-layout"
-                                autocomplete="off" />
-                            <label class="btn p-9 btn-outline-primary" for="boxed-layout">
-                                <i class="icon ti ti-layout-distribute-vertical fs-7 me-2"></i>Boxed
-                            </label>
-
-                            <input type="radio" class="btn-check" name="layout" id="full-layout"
-                                autocomplete="off" />
-                            <label class="btn p-9 btn-outline-primary" for="full-layout">
-                                <i class="icon ti ti-layout-distribute-horizontal fs-7 me-2"></i>Full
-                            </label>
-                        </div>
-
-                        <h6 class="fw-semibold fs-4 mb-2 mt-5">Sidebar Type</h6>
-                        <div class="d-flex flex-row gap-3 customizer-box" role="group">
-                            <a href="javascript:void(0)" class="fullsidebar">
-                                <input type="radio" class="btn-check" name="sidebar-type" id="full-sidebar"
-                                    autocomplete="off" />
-                                <label class="btn p-9 btn-outline-primary" for="full-sidebar">
-                                    <i class="icon ti ti-layout-sidebar-right fs-7 me-2"></i>Full
-                                </label>
-                            </a>
-                            <div>
-                                <input type="radio" class="btn-check " name="sidebar-type" id="mini-sidebar"
-                                    autocomplete="off" />
-                                <label class="btn p-9 btn-outline-primary" for="mini-sidebar">
-                                    <i class="icon ti ti-layout-sidebar fs-7 me-2"></i>Collapse
-                                </label>
-                            </div>
-                        </div>
-
-                        <h6 class="mt-5 fw-semibold fs-4 mb-2">Card With</h6>
-
-                        <div class="d-flex flex-row gap-3 customizer-box" role="group">
-                            <input type="radio" class="btn-check" name="card-layout" id="card-with-border"
-                                autocomplete="off" />
-                            <label class="btn p-9 btn-outline-primary" for="card-with-border">
-                                <i class="icon ti ti-border-outer fs-7 me-2"></i>Border
-                            </label>
-
-                            <input type="radio" class="btn-check" name="card-layout" id="card-without-border"
-                                autocomplete="off" />
-                            <label class="btn p-9 btn-outline-primary" for="card-without-border">
-                                <i class="icon ti ti-border-none fs-7 me-2"></i>Shadow
-                            </label>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-        <div class="dark-transparent sidebartoggler"></div>
-        <script src="{{ asset('template/back') }}/dist/js/vendor.min.js"></script>
-        <!-- Import Js Files -->
-        <script src="{{ asset('template/back') }}/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="{{ asset('template/back') }}/dist/libs/simplebar/dist/simplebar.min.js"></script>
-        <script src="{{ asset('template/back') }}/dist/js/theme/app.init.js"></script>
-        <script src="{{ asset('template/back') }}/dist/js/theme/theme.js"></script>
-        <script src="{{ asset('template/back') }}/dist/js/script.js"></script>
-        {{-- My javascript --}}
-        <script src="{{ asset('js/script.js') }}"></script>
-        {{-- My javascript --}}
-        <script src="{{ asset('template/back') }}/dist/js/theme/app.min.js"></script>
-        <script src="{{ asset('template/back') }}/dist/js/theme/sidebarmenu.js"></script>
-
-        <script src="{{ asset('template/back') }}/dist/js/plugins/mindmup-editabletable.js"></script>
+    </div>
+    <div class="dark-transparent sidebartoggler"></div>
+    <script src="{{ asset('template/back') }}/dist/js/vendor.min.js"></script>
+    <!-- Import Js Files -->
+    <script src="{{ asset('template/back') }}/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('template/back') }}/dist/libs/simplebar/dist/simplebar.min.js"></script>
+    <script src="{{ asset('template/back') }}/dist/js/theme/app.init.js"></script>
+    <script src="{{ asset('template/back') }}/dist/js/theme/theme.js"></script>
+    <script src="{{ asset('template/back') }}/dist/js/script.js"></script>
+    {{-- My javascript --}}
+    <script src="{{ asset('js/script.js') }}"></script>
+    {{-- My javascript --}}
+    <script src="{{ asset('template/back') }}/dist/js/theme/app.min.js"></script>
+    <script src="{{ asset('template/back') }}/dist/js/theme/sidebarmenu.js"></script>
+ 
+    <script src="{{ asset('template/back') }}/dist/js/plugins/mindmup-editabletable.js"></script>
         <script src="{{ asset('template/back') }}/dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
         <script src="{{ asset('template/back') }}/dist/libs/vanilla-datatables-editable/datatable.editable.min.js"></script>
 
-        <script src="{{ asset('template/back') }}/dist/js/plugins/numeric-input-example.js"></script>
+         <script src="{{ asset('template/back') }}/dist/js/plugins/numeric-input-example.js"></script>
+          
+         
+         <!-- Tambahkan CSS DataTables -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
         <script>
-            $("#mainTable")
-                .editableTableWidget()
-                .numericInputExample()
-                .find("td:first")
-                .focus();
-            $("#editable-datatable")
-                .editableTableWidget()
-                .numericInputExample()
-                .find("td:first")
-                .focus();
-            $(function() {
-                $("#editable-datatable").DataTable();
+            
+        $(document).ready(function () {
+          $('#datatable').DataTable({
+              // Konfigurasi tambahan (opsional)
+              paging: true, // Menampilkan paginasi
+              searching: true, // Menampilkan kolom pencarian
+              ordering: true, // Menampilkan sorting kolom
+              info: true // Menampilkan informasi jumlah data
+          });
+        });  
+      const textarea = document.getElementById('floatingTextarea');
+            textarea.addEventListener('input' , function(){
+                textarea.style.height = '';
+                textarea.style.height = textarea.scrollHeight + 'px'
             });
+            
+
+            
         </script>
 
         {{-- alert --}}
@@ -295,4 +201,3 @@
     </body>
 
     </html>
-@endif

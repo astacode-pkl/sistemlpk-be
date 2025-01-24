@@ -12,7 +12,7 @@ class RegulationController extends Controller
      */
     public function index()
     {
-        $regulations = Regulation::latest()->paginate(2);
+        $regulations = Regulation::latest()->get();
         return view('layouts.regulations.regulations',compact('regulations'));
     }
 
@@ -35,7 +35,7 @@ class RegulationController extends Controller
             ]
         );
 
-        Regulation::create([ 'title' => $validated['title'], 'icon' => $validated['icon']]);
+        Regulation::create($validated);
         return redirect('/regulations')->with('success', 'Regulation created successfully!');
     }
 

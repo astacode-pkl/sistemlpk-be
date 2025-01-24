@@ -12,7 +12,7 @@ class BenefitController extends Controller
      */
     public function index()
     {
-        $benefits = Benefit::latest()->paginate(10);
+        $benefits = Benefit::latest()->get();
         return view('layouts.benefits.benefits',compact('benefits'));
     }
 

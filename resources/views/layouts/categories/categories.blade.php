@@ -2,14 +2,7 @@
     <x-card-header>
         Categories
     </x-card-header>
-    @if (session('success'))
-        
-    <div class="alert alert-info alert-dismissible fade show mb-3" role="alert">
-        <div class="text-primary">{{ session('success') }}</div>
-    
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    @endif
+    <x-alert></x-alert>
     
         <div class="container-fluid   ">
           
@@ -30,36 +23,36 @@
                 <div class="card-body">
                  
                   <table
-                    class="table table-striped table-bordered text-center " id="editable-datatable" >
+                    class="table table-striped table-bordered text-center " id="datatable" >
+                  
                     <thead>
                       <tr>
                         <th >No</th>
-                        <th>slug</th>
                         <th>title</th>
                         <th>action</th>
                       </tr>
                     </thead>
                    <tbody>
-                    {{ $categories->links()}}
-                    @foreach ($categories as $categories)
+                    
+                    @foreach ($categories as $category)
                     <tr id="25" class="gradeA">
                       <td>{{$loop->iteration}}</td>
-                      <td>{{$categories->slug}}</td>
-                     <td>{{ $categories->title}}</td>
+                     <td>{{ $category->title}}</td>
                 
                       <td class="center ">
-                        <form action="/categories/{{ $categories->id}}" method="POST" class="d-inline">
+                        <form action="/categories/{{ $category->id}}" method="POST" class="d-inline">
                             @csrf
                             @method('delete')
                         <button type="submit" class="btn btn-danger px-4 py-2" onclick="return confirm('are you sure')">Delete</button>
                         </form>
 
-                      <a href="/categories/{{ $categories->id }}/edit"><button class="btn btn-primary px-4 ">Edit</button></a>
+                      <a href="/categories/{{ $category->id }}/edit"><button class="btn btn-primary px-4 ">Edit</button></a>
 
                       </td>
                     </tr>    
                     @endforeach
                     
+               
                    </tbody>
                   
                   </table>

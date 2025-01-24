@@ -2,12 +2,9 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <!-- ---------------------
-                                                                                                        start Person Info
-                                                                                                    ---------------- -->
         <div class="card">
             <div class="card-header bg-primary">
-                <h4 class="mb-0 text-white">Edit Photo</h4>
+                <h4 class="mb-0 text-white">Edit Gallery</h4>
             </div>
             <form action="/galleries/{{$gallery->id}}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -26,15 +23,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="position-relative d-block" id="display">
-                                <img src="{{ asset('storage/'.$gallery->image)}}" class="card-img-top rounded-0 d-block" id="preview" alt="...">
-                            </div>
                             <div class="mb-3">
                                 <label class="control-label" for="title">Title</label>
-                                <input type="text" id="title" class="form-control" value="{{ $gallery->title }}" name="title">
+                                <input type="text" id="title" class="form-control @error('title') is-invalid @enderror" value="{{ $gallery->title }}" name="title">
+                                @error('title')
+                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                  {{$message}}
+                                  </div>
+                                @enderror
                             </div>
                             <div class="form-group mb-4">
-                                <label class="mr-sm-2" for="inlineFormCustomSelect">Select</label>
+                                <label class="mr-sm-2 @error('category_id') is-invalid @enderror" for="inlineFormCustomSelect">Select</label>
                                 <select class="form-select mr-sm-2" name="category_id" id="inlineFormCustomSelect">
                                   @foreach ($categories as $category)
                                   @if ($gallery->category_id == $category->id)
@@ -47,20 +46,29 @@
                                   @endforeach
                                   
                                 </select>
+                                @error('category_id')
+                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                    {{$message}}
+                                    </div>
+                                  @enderror
                             </div>
                         </div>
                         <!--/span-->
+                        
+                        <div class="position-relative col-md-6 d-block w-50"  id="display">
+                            <img src="{{ asset('storage/'.$gallery->image)}}" class="card-img-top rounded-0 d-block" id="preview" alt="...">
+                        </div>
                     </div>
                     <div class="form-actions text-end">
                         <div class="card-body border-top">
-                            <button type="submit" class="btn btn-primary rounded-pill px-4">
+                            <button type="submit" class="btn btn-primary  px-4">
                                 <div class="d-flex align-items-center">
                                     <i class="ti ti-plus me-1 fs-4"></i>
-                                    Update
+                                    Edit
                                 </div>
                             </button>
                             <a href="/galleries">
-                            <button type="button" class="btn btn-danger rounded-pill px-4 ms-2 text-white">
+                            <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                 Cancel
                             </button>
                         </a>

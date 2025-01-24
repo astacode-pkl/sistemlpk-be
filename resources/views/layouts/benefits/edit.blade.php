@@ -3,7 +3,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header bg-primary">
-                <h4 class="mb-0 text-white">Add Photo</h4>
+                <h4 class="mb-0 text-white">Edit Benefit</h4>
             </div>
             <form action="/benefits/{{$benefit->id}}" method="POST" enctype="multipart/form-data">
                 @method('put')
@@ -53,14 +53,14 @@
                     </div>
                     <div class="form-actions text-end">
                         <div class="card-body border-top">
-                            <button type="submit" class="btn btn-primary rounded-pill px-4">
+                            <button type="submit" class="btn btn-primary px-4">
                                 <div class="d-flex align-items-center">
                                     <i class="ti ti-plus me-1 fs-4"></i>
                                     Update
                                 </div>
                             </button>
                             <a href="/regulations">
-                            <button type="button" class="btn btn-danger rounded-pill px-4 ms-2 text-white">
+                            <button type="button" class="btn btn-danger px-4 ms-2 text-white">
                                 Cancel
                             </button>
                         </a>
@@ -75,29 +75,6 @@
     </div>
 </div>
 
-    const fileInput = document.getElementById('fileInput');
-     const preview = document.getElementById('preview');
-     const display = document.getElementById('display');
-
-
-     fileInput.addEventListener('change', (event) => {
-         const file = event.target.files[0];
-         if (file) {
-             const reader = new FileReader();
-
-             reader.onload = (e) => {
-                 preview.src = e.target.result;
-                 preview.style.display = 'block';
-                 display.classList.remove('d-none') = 'block';
-
-             };
-
-             reader.readAsDataURL(file);
-         } else {
-             display.style.display = 'none';
-             preview.src = '';
-         }
-     });
- </script>
+   
 
 </x-layout>

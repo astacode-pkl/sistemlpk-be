@@ -2,14 +2,7 @@
     <x-card-header>
         Benefits
     </x-card-header>
-    @if (session('success'))
-        
-    <div class="alert alert-info alert-dismissible fade show mb-3" role="alert">
-        <div class="text-primary">{{ session('success') }}</div>
-    
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    @endif
+    <x-alert></x-alert>
         <div class="container-fluid">
           
 
@@ -29,7 +22,7 @@
                  
                   <table
                     class="table table-striped table-bordered text-center"
-                    id="editable-datatable"
+                    id="datatable"
                   >
                     <thead>
                       <tr>
@@ -40,21 +33,20 @@
                       </tr>
                     </thead>
                    <tbody>
-                    {{ $benefits->links()}}
-                    @foreach ($benefits as $benefits)
+                    @foreach ($benefits as $benefit)
                     <tr id="25" class="gradeA">
                       <td>{{$loop->iteration}}</td>
-                      <td>{!!$benefits->icon!!}</td>
-                     <td>{{ $benefits->title}}</td>
+                      <td>{!!$benefit->icon!!}</td>
+                     <td>{{ $benefit->title}}</td>
                 
                       <td class="center ">
-                        <form action="/benefits/{{ $benefits->id}}" method="POST" class="d-inline">
+                        <form action="/benefits/{{ $benefit->id}}" method="POST" class="d-inline">
                             @csrf
                             @method('delete')
                         <button type="submit" class="btn btn-danger px-4 py-2" onclick="return confirm('are you sure')">Delete</button>
                         </form>
 
-                      <a href="/benefits/{{ $benefits->id }}/edit"><button class="btn btn-primary px-4 ">Edit</button></a>
+                      <a href="/benefits/{{ $benefit->id }}/edit"><button  class="btn btn-primary px-4 ">Edit</button></a>
 
                       </td>
                     </tr>    
@@ -63,6 +55,7 @@
                    </tbody>
                   
                   </table>
+                  
                 </div>
               </div>
             </div>

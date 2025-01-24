@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
-            $table->string('images');
+            $table->string('image');
             $table->string('title');
             $table->text('description');
             $table->timestamps();
