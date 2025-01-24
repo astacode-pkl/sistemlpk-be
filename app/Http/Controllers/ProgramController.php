@@ -40,7 +40,46 @@ class ProgramController extends Controller
     );
     $path =  $request->file('image')->store('images.program');
 
-    Program::create(['image' => $path,'title' => $validated['title'], 'description' => $validated['description']]);
+    if ($image = $request->file('image')) {
+        $destinationPath = 'storage/';
+        
+        //sh1 file name
+        $sha1FileName = sha1($image->getClientOriginalName());
+
+        $imageMimeType = $image->getMimeType();
+
+        if (strpos($imageMimeType, 'image/') === 0) {
+            $imageName = date('YmdHis') . '' . str_replace(' ', '', $sha1FileName);
+            $image->move($destinationPath, $imageName);
+            
+            $sourceImagePath = public_path($destinationPath . $imageName);
+            $webpImagePath = $destinationPath . pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
+
+            switch ($imageMimeType) {
+                case 'image/jpeg':
+                    $sourceImage = @imagecreatefromjpeg($sourceImagePath);
+                    break;
+                case 'image/png':
+                    $sourceImage = @imagecreatefrompng($sourceImagePath);
+                    break;
+                default:
+                    $sourceImage = false;
+                    break;
+            }
+
+            if ($sourceImage !== false) {
+                imagewebp($sourceImage, $webpImagePath);
+                imagedestroy($sourceImage);
+                @unlink($sourceImagePath);
+
+                $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
+            }
+        }
+    } else {
+        $imageName = '';
+    }
+
+    Program::create(['image' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
     return redirect('/programs')->with('success', 'Program created successfully!');
 
     }
@@ -88,7 +127,7 @@ class ProgramController extends Controller
     public function destroy(string $id)
     {
         $program = Program::find($id);
-        Storage::delete($program->image);
+        Storage::delete('storage/'.$program->images);
         $program->delete();
         return redirect()->back()->with('success', 'Program successfully deleted');
     }
