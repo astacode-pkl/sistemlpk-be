@@ -10,7 +10,7 @@
 
     <!-- Core Css -->
     <!-- <link rel="stylesheet" href="https://bootstrapdemos.adminmart.com/modernize/dist/assets/css/styles.css" /> -->
-    <link rel="stylesheet" href="{{ asset('template/back') }}/dist/css/style.min.css" />
+    {{-- <link rel="stylesheet" href="{{ asset('template/back') }}/dist/css/style.min.css" /> --}}
     
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
@@ -163,27 +163,23 @@
         <script src="{{ asset('template/back') }}/dist/libs/vanilla-datatables-editable/datatable.editable.min.js"></script>
 
          <script src="{{ asset('template/back') }}/dist/js/plugins/numeric-input-example.js"></script>
-        
+          
+         
+         <!-- Tambahkan CSS DataTables -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
         <script>
             
-            $("#mainTable")
-            .editableTableWidget()
-            .numericInputExample()
-            .find("td:first")
-            .focus();
-          $("#editable-datatable")
-            .editableTableWidget()
-            .numericInputExample()
-            .find("td:first")
-            .focus();
-            $('#editable-datatable').DataTable({
-            
-            });
-          $(function () {
-            $("#editable-datatable").DataTable();
+        $(document).ready(function () {
+          $('#datatable').DataTable({
+              // Konfigurasi tambahan (opsional)
+              paging: true, // Menampilkan paginasi
+              searching: true, // Menampilkan kolom pencarian
+              ordering: true, // Menampilkan sorting kolom
+              info: true // Menampilkan informasi jumlah data
           });
-          
-          const textarea = document.getElementById('floatingTextarea');
+        });  
+      const textarea = document.getElementById('floatingTextarea');
             textarea.addEventListener('input' , function(){
                 textarea.style.height = '';
                 textarea.style.height = textarea.scrollHeight + 'px'

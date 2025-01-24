@@ -51,13 +51,8 @@
                             </div>
                             <!--/span-->
                             
-                            <div class="position-relative col-md-6" id="display">
-                                <div id="loading" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                    <div class="spinner-border" role="status">
-                                        <span class="visually-hidden">Loading...</span>
-                                    </div>
-                                </div>
-                                <img src="{{ asset('storage/'.$program->images)}}" class="card-img-top rounded-0" id="preview" alt="{{$program->images}}" onload="document.getElementById('loading').style.display='none';" onerror="document.getElementById('loading').style.display='none';">
+                            <div class="position-relative col-md-6 " id="display">
+                                <img src="{{ asset('storage/'.$program->images)}}" class="card-img-top rounded-0 " id="preview" alt="{{$program->images}}">
                             </div>
                         </div>
                         <div class="form-actions text-end">

@@ -25,8 +25,8 @@
                     <div class="card-body ">
                      
                       <table
-                        class="table table-striped table-bordered text-center"
-                        id="editable-datatable"
+                        class="table  table-striped table-bordered text-center"
+                       id="datatable"  
                       >
                         <thead>
                           <tr>
@@ -69,9 +69,6 @@
         <div class="dark-transparent sidebartoggler"></div>
         <div class="dark-transparent sidebartoggler"></div>
         
-    
-    
-    
         </x-layout>
 <script>//5 detik notifikasi hilang
   setTimeout(function() {
