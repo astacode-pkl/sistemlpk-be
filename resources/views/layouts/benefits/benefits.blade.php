@@ -2,14 +2,7 @@
     <x-card-header>
         Benefits
     </x-card-header>
-    @if (session('success'))
-        
-    <div class="alert alert-info alert-dismissible fade show mb-3" role="alert">
-        <div class="text-primary">{{ session('success') }}</div>
-    
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    @endif
+    <x-alert></x-alert>
         <div class="container-fluid">
           
 

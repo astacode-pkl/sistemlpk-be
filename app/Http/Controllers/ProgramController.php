@@ -16,7 +16,7 @@ class ProgramController extends Controller
     public function index()
     {
         $programs = Program::latest()->get();
-        return view('layouts.programs.program', ['programs' =>$programs]);
+        return view('layouts.programs.program', compact('programs'));
     }
 
     /**
@@ -32,55 +32,15 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {  
-        
         $validated = $request->validate([
         'image' => 'required|image|mimes:jpeg,png,jpg',
         'title' => 'required',
         'description' =>'required'
-        ]);
-    // convert to web 
+        ]
+    );
+    $path =  $request->file('image')->store('images.program');
 
-    if ($image = $request->file('image')) {
-        $destinationPath = 'images/programs/';
-        
-        //sh1 file name
-        $sha1FileName = sha1($image->getClientOriginalName());
-
-
-        $imageMimeType = $image->getMimeType();
-
-        if (strpos($imageMimeType, 'image/') === 0) {
-            $imageName = date('YmdHis') . '' . str_replace(' ', '', $sha1FileName);
-            $image->move($destinationPath, $imageName);
-            
-            $sourceImagePath = public_path($destinationPath . $imageName);
-            $webpImagePath = $destinationPath . pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
-
-            switch ($imageMimeType) {
-                case 'image/jpeg':
-                    $sourceImage = @imagecreatefromjpeg($sourceImagePath);
-                    break;
-                case 'image/png':
-                    $sourceImage = @imagecreatefrompng($sourceImagePath);
-                    break;
-                default:
-                    $sourceImage = false;
-                    break;
-            }
-
-            if ($sourceImage !== false) {
-                imagewebp($sourceImage, $webpImagePath);
-                imagedestroy($sourceImage);
-                @unlink($sourceImagePath);
-
-                $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
-            }
-        }
-    } else {
-        $imageName = '';
-    }
-
-    Program::create(['image' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
+    Program::create(['image' => $path,'title' => $validated['title'], 'description' => $validated['description']]);
     return redirect('/programs')->with('success', 'Program created successfully!');
 
     }
@@ -108,58 +68,15 @@ class ProgramController extends Controller
      */
     public function update(Request $request, string $id)
 {
-    // Start of Selection
-    $program = Program::find($id);
-    $program->title = $request->title;
-    $program->description = $request->description;
+        $program = Program::find($id);
+        $program->title = $request->title;
+        $program->description = $request->description;
+        Storage::delete($program->image);
+        $program->image = $request->file('image')->store('images.program');
+        $program->update();
 
-    if ($request->hasFile('image')) {
-        // Hapus gambar lama jika ada
-        if ($program->images && file_exists(public_path('storage/' . $program->images))) {
-            unlink(public_path('storage/' . $program->images));
-        }
-
-        // Proses upload dan konversi gambar
-        $image = $request->file('image');
-        $sha1FileName = sha1($image->getClientOriginalName());
-        $imageMimeType = $image->getMimeType();
-        $destinationPath = 'storage/';
-        
-        if (strpos($imageMimeType, 'image/') === 0) {
-            $imageName = date('YmdHis') . str_replace(' ', '', $sha1FileName);
-            $image->move(public_path($destinationPath), $imageName);
-
-            // Proses konversi ke WebP
-            $sourceImagePath = public_path($destinationPath . $imageName);
-            $webpImagePath = public_path($destinationPath . pathinfo($imageName, PATHINFO_FILENAME) . '.webp');
-
-            $sourceImage = null;
-            switch ($imageMimeType) {
-                case 'image/jpeg':
-                    $sourceImage = imagecreatefromjpeg($sourceImagePath);
-                    break;
-                case 'image/png':
-                    $sourceImage = imagecreatefrompng($sourceImagePath);
-                    break;
-                default:
-                    break;
-            }
-
-            if ($sourceImage !== false) {
-                imagewebp($sourceImage, $webpImagePath);
-                imagedestroy($sourceImage);
-                unlink($sourceImagePath);  // Hapus gambar asli setelah konversi
-                $program->images = pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
-            }
-        }
-    }
-
-    // Simpan perubahan
-    $program->save();
-
-    return redirect('/programs')->with('success', 'Program updated successfully!');
+        return redirect('/programs')->with('success', 'Gallery updated successfully!');
 }
-
 
 
 
@@ -171,7 +88,7 @@ class ProgramController extends Controller
     public function destroy(string $id)
     {
         $program = Program::find($id);
-        Storage::delete($program->images);
+        Storage::delete($program->image);
         $program->delete();
         return redirect()->back()->with('success', 'Program successfully deleted');
     }
