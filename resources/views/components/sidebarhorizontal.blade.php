@@ -9,7 +9,7 @@
                             <!-- ============================= -->
                             <li class="nav-small-cap">
                                 <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                                <span class="hide-menu">Ujangusebskdfjkdjf</span>
+                                <span class="hide-menu">LPK Tsukuba Indonesia</span>
                             </li>
                             <!-- =================== -->
                             <!-- Dashboard -->

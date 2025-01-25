@@ -1,4 +1,4 @@
-
+    // preview image
     const fileInput = document.getElementById('fileInput'); 
      const preview = document.getElementById('preview');
      const display = document.getElementById('display');

@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12">
             <!-- ---------------------
-                                                                                                            start Person Info
+                                                                                                            start Program
                                                                                                         ---------------- -->
             <div class="card">
                 <div class="card-header bg-primary">
@@ -37,12 +37,10 @@
                                         @enderror
                                     </div>
                                 </div>
-     
-                                
 
-                                <div class="mb-3">
-                                    <label class="control-label" for="title">Title</label>
+                                <div class="mb-3 form-floating">
                                     <input type="text" id="title" class="form-control @error('title') is-invalid   @enderror " value="" name="title" placeholder="Title..." required>
+                                    <label class="control-label" for="title">Title</label>
                                     @error('title')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                       {{$message}}
@@ -50,9 +48,9 @@
                                     @enderror
                                 </div>
                                 
-                                <div class="mb-3">
-                                    <label for="floatingTextarea">description</label>
+                                <div class="mb-3 form-floating">
                                     <textarea class="form-control  @error('description') is-invalid   @enderror" id="floatingTextarea" name="description" placeholder="Description..." required></textarea>
+                                    <label for="floatingTextarea">description</label>
                                     @error('description')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                       {{$message}}
@@ -92,7 +90,7 @@
                 </form>
             </div>
             <!-- ---------------------
-                                                                                                            end Person Info
+                                                                                                            end Program
                                                                                                         ---------------- -->
         </div>
     </div>
