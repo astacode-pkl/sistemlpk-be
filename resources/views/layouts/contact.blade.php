@@ -33,9 +33,10 @@
                                                 style="height: 100%; overflow: hidden scroll;">
                                                 <div class="simplebar-content" style="padding: 0px;">
                                                     @foreach ($contacts as $contact)
-                                                        <li>
+                                                        <li
+                                                            onclick="">
                                                             <a href="/inbox/{{ Crypt::encryptString($contact['id']) }}"
-                                                                class="px-4 py-3 bg-hover-light-black d-flex align-items-start chat-user bg-light border-bottom"
+                                                                class="px-4 py-3 bg-hover-light-black d-flex align-items-start chat-user {{ $contact['status'] == 'unread' ? 'bg-light' : '' }} border-bottom"
                                                                 id="chat_user_1" data-user-id="1">
                                                                 <div class="position-relative w-100 ms-2">
                                                                     <div
@@ -81,10 +82,15 @@
                                 <div class="p-9 py-3 border-bottom chat-meta-user">
                                     <ul class="list-unstyled mb-0 d-flex align-items-center">
                                         <li class="me-3 d-lg-none">
-                                            <button class="btn btn-primary d-flex" type="button"
-                                                data-bs-toggle="offcanvas" data-bs-target="#chat-sidebar"
+                                            <button class="nav-item nav-icon-hover-bg btn d-flex position-relative"
+                                                type="button" data-bs-toggle="offcanvas" data-bs-target="#chat-sidebar"
                                                 aria-controls="chat-sidebar">
                                                 <i class="ti ti-inbox fs-5"></i>
+                                                <span
+                                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"
+                                                    style="font-size: 0.6rem ;">
+                                                    {{ Session::get('countUnread') }}
+                                                </span>
                                             </button>
                                         </li>
                                         <li class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top"
@@ -136,7 +142,8 @@
                 aria-labelledby="offcanvasExampleLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasExampleLabel"> Inbox </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
                 </div>
                 <ul class="chat-users simplebar-scrollable-y" data-simplebar="init">
                     <div class="simplebar-wrapper" style="margin: 0px;">

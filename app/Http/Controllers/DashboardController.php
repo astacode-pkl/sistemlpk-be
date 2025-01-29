@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\Dashboard;
 use Illuminate\Http\Request;
 use App\Models\CompanyProfile;
@@ -14,8 +15,16 @@ class DashboardController extends Controller
     public function index()
     {
         $logo = CompanyProfile::select('logo')->first();
-        // $logo = 'logo.profile/Y7dLxp7IIQ2KElyXDNMPNbXy3AlimL0BbdiacpWt.png';
+        $companyName = CompanyProfile::select('name')->first();
+
+        
         Cache::put('logo', $logo);
+        Cache::put('companyName', $companyName);
+
+        $countUnread = Contact::where('status', 'unread')->count();
+        session(['countUnread' => $countUnread]);
+
+        
         if (!Auth::check()) {
             return view('login');
         }

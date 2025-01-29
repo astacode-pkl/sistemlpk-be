@@ -1,36 +1,35 @@
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <!-- Favicon icon-->
-        <link rel="shortcut icon" type="image/png" href="" />
+    <!-- Favicon icon-->
+    <link rel="shortcut icon" type="image/png" href="" />
 
     <!-- Core Css -->
     <!-- <link rel="stylesheet" href="https://bootstrapdemos.adminmart.com/modernize/dist/assets/css/styles.css" /> -->
     {{-- <link rel="stylesheet" href="{{ asset('template/back') }}/dist/css/style.min.css" /> --}}
-    
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
-        <link id="themeColors" rel="stylesheet" href="{{ asset('template/back') }}/dist/css/styles.css" />
+    <link id="themeColors" rel="stylesheet" href="{{ asset('template/back') }}/dist/css/styles.css" />
 
 
-        <link rel="stylesheet"
-            href="{{ asset('template/back') }}/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ asset('template/back') }}/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
 
-        <title>LPK Tsukuba Indonesia</title>
+    <title>{{ Cache::get('companyName')->name }}</title>
 
-        <!-- Owl Carousel  -->
+    <!-- Owl Carousel  -->
 
 </head>
+
 <body>
     <!-- Preloader -->
     <div class="preloader "style="display: flex; justify-content: center;">
         <iframe src="https://lottie.host/embed/d44cd16e-3d5d-439a-a3cf-82f79966d2d1/xL9AeMjQ3p.json"></iframe>
     </div>
-    
+
     <div id="main-wrapper">
         <!-- Sidebar Start -->
         <x-sidebar></x-sidebar>
@@ -41,17 +40,17 @@
             <!--  Header End -->
             <x-sidebarhorizontal></x-sidebarhorizontal>
 
-                <div class="body-wrapper">
-                    <div class="container-fluid">
-                        {{ $slot }}
-                    </div>
+            <div class="body-wrapper">
+                <div class="container-fluid">
+                    {{ $slot }}
                 </div>
-                <script>
-                    function handleColorTheme(e) {
-                        document.documentElement.setAttribute("data-color-theme", e);
-                    }
-                </script>
-                {{-- <button
+            </div>
+            <script>
+                function handleColorTheme(e) {
+                    document.documentElement.setAttribute("data-color-theme", e);
+                }
+            </script>
+            {{-- <button
                     class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center customizer-btn"
                     type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                     aria-controls="offcanvasExample">
@@ -157,49 +156,45 @@
     {{-- My javascript --}}
     <script src="{{ asset('template/back') }}/dist/js/theme/app.min.js"></script>
     <script src="{{ asset('template/back') }}/dist/js/theme/sidebarmenu.js"></script>
- 
+
     <script src="{{ asset('template/back') }}/dist/js/plugins/mindmup-editabletable.js"></script>
-        <script src="{{ asset('template/back') }}/dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="{{ asset('template/back') }}/dist/libs/vanilla-datatables-editable/datatable.editable.min.js"></script>
+    <script src="{{ asset('template/back') }}/dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('template/back') }}/dist/libs/vanilla-datatables-editable/datatable.editable.min.js"></script>
 
-         <script src="{{ asset('template/back') }}/dist/js/plugins/numeric-input-example.js"></script>
-          
-         
-         <!-- Tambahkan CSS DataTables -->
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="{{ asset('template/back') }}/dist/js/plugins/numeric-input-example.js"></script>
 
-        <script>
-            
-        $(document).ready(function () {
-          $('#datatable').DataTable({
-              // Konfigurasi tambahan (opsional)
-              paging: true, // Menampilkan paginasi
-              searching: true, // Menampilkan kolom pencarian
-              ordering: true, // Menampilkan sorting kolom
-              info: true // Menampilkan informasi jumlah data
-          });
-        });
-        
-        
-        const textarea = document.getElementById('floatingTextarea');
-            textarea.addEventListener('input' , function(){
-                textarea.style.height = '';
-                textarea.style.height = textarea.scrollHeight + 'px'
+
+    <!-- Tambahkan CSS DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+    <script>
+        $(document).ready(function() {
+            $('#datatable').DataTable({
+                // Konfigurasi tambahan (opsional)
+                paging: true, // Menampilkan paginasi
+                searching: true, // Menampilkan kolom pencarian
+                ordering: true, // Menampilkan sorting kolom
+                info: true // Menampilkan informasi jumlah data
             });
-            
+        });
 
-            
-        </script>
 
-        {{-- alert --}}
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <!-- solar icons -->
-        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-        <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/owl.carousel/dist/owl.carousel.min.js">
-        </script>
-        <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/apexcharts/dist/apexcharts.min.js">
-        </script>
-        <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/js/dashboards/dashboard.js"></script>
-    </body>
+        const textarea = document.getElementById('floatingTextarea');
+        textarea.addEventListener('input', function() {
+            textarea.style.height = '';
+            textarea.style.height = textarea.scrollHeight + 'px'
+        });
+    </script>
 
-    </html>
+    {{-- alert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- solar icons -->
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+    <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/owl.carousel/dist/owl.carousel.min.js">
+    </script>
+    <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/apexcharts/dist/apexcharts.min.js">
+    </script>
+    <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/js/dashboards/dashboard.js"></script>
+</body>
+
+</html>

@@ -15,16 +15,19 @@
                         <i class="ti ti-search"></i>
                     </a>
                 </li>
-                <li class="nav-item nav-icon-hover-bg rounded-circle d-none d-lg-flex">
+                <li class="nav-item nav-icon-hover-bg rounded-circle d-none d-lg-flex position-relative">
                     <a class="nav-link" href="/inbox">
-                        <i class="ti ti-inbox"></i>
+                        <i class="ti ti-inbox position-relative"></i>
                     </a>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary" style="font-size: 0.6rem ;">
+                       {{ Session::get('countUnread') }}
+                    </span>
                 </li>
             </ul>
 
 
             <div class="d-block d-lg-none py-4">
-                <a href="../main/index.html" class="text-nowrap logo-img">
+                <a href="/" class="text-nowrap logo-img">
                     <img src="{{ asset('storage') }}/{{ Cache::get('logo') }}" width="90%" />
                 </a>
             </div>
@@ -37,7 +40,7 @@
                         <!-- ------------------------------- -->
                         <!-- start language Dropdown -->
                         <!-- ------------------------------- -->
-                      
+
                         <!-- ------------------------------- -->
                         <!-- end language Dropdown -->
                         <!-- ------------------------------- -->

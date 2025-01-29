@@ -15,7 +15,8 @@ class ContactController extends Controller
     public function index()
     {
 
-        $contacts = Contact::all();
+        $contacts = Contact::all()->sortByDesc('created_at')->sortByDesc('status');
+
         return view(
             'layouts.contact',
             [
@@ -63,8 +64,13 @@ class ContactController extends Controller
         } catch (\Exception $e) {
             return view('error', ['message' => 'Data not found']);
         }
-        $contacts = Contact::all();
+        $this->update($id);
+        $contacts = Contact::all()->sortByDesc('created_at')->sortByDesc('status');
         $contactById = Contact::find($id);
+
+        $countUnread = Contact::where('status', 'unread')->count();
+        session(['countUnread' => $countUnread]);
+       
         return view('layouts.contact', ['contactById' => $contactById, 'contacts' => $contacts]);
     }
 
@@ -80,22 +86,11 @@ class ContactController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update($id)
     {
-        $request->validate([
-            'name' => 'required|max:250',
-            'phone_number' => 'required|min:12|numeric',
-            'email' => 'require|email',
-            'message' => 'required'
-        ]);
         $table = Contact::find($id);
-        $table->name = $request->name;
-        $table->phone_number = $request->phone_number;
-        $table->name = $request->name;
-        $table->email = $request->email;
-
+        $table->status = 'read';
         $table->update();
-        return redirect('')->with('success', 'data success updated');
     }
 
     /**
