@@ -59,8 +59,8 @@
                         </div>
                         <!--/span-->
                          
-                        <div class="position-relative col-md-6 "  id="display">
-                            <img src="{{asset('images/galleries/'.$gallery->image)}}" class="card-img-top rounded-1 d-block  w-60" id="preview" alt="...">
+                        <div class="position-relative col-md-4 "  id="display">
+                            <img src="{{asset('images/galleries/'.$gallery->image)}}" class="card-img-top rounded-1 d-block" id="preview" alt="...">
                         </div>
                     </div>
                     <div class="form-actions text-end">
