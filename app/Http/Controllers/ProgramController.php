@@ -39,12 +39,10 @@ class ProgramController extends Controller
         'description' =>'required'
         ]
     );
-
+    $program = new Program;
     if ($image = $request->file('image')) {
         $destinationPath = 'images/programs/';
         
- 
-        //sh1 file name
         $sha1FileName = sha1($image->getClientOriginalName());
 
         $imageMimeType = $image->getMimeType();
@@ -55,7 +53,6 @@ class ProgramController extends Controller
             
             $sourceImagePath = public_path($destinationPath . $imageName);
             $webpImagePath = $destinationPath . pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
-            
             $sourceImage = null;
             switch ($imageMimeType) {
                 case 'image/jpeg':
@@ -73,18 +70,20 @@ class ProgramController extends Controller
                 imagewebp($sourceImage, $webpImagePath);
                 imagedestroy($sourceImage);
                 @unlink($sourceImagePath);
-
+                
                 $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
-            }
-        } else {
-            $input['image'] = '';
-        }
-    
-        $program = Program::create($input);
-    
-        return redirect()->route('programs.index')->with('success', 'Program successfully created');
-    }
 
+            }
+        }
+    } else {
+        $imageName = '';
+    }
+    $program->create(['image' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
+
+ 
+    return redirect()->route('programs.index')->with('success', 'Program successfully created');
+    }
+    
     /**
      * Display the specified resource.
      */

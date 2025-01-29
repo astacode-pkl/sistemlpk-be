@@ -64,36 +64,5 @@
           </div>
 
         </div>
-        
-    <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
-          <script>
-            $(document).ready(function(){
-              $('#form_delete').submit(function(){
-                event.preventDefault();
-                
-              })
-            })
-            function confirmDelete(event) {
-                  event.preventDefault();
-                  Swal.fire({
-                      title: 'Are you sure to delete it?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!',
-                    cancelButtonText: 'Cancel'
-                }).then((result) => {
-                      if (result.isConfirmed) {
-                          event.target.closest('form').submit();
-                    }
-              });
-          }
-          //5 detik notifikasi hilang
-          setTimeout(function() {
-              document.getElementById('success-alert').style.display = 'none';
-          }, 4500);
-        </script>
     
 </x-layout>

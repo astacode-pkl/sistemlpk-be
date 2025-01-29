@@ -63,8 +63,8 @@
                         </div>
                         <!--/span-->
                         
-                        <div class="position-relative col-md-6 d-none " id="display">
-                            <img src="" class="card-img-top  rounded-1 w-60" id="preview" alt="...">
+                        <div class="position-relative col-md-4 d-none " id="display">
+                            <img src="" class="card-img-top  rounded-1 " id="preview" alt="...">
                         </div>
                     </div>
                     <div class="form-actions text-end">

@@ -47,8 +47,8 @@
                             </div>
                             <!--/span-->
                             
-                            <div class="position-relative col-md-6" id="display">
-                                <img src="{{asset('images/programs/'.$program->image)}}" class="card-img-top rounded-1  w-60 d-block" id="preview" alt="{{$program->image}}">
+                            <div class="position-relative col-md-4" id="display">
+                                <img src="{{asset('images/programs/'.$program->image)}}" class="card-img-top rounded-1 d-block" id="preview" alt="{{$program->image}}">
                             </div>
                             <!-- end preview image -->
 

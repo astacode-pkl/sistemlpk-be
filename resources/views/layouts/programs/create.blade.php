@@ -12,7 +12,7 @@
                 <form action="/programs" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
-                        <div class="row pt-3 justify-content-between">
+                        <div class="row pt-3">
                             <div class="col-md-6">
                                 <div class="mb-3 d-flex">
                                     <div>
@@ -68,7 +68,7 @@
                             <!--/span-->
                             
                             <div class="position-relative col-md-4 d-none" id="display">
-                                <img src="" class="card-img-top rounded-1 w-25" id="preview" alt="...">
+                                <img src="" class="card-img-top rounded-1 " id="preview" alt="...">
                             </div>
                         </div>
                         <div class="form-actions text-end">
