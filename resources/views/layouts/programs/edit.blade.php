@@ -25,9 +25,9 @@
                                     </div>
                                 </div>
     
-                                <div class="mb-3 form-floating">
-                                    <input type="text" id="title" class="form-control @error('title') is-invalid   @enderror" value="{{$program->title}}" name="title">
+                                <div class="mb-3">
                                     <label class="control-label" for="title">Title</label>
+                                    <input type="text" id="title" class="form-control @error('title') is-invalid   @enderror" value="{{$program->title}}" name="title">
                                     @error('title')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                       {{$message}}
@@ -35,9 +35,9 @@
                                     @enderror
                                 </div>
                                 
-                                <div class="mb-3 form-floating">
-                                    <textarea class="form-control @error('description') is-invalid   @enderror " name="description">{{$program->description}}</textarea>
+                                <div class="mb-3">
                                     <label>Description</label>
+                                    <textarea class="form-control @error('description') is-invalid   @enderror " name="description">{{$program->description}}</textarea>
                                     @error('description')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                       {{$message}}

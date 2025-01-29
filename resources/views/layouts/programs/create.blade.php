@@ -1,7 +1,7 @@
 <x-layout>
 
     <div class="row">
-        
+
         <div class="col-lg-12">
             <!-- ---------------------
                                                                                                             start Program
@@ -39,19 +39,19 @@
                                     </div>
                                 </div>
 
-                                <div class="mb-3 form-floating">
-                                    <input type="text" id="title" class="form-control @error('title') is-invalid   @enderror " value="" name="title" placeholder="Title..." required>
+                                <div class="mb-3 ">
                                     <label class="control-label" for="title">Title</label>
+                                    <input type="text" id="title" class="form-control @error('title') is-invalid   @enderror " value="" name="title" placeholder="Title..." required>
                                     @error('title')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                       {{$message}}
                                       </div>
                                     @enderror
                                 </div>
-                                
-                                <div class="mb-3 form-floating">
-                                    <textarea class="form-control  @error('description') is-invalid   @enderror" id="floatingTextarea" name="description" placeholder="Description..." required></textarea>
+                            
+                                <div class="mb-3 ">
                                     <label for="floatingTextarea">description</label>
+                                    <textarea class="form-control  @error('description') is-invalid   @enderror" id="floatingTextarea" name="description" placeholder="Description..." required></textarea>
                                     @error('description')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                       {{$message}}
