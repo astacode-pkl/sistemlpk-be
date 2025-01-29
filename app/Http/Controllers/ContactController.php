@@ -74,6 +74,23 @@ class ContactController extends Controller
         return view('layouts.contact', ['contactById' => $contactById, 'contacts' => $contacts]);
     }
 
+
+    /**
+     * Display the searche resource.
+     */
+    public function search(Request $request)
+    {
+        $keyword = $request->search;
+        $contacts = Contact::where('name', 'like', '%' . $keyword . '%')
+            ->orWhere('phone_number', 'like', '%' . $keyword . '%')
+            ->orWhere('email', 'like', '%' . $keyword . '%')
+            ->orWhere('message', 'like', '%' . $keyword . '%')
+            ->get();
+        $contacts = $contacts->sortByDesc('created_at')->sortByDesc('status');
+        return view('layouts.contact', ['contacts' => $contacts]);
+    }
+    
+
     /**
      * Show the form for editing the specified resource.
      */

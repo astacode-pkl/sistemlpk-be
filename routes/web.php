@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/inbox/{id}', [ContactController::class, 'show']);
+    Route::post('/inbox/search', [ContactController::class, 'search']);
     Route::get('/inbox/delete/{id}', [ContactController::class, 'destroy']);
 
 

@@ -19,9 +19,12 @@
                     <a class="nav-link" href="/inbox">
                         <i class="ti ti-inbox position-relative"></i>
                     </a>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary" style="font-size: 0.6rem ;">
-                       {{ Session::get('countUnread') }}
-                    </span>
+                    @if (Session::get('countUnread') > 0)
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary" style="font-size: 0.6rem ;">
+                            {{ Session::get('countUnread') }}
+                        </span>
+                        
+                    @endif
                 </li>
             </ul>
 
