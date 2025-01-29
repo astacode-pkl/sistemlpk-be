@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Program;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
+use Intervention\Image\Image;
 
 
 class ProgramController extends Controller
@@ -38,11 +39,11 @@ class ProgramController extends Controller
         'description' =>'required'
         ]
     );
-    $path =  $request->file('image')->store('images.program');
 
     if ($image = $request->file('image')) {
-        $destinationPath = 'storage/';
+        $destinationPath = 'images/programs/';
         
+ 
         //sh1 file name
         $sha1FileName = sha1($image->getClientOriginalName());
 
@@ -54,7 +55,8 @@ class ProgramController extends Controller
             
             $sourceImagePath = public_path($destinationPath . $imageName);
             $webpImagePath = $destinationPath . pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
-
+            
+            $sourceImage = null;
             switch ($imageMimeType) {
                 case 'image/jpeg':
                     $sourceImage = @imagecreatefromjpeg($sourceImagePath);
@@ -107,12 +109,62 @@ class ProgramController extends Controller
      */
     public function update(Request $request, string $id)
 {
-        $program = Program::find($id);
-        $program->title = $request->title;
-        $program->description = $request->description;
-        Storage::delete($program->image);
-        $program->image = $request->file('image')->store('images.program');
-        $program->update();
+    $validated = $request->validate([
+        'image' => 'image|mimes:jpeg,png,jpg',
+        'title' => 'required',
+        'description' =>'required'
+        ]
+    );
+    $program = Program::find($id);
+    $program->title = $request->title;
+    $program->description = $request->description;
+
+        if ($image = $request->file('image')) {
+            $destinationPath = 'images/programs/';
+            
+            if ($request->image && file_exists(
+                public_path($destinationPath.$program->image)
+            )) {
+                
+                unlink(public_path($destinationPath.$program->image));
+            }
+            //sh1 file name
+            $sha1FileName = sha1($image->getClientOriginalName());
+    
+            $imageMimeType = $image->getMimeType();
+    
+            if (strpos($imageMimeType, 'image/') === 0) {
+                $imageName = date('YmdHis') . '' . str_replace(' ', '', $sha1FileName);
+                $image->move($destinationPath, $imageName);
+                
+                $sourceImagePath = public_path($destinationPath . $imageName);
+                $webpImagePath = $destinationPath . pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
+                $sourceImage = null;
+                switch ($imageMimeType) {
+                    case 'image/jpeg':
+                        $sourceImage = @imagecreatefromjpeg($sourceImagePath);
+                        break;
+                    case 'image/png':
+                        $sourceImage = @imagecreatefrompng($sourceImagePath);
+                        break;
+                    default:
+                        $sourceImage = false;
+                        break;
+                }
+    
+                if ($sourceImage !== false) {
+                    imagewebp($sourceImage, $webpImagePath);
+                    imagedestroy($sourceImage);
+                    @unlink($sourceImagePath);
+                    
+                    $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
+
+                }
+            }
+        } else {
+            $imageName = $program->image;
+        }
+        $program->update(['image' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
 
         return redirect('/programs')->with('success', 'Gallery updated successfully!');
 }
@@ -127,7 +179,13 @@ class ProgramController extends Controller
     public function destroy(string $id)
     {
         $program = Program::find($id);
-        Storage::delete('storage/'.$program->images);
+        $destinationPath = 'images/programs/';
+        if ($program->image && file_exists(
+            public_path($destinationPath.$program->image)
+        )) {
+            
+            unlink(public_path($destinationPath.$program->image));
+        }
         $program->delete();
         return redirect()->back()->with('success', 'Program successfully deleted');
     }

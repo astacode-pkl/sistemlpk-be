@@ -11,9 +11,9 @@
                     <div class="row pt-3">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control  @error('title') is-invalid  @enderror" name="title" id="floatingInput" placeholder="name@example.com" required>
+                                <div class=" mb-3">
                                     <label for="floatingInput">title</label>
+                                    <input type="text" class="form-control  @error('title') is-invalid  @enderror" name="title" id="floatingInput" placeholder="title..." required>
                                     @error('title')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                       {{$message}}

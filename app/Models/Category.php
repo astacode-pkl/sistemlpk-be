@@ -10,7 +10,7 @@ class Category extends Model
     protected $table = 'categories';
     protected $guarded = ['id'];
     
-    public function galeries() : HasMany {
+    public function galLeries() : HasMany {
         return $this->hasMany(Gallery::class);
     }
 }

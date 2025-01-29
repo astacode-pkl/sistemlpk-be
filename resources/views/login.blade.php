@@ -3,7 +3,7 @@
 
 <head>
     <!--  Title -->
-    <title>Mordenize</title>
+    <title>LPK tsukuba</title>
     <!--  Required Meta Tag -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,6 +29,7 @@
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
+
         <div class="position-relative overflow-hidden radial-gradient min-vh-100">
             <div class="position-relative z-index-5">
                 <div class="row">
@@ -48,13 +49,7 @@
                             class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
 
                             <div class="col-sm-8 col-md-6 col-xl-9 position-relative">
-                                {{-- @if (session('error'))
-                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                        {{ session('error') }}
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                            aria-label="Close"></button>
-                                    </div>
-                                @endif --}}
+                                <x-alert></x-alert>
                                 <h2 class="mb-3 fs-7 fw-bolder">Log in</h2>
                                 <p class=" mb-9">To manipulate the content</p>
                                 <form action="/login" method="post">

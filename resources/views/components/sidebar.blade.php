@@ -3,15 +3,10 @@
             <div><!-- ---------------------------------- -->
                 <!-- Start Vertical Layout Sidebar -->
                 <!-- ---------------------------------- -->
-                <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="/">
-                        <img src="{{ asset('storage') }}/{{ Cache::get('logo') }}" width="90%"/>
-                       
-                    </a>
-                    <a href="javascript:void(0)"
-                        class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
-                        <i class="ti ti-x"></i>
-                    </a>
+                <div class=" d-flex  align-content-center justify-content-center overflow-hidden">
+                    <div class="d-flex align-content-center justify-content-center w-100 p-2">
+                        <a href="/"><img src="{{asset('images/companyprofile/'.$logo)  }}" class=" w-100" style="max-width: 135px;"/></a>
+                    </div>
                 </div>
 
 

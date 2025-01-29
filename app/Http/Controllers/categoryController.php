@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -61,6 +62,7 @@ class CategoryController extends Controller
 {
         $category = Category::find($id);
         $category->title = $request->title;
+        
         $category->update();
 
         return redirect('/categories')->with('success', 'Caregory updated successfully!');
@@ -76,6 +78,17 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         $category = Category::find($id);
+        $galleries = Gallery::get()->where('category_id',$id);
+        
+        $destinationPath = 'images/galleries/';
+        foreach ($galleries as $gallery ) {
+            if ($gallery->image && file_exists(
+                public_path($destinationPath.$gallery->image)
+            )) {
+                
+                unlink(public_path($destinationPath.$gallery->image));
+            }
+        }
         $category->delete();
         return redirect()->back()->with('success', 'Category deleted successfully');
     }

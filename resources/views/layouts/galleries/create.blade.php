@@ -12,7 +12,7 @@
             <form action="/galleries" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
-                    <div class="row pt-3">
+                    <div class="row pt-3 ">
                         <div class="col-md-6">
                             <div class="mb-3 d-flex">
                                 <div>
@@ -37,7 +37,7 @@
 
                             <div class="mb-3">
                                 <label class="control-label" for="title">Title</label>
-                                <input type="text" id="title" class="form-control @error('title') is-invalid @enderror" value="" name="title" required>
+                                <input type="text" id="title" class="form-control @error('title') is-invalid @enderror" value="" name="title" placeholder="title..." required>
                                 @error('title')
                                 <div id="validationServer04Feedback" class="invalid-feedback">
                                   {{$message}}
@@ -45,12 +45,14 @@
                                 @enderror
                             </div>
                             <div class="form-group mb-4">
-                                <label class="mr-sm-2" for="inlineFormCustomSelect">Select</label>
+                                <label class="mr-sm-2" for="inlineFormCustomSelect">Category</label>
                                 <select class="form-select mr-sm-2  @error('category_id') is-invalid @enderror" name="category_id" id="inlineFormCustomSelect" required>
-                                    <option selected>Choose: Category</option>
-                                    @foreach($categories as $category)
+                                    <option value="" >Choose: Category</option>
+                                    @forelse ($categories as $category)
                                     <option value="{{$category->id}}">{{$category->title}}</option>
-                                    @endforeach
+                                    @empty
+                                        <option value="">category not found</option>
+                                    @endforelse
                                 </select>
                                 @error('category_id')
                                 <div id="validationServer04Feedback" class="invalid-feedback">
@@ -61,8 +63,8 @@
                         </div>
                         <!--/span-->
                         
-                        <div class="position-relative col-md-6 d-none" id="display">
-                            <img src="" class="card-img-top rounded-0 " id="preview" alt="...">
+                        <div class="position-relative col-md-6 d-none " id="display">
+                            <img src="" class="card-img-top  rounded-1 w-60" id="preview" alt="...">
                         </div>
                     </div>
                     <div class="form-actions text-end">

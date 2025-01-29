@@ -2,26 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\Profile;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\CompanyProfile;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class CompanyProfile extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'LPK tsukuba',
-            'email' => 'lpktsukuba@gmail.com',
-            'password' => '123456'
-        ]);
         CompanyProfile::factory()->create([
             'name' => 'lpk tsukuba indonesia',
             'slogan' => '職業訓練機関つくばインドネシア',

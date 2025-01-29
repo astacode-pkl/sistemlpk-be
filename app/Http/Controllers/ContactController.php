@@ -14,8 +14,13 @@ class ContactController extends Controller
      */
     public function index()
     {
-
-        $contacts = Contact::all();
+        $contacts = '';
+        if (request()->get('query')) {
+            $query = request('query');
+            $contacts = Contact::where('name','like','%'.$query.'%')->get();
+        }else{
+        $contacts = Contact::latest()->get();
+        }
         return view(
             'layouts.contact',
             [

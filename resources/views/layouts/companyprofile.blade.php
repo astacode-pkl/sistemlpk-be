@@ -3,6 +3,7 @@
 <x-card-header>
     Company Profile
 </x-card-header>
+ <x-alert></x-alert>
     <div class="row">
         <div class="col-lg-12">
          
@@ -12,6 +13,7 @@
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Company Profile</h4>
                 </div>
+                
                 <form action="/companyprofile/1" method="post" enctype="multipart/form-data">
                     @csrf 
                     @method('put')
@@ -66,28 +68,28 @@
                         <div class="row pt-3">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="control-label" for="vision">Vision</label>
-                                    <textarea class="form-control" id="vision" name="vision">{{$profile->vision}}</textarea>
+                                    <label class="control-label">Vision</label>
+                                    <textarea class="form-control" id="floatingTextarea" name="vision">{{$profile->vision}}</textarea>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="control-label" for="mission">Mission</label>
-                                    <textarea class="form-control" name="mission" id="mission">{{$profile->mission}}</textarea>
+                                    <label class="control-label">Mission</label>
+                                    <textarea class="form-control" name="mission" id="floatingTextarea">{{$profile->mission}}</textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="row pt-3">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="control-label" for="address">Address</label>
-                                    <textarea class="form-control" name="address" id="address">{{$profile->address}}</textarea>
+                                    <label class="control-label">Address</label>
+                                    <textarea class="form-control" name="address" id="floatingTextarea">{{$profile->address}}</textarea>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="control-label" for="map">Map</label>
-                                    <textarea class="form-control" name="map" id="map">{{$profile->map}}</textarea>
+                                    <label class="control-label">Map</label>
+                                    <textarea class="form-control" name="map" id="floatingTextarea">{{$profile->map}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +97,7 @@
                             <div class="col">
                                 <div class="mb-3">
                                     <label class="control-label" for="history">History</label>
-                                    <textarea class="form-control" name="history" id="history">{{$profile->history}}</textarea>
+                                    <textarea class="form-control" name="history" id="floatingTextarea">{{$profile->history}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -106,8 +108,8 @@
                                     <label class="control-label"  for="address">Logo</label>
                                     
                                     <img
-                                        src="{{ asset('storage/'.$profile->logo) }}"
-                                        class="img-fluid rounded-top w-20 w-xs-100"
+                                        src="{{asset('images/companyprofile/'.$profile->logo)}}"
+                                        class="img-fluid rounded-top w-20 w-xs-100 d-block"
                                         alt="" id="preview"
                                         
                                     />
@@ -140,9 +142,6 @@
                     </div>
                 </form>
             </div>
-            <!-- ---------------------
-                                                                                end Person Info
-                                                                            ---------------- -->
         </div>
     </div>
 </x-layout>

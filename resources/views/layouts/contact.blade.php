@@ -13,7 +13,7 @@
                     <div class="border-end user-chat-box h-100">
                         <div class="px-4 pt-9 pb-6 d-none d-lg-block">
                             <form class="position-relative">
-                                <input type="text" class="form-control search-chat py-2 ps-5" id="text-srh"
+                                <input type="text" class="form-control search-chat py-2 ps-5" name="search" id="search_contacts"
                                     placeholder="Search">
                                 <i
                                     class="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3"></i>
@@ -31,9 +31,9 @@
                                             <div class="simplebar-content-wrapper" tabindex="0" role="region"
                                                 aria-label="scrollable content"
                                                 style="height: 100%; overflow: hidden scroll;">
-                                                <div class="simplebar-content" style="padding: 0px;">
+                                                <div class="simplebar-content" style="padding: 0px;" id="container_contacts">
                                                     @foreach ($contacts as $contact)
-                                                        <li>
+                                                        <li id="li_contact">
                                                             <a href="/inbox/{{ Crypt::encryptString($contact['id']) }}"
                                                                 class="px-4 py-3 bg-hover-light-black d-flex align-items-start chat-user bg-light border-bottom"
                                                                 id="chat_user_1" data-user-id="1">
@@ -147,7 +147,7 @@
                             <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
                                 <div class="simplebar-content-wrapper" tabindex="0" role="region"
                                     aria-label="scrollable content" style="height: 100%; overflow: hidden scroll;">
-                                    <div class="simplebar-content" style="padding: 0px;">
+                                    <div class="simplebar-content" style="padding: 0px;" id="container">
                                         @foreach ($contacts as $contact)
                                             <li>
                                                 <a href="/inbox/{{ Crypt::encryptString($contact['id']) }}"
@@ -189,4 +189,8 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
+<script>
+  
+</script>
 </x-layout>

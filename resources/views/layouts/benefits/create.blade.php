@@ -11,31 +11,31 @@
                     <div class="row pt-3">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <div class="position-relative d-none " id="display">
-                                    <img src="" class="card-img-top rounded-0 d-block" id="preview" alt="Icon">
+                                <div class=" mb-3">
+                                    <label for="floatingTextarea">icon</label>
+                                    <textarea class="form-control @error('icon') is-invalid      
+                                    @enderror" placeholder="text svg for icon you can find on web hero icons..." id="floatingTextarea" name="icon" required></textarea>
+                                    @error('icon')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                            {{ $message}}
+                                    </div>       
+                                    @enderror
                                 </div>
-                                <label class="control-label" for="image">Icon</label>
+                                
 
-                                        <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="icon"></textarea>
-                                            <label for="floatingTextarea">SVG</label>
-                                         </div>
-
-                                            @error('icon')
-                                            <div id="validationServer04Feedback" class="invalid-feedback">
-                                              {{ $message}}
-                                              </div>
-                                                
-                                            @enderror
-                                             </div>
-
-                            <div class="mb-3">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" name="title" id="floatingInput" placeholder="name@example.com">
-                                    <label for="floatingInput">title</label>
-                                  </div>
-                            </div>
-                           
+                                <div class="mb-3">
+                                    <div class=" mb-3">
+                                        <label for="floatingInput">title</label>
+                                        <input type="text" class="form-control @error('icon') is-invalid      
+                                    @enderror" name="title" id="floatingInput" placeholder="title..." required>
+                                        @error('title')
+                                        <div id="validationServer04Feedback" class="invalid-feedback">
+                                                {{ $message}}
+                                        </div>       
+                                        @enderror
+                                    </div>
+                                </div>
+                            
                         </div>
                         <!--/span-->
                     </div>
