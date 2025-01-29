@@ -59,3 +59,4 @@ const textarea = document.querySelectorAll('#floatingTextarea');
 
     
     
+    

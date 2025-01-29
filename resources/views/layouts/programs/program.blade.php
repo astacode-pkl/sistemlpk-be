@@ -34,8 +34,8 @@
                           <tr id="{{$loop->iteration}}" class="gradeC">
                             <td>{{$loop->iteration}}</td>
                             <td>
-                                <a  data-bs-toggle="modal" data-bs-target="#imageModal{{$loop->iteration}}">
-                                    <img src="{{asset('images/programs/'.$programs->image)}}" class="w-100" alt="img-gallery" style="max-width:100px;">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal{{$loop->iteration}}">
+                                    <img src="{{asset('storage/'.$programs->image)}}" alt="img-gallery" width="100">
                                 </a>
                                 <!-- Modal -->
                                 <div class="modal fade" id="imageModal{{$loop->iteration}}" tabindex="-1" aria-labelledby="imageModalLabel{{$loop->iteration}}" aria-hidden="true">
@@ -46,7 +46,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <img src="{{asset('images/programs/'.$programs->image)}}" alt="img-gallery" class="img-fluid">
+                                                <img src="{{asset('storage/'.$programs->image)}}" alt="img-gallery" class="img-fluid">
                                             </div>
                                         </div>
                                     </div>
@@ -76,4 +76,67 @@
               </div>
             </div>
           </div>
+        <div class="dark-transparent sidebartoggler"></div>
+        <div class="dark-transparent sidebartoggler"></div>
+        <script>
+          function deleteItem(itemId) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: 'You won\'t be able to revert this!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Jika pengguna mengonfirmasi, lakukan aksi penghapusan
+            // Misalnya, melakukan request ke server untuk menghapus item
+            axios.delete(`/items/${itemId}`)
+                .then(response => {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your item has been deleted.',
+                        'success'
+                    );
+                    // Anda dapat memperbarui tampilan atau mengalihkan ke halaman lain
+                })
+                .catch(error => {
+                    Swal.fire(
+                        'Error!',
+                        'There was an error deleting the item.',
+                        'error'
+                    );
+                });
+        }
+    });
+}
+        </script>
         </x-layout>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                                <script>
+                                    function confirmDelete(event) {
+                                          event.preventDefault();
+                                          Swal.fire({
+                                              title: 'Are you sure to delete it?',
+                                            text: "You won't be able to revert this!",
+                                            icon: 'warning',
+                                            showCancelButton: true,
+                                            confirmButtonColor: '#3085d6',
+                                            cancelButtonColor: '#d33',
+                                            confirmButtonText: 'Yes, delete it!',
+                                            cancelButtonText: 'Cancel'
+
+                                        }).then((result) => {
+                                              if (result.isConfirmed) {
+                                                  event.target.closest('form').submit();
+
+                                            }
+                                      });
+                                  }
+                                </script>
+<script>//5 detik notifikasi hilang
+  setTimeout(function() {
+      document.getElementById('success-alert').style.display = 'none';
+  }, 4500);
+</script>

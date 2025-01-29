@@ -16,22 +16,18 @@
                                 <div class="mb-3 d-flex">
                                     <div>
                                         <label class="control-label" for="image">Image</label>
-                                       <div class="input-group">
+                                        <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" class="form-control" id="fileInput"
                                                 aria-describedby="inputGroupFileAddon01" value="" name="image">
                                             </div>
-                                         </div>
+                                        </div>
                                     </div>
-    
-                                    <div>
-                                </div>
-     
                                 </div>
     
-                                <div class="mb-3">
-                                    <label class="control-label @error('title') is-invalid   @enderror" for="title">Title</label>
-                                    <input type="text" id="title" class="form-control" value="{{$program->title}}" name="title">
+                                <div class="mb-3 form-floating">
+                                    <input type="text" id="title" class="form-control @error('title') is-invalid   @enderror" value="{{$program->title}}" name="title">
+                                    <label class="control-label" for="title">Title</label>
                                     @error('title')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                       {{$message}}
@@ -39,21 +35,23 @@
                                     @enderror
                                 </div>
                                 
-                                <div class=" mb-3">
-                                    <label for="floatingTextarea">Description</label>
-                                    <textarea class="form-control @error('description') is-invalid   @enderror " id="floatingTextarea" name="description">{{$program->description}}</textarea>
+                                <div class="mb-3 form-floating">
+                                    <textarea class="form-control @error('description') is-invalid   @enderror " name="description">{{$program->description}}</textarea>
+                                    <label>Description</label>
                                     @error('description')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                       {{$message}}
                                       </div>
                                     @enderror
-                                 </div>
+                                </div>
                             </div>
                             <!--/span-->
                             
                             <div class="position-relative col-md-6" id="display">
                                 <img src="{{asset('images/programs/'.$program->image)}}" class="card-img-top rounded-1  w-60 d-block" id="preview" alt="{{$program->image}}">
                             </div>
+                            <!-- end preview image -->
+
                         </div>
                         <div class="form-actions text-end">
                             <div class="card-body border-top">
@@ -74,7 +72,7 @@
                 </form>
             </div>
             <!-- ---------------------
-                                                                                                            end Person Info
+                                                                                                            end Program
                                                                                                         ---------------- -->
         </div>
     </div>

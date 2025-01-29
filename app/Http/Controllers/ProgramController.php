@@ -76,14 +76,13 @@ class ProgramController extends Controller
 
                 $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
             }
+        } else {
+            $input['image'] = '';
         }
-    } else {
-        $imageName = '';
-    }
-
-    Program::create(['image' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
-    return redirect('/programs')->with('success', 'Program created successfully!');
-
+    
+        $program = Program::create($input);
+    
+        return redirect()->route('programs.index')->with('success', 'Program successfully created');
     }
 
     /**

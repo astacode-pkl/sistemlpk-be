@@ -45,14 +45,14 @@
                         document.documentElement.setAttribute("data-color-theme", e);
                     }
                 </script>
-                <button
+                {{-- <button
                     class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center customizer-btn"
                     type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                     aria-controls="offcanvasExample">
                     <i class="icon ti ti-settings fs-7"></i>
                 </button>
 
-            <div class="offcanvas customizer offcanvas-end" tabindex="-1" id="offcanvasExample"
+             <div class="offcanvas customizer offcanvas-end" tabindex="-1" id="offcanvasExample"
                 aria-labelledby="offcanvasExampleLabel">
                 <div class="d-flex align-items-center justify-content-between p-3 border-bottom">
                     <h4 class="offcanvas-title fw-semibold" id="offcanvasExampleLabel">
@@ -135,7 +135,7 @@
                         </div>
 
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="dark-transparent sidebartoggler"></div>
