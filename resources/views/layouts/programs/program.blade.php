@@ -53,8 +53,17 @@
                                 </div>
                             </td>
                             <td>{{$programs->title}}</td>
-                            <td class="center" style="max-width: 250px; ">
-                              {{$programs->description}}
+                            <td class="center" style="max-width: 250px;">
+                              <span id="short-description-{{$loop->iteration}}">
+                                  {{ Str::words($programs->description, 7, '' )}}
+                                  @if (strlen($programs->description) > 50)
+                                    <a href="javascript:void(0);" onclick="document.getElementById('short-description-{{$loop->iteration}}').style.display='none'; document.getElementById('full-description-{{$loop->iteration}}').style.display='block';">...expand</a>
+                                  @endif
+                              </span>
+                              <span id="full-description-{{$loop->iteration}}" style="display:none;">
+                                  {{ $programs->description }} 
+                                  <a href="javascript:void(0);" onclick="document.getElementById('full-description-{{$loop->iteration}}').style.display='none'; document.getElementById('short-description-{{$loop->iteration}}').style.display='block';">collapse</a>
+                              </span>
                             </td>
                             <td class="center">
                               <a href="/programs/{{ $programs->id }}/edit"><button class="btn btn-primary px-4 ">Edit</button></a> 
