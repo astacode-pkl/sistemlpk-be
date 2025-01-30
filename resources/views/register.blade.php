@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <!--  Title -->
-    <title>Mordenize</title>
+    <title>LPK tsukuba</title>
     <!--  Required Meta Tag -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -44,15 +44,39 @@
                     @csrf
                     <div class="mb-3">
                       <label for="name" class="form-label">Name</label>
-                      <input type="name" name="name" class="form-control" id="name" aria-describedby="emailHelp">
+                      <input type="name" name="name" class="form-control @error('name') is-invalid 
+                    @enderror " id="name" value="{{ old('name') }}" aria-describedby="emailHelp">
+                    
+                    @error('name')
+                    <div id="validationServer04Feedback" class="invalid-feedback">
+                      {{ $message}}
+                      </div>
+                        
+                    @enderror
                     </div>
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Email</label>
-                      <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <input type="email" name="email" value="{{ old('email') }}"  class="form-control 
+                    @error('email') is-invalid 
+                    @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                      
+                    @error('email')
+                    <div id="validationServer04Feedback" class="invalid-feedback">
+                      {{ $message}}
+                      </div>
+                        
+                    @enderror
                     </div>
                     <div class="mb-4">
                       <label for="exampleInputPassword1" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                      <input type="password" name="password" class="form-control  @error('password') is-invalid 
+                      @enderror" id="exampleInputPassword1">
+                      @error('password')
+                      <div id="validationServer04Feedback" class="invalid-feedback">
+                        {{ $message}}
+                        </div>
+                          
+                      @enderror
                     </div>
                     <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Register</button>
                     <div class="d-flex align-items-center justify-content-center">

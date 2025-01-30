@@ -16,7 +16,15 @@ class ContactController extends Controller
     {
 
         $contacts = Contact::all()->sortByDesc('created_at')->sortByDesc('status');
-
+        // incoming
+        // $contacts = '';
+        // if (request()->get('query')) {
+        //     $query = request('query');
+        //     $contacts = Contact::where('name', 'like', '%' . $query . '%')->get();
+        // } else {
+        //     $contacts = Contact::latest()->get();
+        // }
+        // untill this
         return view(
             'layouts.contact',
             [
@@ -70,7 +78,7 @@ class ContactController extends Controller
 
         $countUnread = Contact::where('status', 'unread')->count();
         session(['countUnread' => $countUnread]);
-       
+
         return view('layouts.contact', ['contactById' => $contactById, 'contacts' => $contacts]);
     }
 
@@ -89,7 +97,7 @@ class ContactController extends Controller
         $contacts = $contacts->sortByDesc('created_at')->sortByDesc('status');
         return view('layouts.contact', ['contacts' => $contacts]);
     }
-    
+
 
     /**
      * Show the form for editing the specified resource.

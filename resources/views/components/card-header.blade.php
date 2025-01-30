@@ -1,5 +1,5 @@
 
-<div class="card bg-light-info shadow-none position-relative overflow-hidden">
+<div class="card shadow-none position-relative overflow-hidden" style="background-color: rgb(206, 227, 235);">
     <div class="card-body px-4 py-3">
         <div class="row align-items-center">
             <div class="col-9">

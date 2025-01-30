@@ -4,23 +4,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Favicon icon-->
-    <link rel="shortcut icon" type="image/png" href="" />
+        <!-- Favicon icon-->
+        <link rel="shortcut icon" type="image/png" href="{{asset('images/companyprofile/'.$logo)}}" />
 
-    <!-- Core Css -->
-    <!-- <link rel="stylesheet" href="https://bootstrapdemos.adminmart.com/modernize/dist/assets/css/styles.css" /> -->
-    {{-- <link rel="stylesheet" href="{{ asset('template/back') }}/dist/css/style.min.css" /> --}}
+       <!-- CSS DataTables -->
+       <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+        <!-- Core Css -->
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+        <link id="themeColors" rel="stylesheet" href="{{ asset('template/back') }}/dist/css/styles.css" />
+        <link rel="stylesheet" href="{{ asset('template/back') }}/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
 
-    <link id="themeColors" rel="stylesheet" href="{{ asset('template/back') }}/dist/css/styles.css" />
-
-
-    <link rel="stylesheet" href="{{ asset('template/back') }}/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
-
-    <title>{{ Cache::get('companyName')->name }}</title>
-
-    <!-- Owl Carousel  -->
+        <title>{{ $companyName }}</title>
+        <!-- Owl Carousel  -->
 
 </head>
 
@@ -38,7 +34,6 @@
             <!--  Header Start -->
             <x-topbar></x-topbar>
             <!--  Header End -->
-            <x-sidebarhorizontal></x-sidebarhorizontal>
 
             <div class="body-wrapper">
                 <div class="container-fluid">
@@ -146,6 +141,7 @@
     <div class="dark-transparent sidebartoggler"></div>
     <script src="{{ asset('template/back') }}/dist/js/vendor.min.js"></script>
     <!-- Import Js Files -->
+    <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
     <script src="{{ asset('template/back') }}/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('template/back') }}/dist/libs/simplebar/dist/simplebar.min.js"></script>
     <script src="{{ asset('template/back') }}/dist/js/theme/app.init.js"></script>
@@ -160,33 +156,8 @@
     <script src="{{ asset('template/back') }}/dist/js/plugins/mindmup-editabletable.js"></script>
     <script src="{{ asset('template/back') }}/dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('template/back') }}/dist/libs/vanilla-datatables-editable/datatable.editable.min.js"></script>
-
     <script src="{{ asset('template/back') }}/dist/js/plugins/numeric-input-example.js"></script>
-
-
-    <!-- Tambahkan CSS DataTables -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-
-    <script>
-        $(document).ready(function() {
-            $('#datatable').DataTable({
-                // Konfigurasi tambahan (opsional)
-                paging: true, // Menampilkan paginasi
-                searching: true, // Menampilkan kolom pencarian
-                ordering: true, // Menampilkan sorting kolom
-                info: true // Menampilkan informasi jumlah data
-            });
-        });
-
-
-        const textarea = document.getElementById('floatingTextarea');
-        textarea.addEventListener('input', function() {
-            textarea.style.height = '';
-            textarea.style.height = textarea.scrollHeight + 'px'
-        });
-    </script>
-
-    {{-- alert --}}
+    {{-- sweetalert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- solar icons -->
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
@@ -195,6 +166,6 @@
     <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/apexcharts/dist/apexcharts.min.js">
     </script>
     <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/js/dashboards/dashboard.js"></script>
-</body>
+    </body>
 
 </html>

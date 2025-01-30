@@ -2,26 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\Profile;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\CompanyProfile;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class CompanyProfile extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'LPK tsukuba',
-            'email' => 'lpktsukuba@gmail.com',
-            'password' => '123456'
-        ]);
         CompanyProfile::factory()->create([
             'name' => 'lpk tsukuba indonesia',
             'slogan' => '職業訓練機関つくばインドネシア',
@@ -29,9 +19,9 @@ class DatabaseSeeder extends Seeder
                         LPK Tsukuba Indonesia membuka kelas pendidikan Bahasa Jepang yang berorientasi memberikan pembekalan sikap, mental, serta bahasa dan budaya Jepang bagi calon peserta magang, dan melatih calon peserta magang agar menjadi pemagang yang andal dan sesuai dengan kompetensi yang dibutuhkan oleh perusahaan Jepang.',
             'vision' => 'Menjadikan LPK Tsukuba Indonesia sebagai sarana generasi muda Indonesia untuk mengembangkan potensi dan menghasilkan lulusan yang berkualitas dan profesional serta mampu bersaing di kancah internasional. Khususnya di Negara Jepang.',
             'mission' => '1. Melatih kedisiplinan dan etos kerja sesuai standar di Jepang.
-                        2. Mengoptimalkan potensi dari setiap peserta melalui Program Pemagangan Swasta, dan Program Pekerja Berketerampilan Khusus.
-                        3. Mendidik dan melatih bahasa Jepang dengan didampingi instruktur/pengajar alumni magang Jepang yang profesional dan berpengalaman.
-                        4. Mempersiapkan calon peserta dalam menghadapi seleksi/ujian yang dilaksanakan oleh penyelenggara rekrut magang.',
+2. Mengoptimalkan potensi dari setiap peserta melalui Program Pemagangan Swasta, dan Program Pekerja Berketerampilan Khusus.
+3. Mendidik dan melatih bahasa Jepang dengan didampingi instruktur/pengajar alumni magang Jepang yang profesional dan berpengalaman.
+4. Mempersiapkan calon peserta dalam menghadapi seleksi/ujian yang dilaksanakan oleh penyelenggara rekrut magang.',
             'email' => 'tsukubaindonesia@gmail.com',
             'instagram' => 'https://www.instagram.com/lpk.tsukubaindonesia/',
             'whatsapp' => 'https://wa.me/6282316396737',

@@ -18,25 +18,26 @@ class UserController extends Controller
         ]);
         if (Auth::attempt($user)) {
             $request->session()->regenerate();
-            return redirect('/');
+            return redirect()->intended('/');
         }
-        return redirect('/login')->with('error', 'Log in is failed');
+        return back()->with('error', 'Log in is failed');
     }
     public function register(Request $request)
     {
         $user = $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'password' => 'required'
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6'
         ]);
         $user['passaword'] = Hash::make($user['password']);
         $user = User::create($user);
-        Auth::login($user);
-        return redirect('/');
+        return to_route('login')->with('success','register successfuly');
     }
     public function logout()
     {
         Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
         return redirect('/');
     }
 }

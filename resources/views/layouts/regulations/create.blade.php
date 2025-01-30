@@ -15,11 +15,11 @@
                                 <div class="position-relative d-none " id="display">
                                     <img src="" class="card-img-top rounded-0 d-block" id="preview" alt="Icon">
                                 </div>
-                                <label class="control-label" for="image">Icon</label>
-
-                                        <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="icon"  required></textarea>
-                                            <label for="floatingTextarea">SVG</label>
+                                
+                                        <div class=" mb-3">
+                                            <label class="control-label" for="image">Icon</label>
+                                            <textarea class="form-control" placeholder="text svg for icon you can find on web hero icons..." id="floatingTextarea" name="icon"  required></textarea>
+                                           
                                          </div>
 
                                             @error('icon')
@@ -30,19 +30,18 @@
                                             @enderror
                                              </div>
 
-                            <div class="mb-3">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control @error('title') is-invalid    @enderror" name="title" id="floatingInput" placeholder="name@example.com"  required>
-                                    <label for="floatingInput">title</label>
-                                    @error('title')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
-                                      {{$message}}
-                                      </div>
-                                    @enderror
-                                  </div>
-                            </div>
-                           
-                        </div>
+                                        <div class="mb-3">
+                                                <label for="floatingInput">title</label>
+                                                <input type="text" class="form-control @error('title') is-invalid    @enderror" name="title" id="floatingInput" placeholder="title..."  required>
+                                                @error('title')
+                                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                                {{$message}}
+                                                </div>
+                                                @enderror
+                                            
+                                        </div>
+                                    
+                                    </div>
                         <!--/span-->
                     </div>
                     <div class="form-actions text-end">

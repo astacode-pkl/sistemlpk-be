@@ -14,12 +14,16 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 
-                                <input type="hidden" name="oldImage" value="{{$gallery->image}}">
                                 <label class="control-label" for="image">Image</label>
                                 <div class="input-group">
                                     <div class="custom-file">
-                                        <input type="file" class="form-control"  id="fileInput"
-                                            aria-describedby="inputGroupFileAddon01" name="image" required>
+                                        <input type="file" class="form-control  @error('image') is-invalid  @enderror"  id="fileInput"
+                                            aria-describedby="inputGroupFileAddon01" name="image" >
+                                            @error('image')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                      {{$message}}
+                                      </div>
+                                    @enderror
                                     </div>
                                 </div>
                             </div>
@@ -54,9 +58,9 @@
                             </div>
                         </div>
                         <!--/span-->
-                        
-                        <div class="position-relative col-md-6 d-block w-50"  id="display">
-                            <img src="{{ asset('storage/'.$gallery->image)}}" class="card-img-top rounded-0 d-block" id="preview" alt="...">
+                         
+                        <div class="position-relative col-md-6 "  id="display">
+                            <img src="{{asset('images/galleries/'.$gallery->image)}}" class="card-img-top rounded-1 d-block  w-60" id="preview" alt="...">
                         </div>
                     </div>
                     <div class="form-actions text-end">

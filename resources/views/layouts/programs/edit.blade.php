@@ -45,10 +45,10 @@
                                     @enderror
                                 </div>
                             </div>
-
-                            <!-- preview image -->
-                            <div class="position-relative col-md-6 d-flex justify-content-center " id="display">
-                                <img src="{{ asset('storage/program_images/'.$program->image)}}" class="card-img-top rounded-0 " id="preview" alt="{{$program->image}}">
+                            <!--/span-->
+                            
+                            <div class="position-relative col-md-6" id="display">
+                                <img src="{{asset('images/programs/'.$program->image)}}" class="card-img-top rounded-1  w-60 d-block" id="preview" alt="{{$program->image}}">
                             </div>
                             <!-- end preview image -->
 
