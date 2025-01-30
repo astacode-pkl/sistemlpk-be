@@ -132,11 +132,7 @@
                                         Save
                                     </div>
                                 </button>
-                                <a href="/profile">
-                                <button type="button" class="btn btn-danger px-4 ms-2 text-white">
-                                    Cancel
-                                </button>
-                            </a>
+                            
                             </div>
                         </div>
                     </div>
