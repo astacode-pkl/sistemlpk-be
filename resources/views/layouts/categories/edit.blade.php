@@ -32,7 +32,7 @@
                             <button type="submit" class="btn btn-primary  px-4">
                                 <div class="d-flex align-items-center">
                                     <i class="ti ti-plus me-1 fs-4"></i>
-                                    Update
+                                    Save
                                 </div>
                             </button>
                             <a href="/categories">

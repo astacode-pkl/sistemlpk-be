@@ -58,7 +58,7 @@
                                 <button type="submit" class="btn btn-primary py-2 px-4">
                                     <div class="d-flex align-items-center">
                                         <i class="ti ti-plus me-1 fs-4"></i>
-                                        Edit
+                                        Save
                                     </div>
                                 </button>
                                 <a href="/programs">
