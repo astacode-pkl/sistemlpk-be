@@ -5,7 +5,7 @@
             <div class="card-header bg-primary">
                 <h4 class="mb-0 text-white">Edit Benefit</h4>
             </div>
-            <form action="/benefits/{{$benefit->id}}" method="POST" enctype="multipart/form-data">
+            <form action="/benefits/{{ Crypt::encryptString($benefit->id) }}" method="POST" enctype="multipart/form-data">
                 @method('put')
                 @csrf
                 <div class="card-body">

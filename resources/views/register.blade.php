@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <!--  Title -->
-    <title>LPK tsukuba</title>
+    <title>{{ $companyName }}</title>
     <!--  Required Meta Tag -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,9 +28,6 @@
         <div class="position-relative z-index-5">
           <div class="row">
             <div class="col-xl-7 col-xxl-8">
-              <a href="./index.html" class="text-nowrap logo-img d-block px-4 py-9 w-100">
-                <img src="{{ asset('template/back') }}/dist/images/logos/dark-logo.svg" width="180" alt="">
-              </a>
               <div class="d-none d-xl-flex align-items-center justify-content-center" style="height: calc(100vh - 80px);">
                 <img src="{{ asset('template/back') }}/dist/images/backgrounds/login-security.svg" alt="" class="img-fluid" width="500">
               </div>

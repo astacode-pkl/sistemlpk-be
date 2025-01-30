@@ -1,11 +1,8 @@
 <x-layout>
     <div class="card overflow-hidden chat-application">
-        <div class="d-flex align-items-center justify-content-between gap-3 m-3 d-lg-none">
+        <div class="d-flex align-items-center gap-3 m-3 d-lg-none">
 
-            <form class="position-relative w-100">
-                <input type="text" class="form-control search-chat py-2 ps-5" id="text-srh" placeholder="Search">
-                <i class="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3"></i>
-            </form>
+           <h1 class="text-center">Inbox</h1>
         </div>
         <div class="d-flex w-100">
             <div class="d-flex w-100">
@@ -105,7 +102,7 @@
                                         <li class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top"
                                             data-bs-title="Delete">
                                             <a class="text-dark px-2 fs-5 bg-hover-primary nav-icon-hover position-relative z-index-5"
-                                                href="delete/{{ Request::is('inbox/*') && isset($contactById) ? $contactById['id'] : '' }}">
+                                                href="{{ Request::is('inbox/*') && isset($contactById) ? 'delete/'.Crypt::encryptString($contactById['id']) : '#' }}" disabled>
                                                 <i class="ti ti-trash"></i>
                                             </a>
                                         </li>
@@ -151,8 +148,19 @@
                 aria-labelledby="offcanvasExampleLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasExampleLabel"> Inbox </h5>
+
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                         aria-label="Close"></button>
+
+                </div>
+                <div class="px-3">
+                    <form class="position-relative" method="post" action="/inbox/search">
+                        @csrf
+                        <input type="text" name="search" class="form-control search-chat py-2 ps-5"
+                            id="text-srh" placeholder="Search">
+                        <i
+                            class="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3"></i>
+                    </form>
                 </div>
                 <ul class="chat-users simplebar-scrollable-y" data-simplebar="init">
                     <div class="simplebar-wrapper" style="margin: 0px;">
@@ -164,29 +172,38 @@
                                 <div class="simplebar-content-wrapper" tabindex="0" role="region"
                                     aria-label="scrollable content" style="height: 100%; overflow: hidden scroll;">
                                     <div class="simplebar-content" style="padding: 0px;" id="container">
-                                        @foreach ($contacts as $contact)
-                                            <li>
-                                                <a href="/inbox/{{ Crypt::encryptString($contact['id']) }}"
-                                                    class="px-4 py-3 bg-hover-light-black d-flex align-items-start chat-user bg-light border-bottom"
-                                                    id="chat_user_1" data-user-id="1">
-                                                    <div class="position-relative w-100 ms-2">
-                                                        <div
-                                                            class="d-flex align-items-center justify-content-between mb-2">
-                                                            <h6 class="mb-0">{{ $contact['name'] }}</h6>
-                                                        </div>
-                                                        <p class="text-dark fw-light text-truncate">
-                                                            {{ $contact['message'] }}</p>
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <div class="d-flex align-items-center">
+                                        @if (count($contacts) > 0)
+                                            @foreach ($contacts as $contact)
+                                                <li onclick="">
+                                                    <a href="/inbox/{{ Crypt::encryptString($contact['id']) }}"
+                                                        class="px-4 py-3 bg-hover-light-black d-flex align-items-start chat-user {{ $contact['status'] == 'unread' ? 'bg-light' : '' }} border-bottom"
+                                                        id="chat_user_1" data-user-id="1">
+                                                        <div class="position-relative w-100 ms-2">
+                                                            <div
+                                                                class="d-flex align-items-center justify-content-between mb-2">
+                                                                <h6 class="mb-0">{{ $contact['name'] }}
+                                                                </h6>
                                                             </div>
-                                                            <p class="mb-0 fs-2 text-muted">
-                                                                {{ $contact['created_at']->format('l,  h.i A') }}
-                                                            </p>
+                                                            <p class="text-dark fw-light text-truncate">
+                                                                {{ $contact['message'] }}</p>
+                                                            <div
+                                                                class="d-flex align-items-center justify-content-between">
+                                                                <div class="d-flex align-items-center">
+                                                                </div>
+                                                                <p class="mb-0 fs-2 text-muted">
+                                                                    {{ $contact['created_at']->format('l,  h.i A') }}
+                                                                </p>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        @endforeach
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        @else
+                                            <h2
+                                                class="fw-light text-body position-absolute top-50 start-50 translate-middle">
+                                                No
+                                                inbox</h2>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -206,7 +223,5 @@
         </div>
     </div>
     <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
-<script>
-  
-</script>
+    <script></script>
 </x-layout>

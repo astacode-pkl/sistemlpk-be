@@ -5,7 +5,7 @@
             <div class="card-header bg-primary">
                 <h4 class="mb-0 text-white">Edit Category</h4>
             </div>
-            <form action="/categories/{{ $category->id }}" method="post" enctype="multipart/form-data">
+            <form action="/categories/{{ Crypt::encryptString($category->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="card-body">

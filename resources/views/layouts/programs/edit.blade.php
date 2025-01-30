@@ -7,7 +7,7 @@
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Edit Program</h4>
                 </div>
-                <form action="/programs/{{$program->id}}" method="POST" enctype="multipart/form-data">
+                <form action="/programs/{{ Crypt::encryptString($program->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('patch')
                     <div class="card-body">
@@ -25,9 +25,9 @@
                                     </div>
                                 </div>
     
-                                <div class="mb-3 form-floating">
-                                    <input type="text" id="title" class="form-control @error('title') is-invalid   @enderror" value="{{$program->title}}" name="title">
+                                <div class="mb-3">
                                     <label class="control-label" for="title">Title</label>
+                                    <input type="text" id="title" class="form-control @error('title') is-invalid   @enderror" value="{{$program->title}}" name="title">
                                     @error('title')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                       {{$message}}
@@ -35,9 +35,9 @@
                                     @enderror
                                 </div>
                                 
-                                <div class="mb-3 form-floating">
-                                    <textarea class="form-control @error('description') is-invalid   @enderror " name="description">{{$program->description}}</textarea>
+                                <div class="mb-3">
                                     <label>Description</label>
+                                    <textarea class="form-control @error('description') is-invalid   @enderror " name="description">{{$program->description}}</textarea>
                                     @error('description')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                       {{$message}}
@@ -47,8 +47,8 @@
                             </div>
                             <!--/span-->
                             
-                            <div class="position-relative col-md-6" id="display">
-                                <img src="{{asset('images/programs/'.$program->image)}}" class="card-img-top rounded-1  w-60 d-block" id="preview" alt="{{$program->image}}">
+                            <div class="position-relative col-md-4" id="display">
+                                <img src="{{asset('images/programs/'.$program->image)}}" class="card-img-top rounded-1 d-block" id="preview" alt="{{$program->image}}">
                             </div>
                             <!-- end preview image -->
 

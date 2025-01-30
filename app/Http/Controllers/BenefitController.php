@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Benefit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class BenefitController extends Controller
 {
@@ -52,6 +53,7 @@ class BenefitController extends Controller
      */
     public function edit(string $id)
     {
+        $id = Crypt::decryptString($id);
         $benefit = Benefit::find($id);
         return view('layouts.benefits.edit',compact('benefit'));
     }
@@ -61,6 +63,7 @@ class BenefitController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $id = Crypt::decryptString($id);
         $table = Benefit::find($id);
         $table->title = $request->title;
         $table->icon = $request->icon;
@@ -74,6 +77,7 @@ class BenefitController extends Controller
      */
     public function destroy(string $id)
     {
+        $id = Crypt::decryptString($id);
         $table = Benefit::find($id);
         $table->delete();
         return redirect()->back()->with('success','data success deleted');

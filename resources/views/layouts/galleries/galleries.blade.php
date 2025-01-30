@@ -51,11 +51,11 @@
                             <td>{{$gallery->title}}</td>
                             <td class="center">{{$gallery->categories->title}}</td>
                             <td class="center ">
-                              <a href="/galleries/{{ $gallery->id }}/edit"><button class="btn btn-primary px-4  ">Edit</button></a> 
-                              <form action="/galleries/{{ $gallery->id}}" method="POST" class="d-inline ">
+                              <a href="/galleries/{{ Crypt::encryptString($gallery->id) }}/edit"><button class="btn btn-primary px-4  ">Edit</button></a> 
+                              <form action="/galleries/{{ Crypt::encryptString($gallery->id) }}" method="POST" class="d-inline ">
                                  @csrf
                                  @method('delete')
-                                <button type="submit" class="btn btn-danger px-4 "  id="delete">Delete</button>
+                                <button type="submit" class="btn btn-danger px-4 "  id="delete" onclick="deleteItem(event)">Delete</button>
                               </form>
                             </td>
                           </tr>

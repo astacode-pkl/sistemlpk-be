@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Program;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Image;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Storage;
 
 
 class ProgramController extends Controller
@@ -32,61 +33,58 @@ class ProgramController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $validated = $request->validate(
-            [
-                'image' => 'required|image|mimes:jpeg,png,jpg',
-                'title' => 'required',
-                'description' => 'required'
-            ]
-        );
+    {  
+        $validated = $request->validate([
+        'image' => 'required|image|mimes:jpeg,png,jpg',
+        'title' => 'required',
+        'description' =>'required'
+        ]
+    );
+    $program = new Program;
+    if ($image = $request->file('image')) {
+        $destinationPath = 'images/programs/';
+        
+        $sha1FileName = sha1($image->getClientOriginalName());
 
-        if ($image = $request->file('image')) {
-            $destinationPath = 'images/programs/';
+        $imageMimeType = $image->getMimeType();
 
-
-            //sh1 file name
-            $sha1FileName = sha1($image->getClientOriginalName());
-
-            $imageMimeType = $image->getMimeType();
-
-            if (strpos($imageMimeType, 'image/') === 0) {
-                $imageName = date('YmdHis') . '' . str_replace(' ', '', $sha1FileName);
-                $image->move($destinationPath, $imageName);
-
-                $sourceImagePath = public_path($destinationPath . $imageName);
-                $webpImagePath = $destinationPath . pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
-
-                $sourceImage = null;
-                switch ($imageMimeType) {
-                    case 'image/jpeg':
-                        $sourceImage = @imagecreatefromjpeg($sourceImagePath);
-                        break;
-                    case 'image/png':
-                        $sourceImage = @imagecreatefrompng($sourceImagePath);
-                        break;
-                    default:
-                        $sourceImage = false;
-                        break;
-                }
-
-                if ($sourceImage !== false) {
-                    imagewebp($sourceImage, $webpImagePath);
-                    imagedestroy($sourceImage);
-                    @unlink($sourceImagePath);
-
-                    $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
-                }
-            } else {
-                $input['image'] = '';
+        if (strpos($imageMimeType, 'image/') === 0) {
+            $imageName = date('YmdHis') . '' . str_replace(' ', '', $sha1FileName);
+            $image->move($destinationPath, $imageName);
+            
+            $sourceImagePath = public_path($destinationPath . $imageName);
+            $webpImagePath = $destinationPath . pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
+            $sourceImage = null;
+            switch ($imageMimeType) {
+                case 'image/jpeg':
+                    $sourceImage = @imagecreatefromjpeg($sourceImagePath);
+                    break;
+                case 'image/png':
+                    $sourceImage = @imagecreatefrompng($sourceImagePath);
+                    break;
+                default:
+                    $sourceImage = false;
+                    break;
             }
 
-            $program = Program::create($input);
+            if ($sourceImage !== false) {
+                imagewebp($sourceImage, $webpImagePath);
+                imagedestroy($sourceImage);
+                @unlink($sourceImagePath);
+                
+                $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
 
-            return redirect()->route('programs.index')->with('success', 'Program successfully created');
+            }
         }
+    } else {
+        $imageName = '';
     }
+    $program->create(['image' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
 
+ 
+    return redirect()->route('programs.index')->with('success', 'Program successfully created');
+    }
+    
     /**
      * Display the specified resource.
      */
@@ -101,6 +99,7 @@ class ProgramController extends Controller
      */
     public function edit(string $id)
     {
+        $id = Crypt::decryptString($id);
         $program = Program::find($id);
         return view('layouts.programs.edit', compact('program'));
     }
@@ -117,6 +116,7 @@ class ProgramController extends Controller
                 'description' => 'required'
             ]
         );
+        $id = Crypt::decryptString($id);
         $program = Program::find($id);
         $program->title = $request->title;
         $program->description = $request->description;
@@ -179,6 +179,7 @@ class ProgramController extends Controller
      */
     public function destroy(string $id)
     {
+        $id = Crypt::decryptString($id);
         $program = Program::find($id);
         $destinationPath = 'images/programs/';
         if ($program->image && file_exists(

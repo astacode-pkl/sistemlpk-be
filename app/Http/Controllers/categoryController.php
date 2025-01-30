@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Gallery;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class CategoryController extends Controller
 {
@@ -19,7 +20,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-       
+
         return view('layouts.categories.create');
     }
 
@@ -27,14 +28,14 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {  
-        $validated = $request->validate([
-        'title' => 'required',
-        ]
-    );
-    Category::create($validated);
-    return redirect('/categories')->with('success', 'Category created successfully!');
-
+    {
+        $validated = $request->validate(
+            [
+                'title' => 'required',
+            ]
+        );
+        Category::create($validated);
+        return redirect('/categories')->with('success', 'Category created successfully!');
     }
 
     /**
@@ -51,6 +52,7 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
+        $id = Crypt::decryptString($id);
         $category = Category::find($id);
         return view('layouts.categories.edit', compact('category'));
     }
@@ -59,14 +61,15 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-{
+    {
+        $id = Crypt::decryptString($id);
         $category = Category::find($id);
         $category->title = $request->title;
-        
+
         $category->update();
 
         return redirect('/categories')->with('success', 'Caregory updated successfully!');
-}
+    }
 
 
 
@@ -77,21 +80,20 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
+        $id = Crypt::decryptString($id);
         $category = Category::find($id);
-        $galleries = Gallery::get()->where('category_id',$id);
-        
+        $galleries = Gallery::get()->where('category_id', $id);
+
         $destinationPath = 'images/galleries/';
-        foreach ($galleries as $gallery ) {
+        foreach ($galleries as $gallery) {
             if ($gallery->image && file_exists(
-                public_path($destinationPath.$gallery->image)
+                public_path($destinationPath . $gallery->image)
             )) {
-                
-                unlink(public_path($destinationPath.$gallery->image));
+
+                unlink(public_path($destinationPath . $gallery->image));
             }
         }
         $category->delete();
         return redirect()->back()->with('success', 'Category deleted successfully');
     }
-
-    
 }

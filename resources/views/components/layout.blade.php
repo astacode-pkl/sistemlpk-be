@@ -4,19 +4,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!-- Favicon icon-->
-        <link rel="shortcut icon" type="image/png" href="{{asset('images/companyprofile/'.$logo)}}" />
+    <!-- Favicon icon-->
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/companyprofile/' . $logo) }}" />
 
-       <!-- CSS DataTables -->
-       <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <!-- CSS DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
-        <!-- Core Css -->
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
-        <link id="themeColors" rel="stylesheet" href="{{ asset('template/back') }}/dist/css/styles.css" />
-        <link rel="stylesheet" href="{{ asset('template/back') }}/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
+    <!-- Core Css -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link id="themeColors" rel="stylesheet" href="{{ asset('template/back') }}/dist/css/styles.css" />
+    <link rel="stylesheet" href="{{ asset('template/back') }}/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
 
-        <title>{{ $companyName }}</title>
-        <!-- Owl Carousel  -->
+    <title>{{ $companyName }}</title>
+    <!-- Owl Carousel  -->
 
 </head>
 
@@ -166,6 +166,6 @@
     <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/apexcharts/dist/apexcharts.min.js">
     </script>
     <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/js/dashboards/dashboard.js"></script>
-    </body>
+</body>
 
 </html>

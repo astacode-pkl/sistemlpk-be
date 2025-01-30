@@ -36,17 +36,17 @@
                     @foreach ($benefits as $benefit)
                     <tr id="25" class="gradeA">
                       <td>{{$loop->iteration}}</td>
-                      <td>{!!$benefit->icon!!}</td>
+                      <td style="width: 30px;">{!!$benefit->icon!!}</td>
                      <td>{{ $benefit->title}}</td>
                 
                       <td class="center ">
-                        <form action="/benefits/{{ $benefit->id}}" method="POST" class="d-inline">
+                        <a href="/benefits/{{ Crypt::encryptString($benefit->id) }}/edit"><button  class="btn btn-primary px-4 ">Edit</button></a>
+
+                        <form action="/benefits/{{ Crypt::encryptString($benefit->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('delete')
-                        <button type="submit" class="btn btn-danger px-4 py-2" onclick="return confirm('are you sure')">Delete</button>
+                        <button type="submit" class="btn btn-danger px-4 py-2" onclick="deleteItem(event)">Delete</button>
                         </form>
-
-                      <a href="/benefits/{{ $benefit->id }}/edit"><button  class="btn btn-primary px-4 ">Edit</button></a>
 
                       </td>
                     </tr>    

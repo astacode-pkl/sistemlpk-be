@@ -53,10 +53,8 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" aria-expanded="false">
                                 <div class="d-flex align-items-center">
-                                    <div class="user-profile-img">
-                                        <img src="{{asset('images/companyprofile/'.$logo)  }}"
-                                            class="rounded-circle border" width="35" height="35"
-                                            alt="modernize-img" />
+                                    <div class="user-profile-img overflow-hidden"  >
+                                        <img src="{{asset('images/companyprofile/'.$logo)  }}" class="rounded-circle border img-fluid " width="40" height="40" />
                                     </div>
                                 </div>
                             </a>
@@ -68,7 +66,7 @@
                                     </div>
                                     <div class="d-flex align-items-center py-9 mx-7 border-bottom">
                                         <img src="{{asset('images/companyprofile/'.$logo)  }}"
-                                            class="rounded-circle" width="80" height="80" alt="modernize-img" />
+                                            class="rounded-circle img-fluid w-30" alt="logo" />
                                         <div class="ms-3">
                                             <h5 class="mb-1 fs-3">{{ Auth::user()->name }}</h5>
                                             <p class="mb-0 d-flex align-items-center gap-2">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Regulation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class RegulationController extends Controller
 {
@@ -52,7 +53,7 @@ class RegulationController extends Controller
      */
     public function edit(string $id)
     {
-        
+        $id = Crypt::decryptString($id);
         $regulation = Regulation::find($id);
         return view('layouts.regulations.edit',compact('regulation'));
     }
@@ -62,6 +63,7 @@ class RegulationController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $id = Crypt::decryptString($id);
         $table = Regulation::find($id);
         $table->title = $request->title;
         $table->icon = $request->icon;
@@ -75,6 +77,7 @@ class RegulationController extends Controller
      */
     public function destroy(string $id)
     {
+        $id = Crypt::decryptString($id);
         $table = Regulation::find($id);
         $table->delete();
         return redirect()->back()->with('success','data success deleted');

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Gallery;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class GalleriesController extends Controller
 {
@@ -97,6 +98,7 @@ class GalleriesController extends Controller
      */
     public function edit(string $id)
     {
+        $id = Crypt::decryptString($id);
         $gallery = Gallery::find($id);
         $categories =Category::get();
         return view('layouts.galleries.edit',['gallery' => $gallery,'categories' => $categories]);
@@ -107,6 +109,7 @@ class GalleriesController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $id = Crypt::decryptString($id);
         $validated = $request->validate([
             'image' => 'image|mimes:jpeg,png,jpg',
             'title' => 'required',
@@ -172,6 +175,7 @@ class GalleriesController extends Controller
      */
     public function destroy(string $id)
     {
+        $id = Crypt::decryptString($id);
         $gallery = Gallery::find($id);
             $destinationPath = 'images/galleries/';
             if ($gallery->image && file_exists(

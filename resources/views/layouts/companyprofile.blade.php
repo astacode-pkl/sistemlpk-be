@@ -127,17 +127,13 @@
                             @endforeach
                         <div class="form-actions text-end">
                             <div class="card-body border-top">
-                                <button type="submit" class="btn btn-primary px-4" onclick="return confirm('are you sure ?')">
+                                <button type="submit" class="btn btn-primary px-4" onclick="Decision(event)">
                                     <div class="d-flex align-items-center">
                                         <i class="ti ti-device-floppy me-1 fs-4"></i>
                                         Save
                                     </div>
                                 </button>
-                                <a href="/profile">
-                                <button type="button" class="btn btn-danger px-4 ms-2 text-white">
-                                    Cancel
-                                </button>
-                            </a>
+                            
                             </div>
                         </div>
                     </div>

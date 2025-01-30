@@ -123,6 +123,7 @@ class ContactController extends Controller
      */
     public function destroy(string $id)
     {
+        $id = Crypt::decryptString($id);
         $table = Contact::find($id);
         $table->delete();
         return redirect('inbox')->with('success', 'data success deleted');

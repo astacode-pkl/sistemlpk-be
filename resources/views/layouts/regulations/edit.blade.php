@@ -6,7 +6,7 @@
             <div class="card-header bg-primary">
                 <h4 class="mb-0 text-white">Edit Regulation</h4>
             </div>
-            <form action="/regulations/{{$regulation->id}}" method="POST" enctype="multipart/form-data">
+            <form action="/regulations/{{ Crypt::encryptString($regulation->id) }}" method="POST" enctype="multipart/form-data">
                 @method('put')
                 @csrf
                 <div class="card-body">
