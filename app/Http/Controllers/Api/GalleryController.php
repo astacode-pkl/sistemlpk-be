@@ -14,7 +14,9 @@ class GalleryController extends Controller
     public function index()
     {
         $galleries = Gallery::with('categories')->get();
-        return response()->json($galleries);
+        return response()->json([
+            'galleries' => $galleries
+        ]);
     }
 
     /**

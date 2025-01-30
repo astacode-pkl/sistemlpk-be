@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\CompanyProfile;
 use App\Models\Gallery;
 use App\Models\Program;
 use Illuminate\Http\Request;
@@ -16,7 +17,11 @@ class HomeController extends Controller
     {
         $galleries = Gallery::with('categories')->get();
         $programs = Program::all();
-        return response()->json(['galleries' => $galleries,'programs' => $programs
+        $companyProfile = CompanyProfile::all();
+        return response()->json([
+            'galleries' => $galleries,
+            'programs' => $programs,
+            'companyprofile' => $companyProfile
         
     ]);
     }

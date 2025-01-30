@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Benefit;
+use App\Models\Program;
 use App\Models\Regulation;
 use Illuminate\Http\Request;
 
@@ -16,10 +17,13 @@ class RegulationController extends Controller
     {
         $regulations = Regulation::all();
         $benefits = Benefit::all();
+        $programs = Program::all();
 
-        return response()->json(['regulations' => $regulations,
-                                    'benefits' => $benefits]);
-
+        return response()->json([
+            'regulations' => $regulations,
+            'benefits' => $benefits,
+            'programs' => $programs
+        ]);
     }
 
     /**

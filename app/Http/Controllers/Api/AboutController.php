@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use App\Models\CompanyProfile;
+use App\Http\Controllers\Controller;
+use Database\Factories\CompanyProfileFactory;
 
 class AboutController extends Controller
 {
@@ -13,8 +15,10 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $profile = Profile::get();
-        return response()->json($profile);
+        $companyProfile = CompanyProfile::all();
+        return response()->json([
+            'companyprofile' => $companyProfile
+        ]);
     }
 
     /**
