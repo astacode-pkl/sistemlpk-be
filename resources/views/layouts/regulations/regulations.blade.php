@@ -52,7 +52,7 @@
                         <form action="/regulations/{{ $regulation->id}}" method="POST" class="d-inline">
                             @csrf
                             @method('delete')
-                        <button type="submit" class="btn btn-danger px-4 py-2" onclick="return confirm('are you sure')">Delete</button>
+                        <button type="submit" class="btn btn-danger px-4 py-2" onclick="deleteItem(event)">Delete</button>
                         </form>
 
 
