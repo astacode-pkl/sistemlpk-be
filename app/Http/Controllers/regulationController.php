@@ -14,7 +14,7 @@ class RegulationController extends Controller
     public function index()
     {
         $regulations = Regulation::latest()->get();
-        return view('layouts.regulations.regulations',compact('regulations'));
+        return view('regulations.regulations',compact('regulations'));
     }
 
     /**
@@ -22,7 +22,7 @@ class RegulationController extends Controller
      */
     public function create()
     {
-        return view('layouts.regulations.create');
+        return view('regulations.create');
     }
 
     /**
@@ -55,7 +55,7 @@ class RegulationController extends Controller
     {
         $id = Crypt::decryptString($id);
         $regulation = Regulation::find($id);
-        return view('layouts.regulations.edit',compact('regulation'));
+        return view('regulations.edit',compact('regulation'));
     }
 
     /**

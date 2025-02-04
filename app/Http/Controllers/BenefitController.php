@@ -14,7 +14,7 @@ class BenefitController extends Controller
     public function index()
     {
         $benefits = Benefit::latest()->get();
-        return view('layouts.benefits.benefits',compact('benefits'));
+        return view('benefits.benefits', compact('benefits'));
     }
 
     /**
@@ -22,7 +22,7 @@ class BenefitController extends Controller
      */
     public function create()
     {
-        return view('layouts.benefits.create');
+        return view('benefits.create');
     }
 
     /**
@@ -30,13 +30,14 @@ class BenefitController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'title' => 'required',
-            'icon' =>'required'
+        $validated = $request->validate(
+            [
+                'title' => 'required',
+                'icon' => 'required'
             ]
         );
 
-        Benefit::create([ 'title' => $validated['title'], 'icon' => $validated['icon']]);
+        Benefit::create(['title' => $validated['title'], 'icon' => $validated['icon']]);
         return redirect('/benefits')->with('success', 'Regulation created successfully!');
     }
 
@@ -55,7 +56,7 @@ class BenefitController extends Controller
     {
         $id = Crypt::decryptString($id);
         $benefit = Benefit::find($id);
-        return view('layouts.benefits.edit',compact('benefit'));
+        return view('benefits.edit', compact('benefit'));
     }
 
     /**
@@ -68,8 +69,7 @@ class BenefitController extends Controller
         $table->title = $request->title;
         $table->icon = $request->icon;
         $table->update();
-        return redirect('/benefits')->with('success','data success updated');
-
+        return redirect('/benefits')->with('success', 'data success updated');
     }
 
     /**
@@ -80,7 +80,6 @@ class BenefitController extends Controller
         $id = Crypt::decryptString($id);
         $table = Benefit::find($id);
         $table->delete();
-        return redirect()->back()->with('success','data success deleted');
-
-     }
+        return redirect()->back()->with('success', 'data success deleted');
+    }
 }

@@ -12,12 +12,10 @@ class GalleriesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index( Request $request)
+    public function index(Request $request)
     {
-        $galleries =  Gallery::latest()->get() ;
-        return view('layouts.galleries.galleries',compact('galleries'));
-
-        
+        $galleries =  Gallery::latest()->get();
+        return view('galleries.galleries', compact('galleries'));
     }
 
     /**
@@ -26,8 +24,7 @@ class GalleriesController extends Controller
     public function create()
     {
         $categories = Category::get();
-        return view('layouts.galleries.create',compact('categories'));
-
+        return view('galleries.create', compact('categories'));
     }
 
     /**
@@ -36,10 +33,11 @@ class GalleriesController extends Controller
     public function store(Request $request)
     {
 
-        $validated = $request->validate([
-            'category_id' => 'required',
-            'title' => 'required',
-            'image' =>'required|image|mimes:jpeg,png,jpg'
+        $validated = $request->validate(
+            [
+                'category_id' => 'required',
+                'title' => 'required',
+                'image' => 'required|image|mimes:jpeg,png,jpg'
             ]
         );
         if ($image = $request->file('image')) {
@@ -47,14 +45,14 @@ class GalleriesController extends Controller
             //sh1 file name
             $sha1FileName = sha1($image->getClientOriginalName());
             $imageMimeType = $image->getMimeType();
-    
+
             if (strpos($imageMimeType, 'image/') === 0) {
                 $imageName = date('YmdHis') . '' . str_replace(' ', '', $sha1FileName);
                 $image->move($destinationPath, $imageName);
-                
+
                 $sourceImagePath = public_path($destinationPath . $imageName);
                 $webpImagePath = $destinationPath . pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
-                
+
                 $sourceImage = null;
                 switch ($imageMimeType) {
                     case 'image/jpeg':
@@ -67,31 +65,27 @@ class GalleriesController extends Controller
                         $sourceImage = false;
                         break;
                 }
-    
+
                 if ($sourceImage !== false) {
                     imagewebp($sourceImage, $webpImagePath);
                     imagedestroy($sourceImage);
                     @unlink($sourceImagePath);
-    
+
                     $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
                 }
             }
         } else {
             $imageName = '';
         }
-    
-        Gallery::create(['category_id' => $validated['category_id'], 'title' => $validated['title'],'image' => $imageName]);
+
+        Gallery::create(['category_id' => $validated['category_id'], 'title' => $validated['title'], 'image' => $imageName]);
         return redirect('/galleries')->with('success', 'Gallery created successfully!');
-    
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-
-    }
+    public function show(string $id) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -100,8 +94,8 @@ class GalleriesController extends Controller
     {
         $id = Crypt::decryptString($id);
         $gallery = Gallery::find($id);
-        $categories =Category::get();
-        return view('layouts.galleries.edit',['gallery' => $gallery,'categories' => $categories]);
+        $categories = Category::get();
+        return view('galleries.edit', ['gallery' => $gallery, 'categories' => $categories]);
     }
 
     /**
@@ -110,60 +104,60 @@ class GalleriesController extends Controller
     public function update(Request $request, string $id)
     {
         $id = Crypt::decryptString($id);
-        $validated = $request->validate([
-            'image' => 'image|mimes:jpeg,png,jpg',
-            'title' => 'required',
-            'category_id' =>'required'
+        $validated = $request->validate(
+            [
+                'image' => 'image|mimes:jpeg,png,jpg',
+                'title' => 'required',
+                'category_id' => 'required'
             ]
         );
         $gallery = Gallery::find($id);
         $gallery->title = $request->title;
         $gallery->category_id = $request->category_id;
-            if ($image = $request->file('image')) {
-                $destinationPath = 'images/galleries/';
+        if ($image = $request->file('image')) {
+            $destinationPath = 'images/galleries/';
 
-                if ($request->image && file_exists(
-                    public_path($destinationPath.$gallery->image)
-                )) {
-                    
-                    unlink(public_path($destinationPath.$gallery->image));
-                }
-                //sh1 file name
-                $sha1FileName = sha1($image->getClientOriginalName());
-        
-                $imageMimeType = $image->getMimeType();
-        
-                if (strpos($imageMimeType, 'image/') === 0) {
-                    $imageName = date('YmdHis') . '' . str_replace(' ', '', $sha1FileName);
-                    $image->move($destinationPath, $imageName);
-                    
-                    $sourceImagePath = public_path($destinationPath . $imageName);
-                    $webpImagePath = $destinationPath . pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
-                    $sourceImage = null;
-                    switch ($imageMimeType) {
-                        case 'image/jpeg':
-                            $sourceImage = @imagecreatefromjpeg($sourceImagePath);
-                            break;
-                        case 'image/png':
-                            $sourceImage = @imagecreatefrompng($sourceImagePath);
-                            break;
-                        default:
-                            $sourceImage = false;
-                            break;
-                    }
-        
-                    if ($sourceImage !== false) {
-                        imagewebp($sourceImage, $webpImagePath);
-                        imagedestroy($sourceImage);
-                        @unlink($sourceImagePath);
-                        
-                        $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
-    
-                    }
-                }
-            } else {
-                $imageName = $gallery->image;
+            if ($request->image && file_exists(
+                public_path($destinationPath . $gallery->image)
+            )) {
+
+                unlink(public_path($destinationPath . $gallery->image));
             }
+            //sh1 file name
+            $sha1FileName = sha1($image->getClientOriginalName());
+
+            $imageMimeType = $image->getMimeType();
+
+            if (strpos($imageMimeType, 'image/') === 0) {
+                $imageName = date('YmdHis') . '' . str_replace(' ', '', $sha1FileName);
+                $image->move($destinationPath, $imageName);
+
+                $sourceImagePath = public_path($destinationPath . $imageName);
+                $webpImagePath = $destinationPath . pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
+                $sourceImage = null;
+                switch ($imageMimeType) {
+                    case 'image/jpeg':
+                        $sourceImage = @imagecreatefromjpeg($sourceImagePath);
+                        break;
+                    case 'image/png':
+                        $sourceImage = @imagecreatefrompng($sourceImagePath);
+                        break;
+                    default:
+                        $sourceImage = false;
+                        break;
+                }
+
+                if ($sourceImage !== false) {
+                    imagewebp($sourceImage, $webpImagePath);
+                    imagedestroy($sourceImage);
+                    @unlink($sourceImagePath);
+
+                    $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
+                }
+            }
+        } else {
+            $imageName = $gallery->image;
+        }
 
         $gallery->update(['image' => $imageName]);
 
@@ -177,13 +171,13 @@ class GalleriesController extends Controller
     {
         $id = Crypt::decryptString($id);
         $gallery = Gallery::find($id);
-            $destinationPath = 'images/galleries/';
-            if ($gallery->image && file_exists(
-                public_path($destinationPath.$gallery->image)
-            )) {
-                
-                unlink(public_path($destinationPath.$gallery->image));
-            }
+        $destinationPath = 'images/galleries/';
+        if ($gallery->image && file_exists(
+            public_path($destinationPath . $gallery->image)
+        )) {
+
+            unlink(public_path($destinationPath . $gallery->image));
+        }
         $gallery->delete();
         return redirect()->back()->with('success', 'Gallery deleted successfully!');
     }

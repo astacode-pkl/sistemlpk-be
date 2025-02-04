@@ -20,18 +20,18 @@ class DashboardController extends Controller
         $logo = CompanyProfile::select('logo')->first();
         $companyName = CompanyProfile::select('name')->first();
 
-        
+
         Cache::put('logo', $logo);
         Cache::put('companyName', $companyName);
 
         $countUnread = Contact::where('status', 'unread')->count();
         session(['countUnread' => $countUnread]);
 
-        
+
         if (!Auth::check()) {
             return view('login');
         }
-        // return view('layouts.dashboard');
+        // return view('dashboard');
 
         // incoming
         $categories = Category::count();
@@ -42,6 +42,6 @@ class DashboardController extends Controller
         $inbox = Contact::count();
 
 
-        return view('layouts.dashboard',['categories' => $categories,'galleries' => $galleries, 'regulations' =>$regulatios,'programs'=> $programs,'benefits' => $benefits,'inbox' => $inbox]);
+        return view('dashboard', ['categories' => $categories, 'galleries' => $galleries, 'regulations' => $regulatios, 'programs' => $programs, 'benefits' => $benefits, 'inbox' => $inbox]);
     }
 }

@@ -12,7 +12,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::latest()->get();
-        return view('layouts.categories.categories', compact('categories'));
+        return view('categories.categories', compact('categories'));
     }
 
     /**
@@ -21,7 +21,7 @@ class CategoryController extends Controller
     public function create()
     {
 
-        return view('layouts.categories.create');
+        return view('categories.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class CategoryController extends Controller
     public function show(string $id)
     {
         // $table = Program::find($id);
-        // return view('layouts.program', compact('table'));
+        // return view('program', compact('table'));
     }
 
     /**
@@ -54,7 +54,7 @@ class CategoryController extends Controller
     {
         $id = Crypt::decryptString($id);
         $category = Category::find($id);
-        return view('layouts.categories.edit', compact('category'));
+        return view('categories.edit', compact('category'));
     }
 
     /**

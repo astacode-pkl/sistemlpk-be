@@ -26,7 +26,7 @@ class ContactController extends Controller
         // }
         // untill this
         return view(
-            'layouts.contact',
+            'contact',
             [
                 'contacts' => $contacts
             ]
@@ -79,7 +79,7 @@ class ContactController extends Controller
         $countUnread = Contact::where('status', 'unread')->count();
         session(['countUnread' => $countUnread]);
 
-        return view('layouts.contact', ['contactById' => $contactById, 'contacts' => $contacts]);
+        return view('contact', ['contactById' => $contactById, 'contacts' => $contacts]);
     }
 
 
@@ -95,7 +95,7 @@ class ContactController extends Controller
             ->orWhere('message', 'like', '%' . $keyword . '%')
             ->get();
         $contacts = $contacts->sortByDesc('created_at')->sortByDesc('status');
-        return view('layouts.contact', ['contacts' => $contacts]);
+        return view('contact', ['contacts' => $contacts]);
     }
 
 
