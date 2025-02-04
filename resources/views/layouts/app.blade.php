@@ -29,9 +29,10 @@
     <div id="main-wrapper">
         <!-- Sidebar Start -->
         <aside class="left-sidebar with-vertical position-fixed">
-            <div><!-- ---------------------------------- -->
+            <div>
+                <!-- ----------------------------------- -->
                 <!-- Start Vertical Layout Sidebar -->
-                <!-- ---------------------------------- -->
+                <!-- ----------------------------------- -->
                 <div class=" d-flex align-content-center justify-content-center overflow-hidden">
                     <div class="d-flex align-content-center justify-content-center w-100 p-2">
                         <a href="/"><img src="{{ asset('images/companyprofile/' . $logo) }}" class=" w-100"
@@ -134,6 +135,13 @@
                             </a>
                         </li>
                         <!-- ---------------------------------- -->
+                        <!-- Setting -->
+                        <!-- ---------------------------------- -->
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Setting</span>
+                        </li>
+                        <!-- ---------------------------------- -->
                         <!-- Company Profile -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
@@ -195,14 +203,7 @@
 
 
                                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
-                                    {{-- ------------------------------- --}}
-                                    <!-- ------------------------------- -->
-                                    <!-- start language Dropdown -->
-                                    <!-- ------------------------------- -->
-
-                                    <!-- ------------------------------- -->
-                                    <!-- end language Dropdown -->
-                                    <!-- ------------------------------- -->
+                                    
                                     <!-- ------------------------------- -->
                                     <!-- start profile Dropdown -->
                                     <!-- ------------------------------- -->
@@ -259,7 +260,7 @@
                     <!-- ------------------------------- -->
                     <!--  Mobilenavbar -->
                 </div>
-                {{-- <div class="app-header with-horizontal">
+                <div class="app-header with-horizontal">
                     <nav class="navbar navbar-expand-xl container-fluid p-0">
                         <ul class="navbar-nav align-items-center">
                             <li class="nav-item nav-icon-hover-bg rounded-circle d-flex d-xl-none ms-n2">
@@ -269,10 +270,8 @@
                             </li>
                             <li class="nav-item d-none d-xl-block">
                                 <a href="../main/index.html" class="text-nowrap nav-link">
-                                    <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/logos/dark-logo.svg"
-                                        class="dark-logo" width="180" alt="modernize-img" />
-                                    <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/logos/light-logo.svg"
-                                        class="light-logo" width="180" alt="modernize-img" />
+                                    <img src="{{ asset('images/companyprofile/' . $logo) }}" class="img-fluid"
+                                        width="120" alt="Image-logo" />
                                 </a>
                             </li>
                             <li class="nav-item nav-icon-hover-bg rounded-circle d-none d-xl-flex">
@@ -281,245 +280,23 @@
                                     <i class="ti ti-search"></i>
                                 </a>
                             </li>
-                        </ul>
-                        <ul class="navbar-nav quick-links d-none d-xl-flex align-items-center">
-                            <!-- ------------------------------- -->
-                            <!-- start apps Dropdown -->
-                            <!-- ------------------------------- -->
-                            <li class="nav-item nav-icon-hover-bg rounded w-auto dropdown d-none d-lg-flex">
-                                <div class="hover-dd">
-                                    <a class="nav-link" href="javascript:void(0)">
-                                        Apps<span class="mt-1">
-                                            <i class="ti ti-chevron-down fs-3"></i>
-                                        </span>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-nav dropdown-menu-animate-up py-0">
-                                        <div class="row">
-                                            <div class="col-8">
-                                                <div class="ps-7 pt-7">
-                                                    <div class="border-bottom">
-                                                        <div class="row">
-                                                            <div class="col-6">
-                                                                <div class="position-relative">
-                                                                    <a href="../main/app-chat.html"
-                                                                        class="d-flex align-items-center pb-9 position-relative">
-                                                                        <div
-                                                                            class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                                                                            <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/svgs/icon-dd-chat.svg"
-                                                                                alt="modernize-img" class="img-fluid"
-                                                                                width="24" height="24" />
-                                                                        </div>
-                                                                        <div>
-                                                                            <h6 class="mb-1 fw-semibold fs-3">
-                                                                                Chat Application
-                                                                            </h6>
-                                                                            <span
-                                                                                class="fs-2 d-block text-body-secondary">New
-                                                                                messages arrived</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="../main/app-invoice.html"
-                                                                        class="d-flex align-items-center pb-9 position-relative">
-                                                                        <div
-                                                                            class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                                                                            <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/svgs/icon-dd-invoice.svg"
-                                                                                alt="modernize-img" class="img-fluid"
-                                                                                width="24" height="24" />
-                                                                        </div>
-                                                                        <div>
-                                                                            <h6 class="mb-1 fw-semibold fs-3">Invoice
-                                                                                App</h6>
-                                                                            <span
-                                                                                class="fs-2 d-block text-body-secondary">Get
-                                                                                latest invoice</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="../main/app-contact2.html"
-                                                                        class="d-flex align-items-center pb-9 position-relative">
-                                                                        <div
-                                                                            class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                                                                            <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/svgs/icon-dd-mobile.svg"
-                                                                                alt="modernize-img" class="img-fluid"
-                                                                                width="24" height="24" />
-                                                                        </div>
-                                                                        <div>
-                                                                            <h6 class="mb-1 fw-semibold fs-3">
-                                                                                Contact Application
-                                                                            </h6>
-                                                                            <span
-                                                                                class="fs-2 d-block text-body-secondary">2
-                                                                                Unsaved Contacts</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="../main/app-email.html"
-                                                                        class="d-flex align-items-center pb-9 position-relative">
-                                                                        <div
-                                                                            class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                                                                            <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/svgs/icon-dd-message-box.svg"
-                                                                                alt="modernize-img" class="img-fluid"
-                                                                                width="24" height="24" />
-                                                                        </div>
-                                                                        <div>
-                                                                            <h6 class="mb-1 fw-semibold fs-3">Email App
-                                                                            </h6>
-                                                                            <span
-                                                                                class="fs-2 d-block text-body-secondary">Get
-                                                                                new emails</span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <div class="position-relative">
-                                                                    <a href="../main/page-user-profile.html"
-                                                                        class="d-flex align-items-center pb-9 position-relative">
-                                                                        <div
-                                                                            class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                                                                            <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/svgs/icon-dd-cart.svg"
-                                                                                alt="modernize-img" class="img-fluid"
-                                                                                width="24" height="24" />
-                                                                        </div>
-                                                                        <div>
-                                                                            <h6 class="mb-1 fw-semibold fs-3">
-                                                                                User Profile
-                                                                            </h6>
-                                                                            <span
-                                                                                class="fs-2 d-block text-body-secondary">learn
-                                                                                more information</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="../main/app-calendar.html"
-                                                                        class="d-flex align-items-center pb-9 position-relative">
-                                                                        <div
-                                                                            class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                                                                            <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/svgs/icon-dd-date.svg"
-                                                                                alt="modernize-img" class="img-fluid"
-                                                                                width="24" height="24" />
-                                                                        </div>
-                                                                        <div>
-                                                                            <h6 class="mb-1 fw-semibold fs-3">
-                                                                                Calendar App
-                                                                            </h6>
-                                                                            <span
-                                                                                class="fs-2 d-block text-body-secondary">Get
-                                                                                dates</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="../main/app-contact.html"
-                                                                        class="d-flex align-items-center pb-9 position-relative">
-                                                                        <div
-                                                                            class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                                                                            <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/svgs/icon-dd-lifebuoy.svg"
-                                                                                alt="modernize-img" class="img-fluid"
-                                                                                width="24" height="24" />
-                                                                        </div>
-                                                                        <div>
-                                                                            <h6 class="mb-1 fw-semibold fs-3">
-                                                                                Contact List Table
-                                                                            </h6>
-                                                                            <span
-                                                                                class="fs-2 d-block text-body-secondary">Add
-                                                                                new contact</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="../main/app-notes.html"
-                                                                        class="d-flex align-items-center pb-9 position-relative">
-                                                                        <div
-                                                                            class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                                                                            <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/svgs/icon-dd-application.svg"
-                                                                                alt="modernize-img" class="img-fluid"
-                                                                                width="24" height="24" />
-                                                                        </div>
-                                                                        <div>
-                                                                            <h6 class="mb-1 fw-semibold fs-3">
-                                                                                Notes Application
-                                                                            </h6>
-                                                                            <span
-                                                                                class="fs-2 d-block text-body-secondary">To-do
-                                                                                and Daily tasks</span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row align-items-center py-3">
-                                                        <div class="col-8">
-                                                            <a class="fw-semibold d-flex align-items-center lh-1"
-                                                                href="javascript:void(0)">
-                                                                <i class="ti ti-help fs-6 me-2"></i>Frequently Asked
-                                                                Questions
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <div class="d-flex justify-content-end pe-4">
-                                                                <button class="btn btn-primary">Check</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4 ms-n4">
-                                                <div class="position-relative p-7 border-start h-100">
-                                                    <h5 class="fs-5 mb-9 fw-semibold">Quick Links</h5>
-                                                    <ul class="">
-                                                        <li class="mb-3">
-                                                            <a class="fw-semibold bg-hover-primary"
-                                                                href="../main/page-pricing.html">Pricing Page</a>
-                                                        </li>
-                                                        <li class="mb-3">
-                                                            <a class="fw-semibold bg-hover-primary"
-                                                                href="../main/authentication-login.html">Authentication
-                                                                Design</a>
-                                                        </li>
-                                                        <li class="mb-3">
-                                                            <a class="fw-semibold bg-hover-primary"
-                                                                href="../main/authentication-register.html">Register
-                                                                Now</a>
-                                                        </li>
-                                                        <li class="mb-3">
-                                                            <a class="fw-semibold bg-hover-primary"
-                                                                href="../main/authentication-error.html">404 Error
-                                                                Page</a>
-                                                        </li>
-                                                        <li class="mb-3">
-                                                            <a class="fw-semibold bg-hover-primary"
-                                                                href="../main/app-notes.html">Notes App</a>
-                                                        </li>
-                                                        <li class="mb-3">
-                                                            <a class="fw-semibold bg-hover-primary"
-                                                                href="../main/page-user-profile.html">User
-                                                                Application</a>
-                                                        </li>
-                                                        <li class="mb-3">
-                                                            <a class="fw-semibold bg-hover-primary"
-                                                                href="../main/page-account-settings.html">Account
-                                                                Settings</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- ------------------------------- -->
-                            <!-- end apps Dropdown -->
-                            <!-- ------------------------------- -->
-                            <li class="nav-item dropdown-hover d-none d-lg-block">
-                                <a class="nav-link" href="../main/app-chat.html">Chat</a>
-                            </li>
-                            <li class="nav-item dropdown-hover d-none d-lg-block">
-                                <a class="nav-link" href="../main/app-calendar.html">Calendar</a>
-                            </li>
-                            <li class="nav-item dropdown-hover d-none d-lg-block">
-                                <a class="nav-link" href="../main/app-email.html">Email</a>
+                            <li class="nav-item nav-icon-hover-bg rounded-circle d-none d-lg-flex position-relative">
+                                <a class="nav-link" href="/inbox">
+                                    <i class="ti ti-inbox position-relative"></i>
+                                </a>
+                                @if (Session::get('countUnread') > 0)
+                                    <span
+                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"
+                                        style="font-size: 0.6rem ;">
+                                        {{ Session::get('countUnread') }}
+                                    </span>
+                                @endif
                             </li>
                         </ul>
                         <div class="d-block d-xl-none">
-                            <a href="../main/index.html" class="text-nowrap nav-link">
-                                <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/logos/dark-logo.svg"
-                                    width="180" alt="modernize-img" />
+                            <a href="/" class="text-nowrap nav-link">
+                                <img src="{{ asset('images/companyprofile/' . $logo) }}" width="90"
+                                    alt="Image-logo" />
                             </a>
                         </div>
                         <a class="navbar-toggler nav-icon-hover-bg rounded-circle p-0 mx-0 border-0"
@@ -539,7 +316,7 @@
                                 </a>
                                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
                                     <!-- ------------------------------- -->
-                                    <!-- start language Dropdown -->
+                                    <!-- start Night Mode Dropdown -->
                                     <!-- ------------------------------- -->
                                     <li class="nav-item nav-icon-hover-bg rounded-circle">
                                         <a class="nav-link moon dark-layout" href="javascript:void(0)">
@@ -549,181 +326,10 @@
                                             <i class="ti ti-sun sun"></i>
                                         </a>
                                     </li>
-                                    <li class="nav-item nav-icon-hover-bg rounded-circle dropdown">
-                                        <a class="nav-link" href="javascript:void(0)" id="drop2"
-                                            aria-expanded="false">
-                                            <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/svgs/icon-flag-en.svg"
-                                                alt="modernize-img" width="20px" height="20px"
-                                                class="rounded-circle object-fit-cover round-20" />
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
-                                            aria-labelledby="drop2">
-                                            <div class="message-body">
-                                                <a href="javascript:void(0)"
-                                                    class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
-                                                    <div class="position-relative">
-                                                        <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/svgs/icon-flag-en.svg"
-                                                            alt="modernize-img" width="20px" height="20px"
-                                                            class="rounded-circle object-fit-cover round-20" />
-                                                    </div>
-                                                    <p class="mb-0 fs-3">English (UK)</p>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
-                                                    <div class="position-relative">
-                                                        <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/svgs/icon-flag-cn.svg"
-                                                            alt="modernize-img" width="20px" height="20px"
-                                                            class="rounded-circle object-fit-cover round-20" />
-                                                    </div>
-                                                    <p class="mb-0 fs-3">中国人 (Chinese)</p>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
-                                                    <div class="position-relative">
-                                                        <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/svgs/icon-flag-fr.svg"
-                                                            alt="modernize-img" width="20px" height="20px"
-                                                            class="rounded-circle object-fit-cover round-20" />
-                                                    </div>
-                                                    <p class="mb-0 fs-3">français (French)</p>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="d-flex align-items-center gap-2 py-3 px-4 dropdown-item">
-                                                    <div class="position-relative">
-                                                        <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/svgs/icon-flag-sa.svg"
-                                                            alt="modernize-img" width="20px" height="20px"
-                                                            class="rounded-circle object-fit-cover round-20" />
-                                                    </div>
-                                                    <p class="mb-0 fs-3">عربي (Arabic)</p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
                                     <!-- ------------------------------- -->
-                                    <!-- end language Dropdown -->
+                                    <!-- end Night Mode Dropdown -->
                                     <!-- ------------------------------- -->
 
-                                    <!-- ------------------------------- -->
-                                    <!-- start shopping cart Dropdown -->
-                                    <!-- ------------------------------- -->
-                                    <li class="nav-item nav-icon-hover-bg rounded-circle">
-                                        <a class="nav-link position-relative" href="javascript:void(0)"
-                                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                                            aria-controls="offcanvasRight">
-                                            <i class="ti ti-basket"></i>
-                                            <span class="popup-badge rounded-pill bg-danger text-white fs-2">2</span>
-                                        </a>
-                                    </li>
-                                    <!-- ------------------------------- -->
-                                    <!-- end shopping cart Dropdown -->
-                                    <!-- ------------------------------- -->
-
-                                    <!-- ------------------------------- -->
-                                    <!-- start notification Dropdown -->
-                                    <!-- ------------------------------- -->
-                                    <li class="nav-item nav-icon-hover-bg rounded-circle dropdown">
-                                        <a class="nav-link position-relative" href="javascript:void(0)"
-                                            id="drop2" aria-expanded="false">
-                                            <i class="ti ti-bell-ringing"></i>
-                                            <div class="notification bg-primary rounded-circle"></div>
-                                        </a>
-                                        <div class="dropdown-menu content-dd dropdown-menu-end dropdown-menu-animate-up"
-                                            aria-labelledby="drop2">
-                                            <div class="d-flex align-items-center justify-content-between py-3 px-7">
-                                                <h5 class="mb-0 fs-5 fw-semibold">Notifications</h5>
-                                                <span class="badge text-bg-primary rounded-4 px-3 py-1 lh-sm">5
-                                                    new</span>
-                                            </div>
-                                            <div class="message-body" data-simplebar>
-                                                <a href="javascript:void(0)"
-                                                    class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                                    <span class="me-3">
-                                                        <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/profile/user-2.jpg"
-                                                            alt="user" class="rounded-circle" width="48"
-                                                            height="48" />
-                                                    </span>
-                                                    <div class="w-100">
-                                                        <h6 class="mb-1 fw-semibold lh-base">Roman Joined the Team!
-                                                        </h6>
-                                                        <span class="fs-2 d-block text-body-secondary">Congratulate
-                                                            him</span>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                                    <span class="me-3">
-                                                        <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/profile/user-3.jpg"
-                                                            alt="user" class="rounded-circle" width="48"
-                                                            height="48" />
-                                                    </span>
-                                                    <div class="w-100">
-                                                        <h6 class="mb-1 fw-semibold lh-base">New message</h6>
-                                                        <span class="fs-2 d-block text-body-secondary">Salma sent you
-                                                            new message</span>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                                    <span class="me-3">
-                                                        <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/profile/user-4.jpg"
-                                                            alt="user" class="rounded-circle" width="48"
-                                                            height="48" />
-                                                    </span>
-                                                    <div class="w-100">
-                                                        <h6 class="mb-1 fw-semibold lh-base">Bianca sent payment</h6>
-                                                        <span class="fs-2 d-block text-body-secondary">Check your
-                                                            earnings</span>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                                    <span class="me-3">
-                                                        <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/profile/user-5.jpg"
-                                                            alt="user" class="rounded-circle" width="48"
-                                                            height="48" />
-                                                    </span>
-                                                    <div class="w-100">
-                                                        <h6 class="mb-1 fw-semibold lh-base">Jolly completed tasks</h6>
-                                                        <span class="fs-2 d-block text-body-secondary">Assign her new
-                                                            tasks</span>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                                    <span class="me-3">
-                                                        <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/profile/user-6.jpg"
-                                                            alt="user" class="rounded-circle" width="48"
-                                                            height="48" />
-                                                    </span>
-                                                    <div class="w-100">
-                                                        <h6 class="mb-1 fw-semibold lh-base">John received payment</h6>
-                                                        <span class="fs-2 d-block text-body-secondary">$230 deducted
-                                                            from account</span>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    class="py-6 px-7 d-flex align-items-center dropdown-item">
-                                                    <span class="me-3">
-                                                        <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/profile/user-7.jpg"
-                                                            alt="user" class="rounded-circle" width="48"
-                                                            height="48" />
-                                                    </span>
-                                                    <div class="w-100">
-                                                        <h6 class="mb-1 fw-semibold lh-base">Roman Joined the Team!
-                                                        </h6>
-                                                        <span class="fs-2 d-block text-body-secondary">Congratulate
-                                                            him</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="py-6 px-7 mb-1">
-                                                <button class="btn btn-outline-primary w-100">See All
-                                                    Notifications</button>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <!-- ------------------------------- -->
-                                    <!-- end notification Dropdown -->
-                                    <!-- ------------------------------- -->
 
                                     <!-- ------------------------------- -->
                                     <!-- start profile Dropdown -->
@@ -733,8 +339,8 @@
                                             aria-expanded="false">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-profile-img">
-                                                    <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/profile/user-1.jpg"
-                                                        class="rounded-circle" width="35" height="35"
+                                                    <img src="{{ asset('images/companyprofile/' . $logo) }}"
+                                                        class="rounded-circle" width="auto" height="50"
                                                         alt="modernize-img" />
                                                 </div>
                                             </div>
@@ -746,77 +352,23 @@
                                                     <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
                                                 </div>
                                                 <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                                                    <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/profile/user-1.jpg"
-                                                        class="rounded-circle" width="80" height="80"
-                                                        alt="modernize-img" />
+                                                    <img src="{{ asset('images/companyprofile/' . $logo) }}"
+                                                        class="rounded-circle img-fluid w-30" alt="logo" />
                                                     <div class="ms-3">
-                                                        <h5 class="mb-1 fs-3">Mathew Anderson</h5>
-                                                        <span class="mb-1 d-block">Designer</span>
+                                                        <h5 class="mb-1 fs-3">{{ Auth::user()->name }}</h5>
                                                         <p class="mb-0 d-flex align-items-center gap-2">
-                                                            <i class="ti ti-mail fs-4"></i> info@modernize.com
+                                                            <i class="ti ti-mail fs-4"></i> {{ Auth::user()->email }}
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <div class="message-body">
-                                                    <a href="../main/page-user-profile.html"
-                                                        class="py-8 px-7 mt-8 d-flex align-items-center">
-                                                        <span
-                                                            class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6">
-                                                            <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/svgs/icon-account.svg"
-                                                                alt="modernize-img" width="24" height="24" />
-                                                        </span>
-                                                        <div class="w-100 ps-3">
-                                                            <h6 class="mb-1 fs-3 fw-semibold lh-base">My Profile</h6>
-                                                            <span class="fs-2 d-block text-body-secondary">Account
-                                                                Settings</span>
-                                                        </div>
-                                                    </a>
-                                                    <a href="../main/app-email.html"
-                                                        class="py-8 px-7 d-flex align-items-center">
-                                                        <span
-                                                            class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6">
-                                                            <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/svgs/icon-inbox.svg"
-                                                                alt="modernize-img" width="24" height="24" />
-                                                        </span>
-                                                        <div class="w-100 ps-3">
-                                                            <h6 class="mb-1 fs-3 fw-semibold lh-base">My Inbox</h6>
-                                                            <span class="fs-2 d-block text-body-secondary">Messages &
-                                                                Emails</span>
-                                                        </div>
-                                                    </a>
-                                                    <a href="../main/app-notes.html"
-                                                        class="py-8 px-7 d-flex align-items-center">
-                                                        <span
-                                                            class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6">
-                                                            <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/svgs/icon-tasks.svg"
-                                                                alt="modernize-img" width="24" height="24" />
-                                                        </span>
-                                                        <div class="w-100 ps-3">
-                                                            <h6 class="mb-1 fs-3 fw-semibold lh-base">My Task</h6>
-                                                            <span class="fs-2 d-block text-body-secondary">To-do and
-                                                                Daily Tasks</span>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="d-grid py-4 px-7 pt-8">
-                                                    <div
-                                                        class="upgrade-plan bg-primary-subtle position-relative overflow-hidden rounded-4 p-4 mb-9">
-                                                        <div class="row">
-                                                            <div class="col-6">
-                                                                <h5 class="fs-4 mb-3 fw-semibold">Unlimited Access</h5>
-                                                                <button class="btn btn-primary">Upgrade</button>
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <div class="m-n4 unlimited-img">
-                                                                    <img src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/backgrounds/unlimited-bg.png"
-                                                                        alt="modernize-img" class="w-100" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
+
+                                                <form action="/logout" method="post">
+                                                    <div class="d-grid py-4 px-7 pt-8">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-primary">Log
+                                                            Out</button>
                                                     </div>
-                                                    <a href="../main/authentication-login.html"
-                                                        class="btn btn-outline-primary">Log Out</a>
-                                                </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </li>
@@ -827,29 +379,29 @@
                             </div>
                         </div>
                     </nav>
-                </div> --}}
+                </div>
             </header>
             <!--  Header End -->
-            {{-- <aside class="left-sidebar with-horizontal">
+            <aside class="left-sidebar with-horizontal">
                 <!-- Sidebar scroll-->
                 <div>
                     <!-- Sidebar navigation-->
                     <nav id="sidebarnavh" class="sidebar-nav scroll-sidebar container-fluid">
                         <ul id="sidebarnav">
-                            
+
                             <!-- =================== -->
                             <!-- Dashboard -->
                             <!-- =================== -->
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="/" aria-expanded="false">
+                                <a class="sidebar-link" href="/">
                                     <span>
-                                        <i class="ti ti-home-2"></i>
+                                        <i class="ti ti-home"></i>
                                     </span>
                                     <span class="hide-menu">Home</span>
                                 </a>
                             </li>
                             <!-- ============================= -->
-                            <!-- Apps -->
+                            <!-- Data -->
                             <!-- ============================= -->
                             <li class="nav-small-cap">
                                 <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -865,121 +417,60 @@
                                 </a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item">
-                                        <a href="../main/app-calendar.html" class="sidebar-link">
-                                            <i class="ti ti-calendar"></i>
-                                            <span class="hide-menu">Calendar</span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="../main/app-kanban.html" class="sidebar-link">
-                                            <i class="ti ti-layout-kanban"></i>
-                                            <span class="hide-menu">Kanban</span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="../main/app-chat.html" class="sidebar-link">
-                                            <i class="ti ti-message-dots"></i>
-                                            <span class="hide-menu">Chat</span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a class="sidebar-link" href="../main/app-email.html" aria-expanded="false">
-                                            <span>
-                                                <i class="ti ti-mail"></i>
-                                            </span>
-                                            <span class="hide-menu">Email</span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="../main/app-contact.html" class="sidebar-link">
-                                            <i class="ti ti-phone"></i>
-                                            <span class="hide-menu">Contact Table</span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="../main/app-contact2.html" class="sidebar-link">
+                                        <a href="../categories" class="sidebar-link">
                                             <i class="ti ti-list-details"></i>
-                                            <span class="hide-menu">Contact List</span>
+                                            <span class="hide-menu">Categories</span>
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="../main/app-notes.html" class="sidebar-link">
-                                            <i class="ti ti-notes"></i>
-                                            <span class="hide-menu">Notes</span>
+                                        <a href="/galleries" class="sidebar-link">
+                                            <i class="ti ti-photo"></i>
+                                            <span class="hide-menu">Galleries</span>
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="../main/app-invoice.html" class="sidebar-link">
-                                            <i class="ti ti-file-text"></i>
-                                            <span class="hide-menu">Invoice</span>
+                                        <a href="/regulations" class="sidebar-link">
+                                            <i class="ti ti-book"></i>
+                                            <span class="hide-menu">Regulations</span>
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="../main/page-user-profile.html" class="sidebar-link">
-                                            <i class="ti ti-user-circle"></i>
-                                            <span class="hide-menu">User Profile</span>
+                                        <a href="/programs" class="sidebar-link">
+                                            <i class="ti ti-layout"></i>
+                                            <span class="hide-menu">Programs</span>
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="../main/blog-posts.html" class="sidebar-link">
-                                            <i class="ti ti-article"></i>
-                                            <span class="hide-menu">Posts</span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="../main/blog-detail.html" class="sidebar-link">
-                                            <i class="ti ti-details"></i>
-                                            <span class="hide-menu">Detail</span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="../main/eco-shop.html" class="sidebar-link">
-                                            <i class="ti ti-shopping-cart"></i>
-                                            <span class="hide-menu">Shop</span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="../main/eco-shop-detail.html" class="sidebar-link">
-                                            <i class="ti ti-basket"></i>
-                                            <span class="hide-menu">Shop Detail</span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="../main/eco-product-list.html" class="sidebar-link">
-                                            <i class="ti ti-list-check"></i>
-                                            <span class="hide-menu">List</span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="../main/eco-checkout.html" class="sidebar-link">
-                                            <i class="ti ti-brand-shopee"></i>
-                                            <span class="hide-menu">Checkout</span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a class="sidebar-link" href="../main/eco-add-product.html">
-                                            <i class="ti ti-file-plus"></i>
-                                            <span class="hide-menu">Add Product</span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a class="sidebar-link" href="../main/eco-edit-product.html">
-                                            <i class="ti ti-file-pencil"></i>
-                                            <span class="hide-menu">Edit Product</span>
+                                        <a href="/benefits" class="sidebar-link">
+                                            <i class="ti ti-chart-pie"></i>
+                                            <span class="hide-menu">Benefits</span>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
+
+                            <!-- =================== -->
+                            <!-- Dashboard -->
+                            <!-- =================== -->
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="/companyprofile">
+                                    <span>
+                                        <i class="ti ti-id-badge"></i>
+                                    </span>
+                                    <span class="hide-menu">Company Profile</span>
+                                </a>
+                            </li>
                             
+
                         </ul>
                     </nav>
                     <!-- End Sidebar navigation -->
                 </div>
                 <!-- End Sidebar scroll-->
 
-            </aside> --}}
+            </aside>
 
-            
+
             <div class="body-wrapper">
                 <div class="container-fluid">
                     @yield('content')
@@ -1010,8 +501,8 @@
                     <h6 class="fw-semibold fs-4 mb-2">Theme</h6>
 
                     <div class="d-flex flex-row gap-3 customizer-box" role="group">
-                        <input type="radio" class="btn-check light-layout" name="theme-layout"
-                            id="light-layout" autocomplete="off" />
+                        <input type="radio" class="btn-check light-layout" name="theme-layout" id="light-layout"
+                            autocomplete="off" />
                         <label class="btn p-9 btn-outline-primary rounded-2" for="light-layout">
                             <i class="icon ti ti-brightness-up fs-7 me-2"></i>Light
                         </label>
@@ -1074,8 +565,8 @@
                             </div>
                         </label>
 
-                        <input type="radio" class="btn-check" name="color-theme-layout"
-                            id="green-theme-layout" autocomplete="off" />
+                        <input type="radio" class="btn-check" name="color-theme-layout" id="green-theme-layout"
+                            autocomplete="off" />
                         <label class="btn p-9 btn-outline-primary d-flex align-items-center justify-content-center"
                             onclick="handleColorTheme('Green_Theme')" for="green-theme-layout"
                             data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="GREEN_THEME">
@@ -1088,16 +579,16 @@
                         <input type="radio" class="btn-check" name="color-theme-layout" id="cyan-theme-layout"
                             autocomplete="off" />
                         <label class="btn p-9 btn-outline-primary d-flex align-items-center justify-content-center"
-                            onclick="handleColorTheme('Cyan_Theme')" for="cyan-theme-layout"
-                            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="CYAN_THEME">
+                            onclick="handleColorTheme('Cyan_Theme')" for="cyan-theme-layout" data-bs-toggle="tooltip"
+                            data-bs-placement="top" data-bs-title="CYAN_THEME">
                             <div
                                 class="color-box rounded-circle d-flex align-items-center justify-content-center skin-5">
                                 <i class="ti ti-check text-white d-flex icon fs-5"></i>
                             </div>
                         </label>
 
-                        <input type="radio" class="btn-check" name="color-theme-layout"
-                            id="orange-theme-layout" autocomplete="off" />
+                        <input type="radio" class="btn-check" name="color-theme-layout" id="orange-theme-layout"
+                            autocomplete="off" />
                         <label class="btn p-9 btn-outline-primary d-flex align-items-center justify-content-center"
                             onclick="handleColorTheme('Orange_Theme')" for="orange-theme-layout"
                             data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="ORANGE_THEME">
@@ -1186,8 +677,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content rounded-1">
                 <div class="modal-header border-bottom">
-                    <input type="search" class="form-control fs-3" placeholder="Search here"
-                        id="search_pages" />
+                    <input type="search" class="form-control fs-3" placeholder="Search here" id="search_pages" />
                     <a href="javascript:void(0)" data-bs-dismiss="modal" class="lh-1">
                         <i class="ti ti-x fs-5 ms-3"></i>
                     </a>
@@ -1280,4 +770,4 @@
     @stack('script')
 </body>
 
-</html>
+</html
