@@ -31,12 +31,19 @@ class RegulationController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required',
-            'icon' =>'required'
+            'title' => 'required|string|max:255',
+            'icon' =>['required', function ($attribute, $value, $fail) {
+                libxml_use_internal_errors(true); // Hindari error PHP jika XML tidak valid
+                $xml = simplexml_load_string($value);
+                if ($xml === false || $xml->getName() !== 'svg') {
+                    $fail('The '.$attribute.' must be a valid SVG XML.');
+                }
+            }]
             ]
         );
 
-        Regulation::create($validated);
+
+        Regulation::create(['title' => $validated['title'], 'icon' => $validated['icon']]);
         return redirect('/regulations')->with('success', 'Regulation created successfully!');
     }
 
@@ -63,6 +70,18 @@ class RegulationController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'icon' =>['required', function ($attribute, $value, $fail) {
+                libxml_use_internal_errors(true); // Hindari error PHP jika XML tidak valid
+                $xml = simplexml_load_string($value);
+                if ($xml === false || $xml->getName() !== 'svg') {
+                    $fail('The '.$attribute.' must be a valid SVG XML.');
+                }
+            }]
+            ]
+        );
+
         $id = Crypt::decryptString($id);
         $table = Regulation::find($id);
         $table->title = $request->title;

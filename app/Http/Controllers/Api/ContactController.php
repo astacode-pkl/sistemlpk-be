@@ -26,9 +26,9 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $validator = validator()->make($request->all(),[
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/',
             'phone_number' => 'required|min:12',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email:rfc,dns|unique:users',
             'message' => 'required'
         ]);
 

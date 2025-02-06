@@ -28,7 +28,7 @@
                                         <div class=" mb-3">
                                             <label for="floatingInput">title</label>
                                             <input type="text"
-                                                class="form-control @error('icon') is-invalid      
+                                                class="form-control @error('title') is-invalid      
                                     @enderror"
                                                 name="title" id="floatingInput" placeholder="title..." required>
                                             @error('title')

@@ -31,7 +31,7 @@ class CategoryController extends Controller
     {
         $validated = $request->validate(
             [
-                'title' => 'required',
+                'title' => 'required|string:value|max:50|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/',
             ]
         );
         Category::create($validated);
@@ -62,10 +62,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validated = $request->validate(
+            [
+                'title' => 'required|string|max:30|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/',
+            ]
+        );
         $id = Crypt::decryptString($id);
         $category = Category::find($id);
-        $category->title = $request->title;
-
+        $category->title = $validated['title'];
         $category->update();
 
         return redirect('/categories')->with('success', 'Caregory updated successfully!');

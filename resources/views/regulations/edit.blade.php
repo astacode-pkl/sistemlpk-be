@@ -13,12 +13,7 @@
                         <div class="row pt-3">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <div class="position-relative d-none " id="display">
-                                        <img src="" class="card-img-top rounded-0 d-block" id="preview"
-                                            alt="Icon">
-                                    </div>
                                     <label class="control-label" for="image">Icon</label>
-
                                     <div class="form-floating mb-3">
                                         <textarea
                                             class="form-control @error('icon')
@@ -26,13 +21,13 @@
                                             @enderror "
                                             placeholder="Leave a comment here" id="floatingTextarea" name="icon">{{ $regulation->icon }}</textarea>
                                         <label for="floatingTextarea">icon</label>
+                                        @error('icon')
+                                            <div id="validationServer04Feedback" class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
 
-                                    @error('icon')
-                                        <div id="validationServer04Feedback" class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
                                 </div>
 
                                 <div class="mb-3">

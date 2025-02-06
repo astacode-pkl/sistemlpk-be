@@ -35,7 +35,7 @@ class ProgramController extends Controller
         $validated = $request->validate(
             [
                 'image' => 'required|image|mimes:jpeg,png,jpg',
-                'title' => 'required',
+                'title' => 'required|max:255',
                 'description' => 'required'
             ]
         );

@@ -55,7 +55,11 @@ class CompanyProfileController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
+        $request->validate(
+            [
+                'logo' => 'required|image|mimes:jpeg,png,jpg'
+            ]
+        );
         $table = CompanyProfile::find($id);
         $table->name = $request->name;
         $table->slogan = $request->slogan;

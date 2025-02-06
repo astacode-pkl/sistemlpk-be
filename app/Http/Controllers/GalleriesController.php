@@ -35,8 +35,8 @@ class GalleriesController extends Controller
 
         $validated = $request->validate(
             [
-                'category_id' => 'required',
-                'title' => 'required',
+                'category_id' => 'required|numeric',
+                'title' => 'required|max:100',
                 'image' => 'required|image|mimes:jpeg,png,jpg'
             ]
         );
@@ -71,9 +71,9 @@ class GalleriesController extends Controller
         $id = Crypt::decryptString($id);
         $validated = $request->validate(
             [
-                'image' => 'image|mimes:jpeg,png,jpg',
-                'title' => 'required',
-                'category_id' => 'required'
+                'category_id' => 'required|numeric',
+                'title' => 'required|string|max:100',
+                'image' => 'required|image|mimes:jpeg,png,jpg'
             ]
         );
         $gallery = Gallery::find($id);
