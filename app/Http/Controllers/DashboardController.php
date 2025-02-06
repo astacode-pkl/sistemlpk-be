@@ -19,7 +19,7 @@ class DashboardController extends Controller
     {
         $logo = CompanyProfile::select('logo')->first();
         $companyName = CompanyProfile::select('name')->first();
-
+        
 
         Cache::put('logo', $logo);
         Cache::put('companyName', $companyName);

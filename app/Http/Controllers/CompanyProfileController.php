@@ -68,53 +68,7 @@ class CompanyProfileController extends Controller
         $table->tiktok = $request->tiktok;
         $table->address = $request->address;
         $table->map = $request->map;
-        if ($image = $request->file('logo')) {
-            $destinationPath = 'images/companyprofile/';
-
-            if ($request->logo && file_exists(
-                public_path($destinationPath.$table->logo)
-            )) {
-                
-                unlink(public_path($destinationPath.$table->logo));
-            }
-            //sh1 file name
-            $sha1FileName = sha1($image->getClientOriginalName());
-    
-            $imageMimeType = $image->getMimeType();
-    
-            if (strpos($imageMimeType, 'image/') === 0) {
-                $imageName = date('YmdHis') . '' . str_replace(' ', '', $sha1FileName);
-                $image->move($destinationPath, $imageName);
-                
-                $sourceImagePath = public_path($destinationPath . $imageName);
-                $webpImagePath = $destinationPath . pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
-                $sourceImage = null;
-                switch ($imageMimeType) {
-                    case 'image/jpeg':
-                        $sourceImage = @imagecreatefromjpeg($sourceImagePath);
-                        break;
-                    case 'image/png':
-                        $sourceImage = @imagecreatefrompng($sourceImagePath);
-                        break;
-                    default:
-                        $sourceImage = false;
-                        break;
-                }
-    
-                if ($sourceImage !== false) {
-                    imagewebp($sourceImage, $webpImagePath);
-                    imagedestroy($sourceImage);
-                    @unlink($sourceImagePath);
-                    
-                    $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
-
-                }
-            }
-        } else {
-            $imageName = $table->logo;
-        }
-       
-
+        $imageName = $this->updateImage('images/companyprofile/',$table->logo,$request->file('logo'));
         $table->update(['logo' => $imageName]);
         return redirect()->back()->with('success', 'Profile updated successfully!');
     }
