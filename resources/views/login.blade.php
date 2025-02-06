@@ -3,7 +3,7 @@
 
 <head>
     <!--  Title -->
-    <title>{{ $companyName }}</title>
+    <title>{{ $companyName }} - Login</title>
     <!--  Required Meta Tag -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,7 +14,7 @@
     <meta name="keywords" content="Mordenize" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--  Favicon -->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('template/back') }}/dist/images/logos/favicon.ico" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/companyprofile/'.$logo) }}" />
     <!-- Core Css -->
     <link id="themeColors" rel="stylesheet" href="{{ asset('template/back') }}/dist/css/style.min.css" />
 </head>
@@ -33,6 +33,14 @@
         <div class="position-relative overflow-hidden radial-gradient min-vh-100">
             <div class="position-relative z-index-5">
                 <div class="row">
+                    <!-- Start Profile logo -->
+                    <div class="flex justify-content-start fixed">
+                        <img src="{{asset('images/companyprofile/'.$logo) }}"
+                        alt="Logo"
+                        class="m-2"
+                        width="100px" height="auto" style="position: fixed;" >
+                    </div>
+                    <!-- End Profile logo -->
                     <div class="col-xl-7 col-xxl-8">
                         
                         <div class="d-none d-xl-flex align-items-center justify-content-center"
@@ -42,31 +50,31 @@
                         </div>
                     </div>
                     <div class="col-xl-5 col-xxl-4">
-                        <div
-                            class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
+                        <div class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
 
                             <div class="col-sm-8 col-md-6 col-xl-9 position-relative">
                                 <x-alert></x-alert>
                                 <h2 class="mb-3 fs-7 fw-bolder">Log in</h2>
-                                <p class=" mb-9">To manipulate the content</p>
+                                <p class=" mb-9">Please enter your email and password to login</p>
                                 <form action="/login" method="post">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Email</label>
                                         <input type="email" name="email" class="form-control"
-                                            id="exampleInputEmail1" aria-describedby="emailHelp">
+                                            id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email">
                                     </div>
                                     <div class="mb-4">
                                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                                        <input type="password" name="password" class="form-control"
-                                            id="exampleInputPassword1">
+                                        <div class="input-group">
+                                            <input type="password" name="password" class="form-control"
+                                                id="exampleInputPassword1" placeholder="Enter your password">
+                                            <span class="input-group-text" onclick="togglePassword()">
+                                                <i class="fa fa-eye" id="togglePassword"></i>
+                                            </span>
+                                        </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Log
-                                        In</button>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <p class="fs-4 mb-0 fw-medium">Don't have an account?</p>
-                                        <a class="text-primary fw-medium ms-2" href="/register">Register</a>
-                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Log In</button>
                                 </form>
                             </div>
                         </div>
@@ -89,5 +97,19 @@
 
     <script src="{{ asset('template/back') }}/dist/js/custom.js"></script>
 </body>
-
+<script>
+    function togglePassword() {
+        var x = document.getElementById("exampleInputPassword1");
+        var y = document.getElementById("togglePassword");
+        if (x.type === "password") {
+            x.type = "text";
+            y.classList.remove("fa-eye");
+            y.classList.add("fa-eye-slash");
+        } else {
+            x.type = "password"; 
+            y.classList.remove("fa-eye-slash");
+            y.classList.add("fa-eye");
+        }
+    }
+</script>
 </html>

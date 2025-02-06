@@ -171,12 +171,13 @@
                                     <i class="ti ti-menu-2"></i>
                                 </a>
                             </li>
-                            <li class="nav-item nav-icon-hover-bg rounded-circle d-none d-lg-flex">
+                            {{-- search --}}
+                            {{-- <li class="nav-item nav-icon-hover-bg rounded-circle d-none d-lg-flex">
                                 <a class="nav-link" href="javascript:void(0)" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal">
                                     <i class="ti ti-search"></i>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item nav-icon-hover-bg rounded-circle d-none d-lg-flex position-relative">
                                 <a class="nav-link" href="/inbox">
                                     <i class="ti ti-inbox position-relative"></i>
@@ -472,7 +473,7 @@
 
 
             <div class="body-wrapper">
-                <div class="container-fluid">
+                <div class="max-width mx-4">
                     @yield('content')
                 </div>
             </div>

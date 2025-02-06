@@ -19,10 +19,6 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/login',  function () {
         return view('login');
     })->name('login');
-    Route::post('/register', [UserController::class, 'register']);
-    Route::get('/register',  function () {
-        return view('register');
-    });
     
 });
 

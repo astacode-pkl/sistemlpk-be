@@ -35,13 +35,31 @@ class DashboardController extends Controller
 
         // incoming
         $categories = Category::count();
+        $categoriesLastcreated = $categories ? Category::latest()->first()->created_at->diffForHumans() : 'Not created yet';
+
         $galleries = Gallery::count();
+        $galleriesLastcreated = $galleries ? Gallery::latest()->first()->created_at->diffForHumans() : 'Not created yet';
+
         $regulatios = Regulation::count();
+        $regulationsLastcreated = $regulatios ? Regulation::latest()->first()->created_at->diffForHumans() : 'Not created yet';
+
         $programs = Program::count();
+        $programsLastcreated = $programs ? Program::latest()->first()->created_at->diffForHumans() : 'Not created yet';
+
         $benefits = Benefit::count();
+        $benefitsLastcreated = $benefits ? Benefit::latest()->first()->created_at->diffForHumans() : 'Not created yet';
+
         $inbox = Contact::count();
+        $inboxLastcreated = $inbox ? Contact::latest()->first()->created_at->diffForHumans() : 'No message yet';
 
 
-        return view('dashboard', ['categories' => $categories, 'galleries' => $galleries, 'regulations' => $regulatios, 'programs' => $programs, 'benefits' => $benefits, 'inbox' => $inbox]);
+        return view('dashboard', [
+            'categories' => $categories, 'categoriesLastcreated' => $categoriesLastcreated,
+         'galleries' => $galleries, 'galleriesLastcreated' => $galleriesLastcreated,
+         'regulations' => $regulatios, 'regulationsLastcreated' => $regulationsLastcreated,
+         'programs' => $programs, 'programsLastcreated' => $programsLastcreated,
+         'benefits' => $benefits, 'benefitsLastcreated' => $benefitsLastcreated,
+         'inbox' => $inbox, 'inboxLastcreated' => $inboxLastcreated,
+        ]);
     }
 }
