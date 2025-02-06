@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 use App\Models\Category;
+use App\Models\LogHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
@@ -35,6 +36,8 @@ class CategoryController extends Controller
             ]
         );
         Category::create($validated);
+        LogHistory::record('Create',  auth()->user()->name.' created new Category');
+
         return redirect('/categories')->with('success', 'Category created successfully!');
     }
 
@@ -71,6 +74,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->title = $validated['title'];
         $category->update();
+        LogHistory::record('Update',  auth()->user()->name.' updated Category');
 
         return redirect('/categories')->with('success', 'Caregory updated successfully!');
     }
@@ -101,6 +105,7 @@ class CategoryController extends Controller
         // -------->
 
         $category->delete();
+        LogHistory::record('Delete',  auth()->user()->name.' deleted Category');
         return redirect()->back()->with('success', 'Category deleted successfully');
     }
 }

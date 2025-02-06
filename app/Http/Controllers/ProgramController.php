@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LogHistory;
 use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -42,6 +43,8 @@ class ProgramController extends Controller
         // $program = new Program;
         $imageName = $this->uploadImage('images/programs/',$request->file('image'));
         Program::create(['image' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
+        LogHistory::record('Create',  auth()->user()->name.' created new Program');
+        
         return redirect()->route('programs.index')->with('success', 'Program successfully created');
     }
 
@@ -82,7 +85,7 @@ class ProgramController extends Controller
         $program->description = $request->description;
         $imageName = $this->updateImage('images/programs/',$program->image,$request->file('image'));
         $program->update(['image' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
-
+        LogHistory::record('Update',  auth()->user()->name.' updated Program');
         return redirect('/programs')->with('success', 'Gallery updated successfully!');
     }
 
@@ -99,6 +102,7 @@ class ProgramController extends Controller
         $program = Program::find($id);
         $imageName = $this->destroyImage('images/programs/',$program->image);
         $program->delete(['image' => $imageName]);
+        LogHistory::record('Delete',  auth()->user()->name.' deleted Program');
         return redirect()->back()->with('success', 'Program successfully deleted');
     }
 }

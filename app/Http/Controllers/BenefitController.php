@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Benefit;
+use App\Models\LogHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
@@ -43,7 +44,8 @@ class BenefitController extends Controller
         );
 
         Benefit::create(['title' => $validated['title'], 'icon' => $validated['icon']]);
-        return redirect('/benefits')->with('success', 'Regulation created successfully!');
+        LogHistory::record('Create',  auth()->user()->name.' created new Benefit');
+        return redirect('/benefits')->with('success', 'Benefit created successfully!');
     }
 
     /**
@@ -85,6 +87,7 @@ class BenefitController extends Controller
         $table->title = $request->title;
         $table->icon = $request->icon;
         $table->update();
+        LogHistory::record('Update',  auth()->user()->name.' updated Benefit');
         return redirect('/benefits')->with('success', 'data success updated');
     }
 
@@ -96,6 +99,7 @@ class BenefitController extends Controller
         $id = Crypt::decryptString($id);
         $table = Benefit::find($id);
         $table->delete();
+        LogHistory::record('Delete',  auth()->user()->name.' deleted Benefit');
         return redirect()->back()->with('success', 'data success deleted');
     }
 }

@@ -152,6 +152,14 @@
                                 <span class="hide-menu">Company Profile</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/loghistories" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-history"></i>
+                                </span>
+                                <span class="hide-menu">Log Histories</span>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -228,7 +236,7 @@
                                                     <img src="{{ asset('images/companyprofile/' . $logo) }}"
                                                         class="rounded-circle img-fluid w-30" alt="logo" />
                                                     <div class="ms-3">
-                                                        <h5 class="mb-1 fs-3">{{ Auth::user()->name }}</h5>
+                                                        <h5 class="mb-1 fs-3">{{ auth()->user()->name }}</h5>
                                                         <p class="mb-0 d-flex align-items-center gap-2">
                                                             <i class="ti ti-mail fs-4"></i> {{ Auth::user()->email }}
                                                         </p>
@@ -459,6 +467,14 @@
                                         <i class="ti ti-id-badge"></i>
                                     </span>
                                     <span class="hide-menu">Company Profile</span>
+                                </a>
+                            </li>
+                             <li class="sidebar-item">
+                                <a class="sidebar-link" href="/loghitories">
+                                    <span>
+                                        <i class="ti ti-id-badge"></i>
+                                    </span>
+                                    <span class="hide-menu">Log Histories</span>
                                 </a>
                             </li>
                             

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 use App\Models\Category;
+use App\Models\LogHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
@@ -44,6 +45,7 @@ class GalleriesController extends Controller
         $imageName = $this->uploadImage('images/galleries/',$request->file('image'));
 
         Gallery::create(['category_id' => $validated['category_id'], 'title' => $validated['title'], 'image' => $imageName]);
+        LogHistory::record('Create',  auth()->user()->name.' created new gallery');
         return redirect('/galleries')->with('success', 'Gallery created successfully!');
     }
 
@@ -81,6 +83,8 @@ class GalleriesController extends Controller
         $gallery->category_id = $request->category_id;
         $imageName = $this->updateImage('images/galleries/',$gallery->image,$request->file('image'));
         $gallery->update(['image' => $imageName]);
+        LogHistory::record('Update',  auth()->user()->name.' updated gallery');
+
         return redirect('/galleries')->with('success', 'Gallery updated successfully!');
     }
 
@@ -95,6 +99,8 @@ class GalleriesController extends Controller
         $imageName = $this->destroyImage('images/galleries/',$gallery->image);
         
         $gallery->delete(['image' => $imageName]);
+        LogHistory::record('Delete',  auth()->user()->name.' deleted new gallery');
+
         return redirect()->back()->with('success', 'Gallery deleted successfully!');
     }
 }

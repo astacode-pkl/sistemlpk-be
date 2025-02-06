@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\CompanyProfile;
 use App\Models\Contact;
+use App\Models\LogHistory;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -41,8 +42,6 @@ class ContactController extends Controller
         }
 
         $contacts = Contact::create($request->all());
-
-
         return response()->json([
             'status' => true ,
             'message' => 'data ditambahkan',

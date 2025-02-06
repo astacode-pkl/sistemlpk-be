@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LogHistory;
 use App\Models\Regulation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -44,6 +45,7 @@ class RegulationController extends Controller
 
 
         Regulation::create(['title' => $validated['title'], 'icon' => $validated['icon']]);
+        LogHistory::record('Create',  auth()->user()->name.' created new Regulation');
         return redirect('/regulations')->with('success', 'Regulation created successfully!');
     }
 
@@ -87,6 +89,7 @@ class RegulationController extends Controller
         $table->title = $request->title;
         $table->icon = $request->icon;
         $table->update();
+        LogHistory::record('Update',  auth()->user()->name.' updated Regulation');
         return redirect('regulations')->with('success','data success updated');
 
     }
@@ -99,6 +102,7 @@ class RegulationController extends Controller
         $id = Crypt::decryptString($id);
         $table = Regulation::find($id);
         $table->delete();
+        LogHistory::record('Delete',  auth()->user()->name.' deleted Regulation');
         return redirect()->back()->with('success','data success deleted');
 
      }

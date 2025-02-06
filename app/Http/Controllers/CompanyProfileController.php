@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CompanyProfile;
+use App\Models\LogHistory;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -71,6 +72,8 @@ class CompanyProfileController extends Controller
         $imageName = $this->updateImage('images/companyprofile/',$table->logo,$request->file('logo'));
         
         $table->update(['logo' => $imageName]);
+        LogHistory::record('Update',  auth()->user()->name.' updated Company Profile');
+
         return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 

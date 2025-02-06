@@ -12,7 +12,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GalleriesController;
 use App\Http\Controllers\RegulationController;
 use App\Http\Controllers\CompanyProfileController;
-
+use App\Http\Controllers\LogHistoryController;
 
 Route::middleware(['guest'])->group(function () {
     Route::post('/login', [UserController::class, 'login']);
@@ -46,6 +46,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/categories', CategoryController::class)->except('show');
 
     Route::resource('/programs', ProgramController::class)->except('show');
-
+    Route::resource('/loghistories', LogHistoryController::class)->except('show');
     Route::resource('/regulations', RegulationController::class)->except('show');
 });
