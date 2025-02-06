@@ -22,17 +22,6 @@ class UserController extends Controller
         }
         return back()->with('error', 'Log in is failed');
     }
-    public function register(Request $request)
-    {
-        $user = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8'
-        ]);
-        $user['passaword'] = Hash::make($user['password']);
-        $user = User::create($user);
-        return to_route('login')->with('success','register successfuly');
-    }
     public function logout()
     {
         Auth::logout();
