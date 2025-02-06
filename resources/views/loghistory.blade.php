@@ -6,12 +6,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 ">
-                <div class="card overflow-x-scroll ">
-                    <div class="border-bottom title-part-padding d-flex justify-content-between  align-items-center">
+                <div class="card">
+                    <div class="border-bottom title-part-padding d-flex justify-content-between align-items-center">
                         <h4 class="card-title mb-0">Log Histories</h4>
-                        <a href="/galleries/create">
-                            <button class="btn btn-primary">Create</button>
-                        </a>
                     </div>
                     <div class="card-body ">
                         <table class="table  table-striped table-bordered text-center" id="datatable">

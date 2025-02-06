@@ -16,7 +16,7 @@ class LogHistory extends Model
     {
         self::create([
             'user_id' => Auth::user()->id ,
-            'action' => $action,
+            'action' => $action,~
             'description' => $description,
         ]);
     }

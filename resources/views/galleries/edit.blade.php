@@ -35,7 +35,7 @@
                                     <label class="control-label mb-2" for="title">Title</label>
                                     <input type="text" id="title"
                                         class="form-control @error('title') is-invalid @enderror"
-                                        value="{{ $gallery->title }}" name="title">
+                                        value="{{ $gallery->title }}" placeholder="Please enter title..." name="title">
                                     @error('title')
                                         <div id="validationServer04Feedback" class="invalid-feedback">
                                             {{ $message }}
@@ -43,7 +43,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group mb-4">
-                                    <label class="mr-sm-2 @error('category_id') is-invalid @enderror"
+                                    <label class="mr-sm-2 mb-2 @error('category_id') is-invalid @enderror"
                                         for="inlineFormCustomSelect">Select</label>
                                     <select class="form-select mr-sm-2" name="category_id" id="inlineFormCustomSelect">
                                         @foreach ($categories as $category)

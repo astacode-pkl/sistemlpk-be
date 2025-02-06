@@ -18,12 +18,12 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <div class=" mb-3">
-                                        <label for="floatingInput">Title</label>
+                                        <label class="mb-2" for="floatingInput">Title</label>
                                         <input type="text"
-                                            class="form-control    @error('title') is-invalid
+                                            class="form-control  @error('title') is-invalid
                                     @enderror"
                                             name="title" id="floatingInput" value="{{ $category->title }}"
-                                            placeholder="Please enter the title..." required>
+                                            placeholder="Please enter title..." required>
                                         @error('title')
                                             <div id="validationServer04Feedback" class="invalid-feedback">
                                                 {{ $message }}

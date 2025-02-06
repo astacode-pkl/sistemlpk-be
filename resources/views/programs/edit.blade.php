@@ -42,7 +42,7 @@
                                 <div class="mb-3">
                                     <label class="control-label mb-2" for="description">Description</label>
                                     <textarea class="form-control @error('description') is-invalid   @enderror"
-                                     name="description" required>{{ $program->description }}</textarea>
+                                     name="description" placeholder="Please enter description..." required>{{ $program->description }}</textarea>
                                     @error('description')
                                         <div id="validationServer04Feedback" class="invalid-feedback">
                                             {{ $message }}

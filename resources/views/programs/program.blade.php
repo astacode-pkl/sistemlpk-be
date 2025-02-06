@@ -6,7 +6,7 @@
     <div class="container-fluid ">
         <div class="row">
             <div class="col-md-12">
-                <div class="card  overflow-x-scroll ">
+                <div class="card">
                     <div class="border-bottom title-part-padding d-flex justify-content-between  align-items-center ">
                         <h4 class="card-title mb-0">Programs</h4>
                         <a href="/programs/create">

@@ -36,7 +36,7 @@
                     <!-- Start Profile logo -->
                     <div class="flex justify-content-start fixed">
                         <img src="{{asset('images/companyprofile/'.$logo) }}"
-                        alt="Logo"
+                        alt=""
                         class="m-2"
                         width="100px" height="auto" style="position: fixed;" >
                     </div>

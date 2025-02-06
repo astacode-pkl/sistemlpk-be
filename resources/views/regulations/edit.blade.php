@@ -40,7 +40,7 @@
                                             is-invalid
                                             @enderror "
                                             name="title" id="floatingInput" value="{{ $regulation->title }}"
-                                            placeholder="Please enter the title...">
+                                            placeholder="Please enter title...">
 
                                         @error('title')
                                             <div id="validationServer04Feedback" class="invalid-feedback">
