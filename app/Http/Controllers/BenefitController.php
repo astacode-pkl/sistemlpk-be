@@ -38,7 +38,7 @@ class BenefitController extends Controller
         );
 
         Benefit::create(['title' => $validated['title'], 'icon' => $validated['icon']]);
-        return redirect('/benefits')->with('success', 'Regulation created successfully!');
+        return redirect('/benefits')->with('success', 'Benefit created successfully!');
     }
 
     /**
@@ -69,7 +69,7 @@ class BenefitController extends Controller
         $table->title = $request->title;
         $table->icon = $request->icon;
         $table->update();
-        return redirect('/benefits')->with('success', 'data success updated');
+        return redirect('/benefits')->with('success', 'Benefit updated successfully!!');
     }
 
     /**
@@ -80,6 +80,6 @@ class BenefitController extends Controller
         $id = Crypt::decryptString($id);
         $table = Benefit::find($id);
         $table->delete();
-        return redirect()->back()->with('success', 'data success deleted');
+        return redirect()->back()->with('success', 'Benefit deleted successfully!!');
     }
 }

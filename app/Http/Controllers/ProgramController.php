@@ -82,7 +82,7 @@ class ProgramController extends Controller
         $program->create(['image' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
 
 
-        return redirect()->route('programs.index')->with('success', 'Program successfully created');
+        return redirect()->route('programs.index')->with('success', 'Program created successfully!!');
     }
 
     /**
@@ -90,8 +90,7 @@ class ProgramController extends Controller
      */
     public function show(string $id)
     {
-        // $table = Program::find($id);
-        // return view('program', compact('table'));
+       
     }
 
     /**
@@ -167,7 +166,7 @@ class ProgramController extends Controller
         }
         $program->update(['image' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
 
-        return redirect('/programs')->with('success', 'Gallery updated successfully!');
+        return redirect('/programs')->with('success', 'Program updated successfully!!');
     }
 
 
@@ -189,6 +188,6 @@ class ProgramController extends Controller
             unlink(public_path($destinationPath . $program->image));
         }
         $program->delete();
-        return redirect()->back()->with('success', 'Program successfully deleted');
+        return redirect()->back()->with('success', 'Program deleted successfully!!');
     }
 }

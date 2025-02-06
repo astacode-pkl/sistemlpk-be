@@ -14,19 +14,21 @@
                         <h4 class="card-title mb-0">Benefits</h4>
                         <a href="/benefits/create">
 
-                            <button class="btn btn-primary">Create</button>
+                            <button class="btn btn-primary">
+                                <i class="ti ti-plus"></i>
+                                Create</button>
                         </a>
                     </div>
 
                     <div class="card-body">
 
-                        <table class="table table-striped table-bordered text-center" id="datatable">
+                        <table class="table table-striped table-bordered text-center w-full" id="datatable">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>icon</th>
-                                    <th>title</th>
-                                    <th>action</th>
+                                    <th>Icon</th>
+                                    <th style="width: 50%">Title</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,14 +40,18 @@
 
                                         <td class="center ">
                                             <a href="/benefits/{{ Crypt::encryptString($benefit->id) }}/edit"><button
-                                                    class="btn btn-primary px-4 ">Edit</button></a>
+                                                    class="btn btn-primary px-4 ">
+                                                    <i class="ti ti-pencil fs-5"></i>
+                                                    Edit</button></a>
 
                                             <form action="/benefits/{{ Crypt::encryptString($benefit->id) }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-danger px-4 py-2"
-                                                    onclick="deleteItem(event)">Delete</button>
+                                                    onclick="deleteItem(event)">
+                                                    <i class="ti ti-trash fs-5"></i>
+                                                    Delete</button>
                                             </form>
 
                                         </td>

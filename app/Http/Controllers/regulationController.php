@@ -14,7 +14,7 @@ class RegulationController extends Controller
     public function index()
     {
         $regulations = Regulation::latest()->get();
-        return view('regulations.regulations',compact('regulations'));
+        return view('regulations.regulations', compact('regulations'));
     }
 
     /**
@@ -30,9 +30,10 @@ class RegulationController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'title' => 'required',
-            'icon' =>'required'
+        $validated = $request->validate(
+            [
+                'title' => 'required',
+                'icon' => 'required'
             ]
         );
 
@@ -55,7 +56,7 @@ class RegulationController extends Controller
     {
         $id = Crypt::decryptString($id);
         $regulation = Regulation::find($id);
-        return view('regulations.edit',compact('regulation'));
+        return view('regulations.edit', compact('regulation'));
     }
 
     /**
@@ -68,8 +69,7 @@ class RegulationController extends Controller
         $table->title = $request->title;
         $table->icon = $request->icon;
         $table->update();
-        return redirect('regulations')->with('success','data success updated');
-
+        return redirect('regulations')->with('success', 'Regulation updated successfully!!');
     }
 
     /**
@@ -80,7 +80,6 @@ class RegulationController extends Controller
         $id = Crypt::decryptString($id);
         $table = Regulation::find($id);
         $table->delete();
-        return redirect()->back()->with('success','data success deleted');
-
-     }
+        return redirect()->back()->with('success', 'Regulation deleted successfully!!');
+    }
 }

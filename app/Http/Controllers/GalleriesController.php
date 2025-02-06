@@ -79,7 +79,7 @@ class GalleriesController extends Controller
         }
 
         Gallery::create(['category_id' => $validated['category_id'], 'title' => $validated['title'], 'image' => $imageName]);
-        return redirect('/galleries')->with('success', 'Gallery created successfully!');
+        return redirect('/galleries')->with('success', 'Gallery created successfully!!');
     }
 
     /**
@@ -161,7 +161,7 @@ class GalleriesController extends Controller
 
         $gallery->update(['image' => $imageName]);
 
-        return redirect('/galleries')->with('success', 'Gallery updated successfully!');
+        return redirect('/galleries')->with('success', 'Gallery updated successfully!!');
     }
 
     /**
@@ -179,6 +179,6 @@ class GalleriesController extends Controller
             unlink(public_path($destinationPath . $gallery->image));
         }
         $gallery->delete();
-        return redirect()->back()->with('success', 'Gallery deleted successfully!');
+        return redirect()->back()->with('success', 'Gallery deleted successfully!!');
     }
 }

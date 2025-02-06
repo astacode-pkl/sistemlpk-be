@@ -20,7 +20,9 @@
                         <h4 class="card-title mb-0">Regulations</h4>
                         <a href="/regulations/create">
 
-                            <button class="btn btn-primary">Create</button>
+                            <button class="btn btn-primary">
+                                <i class="ti ti-plus"></i>
+                                Create</button>
                         </a>
                     </div>
 
@@ -30,27 +32,31 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>icon</th>
-                                    <th>title</th>
-                                    <th>action</th>
+                                    <th>Icon</th>
+                                    <th style="width:60%">Title</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($regulations as $regulation)
                                     <tr id="25" class="gradeA">
                                         <td>{{ $loop->iteration }}</td>
-                                        <td style="width: 30px;">{!! $regulation->icon !!}</td>
+                                        <td>{!! $regulation->icon !!}</td>
                                         <td>{{ $regulation->title }}</td>
 
                                         <td class="center ">
                                             <a href="/regulations/{{ Crypt::encryptString($regulation->id) }}/edit"><button
-                                                    class="btn btn-primary px-4 ">Edit</button></a>
+                                                    class="btn btn-primary px-4 ">
+                                                    <i class="ti ti-pencil fs-5"></i>
+                                                    Edit</button></a>
                                             <form action="/regulations/{{ Crypt::encryptString($regulation->id) }}"
                                                 method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-danger px-4 py-2"
-                                                    onclick="deleteItem(event)">Delete</button>
+                                                    onclick="deleteItem(event)">
+                                                    <i class="ti ti-trash fs-5"></i>
+                                                    Delete</button>
                                             </form>
 
 

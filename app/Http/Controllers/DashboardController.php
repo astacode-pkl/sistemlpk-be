@@ -31,7 +31,6 @@ class DashboardController extends Controller
         if (!Auth::check()) {
             return view('login');
         }
-        // return view('dashboard');
 
         // incoming
         $categories = Category::count();

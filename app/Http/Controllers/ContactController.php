@@ -16,15 +16,6 @@ class ContactController extends Controller
     {
 
         $contacts = Contact::all()->sortByDesc('created_at')->sortByDesc('status');
-        // incoming
-        // $contacts = '';
-        // if (request()->get('query')) {
-        //     $query = request('query');
-        //     $contacts = Contact::where('name', 'like', '%' . $query . '%')->get();
-        // } else {
-        //     $contacts = Contact::latest()->get();
-        // }
-        // untill this
         return view(
             'contact',
             [
@@ -54,12 +45,6 @@ class ContactController extends Controller
             'message' => 'required'
         ]);
         Contact::create($validateData);
-
-
-
-
-        //  return redirect('')->with('success','data success created');
-
     }
 
     /**
@@ -126,6 +111,6 @@ class ContactController extends Controller
         $id = Crypt::decryptString($id);
         $table = Contact::find($id);
         $table->delete();
-        return redirect('inbox')->with('success', 'data success deleted');
+        return redirect('inbox')->with('success', 'Data deleted successfully!!');
     }
 }

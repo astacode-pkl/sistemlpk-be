@@ -22,11 +22,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // // ngrok not styling issue
-        // if (config('app.env') === 'local') {
-        //     URL::forceScheme('https');
-        // }
-        // //end
+        // ngrok not styling issue
+        if (config('app.env') === 'local') {
+            URL::forceScheme('https');
+        }
+        //end
 
         
         view()->composer('*', function ($view) {
