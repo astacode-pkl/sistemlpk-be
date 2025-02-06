@@ -118,8 +118,13 @@
                                     class="img-fluid rounded-top w-20 w-xs-100 d-block" alt="" id="preview" />
                                 <div class="input-group">
                                     <div class="custom-file">
-                                        <input type="file" id="fileInput" class="form-control" name="logo"
-                                            id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                        <input type="file" id="fileInput" class="form-control @error('logo') is-invalid @enderror " name="logo"
+                                            id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" >
+                                        @error('logo')
+                                            <div id="validationServer04Feedback" class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -144,6 +149,8 @@
     </div>
      @push('script')
 
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <script src="{{asset('js/sweetalert.js')}}"></script>
           <script src="{{asset('js/imagePreview.js')}}"></script>
         @endpush
 @endsection

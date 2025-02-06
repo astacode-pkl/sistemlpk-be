@@ -1,4 +1,4 @@
-<div class="card bg-primary shadow-none position-relative overflow-hidden">
+<div class="card bg-primary shadow-none position-relative overflow-hidden mb-4">
     <div class="card-body px-4 py-3">
         <div class="row align-items-center">
             <div class="col-9">

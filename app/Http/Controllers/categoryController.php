@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 use App\Models\Category;
+use App\Models\LogHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
@@ -31,10 +32,12 @@ class CategoryController extends Controller
     {
         $validated = $request->validate(
             [
-                'title' => 'required',
+                'title' => 'required|string:value|max:50|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/',
             ]
         );
         Category::create($validated);
+        LogHistory::record('Create',  auth()->user()->name.' created new Category');
+
         return redirect('/categories')->with('success', 'Category created successfully!!');
     }
 
@@ -61,11 +64,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validated = $request->validate(
+            [
+                'title' => 'required|string|max:30|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/',
+            ]
+        );
         $id = Crypt::decryptString($id);
         $category = Category::find($id);
-        $category->title = $request->title;
-
+        $category->title = $validated['title'];
         $category->update();
+        LogHistory::record('Update',  auth()->user()->name.' updated Category');
 
         return redirect('/categories')->with('success', 'Category updated successfully!!');
     }
@@ -81,8 +89,9 @@ class CategoryController extends Controller
     {
         $id = Crypt::decryptString($id);
         $category = Category::find($id);
-        $galleries = Gallery::get()->where('category_id', $id);
 
+        //when you delete category so images will be deleted in folder ----->
+        $galleries = Gallery::get()->where('category_id', $id);
         $destinationPath = 'images/galleries/';
         foreach ($galleries as $gallery) {
             if ($gallery->image && file_exists(
@@ -92,7 +101,10 @@ class CategoryController extends Controller
                 unlink(public_path($destinationPath . $gallery->image));
             }
         }
+        // -------->
+
         $category->delete();
+        LogHistory::record('Delete',  auth()->user()->name.' deleted Category');
         return redirect()->back()->with('success', 'Category deleted successfully!!');
     }
 }

@@ -1,4 +1,7 @@
 @extends('layouts.app') @section('content')
+<x-card-header>
+    Regulations
+</x-card-header>
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -13,25 +16,20 @@
                         <div class="row pt-3">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <div class="position-relative d-none " id="display">
-                                        <img src="" class="card-img-top rounded-0 d-block" id="preview"
-                                            alt="Icon">
-                                    </div>
-
                                     <div class="mb-3">
                                         <label class=" mb-2" for="floatingTextarea">Icon</label>
                                         <textarea
                                             class="form-control @error('icon')
                                             is-invalid
                                             @enderror "
-                                            placeholder="Please insert the text svg for icon you can find on web hero icons..." id="floatingTextarea" name="icon">{{ $regulation->icon }}</textarea>
+                                            placeholder="Please enter text svg for icon you can find on web hero icons..." id="floatingTextarea" name="icon">{{ $regulation->icon }}</textarea>
+                                        @error('icon')
+                                            <div id="validationServer04Feedback" class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
 
-                                    @error('icon')
-                                        <div id="validationServer04Feedback" class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
                                 </div>
 
                                 <div class="mb-3">
@@ -42,7 +40,7 @@
                                             is-invalid
                                             @enderror "
                                             name="title" id="floatingInput" value="{{ $regulation->title }}"
-                                            placeholder="Please enter the title">
+                                            placeholder="Please enter the title...">
 
                                         @error('title')
                                             <div id="validationServer04Feedback" class="invalid-feedback">

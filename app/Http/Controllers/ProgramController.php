@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LogHistory;
 use App\Models\Program;
 use Illuminate\Http\Request;
-use Intervention\Image\Image;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Storage;
 
 
 class ProgramController extends Controller
@@ -17,6 +15,7 @@ class ProgramController extends Controller
      */
     public function index()
     {
+
         $programs = Program::latest()->get();
         return view('programs.program', compact('programs'));
     }
@@ -37,51 +36,15 @@ class ProgramController extends Controller
         $validated = $request->validate(
             [
                 'image' => 'required|image|mimes:jpeg,png,jpg',
-                'title' => 'required',
+                'title' => 'required|max:255',
                 'description' => 'required'
             ]
         );
-        $program = new Program;
-        if ($image = $request->file('image')) {
-            $destinationPath = 'images/programs/';
-
-            $sha1FileName = sha1($image->getClientOriginalName());
-
-            $imageMimeType = $image->getMimeType();
-
-            if (strpos($imageMimeType, 'image/') === 0) {
-                $imageName = date('YmdHis') . '' . str_replace(' ', '', $sha1FileName);
-                $image->move($destinationPath, $imageName);
-
-                $sourceImagePath = public_path($destinationPath . $imageName);
-                $webpImagePath = $destinationPath . pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
-                $sourceImage = null;
-                switch ($imageMimeType) {
-                    case 'image/jpeg':
-                        $sourceImage = @imagecreatefromjpeg($sourceImagePath);
-                        break;
-                    case 'image/png':
-                        $sourceImage = @imagecreatefrompng($sourceImagePath);
-                        break;
-                    default:
-                        $sourceImage = false;
-                        break;
-                }
-
-                if ($sourceImage !== false) {
-                    imagewebp($sourceImage, $webpImagePath);
-                    imagedestroy($sourceImage);
-                    @unlink($sourceImagePath);
-
-                    $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
-                }
-            }
-        } else {
-            $imageName = '';
-        }
-        $program->create(['image' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
-
-
+        // $program = new Program;
+        $imageName = $this->uploadImage('images/programs/',$request->file('image'));
+        Program::create(['image' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
+        LogHistory::record('Create',  auth()->user()->name.' created new Program');
+        
         return redirect()->route('programs.index')->with('success', 'Program created successfully!!');
     }
 
@@ -119,53 +82,9 @@ class ProgramController extends Controller
         $program = Program::find($id);
         $program->title = $request->title;
         $program->description = $request->description;
-
-        if ($image = $request->file('image')) {
-            $destinationPath = 'images/programs/';
-
-            if ($request->image && file_exists(
-                public_path($destinationPath . $program->image)
-            )) {
-
-                unlink(public_path($destinationPath . $program->image));
-            }
-            //sh1 file name
-            $sha1FileName = sha1($image->getClientOriginalName());
-
-            $imageMimeType = $image->getMimeType();
-
-            if (strpos($imageMimeType, 'image/') === 0) {
-                $imageName = date('YmdHis') . '' . str_replace(' ', '', $sha1FileName);
-                $image->move($destinationPath, $imageName);
-
-                $sourceImagePath = public_path($destinationPath . $imageName);
-                $webpImagePath = $destinationPath . pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
-                $sourceImage = null;
-                switch ($imageMimeType) {
-                    case 'image/jpeg':
-                        $sourceImage = @imagecreatefromjpeg($sourceImagePath);
-                        break;
-                    case 'image/png':
-                        $sourceImage = @imagecreatefrompng($sourceImagePath);
-                        break;
-                    default:
-                        $sourceImage = false;
-                        break;
-                }
-
-                if ($sourceImage !== false) {
-                    imagewebp($sourceImage, $webpImagePath);
-                    imagedestroy($sourceImage);
-                    @unlink($sourceImagePath);
-
-                    $imageName = pathinfo($imageName, PATHINFO_FILENAME) . '.webp';
-                }
-            }
-        } else {
-            $imageName = $program->image;
-        }
+        $imageName = $this->updateImage('images/programs/',$program->image,$request->file('image'));
         $program->update(['image' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
-
+        LogHistory::record('Update',  auth()->user()->name.' updated Program');
         return redirect('/programs')->with('success', 'Program updated successfully!!');
     }
 
@@ -180,14 +99,9 @@ class ProgramController extends Controller
     {
         $id = Crypt::decryptString($id);
         $program = Program::find($id);
-        $destinationPath = 'images/programs/';
-        if ($program->image && file_exists(
-            public_path($destinationPath . $program->image)
-        )) {
-
-            unlink(public_path($destinationPath . $program->image));
-        }
-        $program->delete();
+        $imageName = $this->destroyImage('images/programs/',$program->image);
+        $program->delete(['image' => $imageName]);
+        LogHistory::record('Delete',  auth()->user()->name.' deleted Program');
         return redirect()->back()->with('success', 'Program deleted successfully!!');
     }
 }

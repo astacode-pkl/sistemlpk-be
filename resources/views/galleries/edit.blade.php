@@ -48,7 +48,7 @@
                                     <select class="form-select mr-sm-2" name="category_id" id="inlineFormCustomSelect">
                                         @foreach ($categories as $category)
                                             @if ($gallery->category_id == $category->id)
-                                                <option value="{{ $category->id }} selected" selected>{{ $category->title }}</option>
+                                                <option value="{{ $category->id }}" selected>{{ $category->title }}</option>
                                             @else
                                                 <option value="{{ $category->id }}">{{ $category->title }}</option>
                                             @endif

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\LogHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
@@ -45,6 +46,8 @@ class ContactController extends Controller
             'message' => 'required'
         ]);
         Contact::create($validateData);
+      
+
     }
 
     /**
@@ -111,6 +114,7 @@ class ContactController extends Controller
         $id = Crypt::decryptString($id);
         $table = Contact::find($id);
         $table->delete();
+        LogHistory::record('Delete',  auth()->user()->name.' deleted Inbox');
         return redirect('inbox')->with('success', 'Data deleted successfully!!');
     }
 }

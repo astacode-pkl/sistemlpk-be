@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\CompanyProfile;
 use App\Models\Contact;
+use App\Models\LogHistory;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -26,9 +27,9 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $validator = validator()->make($request->all(),[
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/',
             'phone_number' => 'required|min:12',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email:rfc,dns|unique:users',
             'message' => 'required'
         ]);
 
@@ -41,8 +42,6 @@ class ContactController extends Controller
         }
 
         $contacts = Contact::create($request->all());
-
-
         return response()->json([
             'status' => true ,
             'message' => 'data ditambahkan',

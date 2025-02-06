@@ -31,7 +31,7 @@
                                         <div class="mb-3">
                                             <label class="mb-2" for="floatingInput">Title</label>
                                             <input type="text"
-                                                class="form-control @error('icon') is-invalid      
+                                                class="form-control @error('title') is-invalid      
                                     @enderror"
                                                 name="title" id="floatingInput" placeholder="Please enter title..." required>
                                             @error('title')
