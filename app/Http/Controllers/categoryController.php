@@ -82,8 +82,9 @@ class CategoryController extends Controller
     {
         $id = Crypt::decryptString($id);
         $category = Category::find($id);
-        $galleries = Gallery::get()->where('category_id', $id);
 
+        //when you delete category so images will be deleted in folder ----->
+        $galleries = Gallery::get()->where('category_id', $id);
         $destinationPath = 'images/galleries/';
         foreach ($galleries as $gallery) {
             if ($gallery->image && file_exists(
@@ -93,6 +94,8 @@ class CategoryController extends Controller
                 unlink(public_path($destinationPath . $gallery->image));
             }
         }
+        // -------->
+
         $category->delete();
         return redirect()->back()->with('success', 'Category deleted successfully');
     }
