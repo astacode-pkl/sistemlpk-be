@@ -55,11 +55,7 @@ class CompanyProfileController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate(
-            [
-                'logo' => 'required|image|mimes:jpeg,png,jpg'
-            ]
-        );
+       
         $table = CompanyProfile::find($id);
         $table->name = $request->name;
         $table->slogan = $request->slogan;
@@ -73,6 +69,7 @@ class CompanyProfileController extends Controller
         $table->address = $request->address;
         $table->map = $request->map;
         $imageName = $this->updateImage('images/companyprofile/',$table->logo,$request->file('logo'));
+        
         $table->update(['logo' => $imageName]);
         return redirect()->back()->with('success', 'Profile updated successfully!');
     }

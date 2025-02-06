@@ -60,7 +60,9 @@ abstract class Controller
             )) {
 
                 unlink(public_path($destinationPath . $data));
-            }else{
+            }else if (!$image && file_exists(
+                public_path($destinationPath . $data)
+            )){
 
                 return $data;
             }
