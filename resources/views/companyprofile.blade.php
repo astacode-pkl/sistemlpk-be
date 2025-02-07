@@ -4,11 +4,6 @@
         Company Profile
     </x-card-header>
     <x-alert></x-alert>
-    <div class="row">
-        <div class="col-lg-12">
-
-
-        </div>
         <div class="card">
             <div class="card-header bg-primary">
                 <h4 class="mb-0 text-white">Company Profile</h4>
@@ -145,8 +140,6 @@
                 </div>
             </form>
         </div>
-    </div>
-    </div>
      @push('script')
 
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

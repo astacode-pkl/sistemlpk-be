@@ -1,6 +1,6 @@
 @extends('layouts.app') @section('content')
 <x-card-header>
-    Gallery
+    Galleries
 </x-card-header>
     <div class="row">
         <div class="col-lg-12">

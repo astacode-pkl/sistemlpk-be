@@ -9,7 +9,6 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-    <div class="container-fluid">
 
 
         <div class="row">
@@ -71,7 +70,6 @@
                 </div>
             </div>
         </div>
-    </div>
     @push('script')
           <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
           <script src="{{asset('js/sweetalert.js')}}"></script>

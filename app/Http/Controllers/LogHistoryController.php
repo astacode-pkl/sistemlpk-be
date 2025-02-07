@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LogHistory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class LogHistoryController extends Controller
 {
@@ -60,8 +61,11 @@ class LogHistoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(LogHistory $logHistory)
+    public function destroy(string $id)
     {
-        //
+        $id = Crypt::decryptString($id);
+        $loghistory = LogHistory::find($id);
+        $loghistory->delete();
+        return redirect()->back()->with('success', 'Log History deleted successfully!!');
     }
 }

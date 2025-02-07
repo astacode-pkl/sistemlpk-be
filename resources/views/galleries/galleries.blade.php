@@ -3,7 +3,6 @@
         Galleries
     </x-card-header>
     <x-alert></x-alert>
-    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 ">
                 <div class="card">
@@ -77,7 +76,6 @@
                 </div>
             </div>
         </div>
-    </div>
     @push('script')
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="{{ asset('js/sweetalert.js') }}"></script>

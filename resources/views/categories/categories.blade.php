@@ -1,10 +1,9 @@
 @extends('layouts.app') @section('content')
     <x-card-header>
-        Category
+        Categories
     </x-card-header>
     <x-alert></x-alert>
 
-    <div class="container-fluid   ">
 
 
         <div class="row">
@@ -79,5 +78,4 @@
             <script src="{{ asset('js/datatable.js') }}"></script>
             <script src="{{ asset('template/back') }}/dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
         @endpush
-    </div>
 @endsection

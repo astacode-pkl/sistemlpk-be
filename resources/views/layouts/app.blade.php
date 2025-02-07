@@ -212,7 +212,7 @@
 
 
                                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
-                                    
+
                                     <!-- ------------------------------- -->
                                     <!-- start profile Dropdown -->
                                     <!-- ------------------------------- -->
@@ -280,15 +280,10 @@
                             <li class="nav-item d-none d-xl-block">
                                 <a href="../main/index.html" class="text-nowrap nav-link">
                                     <img src="{{ asset('images/companyprofile/' . $logo) }}" class="img-fluid"
-                                        width="120" alt="Image-logo" />
+                                        width="100" alt="Image-logo" />
                                 </a>
                             </li>
-                            <li class="nav-item nav-icon-hover-bg rounded-circle d-none d-xl-flex">
-                                <a class="nav-link" href="javascript:void(0)" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
-                                    <i class="ti ti-search"></i>
-                                </a>
-                            </li>
+                            
                             <li class="nav-item nav-icon-hover-bg rounded-circle d-none d-lg-flex position-relative">
                                 <a class="nav-link" href="/inbox">
                                     <i class="ti ti-inbox position-relative"></i>
@@ -391,7 +386,7 @@
                 </div>
             </header>
             <!--  Header End -->
-            <aside class="left-sidebar with-horizontal">
+            <aside class="left-sidebar with-horizontal position-sticky mb-5">
                 <!-- Sidebar scroll-->
                 <div>
                     <!-- Sidebar navigation-->
@@ -469,15 +464,15 @@
                                     <span class="hide-menu">Company Profile</span>
                                 </a>
                             </li>
-                             <li class="sidebar-item">
+                            <li class="sidebar-item">
                                 <a class="sidebar-link" href="/loghitories">
                                     <span>
-                                        <i class="ti ti-id-badge"></i>
+                                        <i class="ti ti-history"></i>
                                     </span>
                                     <span class="hide-menu">Log Histories</span>
                                 </a>
                             </li>
-                            
+
 
                         </ul>
                     </nav>
@@ -490,7 +485,9 @@
 
             <div class="body-wrapper">
                 <div class="max-width mx-4">
-                    @yield('content')
+                    <div class="container-fluid">
+                        @yield('content')
+                    </div>
                 </div>
             </div>
             <script>
@@ -689,72 +686,7 @@
     </div>
 
 
-    <!--  Search Bar -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-lg">
-            <div class="modal-content rounded-1">
-                <div class="modal-header border-bottom">
-                    <input type="search" class="form-control fs-3" placeholder="Search here" id="search_pages" />
-                    <a href="javascript:void(0)" data-bs-dismiss="modal" class="lh-1">
-                        <i class="ti ti-x fs-5 ms-3"></i>
-                    </a>
-                </div>
-                <div class="modal-body message-body" data-simplebar="" id="container_pages">
-                    <h5 class="mb-0 fs-5 p-1">Quick Page Links</h5>
-                    <ul class="list mb-0 py-2">
-                        <li class="p-1 mb-1 bg-hover-light-black">
-                            <a href="/">
-                                <span class="d-block">Home</span>
-                                <span class="text-muted d-block">/home</span>
-                            </a>
-                        </li>
-                        <li class="p-1 mb-1 bg-hover-light-black">
-                            <a href="/categories">
-                                <span class="d-block">Categories</span>
-                                <span class="text-muted d-block">/categories</span>
-                            </a>
-                        </li>
-                        <li class="p-1 mb-1 bg-hover-light-black">
-                            <a href="/inbox">
-                                <span class="d-block">Inbox</span>
-                                <span class="text-muted d-block">/inbox</span>
-                            </a>
-                        </li>
-                        <li class="p-1 mb-1 bg-hover-light-black">
-                            <a href="/galleries">
-                                <span class="d-block">Galleries</span>
-                                <span class="text-muted d-block">/galleries</span>
-                            </a>
-                        </li>
-                        <li class="p-1 mb-1 bg-hover-light-black">
-                            <a href="/regulations">
-                                <span class="d-block">Regulations</span>
-                                <span class="text-muted d-block">/regulations</span>
-                            </a>
-                        </li>
-                        <li class="p-1 mb-1 bg-hover-light-black">
-                            <a href="/programs">
-                                <span class="d-block">Programs</span>
-                                <span class="text-muted d-block">/programs</span>
-                            </a>
-                        </li>
-                        <li class="p-1 mb-1 bg-hover-light-black">
-                            <a href="/benefits">
-                                <span class="d-block">Benefits</span>
-                                <span class="text-muted d-block">/benefits</span>
-                            </a>
-                        </li>
-                        <li class="p-1 mb-1 bg-hover-light-black">
-                            <a href="/companyprofile">
-                                <span class="d-block">Company Profile</span>
-                                <span class="text-muted d-block">/companyprofile</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+   
 
     <div class="dark-transparent sidebartoggler"></div>
     <script src="{{ asset('template/back') }}/dist/js/vendor.min.js"></script>
