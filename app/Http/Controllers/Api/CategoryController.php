@@ -3,27 +3,27 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\CompanyProfile;
-use App\Models\Gallery;
-use App\Models\Program;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
-class HomeController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $galleries = Gallery::with('categories')->get();
-        $programs = Program::all();
-        $companyProfile = CompanyProfile::all();
+        $categories = Category::with('galleries')->get();
+        if (!$categories) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Data not found'
+            ]);
+        }
         return response()->json([
-            'galleries' => $galleries,
-            'programs' => $programs,
-            'companyprofile' => $companyProfile
-        
-    ]);
+            'status' => 200,
+            'categories' => $categories
+        ]);
     }
 
     /**

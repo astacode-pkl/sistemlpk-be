@@ -54,6 +54,25 @@
                                          @enderror
                                      </div>
                                  </div>
+                                 <div class="form-group mb-4">
+                                    <label class="mr-sm-2 mb-2 @error('category_id') is-invalid @enderror"
+                                        for="inlineFormCustomSelect">Select</label>
+                                    <select class="form-select mr-sm-2" name="program_id" id="inlineFormCustomSelect">
+                                        @foreach ($programs as $program)
+                                            @if ($benefit->program_id == $program->id)
+                                                <option value="{{ $program->id }}" selected>{{ $program->title }}</option>
+                                            @else
+                                                <option value="{{ $program->id }}">{{ $program->title }}</option>
+                                            @endif
+                                        @endforeach
+
+                                    </select>
+                                    @error('category_id')
+                                        <div id="validationServer04Feedback" class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
 
                              </div>
                              <!--/span-->

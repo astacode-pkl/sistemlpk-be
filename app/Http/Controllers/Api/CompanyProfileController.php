@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Gallery;
 use Illuminate\Http\Request;
+use App\Models\CompanyProfile;
 
-class GalleryController extends Controller
+class CompanyProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $galleries = Gallery::with('categories')->get();
-        if (!$galleries) {
+        $companyProfile = CompanyProfile::get();
+        if (!$companyProfile) {
             return response()->json([
                 'status' => 404,
                 'message' => 'Data not found'
@@ -22,7 +22,7 @@ class GalleryController extends Controller
         }
         return response()->json([
             'status' => 200,
-            'galleries' => $galleries
+            'companyprofile' => $companyProfile
         ]);
     }
 

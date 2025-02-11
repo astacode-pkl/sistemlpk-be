@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\CompanyProfile;
 use App\Models\Contact;
-use App\Models\LogHistory;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -13,20 +12,14 @@ class ContactController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-       $companyProfile = CompanyProfile::all();
-       return response()->json([
-           'companyprofile' => $companyProfile
-       ]);
-    }
+    public function index() {}
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $validator = validator()->make($request->all(),[
+        $validator = validator()->make($request->all(), [
             'name' => 'required|max:255|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/',
             'phone_number' => 'required|min:12',
             'email' => 'required|email:rfc,dns|unique:users',
@@ -43,7 +36,7 @@ class ContactController extends Controller
 
         $contacts = Contact::create($request->all());
         return response()->json([
-            'status' => true ,
+            'status' => 200,
             'message' => 'data ditambahkan',
             'data' => $contacts
         ]);

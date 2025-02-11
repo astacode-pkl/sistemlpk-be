@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Models\Gallery;
+use App\Models\Program;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class GalleryController extends Controller
+class ProgramController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $galleries = Gallery::with('categories')->get();
-        if (!$galleries) {
+        $programs = Program::with('benefits')->with('regulations')->get();
+        if (!$programs) {
             return response()->json([
                 'status' => 404,
                 'message' => 'Data not found'
             ]);
         }
         return response()->json([
-            'status' => 200,
-            'galleries' => $galleries
+            'status'=>200,
+            'programs' => $programs 
         ]);
     }
 

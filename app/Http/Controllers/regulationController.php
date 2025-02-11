@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Program;
 use App\Models\LogHistory;
 use App\Models\Regulation;
 use Illuminate\Http\Request;
@@ -23,7 +24,8 @@ class RegulationController extends Controller
      */
     public function create()
     {
-        return view('regulations.create');
+        $programs = Program::all();
+        return view('regulations.create',compact('programs'));
     }
 
     /**
@@ -40,12 +42,17 @@ class RegulationController extends Controller
                     if ($xml === false || $xml->getName() !== 'svg') {
                         $fail('The ' . $attribute . ' must be a valid SVG XML.');
                     }
-                }]
+                }],
+                'program_id' => 'required|integer'
             ]
         );
 
 
-        Regulation::create(['title' => $validated['title'], 'icon' => $validated['icon']]);
+        Regulation::create([
+            'title' => $validated['title'],
+            'icon' => $validated['icon'],
+            'program_id' => $validated['program_id']
+        ]);
         LogHistory::record('Create',  auth()->user()->name . ' created new Regulation');
         return redirect('/regulations')->with('success', 'Regulation created successfully!');
     }
@@ -65,7 +72,8 @@ class RegulationController extends Controller
     {
         $id = Crypt::decryptString($id);
         $regulation = Regulation::find($id);
-        return view('regulations.edit', compact('regulation'));
+        $programs = Program::all();
+        return view('regulations.edit', compact('regulation','programs'));
     }
 
     /**
@@ -82,7 +90,8 @@ class RegulationController extends Controller
                     if ($xml === false || $xml->getName() !== 'svg') {
                         $fail('The ' . $attribute . ' must be a valid SVG XML.');
                     }
-                }]
+                }],
+                'program_id' => 'required|integer'
             ]
         );
 
@@ -90,6 +99,7 @@ class RegulationController extends Controller
         $table = Regulation::find($id);
         $table->title = $request->title;
         $table->icon = $request->icon;
+        $table->program_id = $request->program_id;
         $table->update();
         LogHistory::record('Update',  auth()->user()->name . ' updated Regulation');
         return redirect('regulations')->with('success', 'Regulation updated successfully!!');

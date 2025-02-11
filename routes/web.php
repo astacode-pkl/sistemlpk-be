@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BenefitController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;

@@ -41,6 +41,23 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="form-group mb-4">
+                                        <label class="mr-sm-2 mb-2" for="inlineFormCustomSelect">Program</label>
+                                        <select class="form-select mr-sm-2  @error('category_id') is-invalid @enderror"
+                                            name="program_id" id="inlineFormCustomSelect" required>
+                                            <option value="">Choose: Program</option>
+                                            @forelse ($programs as $program)
+                                                <option value="{{ $program->id }}">{{ $program->title }}</option>
+                                            @empty
+                                                <option value="">Program not found</option>
+                                            @endforelse
+                                        </select>
+                                        @error('program_id')
+                                            <div id="validationServer04Feedback" class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
 
                                 </div>
                                 <!--/span-->

@@ -25,14 +25,15 @@
                         </a>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body overflow-x-auto">
 
                         <table class="table table-striped table-bordered text-center" id="datatable">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Icon</th>
-                                    <th style="width:60%">Title</th>
+                                    <th>Title</th>
+                                    <th>Program</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -42,6 +43,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{!! $regulation->icon !!}</td>
                                         <td>{{ $regulation->title }}</td>
+                                        <td>{{ $regulation->programs->title }}</td>
 
                                         <td class="center ">
                                             <a href="/regulations/{{ Crypt::encryptString($regulation->id) }}/edit"><button

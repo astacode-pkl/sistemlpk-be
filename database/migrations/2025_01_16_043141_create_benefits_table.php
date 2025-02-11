@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('icon');
+            $table->foreignId('program_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@
                             Create</button>
                     </a>
                 </div>
-                <div class="card-body ">
+                <div class="card-body  overflow-x-auto">
 
                     <table class="table table-striped table-bordered text-center  table-responsive " id="datatable">
                         <thead>

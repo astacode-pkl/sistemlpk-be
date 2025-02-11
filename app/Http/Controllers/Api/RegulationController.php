@@ -16,13 +16,16 @@ class RegulationController extends Controller
     public function index()
     {
         $regulations = Regulation::all();
-        $benefits = Benefit::all();
-        $programs = Program::all();
+        if(!$regulations) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Data not found'
+            ]);
+        }
 
         return response()->json([
-            'regulations' => $regulations,
-            'benefits' => $benefits,
-            'programs' => $programs
+            'status' => 200,
+            'regulations' => $regulations
         ]);
     }
 

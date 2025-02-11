@@ -2,22 +2,27 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Profile;
-use Illuminate\Http\Request;
-use App\Models\CompanyProfile;
 use App\Http\Controllers\Controller;
-use Database\Factories\CompanyProfileFactory;
+use Illuminate\Http\Request;
+use App\Models\Benefit;
 
-class AboutController extends Controller
+class BenefitController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $companyProfile = CompanyProfile::all();
+        $benefits = Benefit::all();
+        if (!$benefits) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Data not found'
+            ]);
+        }
         return response()->json([
-            'companyprofile' => $companyProfile
+            'status' => 200,
+            'benefits' => $benefits
         ]);
     }
 

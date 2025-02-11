@@ -1,7 +1,7 @@
 @extends('layouts.app') @section('content')
-<x-card-header>
-    Benefits
-</x-card-header>
+    <x-card-header>
+        Benefits
+    </x-card-header>
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -18,7 +18,8 @@
                                         <label class="mb-2" for="floatingTextarea">Icon</label>
                                         <textarea class="form-control @error('icon') is-invalid      
                                     @enderror"
-                                            placeholder="please enter text svg for icon, you can find it on web hero icons..." id="floatingTextarea" name="icon" required></textarea>
+                                            placeholder="please enter text svg for icon, you can find it on web hero icons..." id="floatingTextarea"
+                                            name="icon" required></textarea>
                                         @error('icon')
                                             <div id="validationServer04Feedback" class="invalid-feedback">
                                                 {{ $message }}
@@ -33,13 +34,31 @@
                                             <input type="text"
                                                 class="form-control @error('title') is-invalid      
                                     @enderror"
-                                                name="title" id="floatingInput" placeholder="Please enter title..." required>
+                                                name="title" id="floatingInput" placeholder="Please enter title..."
+                                                required>
                                             @error('title')
                                                 <div id="validationServer04Feedback" class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
                                             @enderror
                                         </div>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="mr-sm-2 mb-2" for="inlineFormCustomSelect">Program</label>
+                                        <select class="form-select mr-sm-2  @error('category_id') is-invalid @enderror"
+                                            name="program_id" id="inlineFormCustomSelect" required>
+                                            <option value="">Choose: Program</option>
+                                            @forelse ($programs as $program)
+                                                <option value="{{ $program->id }}">{{ $program->title }}</option>
+                                            @empty
+                                                <option value="">Program not found</option>
+                                            @endforelse
+                                        </select>
+                                        @error('program_id')
+                                            <div id="validationServer04Feedback" class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
 
                                 </div>
@@ -67,9 +86,8 @@
                 </form>
             </div>
             <!-- ---------------------
-                                                                                                                end Person Info
-                                                                                                            ---------------- -->
+                                                                                                                    end Person Info
+                                                                                                                ---------------- -->
         </div>
     </div>
-    
 @endsection
