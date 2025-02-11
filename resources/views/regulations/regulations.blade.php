@@ -45,7 +45,7 @@
                                         <td>{{ $regulation->title }}</td>
                                         <td>{{ $regulation->programs->title }}</td>
 
-                                        <td class="center ">
+                                        <td>
                                             <a href="/regulations/{{ Crypt::encryptString($regulation->id) }}/edit"><button
                                                     class="btn btn-primary px-4 ">
                                                     <i class="ti ti-pencil fs-5"></i>

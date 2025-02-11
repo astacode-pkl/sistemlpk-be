@@ -15,6 +15,8 @@
     <link id="themeColors" rel="stylesheet" href="{{ asset('template/back') }}/dist/css/styles.css" />
     {{-- <link rel="stylesheet" href="{{ asset('template/back') }}/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css"> --}}
 
+    @vite('resources/css/app.css')
+    
     <title>{{ $companyName }}</title>
     <!-- Owl Carousel  -->
 
