@@ -23,5 +23,7 @@ class HomeController extends Controller
             'programs' => $programs,
             'graduations' => $graduations
         ]);
+
+
     }
 }

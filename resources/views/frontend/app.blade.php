@@ -58,13 +58,13 @@
                 <div
                     class="overflow-hidden overflow-y-auto max-h-[75vh] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
                     <div class="py-2 md:py-0 flex flex-col md:flex-row md:items-center md:justify-end gap-0.5 md:gap-1">
-                        <a class="p-2 fle{{  }}ems-center text-sm hover:text-blue-600 focus:outline-none focus:text-blue-600"
+                        <a class="p-2 flex items-center text-sm hover:text-blue-600 focus:outline-none focus:text-blue-600"
                             to="/" aria-current="page"
                             :class="{
                                 'md:text-white': !isScrolled,
                                 'md:text-gray-800': isScrolled
                             }">
-                            Home{{  }}
+                            Home
                         </a>
                         <a class="p-2 flex items-center text-sm text-gray-800 hover:text-blue-600 focus:outline-none focus:text-blue-600"
                             to="/persyaratan"

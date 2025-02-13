@@ -46,7 +46,7 @@ class GalleriesController extends Controller
 
         Gallery::create(['category_id' => $validated['category_id'], 'title' => $validated['title'], 'image' => $imageName]);
         LogHistory::record('Create',  auth()->user()->name.' created new gallery');
-        return redirect('/galleries')->with('success', 'Gallery created successfully!!');
+        return redirect('/cmslpktsukuba/galleries/')->with('success', 'Gallery created successfully!!');
     }
 
     /**
@@ -85,7 +85,7 @@ class GalleriesController extends Controller
         $gallery->update(['image' => $imageName]);
         LogHistory::record('Update',  auth()->user()->name.' updated gallery');
 
-        return redirect('/galleries')->with('success', 'Gallery updated successfully!!');
+        return redirect('/cmslpktsukuba/galleries/')->with('success', 'Gallery updated successfully!!');
     }
 
     /**

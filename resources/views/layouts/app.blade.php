@@ -37,7 +37,7 @@
                 <!-- ----------------------------------- -->
                 <div class=" d-flex align-content-center justify-content-center overflow-hidden">
                     <div class="d-flex align-content-center justify-content-center w-100 p-2">
-                        <a href="/"><img src="{{ asset('images/companyprofile/' . $logo) }}" class=" w-100"
+                        <a href="/cmslpktsukuba"><img src="{{ asset('images/companyprofile/' . $logo) }}" class=" w-100"
                                 style="max-width: 135px;" /></a>
                     </div>
                     <a href="javascript:void(0)"
@@ -60,7 +60,7 @@
                         <!-- Dashboard -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="" id="get-url" aria-expanded="false">
+                            <a class="sidebar-link" href="/cmslpktsukuba"  aria-expanded="false">
                                 <span>
                                     <i class="ti ti-home"></i>
                                 </span>
@@ -78,7 +78,7 @@
                         <!-- Categories -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/categories" aria-expanded="false">
+                            <a class="sidebar-link" href="/cmslpktsukuba/categories" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-list-details"></i>
                                 </span>
@@ -89,7 +89,7 @@
                         <!-- Gallery -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/galleries" aria-expanded="false">
+                            <a class="sidebar-link" href="/cmslpktsukuba/galleries" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-photo"></i>
                                 </span>
@@ -106,7 +106,7 @@
                         <!-- Regulations -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/regulations" aria-expanded="false">
+                            <a class="sidebar-link" href="/cmslpktsukuba/regulations" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-book"></i>
                                 </span>
@@ -118,7 +118,7 @@
                         <!-- Programs -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/programs" aria-expanded="false">
+                            <a class="sidebar-link" href="/cmslpktsukuba/programs" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-layout"></i>
                                 </span>
@@ -129,7 +129,7 @@
                         <!-- Benefits -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/benefits" aria-expanded="false">
+                            <a class="sidebar-link" href="/cmslpktsukuba/benefits" aria-expanded="false">
                                 <span class="d-flex">
                                     <i class="ti ti-chart-pie"></i>
                                 </span>
@@ -147,7 +147,7 @@
                         <!-- Company Profile -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/companyprofile" aria-expanded="false">
+                            <a class="sidebar-link" href="/cmslpktsukuba/companyprofile" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-id-badge"></i>
                                 </span>
@@ -155,7 +155,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/loghistories" aria-expanded="false">
+                            <a class="sidebar-link" href="/cmslpktsukuba/loghistories" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-history"></i>
                                 </span>
@@ -189,7 +189,7 @@
                                 </a>
                             </li> --}}
                             <li class="nav-item nav-icon-hover-bg rounded-circle d-none d-lg-flex position-relative">
-                                <a class="nav-link" href="/inbox">
+                                <a class="nav-link" href="/cmslpktsukuba/inbox">
                                     <i class="ti ti-inbox position-relative"></i>
                                 </a>
                                 @if (Session::get('countUnread') > 0)
@@ -204,7 +204,7 @@
 
 
                         <div class="d-block d-lg-none py-4">
-                            <a href="/" class="text-nowrap logo-img">
+                            <a href="/cmslpktsukuba/" class="text-nowrap logo-img">
                                 <img src="{{ asset('images/companyprofile/' . $logo) }}" width="90%"
                                     style="max-width:70px;" />
                             </a>
@@ -280,14 +280,14 @@
                                 </a>
                             </li>
                             <li class="nav-item d-none d-xl-block">
-                                <a href="../main/index.html" class="text-nowrap nav-link">
+                                <a href="/cmslpktsukuba" class="text-nowrap nav-link">
                                     <img src="{{ asset('images/companyprofile/' . $logo) }}" class="img-fluid"
                                         width="100" alt="Image-logo" />
                                 </a>
                             </li>
                             
                             <li class="nav-item nav-icon-hover-bg rounded-circle d-none d-lg-flex position-relative">
-                                <a class="nav-link" href="/inbox">
+                                <a class="nav-link" href="/cmslpktsukuba/inbox">
                                     <i class="ti ti-inbox position-relative"></i>
                                 </a>
                                 @if (Session::get('countUnread') > 0)
@@ -300,7 +300,7 @@
                             </li>
                         </ul>
                         <div class="d-block d-xl-none">
-                            <a href="/" class="text-nowrap nav-link">
+                            <a href="/cmslpktsukuba/" class="text-nowrap nav-link">
                                 <img src="{{ asset('images/companyprofile/' . $logo) }}" width="90"
                                     alt="Image-logo" />
                             </a>
@@ -347,7 +347,7 @@
                                                 <div class="user-profile-img">
                                                     <img src="{{ asset('images/companyprofile/' . $logo) }}"
                                                         class="rounded-circle" width="auto" height="50"
-                                                        alt="modernize-img" />
+                                                        alt="" />
                                                 </div>
                                             </div>
                                         </a>
@@ -399,7 +399,7 @@
                             <!-- Dashboard -->
                             <!-- =================== -->
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="/">
+                                <a class="sidebar-link" href="/cmslpktsukuba">
                                     <span>
                                         <i class="ti ti-home"></i>
                                     </span>
@@ -423,31 +423,31 @@
                                 </a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item">
-                                        <a href="../categories" class="sidebar-link">
+                                        <a href="/cmslpktsukuba/categories" class="sidebar-link">
                                             <i class="ti ti-list-details"></i>
                                             <span class="hide-menu">Categories</span>
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="/galleries" class="sidebar-link">
+                                        <a href="/cmslpktsukuba/galleries" class="sidebar-link">
                                             <i class="ti ti-photo"></i>
                                             <span class="hide-menu">Galleries</span>
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="/regulations" class="sidebar-link">
+                                        <a href="/cmslpktsukuba/regulations" class="sidebar-link">
                                             <i class="ti ti-book"></i>
                                             <span class="hide-menu">Regulations</span>
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="/programs" class="sidebar-link">
+                                        <a href="/cmslpktsukuba/programs" class="sidebar-link">
                                             <i class="ti ti-layout"></i>
                                             <span class="hide-menu">Programs</span>
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="/benefits" class="sidebar-link">
+                                        <a href="/cmslpktsukuba/benefits" class="sidebar-link">
                                             <i class="ti ti-chart-pie"></i>
                                             <span class="hide-menu">Benefits</span>
                                         </a>
@@ -459,7 +459,7 @@
                             <!-- Dashboard -->
                             <!-- =================== -->
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="/companyprofile">
+                                <a class="sidebar-link" href="/cmslpktsukuba/companyprofile">
                                     <span>
                                         <i class="ti ti-id-badge"></i>
                                     </span>
@@ -467,7 +467,7 @@
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="/loghitories">
+                                <a class="sidebar-link" href="/cmslpktsukuba/loghitories">
                                     <span>
                                         <i class="ti ti-history"></i>
                                     </span>

@@ -11,11 +11,15 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GalleriesController;
 use App\Http\Controllers\RegulationController;
 use App\Http\Controllers\CompanyProfileController;
-use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\LogHistoryController;
+use App\Http\Controllers\Frontend\HomeController;
 
 
 Route::get('/', [HomeController::class, 'index']);
+
+Route::resource('/contact', App\Http\Controllers\Frontend\ContactController::class);
+
+Route::resource('/about', App\Http\Controllers\Frontend\AboutController::class);
 
 
 Route::prefix('cmslpktsukuba')->group(function () {

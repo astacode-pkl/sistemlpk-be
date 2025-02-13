@@ -5,17 +5,16 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CompanyProfile;
-use App\Models\Contact;
-
-class ContactController extends Controller
+use Illuminate\Support\Facades\Validator;
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $contact = CompanyProfile::all();
-        return view('frontend.contact');
+        $about = CompanyProfile::all();
+        return view('frontend.about');
     }
 
     /**
@@ -31,17 +30,8 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = validator()->make($request->all(), [
-            'name' => 'required|max:255|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/',
-            'phone_nuber' => 'required|min:13',
-            'email' => 'required|email:rfc,dns|unique:users',
-            'message' => 'required'
-        ]);
-        // dd($validator);
-    
-        $contacts = Contact::create($request->all());
-
-        return redirect()->back()->with('success', 'Your message has been sent successfully');
+      
+        
     }
 
     /**

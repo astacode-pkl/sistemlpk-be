@@ -1,5 +1,5 @@
-@extends('frontend.app')
-@section('content')
+{{-- @extends('frontend.app') --}}
+{{-- @section('content') --}}
 <!-- Tentang page -->
 
 <!-- Hero Section -->
@@ -52,7 +52,7 @@
                         <div
                             class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center p-6">
                             <h4 class="text-white text-xl font-bold mb-2 text-center">{{ Cache::get('companyprofile')->name }}</h4>
-                            <p class="text-white text-sm text-center">職業訓練機関つくばインドネシア</p>
+                            <p class="text-white text-sm text-center">{{ Cache::get('companyprofile')->slogan}}</p>
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                                 d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
                     </div>
-                    <h3 class="text-lg md:text-xl font-semibold text-gray-900 text-center">Minna No Nihongo I dan II
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-900 text-center">Minna No Nihongo I To II
                     </h3>
                     <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <p class="text-sm text-gray-600 text-center">
@@ -178,4 +178,5 @@
     </div>
 </div>
 <!-- end licensing -->
-@endsection
+
+{{-- @endsection --}}

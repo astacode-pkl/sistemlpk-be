@@ -9,7 +9,7 @@
                 <h4 class="mb-0 text-white">Company Profile</h4>
             </div>
 
-            <form action="/companyprofile/1" method="post" enctype="multipart/form-data">
+            <form action="/cmslpktsukuba/companyprofile/1" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="card-body">

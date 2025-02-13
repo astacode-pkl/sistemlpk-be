@@ -85,7 +85,7 @@ class ProgramController extends Controller
         $imageName = $this->updateImage('images/programs/',$program->image,$request->file('image'));
         $program->update(['image' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
         LogHistory::record('Update',  auth()->user()->name.' updated Program');
-        return redirect('/programs')->with('success', 'Program updated successfully!!');
+        return redirect('/cmslpktsukuba/programs')->with('success', 'Program updated successfully!!');
     }
 
 

@@ -68,7 +68,19 @@ class CompanyProfileController extends Controller
         $table->whatsapp = $request->whatsapp;
         $table->tiktok = $request->tiktok;
         $table->address = $request->address;
-        $table->map = $request->map;
+
+        function get_string_between($string, $start, $end)
+        {
+            $string = ' ' . $string;
+            $ini = strpos($string, $start);
+            if ($ini == 0) return '';
+            $ini += strlen($start);
+            $len = strpos($string, $end, $ini) - $ini;
+            return substr($string, $ini, $len);
+        }
+
+        $table->map = get_string_between( $request->map, 'src="', '"');
+        
         $imageName = $this->updateImage('images/companyprofile/',$table->logo,$request->file('logo'));
         
         $table->update(['logo' => $imageName]);

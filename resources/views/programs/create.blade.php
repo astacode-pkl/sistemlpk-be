@@ -12,7 +12,7 @@
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Create Program</h4>
                 </div>
-                <form action="/programs" method="POST" enctype="multipart/form-data">
+                <form action="/cmslpktsukuba/programs/" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="row pt-3">
@@ -88,7 +88,7 @@
                                         Save
                                     </div>
                                 </button>
-                                <a href="/programs">
+                                <a href="/cmslpktsukuba/programs/">
                                     <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                         <div class="d-flex align-items-center">
                                             <i class="ti ti-circle-x me-1 fs-5"></i>

@@ -8,7 +8,7 @@
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Edit Gallery</h4>
                 </div>
-                <form action="/galleries/{{ Crypt::encryptString($gallery->id) }}" method="POST"
+                <form action="/cmslpktsukuba/galleries//{{ Crypt::encryptString($gallery->id) }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     @method('put')
@@ -77,7 +77,7 @@
                                          Update
                                     </div>
                                 </button>
-                                <a href="/galleries">
+                                <a href="/cmslpktsukuba/galleries/">
                                     <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                         <div class="d-flex align-items-center">
                                             <i class="ti ti-circle-x me-1 fs-5"></i>

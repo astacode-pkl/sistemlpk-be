@@ -1,5 +1,5 @@
-@extends('frontend.app')
-@section('content')
+{{-- @extends('frontend.app')
+@section('content') --}}
 <!-- kontak page -->
 <!-- Hero Section -->
 <div class="h-[30vh] w-full relative mb-10 shadow-md flex items-center justify-center">
@@ -9,7 +9,7 @@
         class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2">
         <h1 class="text-white text-4xl font-semibold z-10 text-center" data-aos="fade-right">Kontak</h1>
         <h4 class="text-white text-base sm:text-lg font-semibold z-10 opacity-100 text-center">
-            <a href="index.html" class="text-white hover:text-blue-100">Home</a> >
+            <a href="/" class="text-white hover:text-blue-100">Home</a> >
             <a href="kontak.html" class="text-blue-400">Kontak</a>
         </h4>
     </div>
@@ -38,8 +38,7 @@
                             </svg>
                             <div>
                                 <h3 class="font-semibold">Alamat:</h3>
-                                <p class="text-gray-600">Perum Puri Ciawi Kencana Blok J3,<br>Pasirjuni, Kec. Ciawi,
-                                    Kab. Tasikmalaya,<br>Jawa Barat 46156</p>
+                                <p class="text-gray-600">{{ Cache::get('companyprofile')->address}}</p>
                             </div>
                         </div>
 
@@ -51,32 +50,29 @@
                             </svg>
                             <div>
                                 <h3 class="font-semibold">Email:</h3>
-                                <p class="text-gray-600">tsukubaindonesia@gmail.com</p>
+                                <p class="text-gray-600">{{ Cache::get('companyprofile')->email}}</p>
                             </div>
                         </div>
-
-                        @foreach ($Contact as $data)
                             
-                        @endforeach
                         <div>
                             <h3 class="font-semibold mb-3 ms-5">Sosial Media:</h3>
                             <div class="flex space-x-6 ms-6">
-                                <a href="{{$data->tiktok}}"
+                                <a href="{{ Cache::get('companyprofile')->tiktok}}"
                                     class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-900"
                                     target="_blank">T</a>
-                                <a href="{{$data->instagram}}"
+                                <a href="{{ Cache::get('companyprofile')->instagram}}"
                                     class="w-10 h-10 flex items-center justify-center bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 text-white rounded-full"
                                     target="_blank">I</a>
-                                <a href="{{$data->whatsapp}}"
+                                <a href="{{ Cache::get('companyprofile')->whatsapp}}"
                                     class="w-10 h-10 flex items-center justify-center bg-green-500 text-white rounded-full hover:bg-green-700"
                                     target="_blank">W</a>
                             </div>
                         </div>
-
+                        
                         <div class="card rounded-2xl">
                             <div class="mt-6">
                                 <iframe
-                                    src="{{$data->map }}"
+                                    src=""
                                     width="95%" height="270" style="border:0;" loading="lazy"
                                     referrerpolicy="no-referrer-when-downgrade" class="rounded-2xl"></iframe>
                             </div>
@@ -85,15 +81,16 @@
                 </div>
 
                 <div class="bg-white p-8 rounded-lg shadow-lg">
-                    <form action="" class="space-y-6">
+                    <form action="/contact" method="POST" class="space-y-6">
+                        @csrf
                         <div>
                             <label for="nama" class="block text-sm font-medium text-gray-700">Nama</label>
-                            <input type="text" id="nama" name="nama"
+                            <input type="text" id="nama" name="name"
                                 class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500">
                         </div>
                         <div>
                             <label for="no" class="block text-sm font-medium text-gray-700">Nomor Ponsel</label>
-                            <input type="text" id="no" name="nomor-ponsel"
+                            <input type="text" id="no" name="phone_number"
                                 class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500">
                         </div>
                         <div>
@@ -103,33 +100,16 @@
                         </div>
                         <div>
                             <label for="pesan" class="block text-sm font-medium text-gray-700">Pesan</label>
-                            <textarea id="pesan" name="pesan"
+                            <textarea id="pesan" name="message"
                                 class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
                                 rows="4"></textarea>
                         </div>
+                        
                         <div>
                             <button type="submit"
-                                class="bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600">Kirim</button>
-                            tw-text-sm tw-font-medium tw-text-gray-700">Nomor Ponsel</label>
-                            <input type="text" id="no" name="nomor-ponsel"
-                                class="tw-w-full tw-px-4 tw-py-2 tw-border tw-border-gray-300 tw-rounded-md tw-shadow-sm focus:tw-ring-2 focus:tw-ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="email"
-                                class="tw-block tw-text-sm tw-font-medium tw-text-gray-700">Email</label>
-                            <input type="email" id="email" name="email"
-                                class="tw-w-full tw-px-4 tw-py-2 tw-border tw-border-gray-300 tw-rounded-md tw-shadow-sm focus:tw-ring-2 focus:tw-ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="pesan"
-                                class="tw-block tw-text-sm tw-font-medium tw-text-gray-700">Pesan</label>
-                            <textarea id="pesan" name="pesan"
-                                class="tw-w-full tw-px-4 tw-py-2 tw-border tw-border-gray-300 tw-rounded-md tw-shadow-sm focus:tw-ring-2 focus:tw-ring-blue-500"
-                                rows="4"></textarea>
-                        </div>
-                        <div>
-                            <button type="submit"
-                                class="tw-bg-blue-500 tw-text-white tw-py-2 tw-px-6 tw-rounded-md hover:tw-bg-blue-600">Kirim</button>
+                                class="tw-bg-blue-500 tw-text-white tw-py-2 tw-px-6 tw-rounded-md hover:tw-bg-blue-600">
+                                Kirim
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -139,4 +119,4 @@
 </section>
 <!-- end  form-->
 
-@endsection
+{{-- @endsection --}}
