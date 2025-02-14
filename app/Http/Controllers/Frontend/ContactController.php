@@ -14,7 +14,7 @@ class ContactController extends Controller
     public function index()
     {
         $contact = CompanyProfile::all();
-        return view('frontend.contact', compact('Contact'));
+        return view('frontend.contact');
     }
 
     /**

@@ -2,9 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\URL;
 use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\View;
+
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         // }
         //end
 
-        
+
         view()->composer('*', function ($view) {
             $logo = \App\Models\CompanyProfile::get()->where('id', 1)->value('logo');
             $name = \App\Models\CompanyProfile::get()->where('id', 1)->value('name');

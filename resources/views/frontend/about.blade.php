@@ -1,5 +1,7 @@
-@extends('frontend.app')
-@section('content')
+{{-- @extends('frontend.app')
+@section('content') --}}
+    @vite('resources/css/app.css')
+
 <!-- Tentang page -->
 
 <!-- Hero Section -->
@@ -178,4 +180,4 @@
     </div>
 </div>
 <!-- end licensing -->
-@endsection
+{{-- @endsection --}}

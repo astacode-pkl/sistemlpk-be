@@ -16,6 +16,10 @@ use App\Http\Controllers\LogHistoryController;
 
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/regulations', [App\Http\Controllers\Frontend\RegulationController::class, 'index']);
+Route::get('/contact', [App\Http\Controllers\Frontend\ContactController::class, 'index']);
+Route::get('/about', [App\Http\Controllers\Frontend\AboutController::class, 'index']);
+Route::get('/galleries', [App\Http\Controllers\Frontend\GalleriesController::class, 'index']);
 
 
 Route::prefix('cmslpktsukuba')->group(function () {
