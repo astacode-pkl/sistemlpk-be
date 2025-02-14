@@ -62,7 +62,7 @@
                                         Save
                                     </div>
                                 </button>
-                                <a href="/galleries">
+                                <a href="/cmslpktsukuba/galleries/">
                                     <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                         <div class="">
                                             <i class="ti ti-circle-x me-1 fs-5"></i>

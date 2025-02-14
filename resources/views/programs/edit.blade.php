@@ -9,7 +9,7 @@
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Edit Program</h4>
                 </div>
-                <form action="/programs/{{ Crypt::encryptString($program->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="/cmslpktsukuba/programs/{{ Crypt::encryptString($program->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('patch')
                     <div class="card-body">
@@ -21,7 +21,7 @@
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" class="form-control" id="fileInput"
-                                                    aria-describedby="inputGroupFileAddon01" value="" name="image" >
+                                                    aria-describedby="inputGroupFileAddon01" value="" name="image">
                                             </div>
                                         </div>
                                     </div>
@@ -67,7 +67,7 @@
                                          Update
                                     </div>
                                 </button>
-                                <a href="/programs">
+                                <a href="/cmslpktsukuba/programs/">
                                     <button type="button" class=" btn btn-danger px-4 py-2 text-white">
                                         <div class="d-flex align-items-center">
                                             <i class="ti ti-circle-x me-1 fs-5"></i>

@@ -32,13 +32,17 @@ class CategoryController extends Controller
     {
         $validated = $request->validate(
             [
-                'title' => 'required|string:value|max:50|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/',
+                'title' => 'required|string|max:50|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/',
             ]
         );
+
+        // Ubah seluruh string menjadi huruf kecil, lalu ubah huruf pertama menjadi huruf besar
+        $validated['title'] = ucwords(strtolower($validated['title']));
+
         $newData = Category::create($validated); 
         LogHistory::record('Create',  auth()->user()->name.' created new Category',$newData);
 
-        return redirect('/categories')->with('success', 'Category created successfully!!');
+        return redirect('/cmslpktsukuba/categories/')->with('success', 'Category created successfully!!');
     }
 
     /**
@@ -78,7 +82,7 @@ class CategoryController extends Controller
         $newData = Category::where('id',$id)->get();
         LogHistory::record('Update',  auth()->user()->name.' updated Category',$newData,$oldData);
 
-        return redirect('/categories')->with('success', 'Category updated successfully!!');
+        return redirect('/cmslpktsukuba/categories/')->with('success', 'Category updated successfully!!');
     }
 
 

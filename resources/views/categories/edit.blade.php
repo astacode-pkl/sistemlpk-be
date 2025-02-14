@@ -10,7 +10,7 @@
                     <div class="card-header bg-primary">
                         <h4 class="mb-0 text-white">Edit Category</h4>
                     </div>
-                    <form action="/categories/{{ Crypt::encryptString($category->id) }}" method="post"
+                    <form action="/cmslpktsukuba/categories/{{ Crypt::encryptString($category->id) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         @method('put')
@@ -44,7 +44,7 @@
                                             Update
                                         </div>
                                     </button>
-                                    <a href="/categories">
+                                    <a href="/cmslpktsukuba/categories/">
                                         <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                             <div>
                                                 <i class="ti ti-circle-x me-1 fs-5"></i>

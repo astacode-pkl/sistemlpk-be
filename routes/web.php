@@ -13,42 +13,53 @@ use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\RegulationController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
-Route::middleware(['guest'])->group(function () {
-    Route::post('/login', [UserController::class, 'login']);
-    Route::get('/login',  function () {
-        return view('login');
-    })->name('login');
-    
-});
-
-Route::middleware(['auth'])->group(function () {
-    Route::post('/logout', [UserController::class, 'logout']);
-    Route::get('/', [DashboardController::class, 'index']);
-    Route::get('/galleries', [GalleriesController::class, 'index']);
+use App\Http\Controllers\Frontend\HomeController;
 
 
-    Route::controller(ContactController::class)->group(function() {
-        Route::get('/inbox', 'index');
-        Route::get('/inbox/{id}',  'show');
-        Route::get('/inbox/delete/{id}','destroy');
-        Route::post('/inbox/search', 'search');
+Route::get('/', [HomeController::class, 'index']);
+
+Route::resource('/contact', App\Http\Controllers\Frontend\ContactController::class);
+
+Route::resource('/about', App\Http\Controllers\Frontend\AboutController::class);
+
+
+Route::prefix('cmslpktsukuba')->group(function () {
+
+
+    Route::middleware(['guest'])->group(function () {
+        Route::post('/login', [UserController::class, 'login']);
+        Route::get('/login',  function () {
+            return view('login');
+        })->name('login');
     });
-    // resource
-    Route::resource('/galleries', GalleriesController::class)->except('show');
 
-    Route::resource('/benefits', BenefitController::class)->except('show');
+    Route::middleware(['auth'])->group(function () {
+        Route::post('/logout', [UserController::class, 'logout']);
+        Route::get('/', [DashboardController::class, 'index']);
+        Route::get('/galleries', [GalleriesController::class, 'index']);
 
-    Route::resource('/contacts', ContactController::class)->except('show');
 
-    Route::resource('/companyprofile', CompanyProfileController::class)->except('show');
+        Route::controller(ContactController::class)->group(function () {
+            Route::get('/inbox', 'index');
+            Route::get('/inbox/{id}',  'show');
+            Route::get('/inbox/delete/{id}', 'destroy');
+            Route::post('/inbox/search', 'search');
+        });
+        // resource
+        Route::resource('/galleries', GalleriesController::class)->except('show');
 
-    Route::resource('/categories', CategoryController::class)->except('show');
+        Route::resource('/benefits', BenefitController::class)->except('show');
 
-    Route::resource('/programs', ProgramController::class)->except('show');
-    Route::resource('/loghistories', LogHistoryController::class)->except('show');
-    Route::resource('/regulations', RegulationController::class)->except('show');
-    // Route::resource('/heroes', HeroController::class)->except('show')->name('store','store.heroes');
+        Route::resource('/contacts', ContactController::class)->except('show');
+
+        Route::resource('/companyprofile', CompanyProfileController::class)->except('show');
+
+        Route::resource('/categories', CategoryController::class)->except('show');
+
+        Route::resource('/programs', ProgramController::class)->except('show');
+        Route::resource('/loghistories', LogHistoryController::class)->except('show');
+        Route::resource('/regulations', RegulationController::class)->except('show');
+        // Route::resource('/heroes', HeroController::class)->except('show')->name('store','store.heroes');
     Route::controller( HeroController::class)->group(function () {
         Route::post('/heroes/update-position', 'updatePosition')->name('update.heroes');
         Route::get('/heroes', 'index');
@@ -58,4 +69,4 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/heroes/delete/{id}', 'destroy')->name('destroyHero');
         Route::put('/heroes/update/{id}', 'update')->name('update.heroes');
     });
-});
+});});

@@ -8,7 +8,7 @@
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Edit Regulation</h4>
                 </div>
-                <form action="/regulations/{{ Crypt::encryptString($regulation->id) }}" method="POST"
+                <form action="/cmslpktsukuba/regulations/{{ Crypt::encryptString($regulation->id) }}" method="POST"
                     enctype="multipart/form-data">
                     @method('put')
                     @csrf
@@ -77,7 +77,7 @@
                                     Update
                                 </div>
                             </button>
-                            <a href="/regulations">
+                            <a href="/cmslpktsukuba/regulation/">
                                 <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                     <div class="d-flex align-items-center">
                                         <i class="ti ti-circle-x me-1 fs-4"></i>

@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-6 col-md-6 mb-4">
-            <a href="/categories">
+            <a href="/cmslpktsukuba/categories">
                 <div class="card border-bottom border-danger">
                     <div class="card-body">
                         <div class="d-flex no-block align-items-center">
@@ -20,7 +20,7 @@
             </a>
         </div>
         <div class="col-lg-6 col-md-6 mb-4">
-            <a href="/galleries">
+            <a href="/cmslpktsukuba/galleries">
                 <div class="card border-bottom border-primary">
                     <div class="card-body">
                         <div class="d-flex no-block align-items-center">
@@ -38,7 +38,7 @@
             </a>
         </div>
         <div class="col-lg-6 col-md-6 mb-4">
-            <a href="/regulations">
+            <a href="/cmslpktsukuba/regulations">
                 <div class="card border-bottom border-success">
                     <div class="card-body">
                         <div class="d-flex no-block align-items-center">
@@ -56,7 +56,7 @@
             </a>
         </div>
         <div class="col-lg-6 col-md-6 mb-4">
-            <a href="/programs">
+            <a href="/cmslpktsukuba/programs">
                 <div class="card border-bottom border-danger">
                     <div class="card-body">
                         <div class="d-flex no-block align-items-center">
@@ -74,7 +74,7 @@
             </a>
         </div>
         <div class="col-lg-6 col-md-6 mb-4">
-            <a href="/benefits">
+            <a href="/cmslpktsukuba/benefits">
                 <div class="card border-bottom border-info">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
@@ -92,7 +92,7 @@
             </a>
         </div>
         <div class="col-lg-6 col-md-6 mb-4">
-            <a href="/inbox">
+            <a href="/cmslpktsukuba/inbox">
                 <div class="card border-bottom border-success">
                     <div class="card-body">
                         <div class="d-flex no-block align-items-center">
