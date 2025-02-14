@@ -31,7 +31,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Icon</th>
+                                    <th style="max-width: 35px">Icon</th>
                                     <th>Title</th>
                                     <th>Program</th>
                                     <th>Action</th>

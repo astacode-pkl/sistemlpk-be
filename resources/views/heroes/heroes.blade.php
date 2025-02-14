@@ -1,192 +1,79 @@
-@extends('layouts.app')
-@section('content')
-<x-card-header></x-card-header>
-    <div
-        class="card bg-light-info shadow-none position-relative overflow-hidden"
-    >
-        <div class="card-body px-4 py-3">
-            <div class="row align-items-center">
-                <div class="col-9">
-                    <h4 class="fw-semibold mb-8">Draggable</h4>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a class="text-muted" href="./index.html"
-                                    >Dashboard</a
-                                >
-                            </li>
-                            <li class="breadcrumb-item" aria-current="page">
-                                Draggable
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-                <div class="col-3">
-                    <div class="text-center mb-n5">
-                        <img
-                            src="../../dist/images/breadcrumb/ChatBc.png"
-                            alt=""
-                            class="img-fluid mb-n4"
-                        />
-                    </div>
-                </div>
-            </div>
-        </div>
+@extends('layouts.app') @section('content')
+@push('style')
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+@endpush
+    <x-card-header>
+        Heroes
+    </x-card-header>
+    <x-alert></x-alert>
+    <div class="border-bottom title-part-padding d-flex justify-content-between  align-items-center">
+        <h4 class="card-title mb-0">heroes</h4>
+        <a href="/heroes/create">
+            <button class="btn btn-primary">
+                <i class="ti ti-plus"></i>
+                Create</button>
+        </a>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <h4 class="mb-3 fs-5">Basic Draggable options</h4>
-            <div class="row draggable-cards" id="draggable-area">
-                <div class="col-md-6 col-sm-12">
-                    <div class="card card-hover">
-                        <div class="card-header bg-info">
-                            <h4 class="mb-0 text-white fs-5">Card Title</h4>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Special title treatment</h3>
-                            <p class="card-text">
-                                With supporting text below as a natural lead-in
-                                to additional content.
-                            </p>
-                            <a href="javascript:void(0)" class="btn btn-inverse"
-                                >Go somewhere</a
-                            >
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="card card-hover">
-                        <div class="card-header bg-danger">
-                            <h4 class="mb-0 text-white fs-5">Card Title</h4>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Special title treatment</h3>
-                            <p class="card-text">
-                                With supporting text below as a natural lead-in
-                                to additional content.
-                            </p>
-                            <a href="javascript:void(0)" class="btn btn-inverse"
-                                >Go somewhere</a
-                            >
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="card card-hover">
-                        <div class="card-header bg-success">
-                            <h4 class="mb-0 text-white fs-5">Card Title</h4>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Special title treatment</h3>
-                            <p class="card-text">
-                                With supporting text below as a natural lead-in
-                                to additional content.
-                            </p>
-                            <a href="javascript:void(0)" class="btn btn-inverse"
-                                >Go somewhere</a
-                            >
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="card card-hover">
-                        <div class="card-header bg-warning">
-                            <h4 class="mb-0 text-white fs-5">Card Title</h4>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Special title treatment</h3>
-                            <p class="card-text">
-                                With supporting text below as a natural lead-in
-                                to additional content.
-                            </p>
-                            <a href="javascript:void(0)" class="btn btn-inverse"
-                                >Go somewhere</a
-                            >
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12">
-            <h4 class="mb-3 mt-5 fs-5">Move card and apply color</h4>
-            <div class="row draggable-cards" id="card-colors">
-                <div class="col-md-6 col-sm-12">
-                    <div class="card card-hover">
-                        <div class="card-header">
-                            <h4 class="mb-0 text-dark fs-5">Card Title</h4>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Special title treatment</h3>
-                            <p class="card-text">
-                                With supporting text below as a natural lead-in
-                                to additional content.
-                            </p>
-                            <a
-                                href="javascript:void(0)"
-                                class="btn btn-light-primary text-primary"
-                                >Go somewhere</a
-                            >
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="card card-hover">
-                        <div class="card-header">
-                            <h4 class="mb-0 text-dark fs-5">Card Title</h4>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Special title treatment</h3>
-                            <p class="card-text">
-                                With supporting text below as a natural lead-in
-                                to additional content.
-                            </p>
-                            <a
-                                href="javascript:void(0)"
-                                class="btn btn-light-primary text-primary"
-                                >Go somewhere</a
-                            >
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="card card-hover">
-                        <div class="card-header">
-                            <h4 class="mb-0 text-dark fs-5">Card Title</h4>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Special title treatment</h3>
-                            <p class="card-text">
-                                With supporting text below as a natural lead-in
-                                to additional content.
-                            </p>
-                            <a
-                                href="javascript:void(0)"
-                                class="btn btn-light-primary text-primary"
-                                >Go somewhere</a
-                            >
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="card card-hover">
-                        <div class="card-header">
-                            <h4 class="mb-0 text-dark fs-5">Card Title</h4>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Special title treatment</h3>
-                            <p class="card-text">
-                                With supporting text below as a natural lead-in
-                                to additional content.
-                            </p>
-                            <a
-                                href="javascript:void(0)"
-                                class="btn btn-light-primary text-primary"
-                                >Go somewhere</a
-                            >
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <form action="/heroes/update-position" method="POST">
+        @csrf  
+        
+                 <ul id="sortable">
+                    
+                 @foreach ($heroes as $hero)
+
+                    <div data-id="{{ $hero->id }}" style=" cursor: grab;">
+                        <li class=" card w-100 flex overflow-hidden bg-white " >
+                            <div class="w-100">
+                            <div class="row align-content-center ">
+                                <div class="col-md-3 ">
+                                <img src="{{ asset('images/heroes/'. $hero->image) }}" alt="image-slide" style="max-width: 250px; min-width: 100%;">
+                                </div>
+                                <div class="col-md-7 bg-white d-flex align-items-center justify-content-center">
+                                    <h3>Slide {{ $hero->position }}</h3>
+                                </div>
+                                <div class="col-md-2 d-flex align-items-center justify-content-center gap-2" style="cursor: pointer;">
+                                   <a href="/heroes/edit/{{ Crypt::encryptString($hero->id) }}" class="btn btn-primary py-2">
+                                  
+                                        <i class="ti ti-pencil"></i>
+                                 
+                                    </a>
+                                    <a href="{{route('destroyHero',Crypt::encryptString($hero->id) )}}" class="btn btn-danger py-2">
+                                  
+                                    <i class="ti ti-trash"></i>
+                                 
+                                    </a>
+                                    
+                                </div>
+                               
+                            </div>
+                            </div>
+                        </li>
+                        <input type="hidden" name="positions[]" value="{{ $hero->id }}" class="d-none"> 
+                            </div>
+                            @endforeach
+                            <button type="submit" class="btn btn-primary mt-3">Update position</button>
+                        </ul>
+                    </form>
+    @push('script')
+    
+        <!-- datatable -->
+        <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
+        <script src="{{ asset('js/datatable.js') }}"></script>
+        <script src="{{ asset('template/back') }}/dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script>
+            $(function() {
+                $("#sortable").sortable({
+                    update: function(event, ui) {
+                        // Perbarui input hidden dengan urutan baru
+                        $("#sortable div").each(function(index) {
+                            $(this).find("input").val($(this).data("id"));
+                        });
+                    }
+                });
+            });
+        </script>
+    @endpush
 @endsection

@@ -1,29 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Hero;
+use Illuminate\Support\Facades\Crypt;
+
 use App\Models\LogHistory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
 
 class HeroController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $hero =  Hero::latest()->get();
-        return view('heroes.heroes', compact('hero'));
+         $heroes = Hero::orderBy('position')->get();
+         return view('heroes.heroes',compact('heroes'));
     }
 
-    /**
+    /** 
      * Show the form for creating a new resource.
      */
     public function create()
     {
-
         return view('heroes.create');
     }
 
@@ -32,38 +31,36 @@ class HeroController extends Controller
      */
     public function store(Request $request)
     {
-
-        $validated = $request->validate(
-            [
-
-                'image' => 'image|mimes:jpeg,png,jpg',
-                'position' => 'required|integer'
-            ]
-        );
-
-        $imageName = $this->uploadImage('images/heroes/', $request->file('image'));
-
-        Hero::create([
-            'position' => $validated['position'],
-            'image' => $imageName
-        ]);
-        LogHistory::record('Create',  auth()->user()->name . ' created new gallery');
-        return redirect('/heroes')->with('success', 'Hero created successfully!!');
+         $validated = $request->validate(
+             [
+         'position' => 'required|max:20|numeric|unique:heroes',
+         'image' => 'image|mimes:jpeg,png,jpg'
+        ]
+ );
+            
+             $imageName = $this->uploadImage('images/heroes/',$request->file('image'));
+            
+             $newData = Hero::create(['position' => $validated['position'], 'image' => $imageName]);
+            LogHistory::record('Create', auth()->user()->name.' created new Hero',$newData);
+            return redirect('/heroes')->with('success', 'Hero created successfully!!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id) {}
+    public function show(string $id)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        $id = Crypt::decryptString($id);
-        $hero = Hero::find($id);
-        return view('heroes.edit', ['hero' => $hero]);
+            $id = Crypt::decryptString($id);
+            $hero = Hero::find($id);
+            return view('heroes.edit',compact('hero'));
     }
 
     /**
@@ -71,22 +68,21 @@ class HeroController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $id = Crypt::decryptString($id);
         $validated = $request->validate(
             [
-                'category_id' => 'required',
-                'title' => 'required|string|max:100',
+                'position' => 'required|numeric|max:20',
                 'image' => 'image|mimes:jpeg,png,jpg'
             ]
         );
-        $gallery = Hero::find($id);
-        $gallery->title = $request->title;
-        $gallery->category_id = $request->category_id;
-        $imageName = $this->updateImage('images/heroes/', $gallery->image, $request->file('image'));
-        $gallery->update(['image' => $imageName]);
-        LogHistory::record('Update',  auth()->user()->name . ' updated gallery');
+        $hero = Hero::find($id);
+        $hero->position = $request->position;
+        $oldData = Hero::where('id',$id)->get();
+        $imageName = $this->updateImage('images/heroes/',$hero->image,$request->file('image'));
+        $hero->update(['image' => $imageName]);
+        $newData = Hero::where('id',$id)->get();
+        LogHistory::record('Update',  auth()->user()->name.' updated Hero',$newData,$oldData);
+        return redirect('/heroes')->with('success', 'Hero updated succesfully!');
 
-        return redirect('/heroes')->with('success', 'Gallery updated successfully!!');
     }
 
     /**
@@ -95,13 +91,23 @@ class HeroController extends Controller
     public function destroy(string $id)
     {
         $id = Crypt::decryptString($id);
-        $gallery = Gallery::find($id);
 
-        $imageName = $this->destroyImage('images/heroes/', $gallery->image);
+        $table = Hero::find($id);
+        if ($table != null) {
+            $oldData = Hero::where('id',$id)->get();
+            $imageName = $this->destroyImage('images/heroes/',$table->image);
+            $table->delete(['image' => $imageName]);
+            LogHistory::record('Delete', auth()->user()->name.' deleted Hero',$oldData);
+            return redirect()->back()->with('success', 'Hero deleted successfully!!');
+        }
+        return redirect()->back();
+    }
+    
+    public function updatePosition(Request $request) {
+        foreach ($request->positions as $index => $id) {
 
-        $gallery->delete(['image' => $imageName]);
-        LogHistory::record('Delete',  auth()->user()->name . ' deleted new gallery');
-
-        return redirect()->back()->with('success', 'Gallery deleted successfully!!');
+             Hero::where('id', $id)->update(['position' => $index + 1]);
+        }
+         return redirect()->back()->with('success', 'Position updated successfully!!');
     }
 }

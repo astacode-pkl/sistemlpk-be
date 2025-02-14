@@ -8,7 +8,7 @@
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Edit Gallery</h4>
                 </div>
-                <form action="/galleries/{{ Crypt::encryptString($gallery->id) }}" method="POST"
+                <form action="/galleries/{{Crypt::encryptString($gallery->id)}}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     @method('put')

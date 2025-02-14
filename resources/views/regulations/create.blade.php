@@ -13,20 +13,21 @@
                     <div class="card-body">
                         <div class="row pt-3">
                             <div class="col-md-6">
-                                <div class="mb-3">
-                                    <div class=" mb-3">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class=" mb-3 flex-grow-1 ">
                                         <label for="floatingTextarea" class="mb-2">Icon</label>
                                         <textarea class="form-control @error('icon') is-invalid      
-                                    @enderror"
+                                    @enderror w-100  "
                                             placeholder="please enter text svg for icon you can find on web hero icons..." id="floatingTextarea" name="icon" required></textarea>
-                                        @error('icon')
+                                            @error('icon')
                                             <div id="validationServer04Feedback" class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
-                                    </div>
-
-
+                                            @enderror
+                                        </div>
+                                        
+                                    <div id="icon-preview" class="w-50 fst-italic "   style="max-width: 40px">icon</div>
+                                </div>
                                     <div class="mb-3">
                                         <div class=" mb-3">
                                             <label for="floatingInput" class="mb-2">Title</label>
@@ -58,7 +59,7 @@
                                             </div>
                                         @enderror
                                     </div>
-
+                                  
                                 </div>
                                 <!--/span-->
                             </div>
@@ -86,4 +87,14 @@
 
         </div>
     </div>
+    @push('script')
+    <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#floatingTextarea').on('keyup',function(){
+                $('#icon-preview').html($(this).val());
+            });
+        });
+    </script>
+    @endpush
 @endsection

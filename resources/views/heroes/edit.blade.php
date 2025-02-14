@@ -1,14 +1,14 @@
 @extends('layouts.app') @section('content')
 <x-card-header>
-    Gallery
+    Hero
 </x-card-header>
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h4 class="mb-0 text-white">Edit Gallery</h4>
+                    <h4 class="mb-0 text-white">Edit Hero</h4>
                 </div>
-                <form action="/galleries/{{ Crypt::encryptString($gallery->id) }}" method="POST"
+                <form action="{{ route('update.heroes',$hero->id) }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     @method('put')
@@ -32,40 +32,22 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="control-label mb-2" for="title">Title</label>
-                                    <input type="text" id="title"
-                                        class="form-control @error('title') is-invalid @enderror"
-                                        value="{{ $gallery->title }}" placeholder="Please enter title..." name="title">
-                                    @error('title')
+                                    <label class="control-label mb-2" for="position">Position</label>
+                                    <input type="number" id="position"
+                                        class="form-control @error('position') is-invalid @enderror"
+                                        value="{{ $hero->position }}" placeholder="Please enter position..." name="position">
+                                    @error('position')
                                         <div id="validationServer04Feedback" class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="form-group mb-4">
-                                    <label class="mr-sm-2 mb-2 @error('category_id') is-invalid @enderror"
-                                        for="inlineFormCustomSelect">Select</label>
-                                    <select class="form-select mr-sm-2" name="category_id" id="inlineFormCustomSelect">
-                                        @foreach ($categories as $category)
-                                            @if ($gallery->category_id == $category->id)
-                                                <option value="{{ $category->id }}" selected>{{ $category->title }}</option>
-                                            @else
-                                                <option value="{{ $category->id }}">{{ $category->title }}</option>
-                                            @endif
-                                        @endforeach
-
-                                    </select>
-                                    @error('category_id')
-                                        <div id="validationServer04Feedback" class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
+                              
                             </div>
                             <!--/span-->
 
                             <div class="position-relative col-md-4 mb-2" id="display">
-                                <img src="{{ asset('images/galleries/' . $gallery->image) }}"
+                                <img src="{{ asset('images/heroes/' . $hero->image) }}"
                                     class="card-img-top rounded-1 d-block" id="preview" alt="...">
                             </div>
                         </div>

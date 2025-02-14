@@ -1,17 +1,14 @@
 @extends('layouts.app') @section('content')
 <x-card-header>
-    Galleries
+    Heroes
 </x-card-header>
     <div class="row">
         <div class="col-lg-12">
-            <!-- ---------------------
-                                                                                                                start Person Info
-                                                                                                            ---------------- -->
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h4 class="mb-0 text-white">Create Gallery</h4>
+                    <h4 class="mb-0 text-white">Create Hero</h4>
                 </div>
-                <form action="/galleries" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('store.heroes') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="row pt-3 ">
@@ -40,28 +37,11 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="control-label mb-2" for="title">Title</label>
-                                    <input type="text" id="title"
-                                        class="form-control @error('title') is-invalid @enderror" value=""
-                                        name="title" placeholder="Please enter title..." required>
-                                    @error('title')
-                                        <div id="validationServer04Feedback" class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label class="mr-sm-2 mb-2" for="inlineFormCustomSelect">Category</label>
-                                    <select class="form-select mr-sm-2  @error('category_id') is-invalid @enderror"
-                                        name="category_id" id="inlineFormCustomSelect" required>
-                                        <option value="">Choose: Category</option>
-                                        @forelse ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->title }}</option>
-                                        @empty
-                                            <option value="">Category not found</option>
-                                        @endforelse
-                                    </select>
-                                    @error('category_id')
+                                    <label class="control-label mb-2" for="position">position</label>
+                                    <input type="number" id="position"
+                                        class="form-control @error('position') is-invalid @enderror" value=""
+                                        name="position" placeholder="Please enter Position..." required>
+                                    @error('position')
                                         <div id="validationServer04Feedback" class="invalid-feedback">
                                             {{ $message }}
                                         </div>

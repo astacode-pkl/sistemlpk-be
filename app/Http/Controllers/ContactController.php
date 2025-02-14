@@ -101,6 +101,7 @@ class ContactController extends Controller
      */
     public function update($id)
     {
+        $id = Crypt::decryptString($id);
         $table = Contact::find($id);
         $table->status = 'read';
         $table->update();
@@ -113,8 +114,9 @@ class ContactController extends Controller
     {
         $id = Crypt::decryptString($id);
         $table = Contact::find($id);
+        $oldData = Contact::where('id',$id)->get();
         $table->delete();
-        LogHistory::record('Delete',  auth()->user()->name.' deleted Inbox');
+        LogHistory::record('Delete',  auth()->user()->name.' deleted Inbox',$oldData);
         return redirect('inbox')->with('success', 'Data deleted successfully!!');
     }
 }

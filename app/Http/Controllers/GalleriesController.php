@@ -44,8 +44,9 @@ class GalleriesController extends Controller
 
         $imageName = $this->uploadImage('images/galleries/',$request->file('image'));
 
-        Gallery::create(['category_id' => $validated['category_id'], 'title' => $validated['title'], 'image' => $imageName]);
-        LogHistory::record('Create',  auth()->user()->name.' created new gallery');
+        $newData = Gallery::create(['category_id' => $validated['category_id'], 'title' => $validated['title'], 'image' => $imageName]);
+        
+        LogHistory::record('Create',  auth()->user()->name.' created new gallery',$newData);
         return redirect('/galleries')->with('success', 'Gallery created successfully!!');
     }
 
@@ -81,9 +82,11 @@ class GalleriesController extends Controller
         $gallery = Gallery::find($id);
         $gallery->title = $request->title;
         $gallery->category_id = $request->category_id;
+        $oldData = Gallery::where('id',$id)->get();
         $imageName = $this->updateImage('images/galleries/',$gallery->image,$request->file('image'));
         $gallery->update(['image' => $imageName]);
-        LogHistory::record('Update',  auth()->user()->name.' updated gallery');
+        $newData = Gallery::where('id',$id)->get();
+        LogHistory::record('Update',  auth()->user()->name.' updated gallery',$newData,$oldData);
 
         return redirect('/galleries')->with('success', 'Gallery updated successfully!!');
     }
@@ -95,12 +98,10 @@ class GalleriesController extends Controller
     {
         $id = Crypt::decryptString($id);
         $gallery = Gallery::find($id);
-
+        $oldData = Gallery::where('id',$id)->get();
         $imageName = $this->destroyImage('images/galleries/',$gallery->image);
-        
         $gallery->delete(['image' => $imageName]);
-        LogHistory::record('Delete',  auth()->user()->name.' deleted new gallery');
-
+        LogHistory::record('Delete',  auth()->user()->name.' deleted new gallery','',$oldData);
         return redirect()->back()->with('success', 'Gallery deleted successfully!!');
     }
 }

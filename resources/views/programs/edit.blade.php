@@ -21,7 +21,7 @@
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" class="form-control" id="fileInput"
-                                                    aria-describedby="inputGroupFileAddon01" value="" name="image" required>
+                                                    aria-describedby="inputGroupFileAddon01" value="" name="image" >
                                             </div>
                                         </div>
                                     </div>

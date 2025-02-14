@@ -1,17 +1,18 @@
 <?php
 
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\BenefitController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CompanyProfileController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GalleriesController;
-use App\Http\Controllers\RegulationController;
-use App\Http\Controllers\CompanyProfileController;
+use App\Http\Controllers\HeroController;
 use App\Http\Controllers\LogHistoryController;
+use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\RegulationController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 Route::middleware(['guest'])->group(function () {
     Route::post('/login', [UserController::class, 'login']);
@@ -47,4 +48,14 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/programs', ProgramController::class)->except('show');
     Route::resource('/loghistories', LogHistoryController::class)->except('show');
     Route::resource('/regulations', RegulationController::class)->except('show');
+    // Route::resource('/heroes', HeroController::class)->except('show')->name('store','store.heroes');
+    Route::controller( HeroController::class)->group(function () {
+        Route::post('/heroes/update-position', 'updatePosition')->name('update.heroes');
+        Route::get('/heroes', 'index');
+        Route::get('/heroes/edit/{id}', 'edit');
+        Route::get('/heroes/create', 'create');
+        Route::post('/heroes', 'store')->name('store.heroes');
+        Route::get('/heroes/delete/{id}', 'destroy')->name('destroyHero');
+        Route::put('/heroes/update/{id}', 'update')->name('update.heroes');
+    });
 });

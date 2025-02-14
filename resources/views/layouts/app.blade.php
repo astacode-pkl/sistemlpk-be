@@ -13,9 +13,9 @@
     <!-- Core Css -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link id="themeColors" rel="stylesheet" href="{{ asset('template/back') }}/dist/css/styles.css" />
-    {{-- <link rel="stylesheet" href="{{ asset('template/back') }}/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css"> --}}
-
-    @vite('resources/css/app.css')
+    <link rel="stylesheet" href="{{ asset('template/back') }}/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
+@stack('style')
+    {{-- @vite('resources/css/app.css') --}}
     
     <title>{{ $companyName }}</title>
     <!-- Owl Carousel  -->
@@ -95,25 +95,7 @@
                                 </span>
                                 <span class="hide-menu">Galleries</span>
                             </a>
-                        </li>
-
-                        <!-- ---------------------------------- -->
-                        <!-- Profile -->
-                        <!-- ---------------------------------- -->
-
-
-                        <!-- ---------------------------------- -->
-                        <!-- Regulations -->
-                        <!-- ---------------------------------- -->
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="/regulations" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-book"></i>
-                                </span>
-                                <span class="hide-menu">Regulations</span>
-                            </a>
-                        </li>
-
+     
                         <!-- ---------------------------------- -->
                         <!-- Programs -->
                         <!-- ---------------------------------- -->
@@ -125,6 +107,20 @@
                                 <span class="hide-menu">Programs</span>
                             </a>
                         </li>
+                        
+                        <!-- ---------------------------------- -->
+                        <!-- Regulations -->
+                        <!-- ---------------------------------- -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/regulations" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-book"></i>
+                                </span>
+                                <span class="hide-menu">Regulations</span>
+                            </a>
+                        </li>
+                        
+
                         <!-- ---------------------------------- -->
                         <!-- Benefits -->
                         <!-- ---------------------------------- -->
@@ -134,6 +130,18 @@
                                     <i class="ti ti-chart-pie"></i>
                                 </span>
                                 <span class="hide-menu">Benefits</span>
+                            </a>
+                        </li>
+                        
+                        <!-- ---------------------------------- -->
+                        <!-- heroes -->
+                        <!-- ---------------------------------- -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/heroes" aria-expanded="false">
+                                <span class="d-flex">
+                                    <i class="ti ti-slideshow"></i>
+                                </span>
+                                <span class="hide-menu">Heroes</span>
                             </a>
                         </li>
                         <!-- ---------------------------------- -->
@@ -435,21 +443,27 @@
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="/regulations" class="sidebar-link">
-                                            <i class="ti ti-book"></i>
-                                            <span class="hide-menu">Regulations</span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-item">
                                         <a href="/programs" class="sidebar-link">
                                             <i class="ti ti-layout"></i>
                                             <span class="hide-menu">Programs</span>
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
+                                        <a href="/regulations" class="sidebar-link">
+                                            <i class="ti ti-book"></i>
+                                            <span class="hide-menu">Regulations</span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
                                         <a href="/benefits" class="sidebar-link">
                                             <i class="ti ti-chart-pie"></i>
                                             <span class="hide-menu">Benefits</span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a href="/heroes" class="sidebar-link">
+                                            <i class="ti ti-slideshow"></i>
+                                            <span class="hide-menu">Heroes</span>
                                         </a>
                                     </li>
                                 </ul>

@@ -109,5 +109,23 @@
                 </div>
             </a>
         </div>
+        <div class="col-lg-6 col-md-6 mb-4">
+            <a href="/heroes">
+                <div class="card border-bottom border-success">
+                    <div class="card-body">
+                        <div class="d-flex no-block align-items-center">
+                            <div>
+                                <h2 class="fs-7">{{ $heroes }}</h2>
+                                <h6 class="fw-medium text-success mb-0">Heroes</h6>
+                            </div>
+                            <div class="ms-auto">
+                                <span class="text-success display-6"><i class="ti ti-slideshow"></i></span>
+                            </div>
+                        </div>
+                        <h7 class="text-muted">Last message: {{ $heroLastcreated }}</h7>
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
 @endsection
