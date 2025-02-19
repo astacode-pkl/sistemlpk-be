@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\CompanyProfile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use App\Models\Hero;
+
 use App\Models\Benefit;
 use App\Models\Category;
 use App\Models\Contact;
@@ -48,9 +50,12 @@ class DashboardController extends Controller
         $benefits = Benefit::count();
         $benefitsLastcreated = $benefits ? Benefit::latest()->first()->created_at->diffForHumans() : 'Not created yet';
 
+        
         $inbox = Contact::count();
         $inboxLastcreated = $inbox ? Contact::latest()->first()->created_at->diffForHumans() : 'No message yet';
 
+        $heroes = Hero::count();
+        $heroLastcreated = $heroes ? Hero::latest()->first()->created_at->diffForHumans() : 'No message yet';
 
         return view('dashboard', [
             'categories' => $categories, 'categoriesLastcreated' => $categoriesLastcreated,
@@ -59,6 +64,7 @@ class DashboardController extends Controller
          'programs' => $programs, 'programsLastcreated' => $programsLastcreated,
          'benefits' => $benefits, 'benefitsLastcreated' => $benefitsLastcreated,
          'inbox' => $inbox, 'inboxLastcreated' => $inboxLastcreated,
+         'heroes' => $heroes, 'heroLastcreated' => $heroLastcreated,
         ]);
     }
 }

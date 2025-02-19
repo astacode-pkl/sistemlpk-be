@@ -12,12 +12,14 @@ class LogHistory extends Model
 
     protected $guarded = ['id'];
 
-    public static function record($action, $description = null)
+    public static function record($action, $description = null,$newData = '',$oldData = '')
     {
         self::create([
             'user_id' => Auth::user()->id ,
             'action' => $action,
             'description' => $description,
+            'old_data' => $oldData,
+            'new_data' => $newData,
         ]);
     }
 }

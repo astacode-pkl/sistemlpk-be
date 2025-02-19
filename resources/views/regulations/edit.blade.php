@@ -8,30 +8,28 @@
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Edit Regulation</h4>
                 </div>
-                <form action="/regulations/{{ Crypt::encryptString($regulation->id) }}" method="POST"
+                <form action="/cmslpktsukuba/regulations/{{ Crypt::encryptString($regulation->id) }}" method="POST"
                     enctype="multipart/form-data">
                     @method('put')
                     @csrf
                     <div class="card-body">
                         <div class="row pt-3">
-                            < class="col-md-6">
-                                <div class="mb-3">
-                                    <div class="mb-3">
-                                        <label class=" mb-2" for="floatingTextarea">Icon</label>
-                                        <textarea
-                                            class="form-control @error('icon')
-                                            is-invalid
-                                            @enderror "
-                                            placeholder="Please enter text svg for icon you can find on web hero icons..." id="floatingTextarea" name="icon">{{ $regulation->icon }}</textarea>
-                                        @error('icon')
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class=" mb-3 flex-grow-1 ">
+                                        <label for="floatingTextarea" class="mb-2">Icon</label>
+                                        <textarea class="form-control @error('icon') is-invalid      
+                                    @enderror w-100  "
+                                            placeholder="please enter text svg for icon you can find on web hero icons..." id="floatingTextarea" name="icon" required>{{ $regulation->icon }}</textarea>
+                                            @error('icon')
                                             <div id="validationServer04Feedback" class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
-                                    </div>
-
+                                            @enderror
+                                        </div>
+                                        
+                                    <div id="icon-preview" class="w-50 fst-italic "   style="max-width: 40px">{!! $regulation->icon !!}</div>
                                 </div>
-
 
                                 <div class="mb-3">
                                     <label class="control-label mb-2" for="floatingInput">Title</label>
@@ -79,7 +77,7 @@
                                     Update
                                 </div>
                             </button>
-                            <a href="/regulations">
+                            <a href="/cmslpktsukuba/regulation/">
                                 <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                     <div class="d-flex align-items-center">
                                         <i class="ti ti-circle-x me-1 fs-4"></i>
@@ -97,4 +95,14 @@
                                                                                                                 ---------------- -->
     </div>
     </div>
+    @push('script')
+    <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#floatingTextarea').on('keyup',function(){
+                $('#icon-preview').html($(this).val());
+            });
+        });
+    </script>
+    @endpush
 @endsection

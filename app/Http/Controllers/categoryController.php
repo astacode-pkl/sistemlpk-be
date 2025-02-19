@@ -32,13 +32,17 @@ class CategoryController extends Controller
     {
         $validated = $request->validate(
             [
-                'title' => 'required|string:value|max:50|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/',
+                'title' => 'required|string|max:50|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/',
             ]
         );
-        Category::create($validated);
-        LogHistory::record('Create',  auth()->user()->name.' created new Category');
 
-        return redirect('/categories')->with('success', 'Category created successfully!!');
+        // Ubah seluruh string menjadi huruf kecil, lalu ubah huruf pertama menjadi huruf besar
+        $validated['title'] = ucwords(strtolower($validated['title']));
+
+        $newData = Category::create($validated); 
+        LogHistory::record('Create',  auth()->user()->name.' created new Category',$newData);
+
+        return redirect('/cmslpktsukuba/categories/')->with('success', 'Category created successfully!!');
     }
 
     /**
@@ -62,6 +66,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    
     public function update(Request $request, string $id)
     {
         $validated = $request->validate(
@@ -72,10 +77,12 @@ class CategoryController extends Controller
         $id = Crypt::decryptString($id);
         $category = Category::find($id);
         $category->title = $validated['title'];
+        $oldData = Category::where('id',$id)->get();
         $category->update();
-        LogHistory::record('Update',  auth()->user()->name.' updated Category');
+        $newData = Category::where('id',$id)->get();
+        LogHistory::record('Update',  auth()->user()->name.' updated Category',$newData,$oldData);
 
-        return redirect('/categories')->with('success', 'Category updated successfully!!');
+        return redirect('/cmslpktsukuba/categories/')->with('success', 'Category updated successfully!!');
     }
 
 
@@ -102,9 +109,9 @@ class CategoryController extends Controller
             }
         }
         // -------->
-
+        $oldData = Category::where('id',$id)->get();
         $category->delete();
-        LogHistory::record('Delete',  auth()->user()->name.' deleted Category');
+        LogHistory::record('Delete',  auth()->user()->name.' deleted Category','',$oldData);
         return redirect()->back()->with('success', 'Category deleted successfully!!');
     }
 }

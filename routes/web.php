@@ -1,25 +1,27 @@
 <?php
 
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\BenefitController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CompanyProfileController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GalleriesController;
-use App\Http\Controllers\RegulationController;
-use App\Http\Controllers\CompanyProfileController;
-use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\HeroController;
 use App\Http\Controllers\LogHistoryController;
+use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\RegulationController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\HomeController;
 
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/regulations', [App\Http\Controllers\Frontend\RegulationController::class, 'index']);
-Route::get('/contact', [App\Http\Controllers\Frontend\ContactController::class, 'index']);
-Route::get('/about', [App\Http\Controllers\Frontend\AboutController::class, 'index']);
-Route::get('/galleries', [App\Http\Controllers\Frontend\GalleriesController::class, 'index']);
+Route::get('/persyaratan', [App\Http\Controllers\Frontend\RegulationController::class, 'index']);
+Route::get('/tentang', [App\Http\Controllers\Frontend\AboutController::class, 'index']);
+Route::get('/galeri', [App\Http\Controllers\Frontend\GalleriesController::class, 'index']);
+Route::resource('/kontak', App\Http\Controllers\Frontend\ContactController::class)->except('show');
+
 
 
 Route::prefix('cmslpktsukuba')->group(function () {
@@ -44,12 +46,11 @@ Route::prefix('cmslpktsukuba')->group(function () {
             Route::get('/inbox/delete/{id}', 'destroy');
             Route::post('/inbox/search', 'search');
         });
+
         // resource
         Route::resource('/galleries', GalleriesController::class)->except('show');
 
         Route::resource('/benefits', BenefitController::class)->except('show');
-
-        Route::resource('/contacts', ContactController::class)->except('show');
 
         Route::resource('/companyprofile', CompanyProfileController::class)->except('show');
 
@@ -58,5 +59,15 @@ Route::prefix('cmslpktsukuba')->group(function () {
         Route::resource('/programs', ProgramController::class)->except('show');
         Route::resource('/loghistories', LogHistoryController::class)->except('show');
         Route::resource('/regulations', RegulationController::class)->except('show');
+        // Route::resource('/heroes', HeroController::class)->except('show')->name('store','store.heroes');
+        Route::controller(HeroController::class)->group(function () {
+            Route::post('/heroes/update-position', 'updatePosition')->name('update.heroes');
+            Route::get('/heroes', 'index');
+            Route::get('/heroes/edit/{id}', 'edit');
+            Route::get('/heroes/create', 'create');
+            Route::post('/heroes', 'store')->name('store.heroes');
+            Route::get('/heroes/delete/{id}', 'destroy')->name('destroyHero');
+            Route::put('/heroes/update/{id}', 'update')->name('update.heroes');
+        });
     });
 });

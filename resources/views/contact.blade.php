@@ -34,7 +34,7 @@
                                                     @if (count($contacts) > 0)
                                                         @foreach ($contacts as $contact)
                                                             <li onclick="">
-                                                                <a href="/inbox/{{ Crypt::encryptString($contact['id']) }}"
+                                                                <a href="/cmslpktsukuba/inbox/{{ Crypt::encryptString($contact['id']) }}"
                                                                     class="px-4 py-3 bg-hover-light-black d-flex align-items-start chat-user {{ $contact['status'] == 'unread' ? 'bg-light' : '' }} border-bottom"
                                                                     id="chat_user_1" data-user-id="1">
                                                                     <div class="position-relative w-100 ms-2">
@@ -103,7 +103,7 @@
                                         <li class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top"
                                             data-bs-title="Delete">
                                             <a class="text-dark px-2 fs-5 bg-hover-primary nav-icon-hover position-relative z-index-5"
-                                                href="{{ Request::is('inbox/*') && isset($contactById) ? 'delete/'.Crypt::encryptString($contactById['id']) : '#' }}" disabled>
+                                                href="{{ Request::is('/cmslpktsukuba/inbox/*') && isset($contactById) ? 'delete/'.Crypt::encryptString($contactById['id']) : '#' }}" disabled>
                                                 <i class="ti ti-trash"></i>
                                             </a>
                                         </li>
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="w-100 p-3 position-relative"
                                     style="height: calc(100vh - 400px); overflow: auto;">
-                                    @if (Request::is('inbox/*') && isset($contactById))
+                                    @if (Request::is('cmslpktsukuba/inbox/*') && isset($contactById))
                                         <div class="row">
                                             <div class="col">
                                                 <h2>{{ $contactById['name'] }}</h2>
@@ -175,7 +175,7 @@
                                     <div class="simplebar-content" style="padding: 0px;" id="container">
                                         @if (count($contacts) > 0)
                                             @foreach ($contacts as $contact)
-                                                <li onclick="">
+                                                <li>
                                                     <a href="/inbox/{{ Crypt::encryptString($contact['id']) }}"
                                                         class="px-4 py-3 bg-hover-light-black d-flex align-items-start chat-user {{ $contact['status'] == 'unread' ? 'bg-light' : '' }} border-bottom"
                                                         id="chat_user_1" data-user-id="1">

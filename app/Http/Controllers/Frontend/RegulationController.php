@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Program;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class RegulationController extends Controller
 {
     public function index()
     {
-
-
-        return view('frontend.regulations');
+        $programs = Program::all();
+        return view('frontend.regulations', [
+            'programs' => $programs
+        ]);
     }
 }

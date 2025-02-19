@@ -9,8 +9,8 @@
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Log Histories</h4>
                 </div>
-                <div class="card-body ">
-                    <table class="table  table-striped table-bordered text-center" id="datatable">
+                <div class="card-body  overflow-x-scroll">
+                    <table class="table  table-striped table-bordered text-center " id="datatable">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -18,10 +18,12 @@
                                 <th>log Action</th>
                                 <th>Description</th>
                                 <th>Time</th>
+                                <th>Old Data</th>
+                                <th>New Data</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="">
                             @foreach ($loghistories as $loghistory)
                                 <tr id="{{ $loop->iteration }}" class="gradeC">
                                     <td>{{ $loop->iteration }}</td>
@@ -29,6 +31,8 @@
                                     <td>{{ $loghistory->action }}</td>
                                     <td>{{ $loghistory->description }}</td>
                                     <td>{{ $loghistory->created_at }}</td>
+                                    <td>{{ $loghistory->old_data }}</td>
+                                    <td>{{ $loghistory->new_data }}</td>
                                     <td>
                                         <form action="/loghistories/{{ Crypt::encryptString($loghistory->id) }}"
                                             method="POST" class="d-inline" id="form_delete">

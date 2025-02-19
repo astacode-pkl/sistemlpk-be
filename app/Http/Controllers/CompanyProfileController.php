@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\CompanyProfile;
 use App\Models\LogHistory;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -56,7 +57,7 @@ class CompanyProfileController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
+        $id = Crypt::decryptString($id);
         $table = CompanyProfile::find($id);
         $table->name = $request->name;
         $table->slogan = $request->slogan;
@@ -68,7 +69,6 @@ class CompanyProfileController extends Controller
         $table->whatsapp = $request->whatsapp;
         $table->tiktok = $request->tiktok;
         $table->address = $request->address;
-        
 
         function get_string_between($string, $start, $end)
         {
@@ -81,11 +81,13 @@ class CompanyProfileController extends Controller
         }
 
         $table->map = get_string_between( $request->map, 'src="', '"');
-
-        $imageName = $this->updateImage('images/companyprofile/', $table->logo, $request->file('logo'));
-
+        
+        $imageName = $this->updateImage('images/companyprofile/',$table->logo,$request->file('logo'));
+        
+        $oldData = CompanyProfile::where('id',$id)->get();
         $table->update(['logo' => $imageName]);
-        LogHistory::record('Update',  auth()->user()->name . ' updated Company Profile');
+        $newData = CompanyProfile::where('id',$id)->get();
+        LogHistory::record('Update',  auth()->user()->name.' updated Company Profile',$newData,$oldData);
 
         return redirect()->back()->with('success', 'Profile updated successfully!');
     }

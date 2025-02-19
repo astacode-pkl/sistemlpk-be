@@ -6,6 +6,7 @@ use App\Models\Gallery;
 use App\Models\Program;
 use App\Models\CompanyProfile;
 use App\Http\Controllers\Controller;
+use App\Models\Hero;
 use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
@@ -13,30 +14,30 @@ class HomeController extends Controller
     public function index()
     {
         $companyProfile = CompanyProfile::first();
-        Cache::add('companyprofile', $companyProfile);
+        Cache::put('companyprofile', $companyProfile);
 
 
 
         $galleries = Gallery::all();
-
+        $heroes = Hero::orderBy('position')->get();
         foreach ($galleries as $gallery) {
             if ($gallery->categories->title === 'Kelulusan') {
                 $graduations[] = $gallery;
             } else {
-                $activities[] = $gallery;
+                $otherPhotos[] = $gallery;
             }
         }
 
-        $activities = collect($activities);
-        $activities = $activities->slice(0, 4);
+        $otherPhotos = collect($otherPhotos);
+        $otherPhotos = $otherPhotos->random(4);
 
 
         $programs = Program::all();
-        // var_dump($graduations);
         return view('frontend.home', [
             'programs' => $programs,
             'graduations' => $graduations,
-            'activities' => $activities
+            'otherphotos' => $otherPhotos,
+            'heroes' => $heroes
         ]);
     }
 }

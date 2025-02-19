@@ -47,12 +47,12 @@ class BenefitController extends Controller
             ]
         );
 
-        Benefit::create([
+        $newData = Benefit::create([
             'title' => $validated['title'],
             'icon' => $validated['icon'],
             'program_id' => $validated['program_id']
         ]);
-        LogHistory::record('Create',  auth()->user()->name . ' created new Benefit');
+        LogHistory::record('Create',  auth()->user()->name . ' created new Benefit',$newData);
         return redirect('/benefits')->with('success', 'Benefit created successfully!!');
     }
 
@@ -98,8 +98,10 @@ class BenefitController extends Controller
         $table->title = $request->title;
         $table->icon = $request->icon;
         $table->program_id = $request->program_id;
+        $oldData = Benefit::where('id',$id)->get();
         $table->update();
-        LogHistory::record('Update',  auth()->user()->name . ' updated Benefit');
+        $newData = Benefit::where('id',$id)->get();
+        LogHistory::record('Update',  auth()->user()->name . ' updated Benefit',$newData,$oldData);
         return redirect('/benefits')->with('success', 'Benefit updated successfully!!');
     }
 
@@ -110,8 +112,9 @@ class BenefitController extends Controller
     {
         $id = Crypt::decryptString($id);
         $table = Benefit::find($id);
+        $oldData = Benefit::where('id',$id)->get();
         $table->delete();
-        LogHistory::record('Delete',  auth()->user()->name . ' deleted Benefit');
+        LogHistory::record('Delete',  auth()->user()->name . ' deleted Benefit','',$oldData);
         return redirect()->back()->with('success', 'Benefit deleted successfully!!');
     }
 }

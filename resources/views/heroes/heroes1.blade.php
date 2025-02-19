@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="border-bottom title-part-padding d-flex justify-content-between  align-items-center">
                         <h4 class="card-title mb-0">Galleries</h4>
-                        <a href="/galleries/create">
+                        <a href="/cmslpktsukuba/galleries//create">
                             <button class="btn btn-primary">
                                 <i class="ti ti-plus"></i>
                                 Create</button>
@@ -54,11 +54,11 @@
                                         <td>{{ $gallery->title }}</td>
                                         <td>{{ $gallery->categories->title }}</td>
                                         <td>
-                                            <a href="/galleries/{{ Crypt::encryptString($gallery->id) }}/edit"><button
+                                            <a href="/cmslpktsukuba/galleries//{{ Crypt::encryptString($gallery->id) }}/edit"><button
                                                     class="btn btn-primary px-4">
                                                     <i class="ti ti-pencil fs-5"></i>
                                                     Edit</button></a>
-                                            <form action="/galleries/{{ Crypt::encryptString($gallery->id) }}"
+                                            <form action="/cmslpktsukuba/galleries//{{ Crypt::encryptString($gallery->id) }}"
                                                 method="POST" class="d-inline ">
                                                 @csrf
                                                 @method('delete')

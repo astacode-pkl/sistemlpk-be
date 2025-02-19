@@ -47,13 +47,12 @@ class RegulationController extends Controller
             ]
         );
 
-
-        Regulation::create([
+        $newData = Regulation::create([
             'title' => $validated['title'],
             'icon' => $validated['icon'],
             'program_id' => $validated['program_id']
         ]);
-        LogHistory::record('Create',  auth()->user()->name . ' created new Regulation');
+        LogHistory::record('Create',  auth()->user()->name . ' created new Regulation',$newData);
         return redirect('/regulations')->with('success', 'Regulation created successfully!');
     }
 
@@ -100,8 +99,10 @@ class RegulationController extends Controller
         $table->title = $request->title;
         $table->icon = $request->icon;
         $table->program_id = $request->program_id;
+        $oldData = Regulation::where('id',$id)->get();
         $table->update();
-        LogHistory::record('Update',  auth()->user()->name . ' updated Regulation');
+        $newData = Regulation::where('id',$id)->get();
+        LogHistory::record('Update',  auth()->user()->name . ' updated Regulation',$newData,$oldData);
         return redirect('regulations')->with('success', 'Regulation updated successfully!!');
     }
 
@@ -112,9 +113,10 @@ class RegulationController extends Controller
     {
         $id = Crypt::decryptString($id);
         $table = Regulation::find($id);
+        $oldData = Regulation::where('id',$id)->get();
         $table->delete();
 
-        LogHistory::record('Delete',  auth()->user()->name . ' deleted Regulation');
+        LogHistory::record('Delete',  auth()->user()->name . ' deleted Regulation' ,'',$oldData);
         return redirect()->back()->with('success', 'Regulation deleted successfully!!');
     }
 }

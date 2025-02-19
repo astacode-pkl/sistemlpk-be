@@ -10,28 +10,21 @@
 </head>
 
 <body>
-    <!-- HEADER-->
-    <header
-        ref=class="fixed top-0 border-b border-gray-200 flex flex-wrap md:justify-start md:flex-nowrap z-50 h-16 lg:h-20 w-full transition-all duration-300"
-        :class="{
-            'bg-white/0 backdrop-blur-0 border-transparent': !isScrolled,
-            'bg-white/90 backdrop-blur-sm border-gray-200': isScrolled
-        }">
+    <!-- navbar -->
+    <header id="header"
+        class="fixed top-0 pt-1 md:pt-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 h-16 lg:h-20 w-full transition-all duration-300">
         <nav
             class="relative max-w-[85rem] w-full md:flex md:items-center md:justify-between md:gap-3 mx-auto px-4 py-auto sm:px-6 lg:px-8 py-2">
             <!-- Logo w/ Collapse Button -->
             <div class="flex items-center justify-between">
-                <a class="flex gap-3" to="#" aria-label="Brand">
-                    <img src="{{ asset('images/companyprofile/' . Cache::get('companyprofile')->logo) }}" alt="logo"
-                        class="w-10" />
-                    {{-- <img src="/assets/img/nama.png" alt="nama" class="w-20" /> --}}
+                <a class="flex gap-3" href="#" aria-label="Brand">
+                    <img src="https://lpktsukuba.vercel.app/_nuxt/logo.B5hgejDb.png" alt="logo" class="w-10">
+                    <img src="https://lpktsukuba.vercel.app/_nuxt/nama.BiAa2lNX.png" alt="nama" class="w-20">
                 </a>
                 <!-- Collapse Button -->
                 <div class="md:hidden">
-                    <button type="button"
-                        class="hs-collapse-toggle relative size-9 flex justify-center items-center text-sm font-semibold rounded-lg border border-gray-200 text-gray-800 bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none"
-                        id="hs-header-classic-collapse" aria-expanded="false" aria-controls="hs-header-classic"
-                        aria-label="Toggle navigation" data-hs-collapse="#hs-header-classic">
+                    <button type="button" id="collapseButton"
+                        class="hs-collapse-toggle relative size-9 flex justify-center items-center text-sm font-semibold rounded-lg border border-gray-200 text-gray-800 bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none p-1">
                         <svg class="hs-collapse-open:hidden size-4" xmlns="http://www.w3.org/2000/svg" width="24"
                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -52,50 +45,31 @@
             </div>
             <!-- End Logo w/ Collapse Button -->
             <!-- Collapse -->
-            <div id="hs-header-classic"
-                class="hs-collapse hidden overflow-hidden bg-white w-full md:bg-transparent rounded-lg px-10 pt-3 mt-5 lg:mt-0 lg:pt-0 lg:px-0 transition-all duration-300 basis-full grow md:block"
-                aria-labelledby="hs-header-classic-collapse">
+            <div id="collapseContent"
+                class="hs-collapse hidden overflow-hidden bg-white w-full md:bg-transparent rounded-lg px-10 pt-3 mt-5 md:mt-0 md:pt-0 lg:px-0 transition-all duration-300 basis-full grow md:block"
+                aria-labelledby="collapseButton">
                 <div
                     class="overflow-hidden overflow-y-auto max-h-[75vh] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
-                    <div class="py-2 md:py-0 flex flex-col md:flex-row md:items-center md:justify-end gap-0.5 md:gap-1">
+                    <div class="py-2 md:py-0 flex flex-col md:flex-row md:items-center md:justify-end gap-0.5 md:gap-1 sm:text-gray-800 md:text-white"
+                        id="navLinks">
                         <a class="p-2 flex items-center text-sm hover:text-blue-600 focus:outline-none focus:text-blue-600"
-                            to="/" aria-current="page"
-                            :class="{
-                                'md:text-white': !isScrolled,
-                                'md:text-gray-800': isScrolled
-                            }">
+                            href="/" aria-current="page">
                             Home
                         </a>
-                        <a class="p-2 flex items-center text-sm text-gray-800 hover:text-blue-600 focus:outline-none focus:text-blue-600"
-                            to="/persyaratan"
-                            :class="{
-                                'md:text-white': !isScrolled,
-                                'md:text-gray-800': isScrolled
-                            }">
+                        <a class="p-2 flex items-center text-sm hover:text-blue-600 focus:outline-none focus:text-blue-600"
+                            href="/persyaratan">
                             Persyaratan
                         </a>
-                        <a class="p-2 flex items-center text-sm text-gray-800 hover:text-blue-600 focus:outline-none focus:text-blue-600"
-                            to="/galeri"
-                            :class="{
-                                'md:text-white': !isScrolled,
-                                'md:text-gray-800': isScrolled
-                            }">
+                        <a class="p-2 flex items-center text-sm hover:text-blue-600 focus:outline-none focus:text-blue-600"
+                            href="/galeri">
                             Galeri
                         </a>
-                        <a class="p-2 flex items-center text-sm text-gray-800 hover:text-blue-600 focus:outline-none focus:text-blue-600"
-                            to="/kontak"
-                            :class="{
-                                'md:text-white': !isScrolled,
-                                'md:text-gray-800': isScrolled
-                            }">
+                        <a class="p-2 flex items-center text-sm hover:text-blue-600 focus:outline-none focus:text-blue-600"
+                            href="/kontak">
                             Kontak
                         </a>
-                        <a class="p-2 flex items-center text-sm text-gray-800 hover:text-blue-600 focus:outline-none focus:text-blue-600"
-                            to="/tentang"
-                            :class="{
-                                'md:text-white': !isScrolled,
-                                'md:text-gray-800': isScrolled
-                            }">
+                        <a class="p-2 flex items-center text-sm hover:text-blue-600 focus:outline-none focus:text-blue-600"
+                            href="/tentang">
                             Tentang
                         </a>
                     </div>
@@ -104,11 +78,129 @@
             <!-- End Collapse -->
         </nav>
     </header>
-    <!-- END HEADER  -->
-{{-- {{  $profile = Cache::get('companyprofile') }} --}}
+    <!-- end navbar -->
     @yield('content')
 
+    <!-- Footer -->
+    <footer class="mt-auto bg-gray-900 w-full">
+        <div class="mt-5 w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 lg:pt-20 mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 justify-center">
+                <div class="col-span-1 sm:col-span-2 lg:col-span-7">
+                    <div class="space-y-6">
+                        <div>
+                            <div>
+                                <a class="flex-none text-xl font-semibold text-white focus:outline-none focus:opacity-80"
+                                    aria-label="Brand">Tentang</a>
+                                <p
+                                    class="mt-3 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200 cursor-default">
+                                    {{ Cache::get('companyprofile')->name }} didirikan pada bulan Agustus 2024 di
+                                    Ciawi, Kabupaten Tasikmalaya, Jawa Barat Indonesia. dan
+                                    telah mendapatkan izin resmi dari pemerintah Indonesia.
+                                </p>
+                                <div class="mt-4">
+                                    <a class="flex-none text-xl font-semibold text-white focus:outline-none focus:opacity-80"
+                                        aria-label="Brand">{{ Cache::get('companyprofile')->name }}</a>
+                                    <p>
+                                        <a
+                                            class="inline-block mt-3 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200 cursor-default">
+                                            {{ Cache::get('companyprofile')->address }}</a>
+                                    </p>
+                                    <p>
+                                        <a class="inline-block mt-3 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
+                                            href="mailto:{{ Cache::get('companyprofile')->email }}">
+                                            {{ Cache::get('companyprofile')->email }}</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-span-1 sm:col-span-1 lg:col-span-2">
+                    <h4 class="font-semibold text-gray-100">Quick Link</h4>
+                    <div class="mt-3 space-y-3">
+                        <p>
+                            <a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
+                                href="/">> Home</a>
+                        </p>
+                        <p>
+                            <a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
+                                href="/persyaratan">> Persyaratan</a>
+                        </p>
+                        <p>
+                            <a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
+                                href="/galeri">> Galeri</a>
+                        </p>
+                        <p>
+                            <a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
+                                href="/kontak">> Kontak</a>
+                        </p>
+                        <p>
+                            <a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
+                                href="/tentang">> Tentang</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-span-1 sm:col-span-1 lg:col-span-3">
+                    <h4 class="font-semibold text-gray-100">Media Sosial</h4>
+                    <div class="mt-3 space-y-3">
+                        <p>
+                            <a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
+                                href="{{ Cache::get('companyprofile')->instagram }}">Instagram</a>
+                        </p>
+                        <p>
+                            <a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
+                                href="{{ Cache::get('companyprofile')->tiktok }}">Tiktok</a>
+                        </p>
+                        <p>
+                            <a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
+                                href="{{ Cache::get('companyprofile')->whatsapp }}">Whatsapp</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="mt-5 sm:mt-12 grid gap-y-2 sm:gap-y-0 sm:flex sm:justify-center md:items-center sm:items-center text-center">
+                <div class="flex justify-center items-center">
+                    <p class="text-sm text-center text-gray-400">
+                        &copy; 2025 {{ Cache::get('companyprofile')->name }} All Right Reserved
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
     @vite('resources/js/app.js')
+    @stack('scriptHero')
+    @stack('scriptProses')
+    <script>
+        // navbar script
+        const header = document.getElementById('header');
+        const collapseButton = document.getElementById('collapseButton');
+        const collapseContent = document.getElementById('collapseContent');
+        const navLinks = document.getElementById('navLinks');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('tw-bg-white/90', 'tw-backdrop-blur-sm', 'md:tw-text-gray-800');
+                header.classList.remove('tw-bg-white/0', 'tw-backdrop-blur-0');
+                navLinks.classList.remove('md:tw-text-white');
+                navLinks.classList.add('tw-text-gray-800');
+            } else {
+                header.classList.add('tw-bg-white/0', 'tw-backdrop-blur-0');
+                header.classList.remove('tw-bg-white/90', 'tw-backdrop-blur-sm', 'md:tw-text-gray-800');
+                navLinks.classList.remove('tw-text-gray-800');
+                navLinks.classList.add('md:tw-text-white');
+            }
+        });
+
+        collapseButton.addEventListener('click', () => {
+            collapseContent.classList.toggle('tw-hidden');
+        });
+    </script>
 </body>
 
 </html>

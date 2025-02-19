@@ -17,7 +17,7 @@
                 <div class="card">
                     <div class="border-bottom title-part-padding d-flex justify-content-between">
                         <h4 class="card-title mb-0">Regulations</h4>
-                        <a href="/regulations/create">
+                        <a href="/cmslpktsukuba/regulations/create">
 
                             <button class="btn btn-primary">
                                 <i class="ti ti-plus"></i>
@@ -31,7 +31,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Icon</th>
+                                    <th style="max-width: 35px">Icon</th>
                                     <th>Title</th>
                                     <th>Program</th>
                                     <th>Action</th>
@@ -46,11 +46,11 @@
                                         <td>{{ $regulation->programs->title }}</td>
 
                                         <td>
-                                            <a href="/regulations/{{ Crypt::encryptString($regulation->id) }}/edit"><button
+                                            <a href="/cmslpktsukuba/regulations/{{ Crypt::encryptString($regulation->id) }}/edit"><button
                                                     class="btn btn-primary px-4 ">
                                                     <i class="ti ti-pencil fs-5"></i>
                                                     Edit</button></a>
-                                            <form action="/regulations/{{ Crypt::encryptString($regulation->id) }}"
+                                            <form action="/cmslpktsukuba/regulations/{{ Crypt::encryptString($regulation->id) }}"
                                                 method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')

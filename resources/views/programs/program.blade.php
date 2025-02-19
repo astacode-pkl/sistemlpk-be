@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="border-bottom title-part-padding d-flex justify-content-between  align-items-center ">
                     <h4 class="card-title mb-0">Programs</h4>
-                    <a href="/programs/create">
+                    <a href="/cmslpktsukuba/programs/create/">
                         <button class="btn btn-primary">
                             <i class="ti ti-plus"></i>
                             Create</button>
@@ -71,12 +71,12 @@
                                         </span>
                                     </td>
                                     <td class="center">
-                                        <a href="/programs/{{ Crypt::encryptString($programs->id) }}/edit"><button
+                                        <a href="/cmslpktsukuba/programs/{{ Crypt::encryptString($programs->id) }}/edit"><button
                                                 class="btn btn-primary px-4 ">
                                                 <i class="ti ti-pencil fs-5"></i>
                                                 Edit</button></a>
 
-                                        <form action="/programs/{{ Crypt::encryptString($programs->id) }}" method="POST"
+                                        <form action="/cmslpktsukuba/programs/{{ Crypt::encryptString($programs->id) }}" method="POST"
                                             class="d-inline">
                                             @csrf
                                             @method('delete')
