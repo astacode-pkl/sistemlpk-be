@@ -20,16 +20,26 @@ class HomeController extends Controller
 
         $galleries = Gallery::all();
         $heroes = Hero::orderBy('position')->get();
+        //variabel default
+        $otherPhotos = [];
+        $graduations = [];
+
         foreach ($galleries as $gallery) {
-            if ($gallery->categories->title === 'Kelulusan') {
-                $graduations[] = $gallery;
-            } else {
+            switch ($gallery->categories->title) {
+                case 'Kelulusan':
+                    $graduations[] = $gallery;
+                    break;
+                
+                default:             
                 $otherPhotos[] = $gallery;
+                    break;
             }
         }
-
         $otherPhotos = collect($otherPhotos);
-        $otherPhotos = $otherPhotos->random(4);
+        if(count($otherPhotos) >= 4 ){
+            $otherPhotos = $otherPhotos->random(4);
+        }   
+
 
 
         $programs = Program::all();

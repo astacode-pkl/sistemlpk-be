@@ -81,11 +81,24 @@ class CompanyProfileController extends Controller
         }
 
         $table->map = get_string_between( $request->map, 'src="', '"');
-        
-        $imageName = $this->updateImage('images/companyprofile/',$table->logo,$request->file('logo'));
+        $logoType = $table->logo_type;
+        $logo = $table->logo;
+        $logoMark = $table->logo_mark;
+        if ($request->file('logo') !== null) {
+            # code...
+            $logo = $this->updateImage('images/companyprofile/',$table->logo,$request->file('logo'));
+        }
+        if ($request->file('logo_type') !== null){
+
+            $logoType = $this->updateImage('images/companyprofile/',$table->logo_type,$request->file('logo_type'));
+        }
+        if ($request->file('logo_mark') !== null) {
+            # code...
+            $logoMark = $this->updateImage('images/companyprofile/',$table->logo_mark,$request->file('logo_mark'));
+        }
         
         $oldData = CompanyProfile::where('id',$id)->get();
-        $table->update(['logo' => $imageName]);
+        $table->update(['logo' => $logo,'logo_type' => $logoType,'logo_mark' => $logoMark]);
         $newData = CompanyProfile::where('id',$id)->get();
         LogHistory::record('Update',  auth()->user()->name.' updated Company Profile',$newData,$oldData);
 

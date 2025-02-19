@@ -3,7 +3,7 @@
         <!-- images -->
         @foreach ($otherphotos as $otherphoto)
             <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 h-full cursor-pointer"
-                onclick="openModal(image)">
+                onclick="openModal({{ $otherphoto->id }})">
                 <img src="{{ asset('images/galleries/' . $otherphoto->image) }}" alt="{{ $otherphoto->title }}"
                     class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
                 <div

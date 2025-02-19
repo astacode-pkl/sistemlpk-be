@@ -25,6 +25,8 @@ return new class extends Migration
             $table->text('address');
             $table->text('map');
             $table->string('logo');
+            $table->string('logo_type');
+            $table->string('logo_mark');
             $table->timestamps();
         });
     }

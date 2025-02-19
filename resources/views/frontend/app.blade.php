@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @vite('resources/css/app.css')
+ 
 
     <title>{{ Cache::get('companyprofile')->name }}</title>
 </head>
@@ -18,6 +19,7 @@
             <!-- Logo w/ Collapse Button -->
             <div class="flex items-center justify-between">
                 <a class="flex gap-3" href="#" aria-label="Brand">
+                {{-- logo --}}
                     <img src="https://lpktsukuba.vercel.app/_nuxt/logo.B5hgejDb.png" alt="logo" class="w-10">
                     <img src="https://lpktsukuba.vercel.app/_nuxt/nama.BiAa2lNX.png" alt="nama" class="w-20">
                 </a>
@@ -173,7 +175,6 @@
     </footer>
     <!-- End Footer -->
 
-    @vite('resources/js/app.js')
     @stack('scriptHero')
     @stack('scriptProses')
     <script>
@@ -185,20 +186,20 @@
 
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                header.classList.add('tw-bg-white/90', 'tw-backdrop-blur-sm', 'md:tw-text-gray-800');
-                header.classList.remove('tw-bg-white/0', 'tw-backdrop-blur-0');
-                navLinks.classList.remove('md:tw-text-white');
-                navLinks.classList.add('tw-text-gray-800');
+                header.classList.add('bg-white/90', 'backdrop-blur-sm', 'md:text-gray-800');
+                header.classList.remove('bg-white/0', 'backdrop-blur-0');
+                navLinks.classList.remove('md:text-white');
+                navLinks.classList.add('text-gray-800');
             } else {
-                header.classList.add('tw-bg-white/0', 'tw-backdrop-blur-0');
-                header.classList.remove('tw-bg-white/90', 'tw-backdrop-blur-sm', 'md:tw-text-gray-800');
-                navLinks.classList.remove('tw-text-gray-800');
-                navLinks.classList.add('md:tw-text-white');
+                header.classList.add('bg-white/0', 'backdrop-blur-0');
+                header.classList.remove('bg-white/90', 'backdrop-blur-sm', 'md:text-gray-800');
+                navLinks.classList.remove('text-gray-800');
+                navLinks.classList.add('md:text-white');
             }
         });
 
         collapseButton.addEventListener('click', () => {
-            collapseContent.classList.toggle('tw-hidden');
+            collapseContent.classList.toggle('hidden');
         });
     </script>
 </body>

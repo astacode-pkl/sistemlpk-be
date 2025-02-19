@@ -9,14 +9,22 @@ class GalleriesController extends Controller
 {
     public function index(){
         $galleries = Gallery::all();
+   //variabel default
+   $otherPhotos = [];
+   $graduations = [];
 
-        foreach ($galleries as $gallery) {
-            if ($gallery->categories->title === 'Kelulusan') {
-                $graduations[] = $gallery;
-            } else {
-                $otherPhotos[] = $gallery;
-            }
-        }
+   foreach ($galleries as $gallery) {
+       switch ($gallery->categories->title) {
+           case 'Kelulusan':
+               $graduations[] = $gallery;
+               break;
+           
+           default:             
+           $otherPhotos[] = $gallery;
+               break;
+       }
+   }
+      
 
         return view('frontend.galleries', [
             'graduations' => $graduations,

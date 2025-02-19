@@ -7,6 +7,7 @@ abstract class Controller
     public function uploadImage($destination,$image){
         $destinationPath = $destination;
         //sh1 file name
+        
         $sha1FileName = sha1($image->getClientOriginalName());
         $imageMimeType = $image->getMimeType();
 
@@ -59,7 +60,7 @@ abstract class Controller
                 public_path($destinationPath . $data)
             )) {
 
-                unlink(public_path($destinationPath . $data));
+                @unlink(public_path($destinationPath . $data));
             }else if (!$image && file_exists(
                 public_path($destinationPath . $data)
             )){
