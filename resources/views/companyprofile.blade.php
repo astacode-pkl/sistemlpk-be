@@ -103,14 +103,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row pt-3">
-                        <div class="col">
+                    <div class="d-flex pt-3 gap-3">
 
                             <div class="mb-3">
                                 <label class="control-label" for="address">Logo</label>
 
                                 <img src="{{ asset('images/companyprofile/' . $profile->logo) }}"
-                                    class="img-fluid rounded-top w-20 w-xs-100 d-block" alt="" id="preview" />
+                                    class="img-fluid rounded-top w-xs-100 d-block my-3" alt="" id="preview" style="max-width:230px;" />
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" id="fileInput" class="form-control @error('logo') is-invalid @enderror " name="logo"
@@ -123,7 +122,41 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="mb-3">
+                                <label class="control-label" for="address">Logo Mark</label>
+
+                                <img src="{{ asset('images/companyprofile/' . $profile->logo_mark) }}"
+                                    class="img-fluid rounded-top  w-xs-100 d-block my-3" alt="" id="preview"  style="max-width:230px;"  />
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" id="fileInput" class="form-control @error('logo_mark') is-invalid @enderror " name="logo_mark"
+                                            id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" >
+                                        @error('logo_mark')
+                                            <div id="validationServer04Feedback" class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="control-label" for="address">Logo Type</label>
+
+                                <img src="{{ asset('images/companyprofile/' . $profile->logo_type) }}"
+                                    class="img-fluid rounded-top w-xs-100 d-block my-3" alt="" id="preview"  style="max-width:230px;"  />
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" id="fileInput" class="form-control @error('logo_type') is-invalid @enderror " name="logo_type"
+                                            id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" >
+                                        @error('logo_type')
+                                            <div id="validationServer04Feedback" class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        
                     </div>
                     @endforeach
                     <div class="form-actions text-end">

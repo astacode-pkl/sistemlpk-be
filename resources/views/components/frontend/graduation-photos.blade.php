@@ -6,9 +6,9 @@
                     @foreach ($graduations as $graduation)
                         <div class="flex-shrink-0 w-[100%] md:w-[30.5%] lg:w-[23.5%] cursor-pointer">
                             <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 h-full"
-                                onclick="openModal(${image.id})">
+                                onclick="openModal({{$graduation->id}})">
                                 <img src="{{ asset('images/galleries/' . $graduation->image) }}"
-                                    alt="{{ $graduation->title }}"
+                                    alt="{{ $graduation->title }}" id="img"
                                     class="w-full h-auto transform group-hover:scale-105 transition-transform duration-300" />
                                 <div
                                     class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
@@ -56,70 +56,91 @@
             </div>
         </div>
     </div>
-    <script>
-        const gallery = document.getElementById('gallery');
-        const slider = document.getElementById('slider');
-        const modal = document.getElementById('modal');
-        const modalImage = document.getElementById('modalImage');
-        const modalTitle = document.getElementById('modalTitle');
-        const closeModalButton = document.getElementById('closeModal');
-        const prevButton = document.getElementById('prevButton');
-        const nextButton = document.getElementById('nextButton');
+<script>
+    const gallery = document.getElementById('gallery');
+    const slider = document.getElementById('slider');
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const closeModalButton = document.getElementById('closeModal');
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
 
-        let currentSlide = 0;
-        const slidesToShow = {
-            mobile: 1,
-            tablet: 3,
-            desktop: 4
-        };
+    let currentSlide = 0;
+    const slidesToShow = { mobile: 1, tablet: 3, desktop: 4 };
 
-        updateSliderPosition();
+    // Ambil data dari Laravel dengan aman
+    const images = {!! json_encode($graduations) !!};
 
-        function updateSliderPosition() {
-            const slideWidth = slider.children[0].offsetWidth;
-            const gap = 16;
-            const offset = -(currentSlide * (slideWidth + gap));
-            slider.style.transform = `translateX(${offset}px)`;
+    console.log("Data images dari Laravel:", images); // Debugging
 
-            prevButton.disabled = currentSlide === 0;
-            nextButton.disabled = currentSlide >= images.length - getSlidesToShow();
+    function updateSliderPosition() {
+        if (!images || images.length === 0) return;
 
-            prevButton.style.opacity = prevButton.disabled ? '0.5' : '1';
-            nextButton.style.opacity = nextButton.disabled ? '0.5' : '1';
+        const slideWidth = slider.children[0].offsetWidth;
+        const gap = 16;
+        const offset = -(currentSlide * (slideWidth + gap));
+
+        slider.style.transform = `translateX(${offset}px)`;
+
+        prevButton.disabled = currentSlide === 0;
+        nextButton.disabled = currentSlide >= images.length - getSlidesToShow();
+
+        prevButton.style.opacity = prevButton.disabled ? '0.5' : '1';
+        nextButton.style.opacity = nextButton.disabled ? '0.5' : '1';
+    }
+
+    function getSlidesToShow() {
+        if (window.innerWidth >= 1024) return slidesToShow.desktop;
+        if (window.innerWidth >= 768) return slidesToShow.tablet;
+        return slidesToShow.mobile;
+    }
+
+    function openModal(imageId) {
+        const image = images.find(img => img.id == imageId); // Gunakan == untuk menghindari tipe data yang berbeda
+        if (!image) return;
+
+        modalImage.src = "/images/galleries/" + image.image; // Pastikan path benar
+        modalTitle.textContent = image.title;
+        modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+        modal.classList.add('hidden');
+    }
+
+    closeModalButton.addEventListener('click', closeModal);
+
+    // Tutup modal jika klik di luar gambar
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeModal();
         }
+    });
 
-        function getSlidesToShow() {
-            if (window.innerWidth >= 1024) return slidesToShow.desktop;
-            if (window.innerWidth >= 768) return slidesToShow.tablet;
-            return slidesToShow.mobile;
+    // Tutup modal dengan tombol ESC
+    document.addEventListener('keydown', (event) => {
+        if (event.key === "Escape") {
+            closeModal();
         }
+    });
 
-        function openModal(imageId) {
-            const image = images.find(img => img.id === imageId);
-            modalImage.src = image.src;
-            modalTitle.textContent = image.title;
-            modal.classList.remove('hidden');
-        }
-
-        closeModalButton.addEventListener('click', () => {
-            modal.classList.add('hidden');
-        });
-
-        // Navigation buttons
-        prevButton.addEventListener('click', () => {
-            if (currentSlide > 0) {
-                currentSlide--;
-                updateSliderPosition();
-            }
-        });
-
-        nextButton.addEventListener('click', () => {
-            if (currentSlide < images.length - getSlidesToShow()) {
-                currentSlide++;
-                updateSliderPosition();
-            }
-        }); // Update
-        slider window.addEventListener('resize', () => {
+    // Navigasi tombol slider
+    prevButton.addEventListener('click', () => {
+        if (currentSlide > 0) {
+            currentSlide--;
             updateSliderPosition();
-        });
-    </script>
+        }
+    });
+
+    nextButton.addEventListener('click', () => {
+        if (currentSlide < images.length - getSlidesToShow()) {
+            currentSlide++;
+            updateSliderPosition();
+        }
+    });
+
+    window.addEventListener('resize', updateSliderPosition);
+
+    updateSliderPosition();
+</script>

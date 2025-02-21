@@ -22,14 +22,19 @@ class HomeController extends Controller
 
         Cache::add('companyprofile', $companyProfile);
 
+        //variabel default
         $otherPhotos = [];
         $graduations = [];
 
         foreach ($galleries as $gallery) {
-            if ($gallery->categories->title === 'Kelulusan') {
-                $graduations[] = $gallery;
-            } else {
+            switch ($gallery->categories->title) {
+                case 'Kelulusan':
+                    $graduations[] = $gallery;
+                    break;
+                
+                default:             
                 $otherPhotos[] = $gallery;
+                    break;
             }
         }
         if (count($otherPhotos) >= 4) {

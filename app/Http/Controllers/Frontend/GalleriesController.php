@@ -8,23 +8,24 @@ use Exception;
 
 class GalleriesController extends Controller
 {
-    public function index()
-    {
-        $otherPhotos = [];
-        $graduations = [];
-
+    public function index(){
         $galleries = Gallery::all();
-        foreach ($galleries as $gallery) {
-            if ($gallery->categories->title === 'Kelulusan') {
-                $graduations[] = $gallery;
-            } else {
-                $otherPhotos[] = $gallery;
-            }
-        }
-        if (count($otherPhotos) >= 4) {
-            $otherPhotos = collect($otherPhotos);
-            $otherPhotos = $otherPhotos->random(4);
-        }
+   //variabel default
+   $otherPhotos = [];
+   $graduations = [];
+
+   foreach ($galleries as $gallery) {
+       switch ($gallery->categories->title) {
+           case 'Kelulusan':
+               $graduations[] = $gallery;
+               break;
+           
+           default:             
+           $otherPhotos[] = $gallery;
+               break;
+       }
+   }
+      
 
         return view('frontend.galleries', [
             'graduations' => $graduations,
