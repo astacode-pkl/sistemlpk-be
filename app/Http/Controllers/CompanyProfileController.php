@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\LogHistory;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\CompanyProfile;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Storage;
 
 class CompanyProfileController extends Controller
 {
@@ -80,8 +79,11 @@ class CompanyProfileController extends Controller
             $len = strpos($string, $end, $ini) - $ini;
             return substr($string, $ini, $len);
         }
-
-        $table->map = get_string_between( $request->map, 'src="', '"');
+        if(Str::contains($request->map, 'src="')){
+            $table->map = get_string_between( $request->map, 'src="', '"');
+        }else{
+            $table->map = $request->map;
+        }
         $logoType = $table->logo_type;
         $logo = $table->logo;
         $logoMark = $table->logo_mark;

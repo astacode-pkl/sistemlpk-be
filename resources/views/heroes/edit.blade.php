@@ -31,7 +31,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3 d-none">
                                     <label class="control-label mb-2" for="position">Position</label>
                                     <input type="number" id="position"
                                         class="form-control @error('position') is-invalid @enderror"
@@ -59,7 +59,7 @@
                                          Update
                                     </div>
                                 </button>
-                                <a href="/cmslpktsukuba/galleries/">
+                                <a href="/cmslpktsukuba/heroes/">
                                     <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                         <div class="d-flex align-items-center">
                                             <i class="ti ti-circle-x me-1 fs-5"></i>

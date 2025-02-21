@@ -44,11 +44,9 @@ class ContactController extends Controller
      */
     public function show(string $id = null)
     {
-        // try {
-            $id = Crypt::decryptString($id);
-        // } catch (\Exception $e) {
-        //     return view('errors.404', ['message' => $e->getMessage()]);
-        // }
+        
+        $id = Crypt::decryptString($id);
+        
         $this->update($id);
         $contacts = Contact::all()->sortByDesc('created_at')->sortByDesc('status');
         $contactById = Contact::find($id);
@@ -90,7 +88,6 @@ class ContactController extends Controller
      */
     public function update($id)
     {
-        $id = Crypt::decryptString($id);
         $table = Contact::find($id);
         $table->status = 'read';
         $table->update();

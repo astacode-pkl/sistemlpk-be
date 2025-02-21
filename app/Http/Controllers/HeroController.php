@@ -25,7 +25,8 @@ class HeroController extends Controller
      */
     public function create()
     {
-        return view('heroes.create');
+        $newPosition = count(Hero::all()) + 1;
+        return view('heroes.create', compact('newPosition'));
     }
 
     /**

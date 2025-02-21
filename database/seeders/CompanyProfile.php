@@ -27,7 +27,7 @@ class CompanyProfile extends Seeder
             'whatsapp' => 'https://wa.me/6282316396737',
             'tiktok' => 'https://www.tiktok.com/@tsukuba.indonesia',
             'address' => 'Perum Puri Ciawi Kencana, Pasirhuni, Kec. Ciawi, Kabupaten Tasikmalaya, Jawa Barat 46156',
-            'map' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.9013908491333!2d108.14592479999999!3d-7.137400899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f495efa140885%3A0xdf0a87b6588b1161!2sPerum%20Puri%20Ciawi%20Kencana!5e0!3m2!1sen!2sid!4v1736971326002!5m2!1sen!2sid" width="95%" height="270" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-2xl"></iframe>',
+            'map' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.9013908491333!2d108.14592479999999!3d-7.137400899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f495efa140885%3A0xdf0a87b6588b1161!2sPerum%20Puri%20Ciawi%20Kencana!5e0!3m2!1sen!2sid!4v1736971326002!5m2!1sen!2sid',
             'logo' => 'logo.webp',
 
         ]);

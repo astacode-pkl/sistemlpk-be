@@ -20,8 +20,8 @@
             <div class="flex items-center justify-between">
                 <a class="flex gap-3" href="#" aria-label="Brand">
                 {{-- logo --}}
-                    <img src="https://lpktsukuba.vercel.app/_nuxt/logo.B5hgejDb.png" alt="logo" class="w-10">
-                    <img src="https://lpktsukuba.vercel.app/_nuxt/nama.BiAa2lNX.png" alt="nama" class="w-20">
+                    <img src="{{ asset('images/companyprofile/'.$companyProfile->logo_mark) }}" alt="logo" class="w-10">
+                    <img src="{{ asset('images/companyprofile/'.$companyProfile->logo_type) }}" alt="nama" class="w-20">
                 </a>
                 <!-- Collapse Button -->
                 <div class="md:hidden">

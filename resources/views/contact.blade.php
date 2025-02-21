@@ -2,7 +2,6 @@
 @section('content')
     <div class="card overflow-hidden chat-application">
         <div class="d-flex align-items-center gap-3 m-3 d-lg-none">
-
            <h1 class="text-center">Inbox</h1>
         </div>
         <div class="d-flex w-100">

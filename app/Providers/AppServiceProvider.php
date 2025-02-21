@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Pagination\Paginator;
+use App\Models\CompanyProfile;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         // }
         //end
 
-
+        Cache::put('companyprofile', CompanyProfile::first());
         view()->composer('*', function ($view) {
             $view->with('companyProfile', Cache::get('companyprofile'));
         });
