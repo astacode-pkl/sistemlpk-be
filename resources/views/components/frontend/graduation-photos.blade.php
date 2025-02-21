@@ -2,23 +2,8 @@
     <div class="galeri">
         <div class="relative px-5 mt-5 mb-10" id="gallery">
             <div class="overflow-hidden rounded-md">
-                <div id="slider" class="flex gap-4 transition-transform duration-300 ease-in-out">
-                    @foreach ($graduations as $graduation)
-                        <div class="flex-shrink-0 w-[100%] md:w-[30.5%] lg:w-[23.5%] cursor-pointer">
-                            <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 h-full"
-                                onclick="openModal({{$graduation->id}})">
-                                <img src="{{ asset('images/galleries/' . $graduation->image) }}"
-                                    alt="{{ $graduation->title }}" id="img"
-                                    class="w-full h-auto transform group-hover:scale-105 transition-transform duration-300" />
-                                <div
-                                    class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                                    <h3
-                                        class="text-white text-base sm:text-lg md:text-xl font-semibold text-center px-4">
-                                        {{ $graduation->title }}</h3>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+                <div id="slider" class="flex gap-4 transition-transform duration-300 container mx-auto ease-in-out">
+                    {{$slot}}   
                 </div>
             </div>
             <!-- Prev Button -->
@@ -70,7 +55,7 @@
     const slidesToShow = { mobile: 1, tablet: 3, desktop: 4 };
 
     // Ambil data dari Laravel dengan aman
-    const images = {!! json_encode($graduations) !!};
+    const images = {!! json_encode($galleries) !!};
 
     console.log("Data images dari Laravel:", images); // Debugging
 

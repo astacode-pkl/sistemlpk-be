@@ -9,7 +9,7 @@
     <!-- History Section -->
     <div class="max-w-6xl mx-auto px-4">
         <h3 class="text-xl md:text-2xl font-bold text-blue-600 mb-6 text-center animate-slideDown opacity-100">
-            Sejarah {{ Cache::get('companyprofile')->name }}
+            Sejarah {{ $companyprofile->name }}
         </h3>
 
         <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden mb-12 animate-slideUp opacity-100">
@@ -17,16 +17,16 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12">
                     <div class="space-y-4 md:space-y-6 text-base md:text-lg text-center lg:text-left">
                         <p class="text-gray-600 leading-relaxed">
-                            {{ Cache::get('companyprofile')->name }} didirikan pada bulan Agustus 2024 di Ciawi, Kabupaten
+                            {{ $companyprofile->name }} didirikan pada bulan Agustus 2024 di Ciawi, Kabupaten
                             Tasikmalaya, Jawa
                             Barat
-                            Indonesia. {{ Cache::get('companyprofile')->name }} adalah lembaga pendidikan bahasa Jepang
+                            Indonesia. {{ $companyprofile->name }} adalah lembaga pendidikan bahasa Jepang
                             untuk Program Pemagang
                             ke
                             Jepang, dan telah mendapatkan izin resmi dari pemerintah Indonesia.
                         </p>
                         <p class="text-gray-600 leading-relaxed">
-                            {{ Cache::get('companyprofile')->name }} membuka kelas pendidikan Bahasa Jepang yang
+                            {{ $companyprofile->name }} membuka kelas pendidikan Bahasa Jepang yang
                             berorientasi memberikan
                             pembekalan
                             sikap, mental, serta bahasa dan budaya Jepang bagi calon peserta magang, dan melatih calon
@@ -38,13 +38,13 @@
                     </div>
                     <div class="order-first lg:order-last">
                         <div class="relative h-64 lg:h-full w-full rounded-lg overflow-hidden">
-                            <img src="{{ asset('frontend/img/hero.jpg') }}" alt="{{ Cache::get('companyprofile')->name }}"
+                            <img src="{{ asset('frontend/img/hero.jpg') }}" alt="{{ $companyprofile->name }}"
                                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-110" />
                             <div
                                 class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center p-6">
                                 <h4 class="text-white text-xl font-bold mb-2 text-center uppercase">
-                                    {{ Cache::get('companyprofile')->name }}</h4>
-                                <p class="text-white text-sm text-center">{{ Cache::get('companyprofile')->slogan }}</p>
+                                    {{ $companyprofile->name }}</h4>
+                                <p class="text-white text-sm text-center">{{ $companyprofile->slogan }}</p>
                             </div>
                         </div>
                     </div>

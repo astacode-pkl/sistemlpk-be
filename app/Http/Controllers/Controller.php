@@ -26,6 +26,9 @@ abstract class Controller
                 case 'image/png':
                     $sourceImage = @imagecreatefrompng($sourceImagePath);
                     break;
+                case 'image/jpg':
+                    $sourceImage = @imagecreatefromjpg($sourceImagePath);
+                    break;
                 default:
                     $sourceImage = false;
                     break;
@@ -86,6 +89,10 @@ abstract class Controller
                         break;
                     case 'image/png':
                         $sourceImage = @imagecreatefrompng($sourceImagePath);
+                        break;
+                    case 'image/jpg':                    
+                        $sourceImage = @imagecreatefromjpg($sourceImagePath);
+
                         break;
                     default:
                         $sourceImage = false;

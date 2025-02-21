@@ -8,7 +8,7 @@
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Create Regulation</h4>
                 </div>
-                <form action="/cmslpktsukuba/regulation/" method="POST" enctype="multipart/form-data">
+                <form action="/cmslpktsukuba/regulations" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="row pt-3">

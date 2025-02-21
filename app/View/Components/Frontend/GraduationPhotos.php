@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Frontend;
 
+use App\Models\Category;
 use Closure;
 use App\Models\Gallery;
 use Illuminate\View\Component;
@@ -13,7 +14,7 @@ class GraduationPhotos extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public array $graduations
+    
     ) {}
 
     /**
@@ -21,6 +22,7 @@ class GraduationPhotos extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.frontend.graduation-photos');
+        $galleries = Gallery::get();
+        return view('components.frontend.graduation-photos',compact('galleries'));
     }
 }

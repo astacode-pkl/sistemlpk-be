@@ -3,7 +3,7 @@
 
 <head>
     <!--  Title -->
-    <title>{{ $companyName }} - Login</title>
+    <title>{{$companyprofile->name  }} - Login</title>
     <!--  Required Meta Tag -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,7 +35,7 @@
                 <div class="row">
                     <!-- Start Profile logo -->
                     <div class="flex justify-content-start fixed">
-                        <img src="{{asset('images/companyprofile/'.$logo) }}"
+                        <img src="{{asset('images/companyprofile/'.$companyprofile->logo) }}"
                         alt=""
                         class="m-2"
                         width="100px" height="auto" style="position: fixed;" >

@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('logo');
             $table->string('logo_type');
             $table->string('logo_mark');
+            $table->string('advertisement');
             $table->timestamps();
         });
     }

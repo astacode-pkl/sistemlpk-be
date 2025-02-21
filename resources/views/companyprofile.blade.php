@@ -158,6 +158,24 @@
                             </div>
                         
                     </div>
+                    <div class="mb-3">
+                        <label class="control-label" for="address">Advertisement</label>
+
+                        <img src="{{ asset('images/companyprofile/' . $profile->advertisement) }}"
+                            class="img-fluid rounded-top w-xs-100 d-block my-3" alt="" id="preview"  style="max-width:230px;"  />
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" id="fileInput" class="form-control @error('advertisement') is-invalid @enderror " name="advertisement"
+                                    id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" >
+                                @error('advertisement')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                      {{$message}}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                
                     @endforeach
                     <div class="form-actions text-end">
                         <div class="card-body border-top">

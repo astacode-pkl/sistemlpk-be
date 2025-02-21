@@ -5,7 +5,7 @@
         <!-- Overlay -->
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center z-10">
             <h1 class="text-3xl font-semibold">
-                {{ Cache::get('companyprofile')->name }} <br />{{ Cache::get('companyprofile')->slogan }}
+                {{ $companyprofile->name }} <br />{{ $companyprofile->slogan }}
             </h1>
             <div class="flex justify-center mt-8 py-3 w-full">
                 <a href="https://tally.so/r/mOdErY" target="_blank">
@@ -45,7 +45,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 w-full max-w-7xl">
             <div class="flex justify-center items-center col-span-1 md:col-span-1 md:order-2 order-1" data-aos="fade-up"
                 data-aos-delay="200">
-                <img src="https://lpktsukuba.vercel.app/_nuxt/misi.kpFNBcGC.jpg" alt="misi"
+                <img src="{{ asset('images/companyprofile/'.$companyprofile->advertisement) }}" alt="misi"
                     class="w-[90%] h-full lg:w-full object-cover bg-gray-50 shadow-lg rounded-lg" />
             </div>
             <div class="p-10 bg-gray-50 shadow-lg rounded-lg mx-auto col-span-1 md:col-span-2 md:order-1 order-2"
@@ -56,14 +56,14 @@
                 <h3 class="font-semibold text-lg text-gray-800 text-center">
                     Visi
                 </h3>
-                <p class="mt-4 text-gray-700 leading-relaxed text-center md:text-left">
-                    {{ Cache::get('companyprofile')->vision }}
+                <p class="mt-4 text-gray-700 leading-relaxed text-center md:text-left whitespace-pre-line">
+                    {{ $companyprofile->vision }}
                 </p>
-                <h3 class="font-semibold text-lg text-gray-800 text-center mt-5">
+                <h3 class="font-semibold text-lg text-gray-800 text-center mt-5 ">
                     Misi
                 </h3>
-                <p class="mt-4 text-gray-700 leading-relaxed">
-                    {{ Cache::get('companyprofile')->mission }}
+                <p class="mt-4 text-gray-700 leading-relaxed whitespace-pre-line">
+                    {{ $companyprofile->mission }}
                 </p>
             </div>
         </div>
@@ -77,12 +77,45 @@
         </h2>
         <div class="mx-auto h-1 w-16 bg-blue-600 rounded mb-4 mt-4 animate-slide-up" data-aos="fade-up">
         </div>
-        <p class="text-center text-gray-600 mb-10 animate-fade-in" data-aos="fade-up">Foto Kelulusan</p>
-        <x-frontend.graduation-photos :graduations="$graduations"></x-frontend.graduation-photos>
-        
-        <p class="text-center text-gray-600 mb-10 animate-fade-in" data-aos="fade-up">Foto Kegiatan Lainnya
-        </p>
-        <x-frontend.other-photos :otherphotos="$otherphotos"></x-frontend.other-photos>
+        @foreach ($categories as $category)
+        @if ($category->title == "Kelulusan")
+        <p class="text-center text-gray-600 mb-10 animate-fade-in" data-aos="fade-up">{{ $category->title }}</p>
+            <x-frontend.graduation-photos >
+        @foreach ($category->galleries as $gallery)
+                        <div class="flex-shrink-0 w-[100%] md:w-[30.5%] lg:w-[23.5%] cursor-pointer">
+                            <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 h-full"
+                                onclick="openModal({{$gallery->id}})">
+                                <img src="{{ asset('images/galleries/' . $gallery->image) }}"
+                                    alt="{{ $gallery->title }}" id="img"
+                                    class="w-full h-auto transform group-hover:scale-105 transition-transform duration-300" />
+                                <div
+                                    class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+                                    <h3
+                                        class="text-white text-base sm:text-lg md:text-xl font-semibold text-center px-4">
+                                        {{ $category->title }}</h3>
+                                </div>
+                            </div>
+                        </div>
+                @endforeach
+                    </x-frontend.graduation-photos>
+                @else
+                 <p class="text-center text-gray-600 mb-10 animate-fade-in" data-aos="fade-up">{{ $category->title }}</p>
+
+                    <x-frontend.other-photos>
+                        @foreach ($category->galleries as $gallery)
+                            <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 h-full cursor-pointer"
+                                onclick="openModalOtherPhotos('{{ $gallery->id }}')">
+                                <img src="{{ asset('images/galleries/' . $gallery->image) }}" alt="{{ $gallery->title }}"
+                                    class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                                <div
+                                    class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+                                    <h3 class="text-white text-base sm:text-lg md:text-xl font-semibold text-center px-4">{{ $gallery->title }}</h3>
+                                </div>
+                            </div>
+                        @endforeach
+                    </x-frontend.other-photos>
+            @endif
+            @endforeach
         <div class="flex justify-center">
             <a href="/galeri">
                 <button type="button"
@@ -98,7 +131,7 @@
     <div class="max-w-7xl mx-auto mt-14"></div>
     <h2 class="text-center text-3xl font-bold text-blue-500 mb-3 animate-fade-in" data-aos="fade-up">Program</h2>
     <div class="mx-auto h-1 w-16 bg-blue-600 rounded mb-4 mt-4 animate-slide-up" data-aos="fade-up"></div>
-    <p class="text-center text-gray-600 mb-10 animate-fade-in" data-aos="fade-up">Program {{ Cache::get('companyprofile')->name }}
+    <p class="text-center text-gray-600 mb-10 animate-fade-in" data-aos="fade-up">Program {{ $companyprofile->name }}
     </p>
     <div class="card-container grid grid-cols-1 md:grid-cols-2 gap-8 px-8">
         @foreach ($programs as $program)
@@ -131,12 +164,12 @@
         </p>
 
         <!-- step -->
-        <div class="bg-white shadow-lg rounded-lg p-6 flex items-center justify-center flex-col">
+        <div class="bg-white  rounded-lg p-6 flex items-center justify-center flex-col">
             <ul class="flex items-center justify-center gap-4 mb-6 cursor-pointer">
                 <li class="flex items-center" data-step="1">
                     <span
                         class="w-10 h-10 bg-gray-200 hover:bg-blue-600 active:bg-blue-600 rounded-full flex justify-center items-center text-lg font-bold">1</span>
-                    <span class="ml-4 text-sm font-medium">{{ Cache::get('companyprofile')->name }}</span>
+                    <span class="ml-4 text-sm font-medium">{{ $companyprofile->name }}</span>
                     <div class="flex-1 h-1 bg-gray-300 mx-4"></div>
                 </li>
                 <li class="flex items-center" data-step="2">

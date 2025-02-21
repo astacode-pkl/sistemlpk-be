@@ -21,7 +21,7 @@
                                 </svg>
                                 <div>
                                     <h3 class="font-semibold">Alamat:</h3>
-                                    <p class="text-gray-600">{{ Cache::get('companyprofile')->address }}</p>
+                                    <p class="text-gray-600">{{ $companyprofile->address }}</p>
                                 </div>
                             </div>
 
@@ -33,20 +33,20 @@
                                 </svg>
                                 <div>
                                     <h3 class="font-semibold">Email:</h3>
-                                    <a href="mailto:{{ Cache::get('companyprofile')->email }}" class="text-gray-600">{{ Cache::get('companyprofile')->email }}</a>
+                                    <a href="mailto:{{ $companyprofile->email }}" class="text-gray-600">{{ $companyprofile->email }}</a>
                                 </div>
                             </div>
 
                             <div>
                                 <h3 class="font-semibold mb-3 ms-5">Sosial Media:</h3>
                                 <div class="flex space-x-6 ms-6">
-                                    <a href="{{ Cache::get('companyprofile')->tiktok }}"
+                                    <a href="{{ $companyprofile->tiktok }}"
                                         class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-900"
                                         target="_blank">T</a>
-                                    <a href="{{ Cache::get('companyprofile')->instagram }}"
+                                    <a href="{{ $companyprofile->instagram }}"
                                         class="w-10 h-10 flex items-center justify-center bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 text-white rounded-full"
                                         target="_blank">I</a>
-                                    <a href="{{ Cache::get('companyprofile')->whatsapp }}"
+                                    <a href="{{ $companyprofile->whatsapp }}"
                                         class="w-10 h-10 flex items-center justify-center bg-green-500 text-white rounded-full hover:bg-green-700"
                                         target="_blank">W</a>
                                 </div>
@@ -54,7 +54,7 @@
 
                             <div class="card rounded-2xl">
                                 <div class="mt-6">
-                                    <iframe src="{{ Cache::get('companyprofile')->map }}" width="95%" height="270"
+                                    <iframe src="{{ $companyprofile->map }}" width="95%" height="270"
                                         style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                                         class="rounded-2xl"></iframe>
                                 </div>

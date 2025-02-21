@@ -57,6 +57,14 @@ class CompanyProfileController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate(
+            [
+                'logo' => 'image|mimes:jpeg,png,jpg',
+                'logo_type' => 'image|mimes:jpeg,png,jpg',
+                'logo_mark' => 'image|mimes:jpeg,png,jpg',
+                'advertisement' => 'image|mimes:jpeg,png,jpg',
+            ]
+        );
         $id = Crypt::decryptString($id);
         $table = CompanyProfile::find($id);
         $table->name = $request->name;
@@ -84,6 +92,7 @@ class CompanyProfileController extends Controller
         $logoType = $table->logo_type;
         $logo = $table->logo;
         $logoMark = $table->logo_mark;
+        $advertisement = $table->advertisement;
         if ($request->file('logo') !== null) {
             # code...
             $logo = $this->updateImage('images/companyprofile/',$table->logo,$request->file('logo'));
@@ -96,9 +105,13 @@ class CompanyProfileController extends Controller
             # code...
             $logoMark = $this->updateImage('images/companyprofile/',$table->logo_mark,$request->file('logo_mark'));
         }
+        if ($request->file('advertisement') !== null) {
+            # code...
+            $advertisement = $this->updateImage('images/companyprofile/',$table->advertisement,$request->file('advertisement'));
+        }
         
         $oldData = CompanyProfile::where('id',$id)->get();
-        $table->update(['logo' => $logo,'logo_type' => $logoType,'logo_mark' => $logoMark]);
+        $table->update(['logo' => $logo,'logo_type' => $logoType,'logo_mark' => $logoMark,'advertisement' => $advertisement]);
         $newData = CompanyProfile::where('id',$id)->get();
         LogHistory::record('Update',  auth()->user()->name.' updated Company Profile',$newData,$oldData);
 

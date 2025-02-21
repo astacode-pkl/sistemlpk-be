@@ -19,7 +19,7 @@
                                         <div class="input-group">
                                             <div class="custom-file ">
                                                 <input type="file"
-                                                    class="form-control  @error('title') is-invalid @enderror"
+                                                    class="form-control  @error('image') is-invalid @enderror"
                                                     id="fileInput" aria-describedby="inputGroupFileAddon01" name="image"
                                                     required>
                                                 @error('image')
@@ -62,7 +62,7 @@
                                         Save
                                     </div>
                                 </button>
-                                <a href="/cmslpktsukuba/galleries/">
+                                <a href="/cmslpktsukuba/heroes/">
                                     <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                         <div class="">
                                             <i class="ti ti-circle-x me-1 fs-5"></i>

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Crypt;
 
 class CategoryController extends Controller
 {
+    protected $guarded = ['id'];
     public function index()
     {
         $categories = Category::latest()->get();
