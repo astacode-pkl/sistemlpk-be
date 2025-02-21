@@ -2,10 +2,9 @@
 
 namespace App\Providers;
 
-use App\Models\CompanyProfile;
-
 use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,16 +23,26 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // ngrok not styling issue
+    
         // if (config('app.env') === 'local') {
         //     URL::forceScheme('https');
         // }
-        //end
+        // end
+        View::composer('*', function ($view) {
+            
+            static $companyprofile = null;
+    
+            if ($companyprofile === null) {
+                $companyprofile = \App\Models\CompanyProfile::first()->get();
+                foreach ($companyprofile as $item) {
+                    $companyprofile = $item;
+                }
+            }
+            
+            $view->with('companyprofile', $companyprofile);
+        });     
 
-        Cache::put('companyprofile', CompanyProfile::first());
-        view()->composer('*', function ($view) {
-            $view->with('companyProfile', Cache::get('companyprofile'));
-        });
-
-        Paginator::useBootstrapFive();
+    
     }
+
 }

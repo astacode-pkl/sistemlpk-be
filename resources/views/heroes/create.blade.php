@@ -19,7 +19,7 @@
                                         <div class="input-group">
                                             <div class="custom-file ">
                                                 <input type="file"
-                                                    class="form-control  @error('title') is-invalid @enderror"
+                                                    class="form-control  @error('image') is-invalid @enderror"
                                                     id="fileInput" aria-describedby="inputGroupFileAddon01" name="image"
                                                     required>
                                                 @error('image')

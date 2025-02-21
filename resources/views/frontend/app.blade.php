@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/companyprofile/' . $companyprofile->logo_mark) }}" />
     @vite('resources/css/app.css')
  
 
-    <title>{{ $companyProfile->name }}</title>
+    <title>{{ $companyprofile->name }}</title>
 </head>
 
 <body>
@@ -20,8 +21,8 @@
             <div class="flex items-center justify-between">
                 <a class="flex gap-3" href="#" aria-label="Brand">
                 {{-- logo --}}
-                    <img src="{{ asset('images/companyprofile/'.$companyProfile->logo_mark) }}" alt="logo" class="w-10">
-                    <img src="{{ asset('images/companyprofile/'.$companyProfile->logo_type) }}" alt="nama" class="w-20">
+                    <img src="{{ asset('images/companyprofile/' . $companyprofile->logo_mark) }}" alt="logo" class="w-10">
+                    <img src="{{ asset('images/companyprofile/' . $companyprofile->logo_type) }}" alt="nama" class="w-20">
                 </a>
                 <!-- Collapse Button -->
                 <div class="md:hidden">
@@ -91,26 +92,28 @@
                     <div class="space-y-6">
                         <div>
                             <div>
+
                                 <a class="flex-none text-xl font-semibold text-white focus:outline-none focus:opacity-80"
                                     aria-label="Brand">Tentang</a>
+                    
                                 <p
                                     class="mt-3 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200 cursor-default">
-                                    {{ $companyProfile->name }} didirikan pada bulan Agustus 2024 di
+                                    didirikan pada bulan Agustus 2024 di
                                     Ciawi, Kabupaten Tasikmalaya, Jawa Barat Indonesia. dan
                                     telah mendapatkan izin resmi dari pemerintah Indonesia.
                                 </p>
                                 <div class="mt-4">
                                     <a class="flex-none text-xl font-semibold text-white focus:outline-none focus:opacity-80"
-                                        aria-label="Brand">{{ $companyProfile->name }}</a>
+                                        aria-label="Brand">{{ $companyprofile->name }}</a>
                                     <p>
                                         <a
                                             class="inline-block mt-3 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200 cursor-default">
-                                            {{ $companyProfile->address }}</a>
+                                            {{ $companyprofile->address }}</a>
                                     </p>
                                     <p>
                                         <a class="inline-block mt-3 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
-                                            href="mailto:{{ $companyProfile->email }}">
-                                            {{ $companyProfile->email }}</a>
+                                            href="mailto:{{ $companyprofile->email }}">
+                                            {{ $companyprofile->email }}</a>
                                     </p>
                                 </div>
                             </div>
@@ -149,15 +152,15 @@
                     <div class="mt-3 space-y-3">
                         <p>
                             <a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
-                                href="{{ $companyProfile->instagram }}">Instagram</a>
+                                href="{{ $companyprofile->instagram }}">Instagram</a>
                         </p>
                         <p>
                             <a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
-                                href="{{ $companyProfile->tiktok }}">Tiktok</a>
+                                href="{{ $companyprofile->tiktok }}">Tiktok</a>
                         </p>
                         <p>
                             <a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
-                                href="{{ $companyProfile->whatsapp }}">Whatsapp</a>
+                                href="{{ $companyprofile->whatsapp }}">Whatsapp</a>
                         </p>
                     </div>
                 </div>
@@ -167,7 +170,7 @@
                 class="mt-5 sm:mt-12 grid gap-y-2 sm:gap-y-0 sm:flex sm:justify-center md:items-center sm:items-center text-center">
                 <div class="flex justify-center items-center">
                     <p class="text-sm text-center text-gray-400">
-                        &copy; 2025 {{ $companyProfile->name }} All Right Reserved
+                        &copy; 2025 {{ $companyprofile->name }} All Right Reserved
                     </p>
                 </div>
             </div>

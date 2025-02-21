@@ -21,12 +21,6 @@ class DashboardController extends Controller
     {
         $countUnread = Contact::where('status', 'unread')->count();
         session(['countUnread' => $countUnread]);
-
-
-        if (!Auth::check()) {
-            return view('login');
-        }
-
         // incoming
         $categories = Category::count();
         $categoriesLastcreated = $categories ? Category::latest()->first()->created_at->diffForHumans() : 'Not created yet';
