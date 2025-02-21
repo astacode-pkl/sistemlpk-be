@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\LogHistory;
 use App\Models\User;
+use App\Models\LogHistory;
 use Illuminate\Http\Request;
+use App\Models\CompanyProfile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Cache;
 
 class UserController extends Controller
 {
-
+    public function index(){
+        $companyProfile = CompanyProfile::first();
+        Cache::add('companyprofile', $companyProfile);
+        return view('login');
+    }
     public function login(Request $request)
     {
         $user = $request->validate([

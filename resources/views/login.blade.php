@@ -14,7 +14,7 @@
     <meta name="keywords" content="Mordenize" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--  Favicon -->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('images/companyprofile/'.$logo) }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/companyprofile/' . $companyProfile->logo) }}" />
     <!-- Core Css -->
     <link id="themeColors" rel="stylesheet" href="{{ asset('template/back') }}/dist/css/style.min.css" />
 </head>
@@ -50,7 +50,8 @@
                         </div>
                     </div>
                     <div class="col-xl-5 col-xxl-4">
-                        <div class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
+                        <div
+                            class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
 
                             <div class="col-sm-8 col-md-6 col-xl-9 position-relative">
                                 <x-alert></x-alert>
@@ -61,7 +62,8 @@
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Email</label>
                                         <input type="email" name="email" class="form-control"
-                                            id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email">
+                                            id="exampleInputEmail1" aria-describedby="emailHelp"
+                                            placeholder="Enter your email">
                                     </div>
                                     <div class="mb-4">
                                         <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -73,8 +75,9 @@
                                             </span>
                                         </div>
                                     </div>
-                                    
-                                    <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Log In</button>
+
+                                    <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Log
+                                        In</button>
                                 </form>
                             </div>
                         </div>
@@ -106,10 +109,11 @@
             y.classList.remove("fa-eye");
             y.classList.add("fa-eye-slash");
         } else {
-            x.type = "password"; 
+            x.type = "password";
             y.classList.remove("fa-eye-slash");
             y.classList.add("fa-eye");
         }
     }
 </script>
+
 </html>

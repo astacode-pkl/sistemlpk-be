@@ -19,7 +19,6 @@ class DashboardController extends Controller
 
     public function index()
     {
-
         $countUnread = Contact::where('status', 'unread')->count();
         session(['countUnread' => $countUnread]);
         // incoming
@@ -38,7 +37,7 @@ class DashboardController extends Controller
         $benefits = Benefit::count();
         $benefitsLastcreated = $benefits ? Benefit::latest()->first()->created_at->diffForHumans() : 'Not created yet';
 
-        
+
         $inbox = Contact::count();
         $inboxLastcreated = $inbox ? Contact::latest()->first()->created_at->diffForHumans() : 'No message yet';
 
@@ -46,13 +45,20 @@ class DashboardController extends Controller
         $heroLastcreated = $heroes ? Hero::latest()->first()->created_at->diffForHumans() : 'No message yet';
 
         return view('dashboard', [
-            'categories' => $categories, 'categoriesLastcreated' => $categoriesLastcreated,
-         'galleries' => $galleries, 'galleriesLastcreated' => $galleriesLastcreated,
-         'regulations' => $regulatios, 'regulationsLastcreated' => $regulationsLastcreated,
-         'programs' => $programs, 'programsLastcreated' => $programsLastcreated,
-         'benefits' => $benefits, 'benefitsLastcreated' => $benefitsLastcreated,
-         'inbox' => $inbox, 'inboxLastcreated' => $inboxLastcreated,
-         'heroes' => $heroes, 'heroLastcreated' => $heroLastcreated,
+            'categories' => $categories,
+            'categoriesLastcreated' => $categoriesLastcreated,
+            'galleries' => $galleries,
+            'galleriesLastcreated' => $galleriesLastcreated,
+            'regulations' => $regulatios,
+            'regulationsLastcreated' => $regulationsLastcreated,
+            'programs' => $programs,
+            'programsLastcreated' => $programsLastcreated,
+            'benefits' => $benefits,
+            'benefitsLastcreated' => $benefitsLastcreated,
+            'inbox' => $inbox,
+            'inboxLastcreated' => $inboxLastcreated,
+            'heroes' => $heroes,
+            'heroLastcreated' => $heroLastcreated,
         ]);
     }
 }

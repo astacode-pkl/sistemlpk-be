@@ -3,7 +3,7 @@
     <!-- Tentang page -->
 
     <!-- Hero Section -->
-    <x-frontend.breadcrumb :image="'frontend/img/bg-tentang.webp'" :title="'Tentang'" ></x-frontend.breadcrumb>
+    <x-frontend.breadcrumb :image="'frontend/img/bg-tentang.webp'" :title="'Tentang'"></x-frontend.breadcrumb>
     <!-- end hero -->
 
     <!-- History Section -->
@@ -45,10 +45,6 @@
                                 <h4 class="text-white text-xl font-bold mb-2 text-center uppercase">
                                     {{ $companyprofile->name }}</h4>
                                 <p class="text-white text-sm text-center">{{ $companyprofile->slogan }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <!-- end history -->

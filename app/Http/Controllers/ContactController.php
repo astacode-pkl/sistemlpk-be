@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use App\Models\LogHistory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 
 class ContactController extends Controller
@@ -45,11 +44,11 @@ class ContactController extends Controller
      */
     public function show(string $id = null)
     {
-        try {
+        // try {
             $id = Crypt::decryptString($id);
-        } catch (\Exception $e) {
-            return view('error', ['message' => 'Data not found']);
-        }
+        // } catch (\Exception $e) {
+        //     return view('errors.404', ['message' => $e->getMessage()]);
+        // }
         $this->update($id);
         $contacts = Contact::all()->sortByDesc('created_at')->sortByDesc('status');
         $contactById = Contact::find($id);

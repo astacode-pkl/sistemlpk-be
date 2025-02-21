@@ -77,7 +77,7 @@
                                     Update
                                 </div>
                             </button>
-                            <a href="/cmslpktsukuba/regulation/">
+                            <a href="/cmslpktsukuba/regulations">
                                 <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                     <div class="d-flex align-items-center">
                                         <i class="ti ti-circle-x me-1 fs-4"></i>

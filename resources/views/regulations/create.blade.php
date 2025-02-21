@@ -18,83 +18,84 @@
                                         <label for="floatingTextarea" class="mb-2">Icon</label>
                                         <textarea class="form-control @error('icon') is-invalid      
                                     @enderror w-100  "
-                                            placeholder="please enter text svg for icon you can find on web hero icons..." id="floatingTextarea" name="icon" required></textarea>
-                                            @error('icon')
-                                            <div id="validationServer04Feedback" class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                        
-                                    <div id="icon-preview" class="w-50 fst-italic "   style="max-width: 40px">icon</div>
-                                </div>
-                                    <div class="mb-3">
-                                        <div class=" mb-3">
-                                            <label for="floatingInput" class="mb-2">Title</label>
-                                            <input type="text"
-                                                class="form-control @error('title') is-invalid      
-                                    @enderror"
-                                                name="title" id="floatingInput" placeholder="please enter title..." required>
-                                            @error('title')
-                                                <div id="validationServer04Feedback" class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="mr-sm-2 mb-2" for="inlineFormCustomSelect">Program</label>
-                                        <select class="form-select mr-sm-2  @error('category_id') is-invalid @enderror"
-                                            name="program_id" id="inlineFormCustomSelect" required>
-                                            <option value="">Choose: Program</option>
-                                            @forelse ($programs as $program)
-                                                <option value="{{ $program->id }}">{{ $program->title }}</option>
-                                            @empty
-                                                <option value="">Program not found</option>
-                                            @endforelse
-                                        </select>
-                                        @error('program_id')
+                                            placeholder="please enter text svg for icon you can find on web hero icons..." id="floatingTextarea" name="icon"
+                                            required></textarea>
+                                        @error('icon')
                                             <div id="validationServer04Feedback" class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                         @enderror
                                     </div>
-                                  
+
+                                    <div id="icon-preview" class="w-50 fst-italic ms-5" style="max-width: 40px"></div>
                                 </div>
-                                <!--/span-->
+                                <div class="mb-3">
+                                    <div class=" mb-3">
+                                        <label for="floatingInput" class="mb-2">Title</label>
+                                        <input type="text"
+                                            class="form-control @error('title') is-invalid      
+                                    @enderror"
+                                            name="title" id="floatingInput" placeholder="please enter title..." required>
+                                        @error('title')
+                                            <div id="validationServer04Feedback" class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label class="mr-sm-2 mb-2" for="inlineFormCustomSelect">Program</label>
+                                    <select class="form-select mr-sm-2  @error('category_id') is-invalid @enderror"
+                                        name="program_id" id="inlineFormCustomSelect" required>
+                                        <option value="">Choose: Program</option>
+                                        @forelse ($programs as $program)
+                                            <option value="{{ $program->id }}">{{ $program->title }}</option>
+                                        @empty
+                                            <option value="">Program not found</option>
+                                        @endforelse
+                                    </select>
+                                    @error('program_id')
+                                        <div id="validationServer04Feedback" class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
                             </div>
-                            <div class="form-actions text-end">
-                                <div class="card-body border-top">
-                                    <button type="submit" class="btn btn-primary  px-4">
+                            <!--/span-->
+                        </div>
+                        <div class="form-actions text-end">
+                            <div class="card-body border-top">
+                                <button type="submit" class="btn btn-primary  px-4">
+                                    <div class="d-flex align-items-center">
+                                        <i class="ti ti-device-floppy me-1 fs-5"></i>
+                                        Create
+                                    </div>
+                                </button>
+                                <a href="/cmslpktsukuba/regulations">
+                                    <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                         <div class="d-flex align-items-center">
-                                            <i class="ti ti-device-floppy me-1 fs-5"></i>
-                                            Create
+                                            <i class="ti ti-circle-x me-1 fs-5"></i>
+                                            Cancel
                                         </div>
                                     </button>
-                                    <a href="/cmslpktsukuba/regulation/">
-                                        <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
-                                            <div class="d-flex align-items-center">
-                                                <i class="ti ti-circle-x me-1 fs-5"></i>
-                                                Cancel
-                                            </div>
-                                        </button>
-                                    </a>
-                                </div>
+                                </a>
                             </div>
                         </div>
+                    </div>
                 </form>
             </div>
 
         </div>
     </div>
     @push('script')
-    <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#floatingTextarea').on('keyup',function(){
-                $('#icon-preview').html($(this).val());
+        <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#floatingTextarea').on('keyup', function() {
+                    $('#icon-preview').html($(this).val());
+                });
             });
-        });
-    </script>
+        </script>
     @endpush
 @endsection

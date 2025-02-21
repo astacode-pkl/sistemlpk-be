@@ -62,39 +62,39 @@
                         </div>
                     </div>
 
-                    <div class="bg-white p-8 rounded-lg shadow-lg">
-                        <form action="/kontak" method="post" class="space-y-6">
-                            @csrf
-                            <div>
-                                <label for="nama" class="block text-sm font-medium text-gray-700">Nama</label>
-                                <input type="text" id="nama" name="name"
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500">
-                            </div>
-                            <div>
-                                <label for="no" class="block text-sm font-medium text-gray-700">Nomor
-                                    Ponsel</label>
-                                <input type="text" id="no" name="phone_number"
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                                <input type="email" id="email" name="email"
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500">
-                            </div>
-                            <div>
-                                <label for="pesan" class="block text-sm font-medium text-gray-700">Pesan</label>
-                                <textarea id="pesan" name="message"
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-                                    rows="4"></textarea>
-                            </div>
-                            <div>
-                                <button type="submit"
-                                    class="bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600">Kirim</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end  form-->
+                  <div class="bg-white p-8 rounded-lg shadow-lg">
+                      <form action="/kontak" method="post" class="space-y-6">
+                          @csrf
+                          <div>
+                              <label for="nama" class="block text-sm font-medium text-gray-700">Nama</label>
+                              <input type="text" id="nama" name="name"
+                                  class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500">
+                          </div>
+                          <div>
+                              <label for="no" class="block text-sm font-medium text-gray-700">Nomor
+                                  Ponsel</label>
+                              <input type="text" id="no" name="phone_number"
+                                  class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500">
+                          </div>
+                          <div>
+                              <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                              <input type="email" id="email" name="email"
+                                  class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500">
+                          </div>
+                          <div>
+                              <label for="pesan" class="block text-sm font-medium text-gray-700">Pesan</label>
+                              <textarea id="pesan" name="message"
+                                  class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
+                                  rows="4"></textarea>
+                          </div>
+                          <div>
+                              <button type="submit"
+                                  class="bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600">Kirim</button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- end  form-->

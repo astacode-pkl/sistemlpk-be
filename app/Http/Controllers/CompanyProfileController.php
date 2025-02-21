@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LogHistory;
 use Illuminate\Http\Request;
 use App\Models\CompanyProfile;
-use App\Models\LogHistory;
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 
 class CompanyProfileController extends Controller
@@ -113,6 +114,7 @@ class CompanyProfileController extends Controller
         $oldData = CompanyProfile::where('id',$id)->get();
         $table->update(['logo' => $logo,'logo_type' => $logoType,'logo_mark' => $logoMark,'advertisement' => $advertisement]);
         $newData = CompanyProfile::where('id',$id)->get();
+        Cache::put('companyprofile', $newData);
         LogHistory::record('Update',  auth()->user()->name.' updated Company Profile',$newData,$oldData);
 
         return redirect()->back()->with('success', 'Profile updated successfully!');

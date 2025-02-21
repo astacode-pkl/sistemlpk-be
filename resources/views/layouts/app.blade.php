@@ -60,7 +60,8 @@
                         <!-- Dashboard -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba')) active @endif" href="/cmslpktsukuba" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('cmslpktsukuba')) active @endif"
+                                href="/cmslpktsukuba" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-home"></i>
                                 </span>
@@ -78,7 +79,8 @@
                         <!-- Categories -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/categories')) active @endif" href="/cmslpktsukuba/categories" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/categories')) active @endif"
+                                href="/cmslpktsukuba/categories" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-list-details"></i>
                                 </span>
@@ -89,7 +91,8 @@
                         <!-- Gallery -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/galleries')) active @endif" href="/cmslpktsukuba/galleries" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/galleries')) active @endif"
+                                href="/cmslpktsukuba/galleries" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-photo"></i>
                                 </span>
@@ -101,7 +104,7 @@
                             <!-- ---------------------------------- -->
                         <li class="sidebar-item">
                             <a class="sidebar-link 
-                        @if (request()->is(['cmslpktsukuba/programs','cmslpktsukuba/programs/create'])) active @endif"
+                        @if (request()->is(['cmslpktsukuba/programs', 'cmslpktsukuba/programs/create'])) active @endif"
                                 href="/cmslpktsukuba/programs" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-layout"></i>
@@ -113,7 +116,8 @@
                         <!-- Regulations -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/regulations')) active @endif" href="/cmslpktsukuba/regulations" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/regulations')) active @endif"
+                                href="/cmslpktsukuba/regulations" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-book"></i>
                                 </span>
@@ -125,7 +129,8 @@
                         <!-- Benefits -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/benefits')) active @endif" href="/cmslpktsukuba/benefits" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/benefits')) active @endif"
+                                href="/cmslpktsukuba/benefits" aria-expanded="false">
                                 <span class="d-flex">
                                     <i class="ti ti-chart-pie"></i>
                                 </span>
@@ -137,7 +142,8 @@
                         <!-- heroes -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/heroes')) active @endif" href="/cmslpktsukuba/heroes" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/heroes')) active @endif"
+                                href="/cmslpktsukuba/heroes" aria-expanded="false">
                                 <span class="d-flex">
                                     <i class="ti ti-slideshow"></i>
                                 </span>
@@ -155,7 +161,8 @@
                         <!-- Company Profile -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/companyprofile')) active @endif" href="/cmslpktsukuba/companyprofile" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/companyprofile')) active @endif"
+                                href="/cmslpktsukuba/companyprofile" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-id-badge"></i>
                                 </span>
@@ -163,7 +170,8 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/loghistories')) active @endif" href="/cmslpktsukuba/loghistories" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/loghistories')) active @endif"
+                                href="/cmslpktsukuba/loghistories" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-history"></i>
                                 </span>

@@ -20,7 +20,7 @@
         <!-- Carousel -->
         <div id="carousel" class="relative h-screen w-full bg-white flex items-center brightness-50">
             <div id="carousel-body" class="flex w-full transition-transform duration-700">
-                @foreach($heroes as $hero)
+                @foreach ($heroes as $hero)
                     <div class="min-w-full flex justify-center items-center h-screen">
                         <img src="{{ asset('images/heroes/' . $hero->image) }}" class="object-cover h-full w-full"
                             alt="Slide 1">
@@ -212,11 +212,11 @@
     </div>
     <!-- end proses -->
 
-  <x-frontend.contact></x-frontend.contact>
-  @push('scriptHero')
-  <script src="{{ asset('frontend/js/scripthero.js') }}"></script>
-  @endpush
-  @push('scriptProses')
-  <script src="{{ asset('frontend/js/scriptproses.js') }}"></script>
-  @endpush
+    <x-frontend.contact></x-frontend.contact>
+    @push('scriptHero')
+        <script src="{{ asset('frontend/js/scripthero.js') }}"></script>
+    @endpush
+    @push('scriptProses')
+        <script src="{{ asset('frontend/js/scriptproses.js') }}"></script>
+    @endpush
 @endsection
