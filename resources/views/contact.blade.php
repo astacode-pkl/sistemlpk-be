@@ -176,7 +176,7 @@
                                         @if (count($contacts) > 0)
                                             @foreach ($contacts as $contact)
                                                 <li>
-                                                    <a href="/inbox/{{ Crypt::encryptString($contact['id']) }}"
+                                                    <a href="/cmslpktsukuba/inbox/{{ Crypt::encryptString($contact['id']) }}"
                                                         class="px-4 py-3 bg-hover-light-black d-flex align-items-start chat-user {{ $contact['status'] == 'unread' ? 'bg-light' : '' }} border-bottom"
                                                         id="chat_user_1" data-user-id="1">
                                                         <div class="position-relative w-100 ms-2">

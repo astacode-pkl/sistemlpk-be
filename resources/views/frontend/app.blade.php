@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @vite('resources/css/app.css')
 
-    <title>{{ Cache::get('companyprofile')->name }}</title>
+    <title>{{ $companyProfile->name }}</title>
 </head>
 
 <body>
@@ -93,22 +93,22 @@
                                     aria-label="Brand">Tentang</a>
                                 <p
                                     class="mt-3 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200 cursor-default">
-                                    {{ Cache::get('companyprofile')->name }} didirikan pada bulan Agustus 2024 di
+                                    {{ $companyProfile->name }} didirikan pada bulan Agustus 2024 di
                                     Ciawi, Kabupaten Tasikmalaya, Jawa Barat Indonesia. dan
                                     telah mendapatkan izin resmi dari pemerintah Indonesia.
                                 </p>
                                 <div class="mt-4">
                                     <a class="flex-none text-xl font-semibold text-white focus:outline-none focus:opacity-80"
-                                        aria-label="Brand">{{ Cache::get('companyprofile')->name }}</a>
+                                        aria-label="Brand">{{ $companyProfile->name }}</a>
                                     <p>
                                         <a
                                             class="inline-block mt-3 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200 cursor-default">
-                                            {{ Cache::get('companyprofile')->address }}</a>
+                                            {{ $companyProfile->address }}</a>
                                     </p>
                                     <p>
                                         <a class="inline-block mt-3 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
-                                            href="mailto:{{ Cache::get('companyprofile')->email }}">
-                                            {{ Cache::get('companyprofile')->email }}</a>
+                                            href="mailto:{{ $companyProfile->email }}">
+                                            {{ $companyProfile->email }}</a>
                                     </p>
                                 </div>
                             </div>
@@ -147,15 +147,15 @@
                     <div class="mt-3 space-y-3">
                         <p>
                             <a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
-                                href="{{ Cache::get('companyprofile')->instagram }}">Instagram</a>
+                                href="{{ $companyProfile->instagram }}">Instagram</a>
                         </p>
                         <p>
                             <a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
-                                href="{{ Cache::get('companyprofile')->tiktok }}">Tiktok</a>
+                                href="{{ $companyProfile->tiktok }}">Tiktok</a>
                         </p>
                         <p>
                             <a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
-                                href="{{ Cache::get('companyprofile')->whatsapp }}">Whatsapp</a>
+                                href="{{ $companyProfile->whatsapp }}">Whatsapp</a>
                         </p>
                     </div>
                 </div>
@@ -165,7 +165,7 @@
                 class="mt-5 sm:mt-12 grid gap-y-2 sm:gap-y-0 sm:flex sm:justify-center md:items-center sm:items-center text-center">
                 <div class="flex justify-center items-center">
                     <p class="text-sm text-center text-gray-400">
-                        &copy; 2025 {{ Cache::get('companyprofile')->name }} All Right Reserved
+                        &copy; 2025 {{ $companyProfile->name }} All Right Reserved
                     </p>
                 </div>
             </div>

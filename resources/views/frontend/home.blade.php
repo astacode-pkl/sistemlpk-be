@@ -5,7 +5,7 @@
         <!-- Overlay -->
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center z-10">
             <h1 class="text-3xl font-semibold">
-                {{ Cache::get('companyprofile')->name }} <br />{{ Cache::get('companyprofile')->slogan }}
+                {{ $companyProfile->name }} <br />{{ $companyProfile->slogan }}
             </h1>
             <div class="flex justify-center mt-8 py-3 w-full">
                 <a href="https://tally.so/r/mOdErY" target="_blank">
@@ -20,7 +20,7 @@
         <!-- Carousel -->
         <div id="carousel" class="relative h-screen w-full bg-white flex items-center brightness-50">
             <div id="carousel-body" class="flex w-full transition-transform duration-700">
-                @foreach($heroes as $hero)
+                @foreach ($heroes as $hero)
                     <div class="min-w-full flex justify-center items-center h-screen">
                         <img src="{{ asset('images/heroes/' . $hero->image) }}" class="object-cover h-full w-full"
                             alt="Slide 1">
@@ -57,13 +57,13 @@
                     Visi
                 </h3>
                 <p class="mt-4 text-gray-700 leading-relaxed text-center md:text-left">
-                    {{ Cache::get('companyprofile')->vision }}
+                    {{ $companyProfile->vision }}
                 </p>
                 <h3 class="font-semibold text-lg text-gray-800 text-center mt-5">
                     Misi
                 </h3>
                 <p class="mt-4 text-gray-700 leading-relaxed">
-                    {{ Cache::get('companyprofile')->mission }}
+                    {{ $companyProfile->mission }}
                 </p>
             </div>
         </div>
@@ -79,7 +79,7 @@
         </div>
         <p class="text-center text-gray-600 mb-10 animate-fade-in" data-aos="fade-up">Foto Kelulusan</p>
         <x-frontend.graduation-photos :graduations="$graduations"></x-frontend.graduation-photos>
-        
+
         <p class="text-center text-gray-600 mb-10 animate-fade-in" data-aos="fade-up">Foto Kegiatan Lainnya
         </p>
         <x-frontend.other-photos :otherphotos="$otherphotos"></x-frontend.other-photos>
@@ -98,7 +98,7 @@
     <div class="max-w-7xl mx-auto mt-14"></div>
     <h2 class="text-center text-3xl font-bold text-blue-500 mb-3 animate-fade-in" data-aos="fade-up">Program</h2>
     <div class="mx-auto h-1 w-16 bg-blue-600 rounded mb-4 mt-4 animate-slide-up" data-aos="fade-up"></div>
-    <p class="text-center text-gray-600 mb-10 animate-fade-in" data-aos="fade-up">Program {{ Cache::get('companyprofile')->name }}
+    <p class="text-center text-gray-600 mb-10 animate-fade-in" data-aos="fade-up">Program {{ $companyProfile->name }}
     </p>
     <div class="card-container grid grid-cols-1 md:grid-cols-2 gap-8 px-8">
         @foreach ($programs as $program)
@@ -136,7 +136,7 @@
                 <li class="flex items-center" data-step="1">
                     <span
                         class="w-10 h-10 bg-gray-200 hover:bg-blue-600 active:bg-blue-600 rounded-full flex justify-center items-center text-lg font-bold">1</span>
-                    <span class="ml-4 text-sm font-medium">{{ Cache::get('companyprofile')->name }}</span>
+                    <span class="ml-4 text-sm font-medium">{{ $companyProfile->name }}</span>
                     <div class="flex-1 h-1 bg-gray-300 mx-4"></div>
                 </li>
                 <li class="flex items-center" data-step="2">
@@ -179,11 +179,11 @@
     </div>
     <!-- end proses -->
 
-  <x-frontend.contact></x-frontend.contact>
-  @push('scriptHero')
-  <script src="{{ asset('frontend/js/scripthero.js') }}"></script>
-  @endpush
-  @push('scriptProses')
-  <script src="{{ asset('frontend/js/scriptproses.js') }}"></script>
-  @endpush
+    <x-frontend.contact></x-frontend.contact>
+    @push('scriptHero')
+        <script src="{{ asset('frontend/js/scripthero.js') }}"></script>
+    @endpush
+    @push('scriptProses')
+        <script src="{{ asset('frontend/js/scriptproses.js') }}"></script>
+    @endpush
 @endsection

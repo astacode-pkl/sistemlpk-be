@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Pagination\Paginator;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,10 +30,7 @@ class AppServiceProvider extends ServiceProvider
 
 
         view()->composer('*', function ($view) {
-            $logo = \App\Models\CompanyProfile::get()->where('id', 1)->value('logo');
-            $name = \App\Models\CompanyProfile::get()->where('id', 1)->value('name');
-            $view->with('logo', $logo);
-            $view->with('companyName', $name);
+            $view->with('companyProfile', Cache::get('companyprofile'));
         });
 
         Paginator::useBootstrapFive();

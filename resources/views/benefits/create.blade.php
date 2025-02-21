@@ -18,15 +18,17 @@
                                         <label for="floatingTextarea" class="mb-2">Icon</label>
                                         <textarea class="form-control @error('icon') is-invalid      
                                     @enderror w-100  "
-                                            placeholder="please enter text svg for icon you can find on web hero icons..." id="floatingTextarea" name="icon" required></textarea>
-                                            @error('icon')
+                                            placeholder="please enter text svg for icon you can find on web hero icons..." id="floatingTextarea" name="icon"
+                                            required></textarea>
+                                        @error('icon')
                                             <div id="validationServer04Feedback" class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                            @enderror
-                                        </div>
-                                        
-                                    <div id="icon-preview" class="w-50 fst-italic "   style="max-width: 40px">icon</div>
+                                        @enderror
+                                    </div>
+
+                                    <div id="icon-preview" class="w-50 fst-italic ms-5" style="max-width: 40px"></div>
+
                                 </div>
                                 <!--/span-->
                             </div>
@@ -52,18 +54,18 @@
                 </form>
             </div>
             <!-- ---------------------
-                                                                                                                    end Person Info
-                                                                                                                ---------------- -->
+                                                                                                                        end Person Info
+                                                                                                                    ---------------- -->
         </div>
     </div>
     @push('script')
-    <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#floatingTextarea').on('keyup',function(){
-                $('#icon-preview').html($(this).val());
+        <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#floatingTextarea').on('keyup', function() {
+                    $('#icon-preview').html($(this).val());
+                });
             });
-        });
-    </script>
+        </script>
     @endpush
 @endsection

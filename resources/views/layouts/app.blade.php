@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Favicon icon-->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('images/companyprofile/' . $logo) }}" />
+    <link rel="shortcut icon" type="image/png"
+        href="{{ asset('images/companyprofile/' . Cache::get('companyprofile')->logo) }}" />
 
     <!-- CSS DataTables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
@@ -17,7 +18,7 @@
     @stack('style')
     {{-- @vite('resources/css/app.css') --}}
 
-    <title>{{ $companyName }}</title>
+    <title>{{ Cache::get('companyprofile')->name }}</title>
     <!-- Owl Carousel  -->
 
 </head>
@@ -37,8 +38,9 @@
                 <!-- ----------------------------------- -->
                 <div class=" d-flex align-content-center justify-content-center overflow-hidden">
                     <div class="d-flex align-content-center justify-content-center w-100 p-2">
-                        <a href="/cmslpktsukuba"><img src="{{ asset('images/companyprofile/' . $logo) }}" class=" w-100"
-                                style="max-width: 135px;" /></a>
+                        <a href="/cmslpktsukuba"><img
+                                src="{{ asset('images/companyprofile/' . Cache::get('companyprofile')->logo) }}"
+                                class=" w-100" style="max-width: 135px;" /></a>
                     </div>
                     <a href="javascript:void(0)"
                         class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none align-self-center me-3">
@@ -60,7 +62,8 @@
                         <!-- Dashboard -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba')) active @endif" href="/cmslpktsukuba" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('cmslpktsukuba')) active @endif"
+                                href="/cmslpktsukuba" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-home"></i>
                                 </span>
@@ -78,7 +81,8 @@
                         <!-- Categories -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/categories')) active @endif" href="/cmslpktsukuba/categories" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/categories')) active @endif"
+                                href="/cmslpktsukuba/categories" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-list-details"></i>
                                 </span>
@@ -89,7 +93,8 @@
                         <!-- Gallery -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/galleries')) active @endif" href="/cmslpktsukuba/galleries" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/galleries')) active @endif"
+                                href="/cmslpktsukuba/galleries" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-photo"></i>
                                 </span>
@@ -101,7 +106,7 @@
                             <!-- ---------------------------------- -->
                         <li class="sidebar-item">
                             <a class="sidebar-link 
-                        @if (request()->is(['cmslpktsukuba/programs','cmslpktsukuba/programs/create'])) active @endif"
+                        @if (request()->is(['cmslpktsukuba/programs', 'cmslpktsukuba/programs/create'])) active @endif"
                                 href="/cmslpktsukuba/programs" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-layout"></i>
@@ -113,7 +118,8 @@
                         <!-- Regulations -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/regulations')) active @endif" href="/cmslpktsukuba/regulations" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/regulations')) active @endif"
+                                href="/cmslpktsukuba/regulations" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-book"></i>
                                 </span>
@@ -125,7 +131,8 @@
                         <!-- Benefits -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/benefits')) active @endif" href="/cmslpktsukuba/benefits" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/benefits')) active @endif"
+                                href="/cmslpktsukuba/benefits" aria-expanded="false">
                                 <span class="d-flex">
                                     <i class="ti ti-chart-pie"></i>
                                 </span>
@@ -137,7 +144,8 @@
                         <!-- heroes -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/heroes')) active @endif" href="/cmslpktsukuba/heroes" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/heroes')) active @endif"
+                                href="/cmslpktsukuba/heroes" aria-expanded="false">
                                 <span class="d-flex">
                                     <i class="ti ti-slideshow"></i>
                                 </span>
@@ -155,7 +163,8 @@
                         <!-- Company Profile -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/companyprofile')) active @endif" href="/cmslpktsukuba/companyprofile" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/companyprofile')) active @endif"
+                                href="/cmslpktsukuba/companyprofile" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-id-badge"></i>
                                 </span>
@@ -163,7 +172,8 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/loghistories')) active @endif" href="/cmslpktsukuba/loghistories" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/loghistories')) active @endif"
+                                href="/cmslpktsukuba/loghistories" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-history"></i>
                                 </span>
@@ -213,8 +223,8 @@
 
                         <div class="d-block d-lg-none py-4">
                             <a href="/cmslpktsukuba/" class="text-nowrap logo-img">
-                                <img src="{{ asset('images/companyprofile/' . $logo) }}" width="90%"
-                                    style="max-width:70px;" />
+                                <img src="{{ asset('images/companyprofile/' . Cache::get('companyprofile')->logo) }}"
+                                    width="90%" style="max-width:70px;" />
                             </a>
                         </div>
                         <div class="ms-lg-auto justify-content-end" id="navbarNav">
@@ -231,7 +241,7 @@
                                             aria-expanded="false">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-profile-img overflow-hidden">
-                                                    <img src="{{ asset('images/companyprofile/' . $logo) }}"
+                                                    <img src="{{ asset('images/companyprofile/' . Cache::get('companyprofile')->logo) }}"
                                                         class="rounded-circle border img-fluid " width="40rem" />
                                                 </div>
                                             </div>
@@ -243,7 +253,7 @@
                                                     <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
                                                 </div>
                                                 <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                                                    <img src="{{ asset('images/companyprofile/' . $logo) }}"
+                                                    <img src="{{ asset('images/companyprofile/' . Cache::get('companyprofile')->logo) }}"
                                                         class="rounded-circle img-fluid w-30" alt="logo" />
                                                     <div class="ms-3">
                                                         <h5 class="mb-1 fs-3">{{ auth()->user()->name }}</h5>
@@ -289,8 +299,8 @@
                             </li>
                             <li class="nav-item d-none d-xl-block">
                                 <a href="/cmslpktsukuba" class="text-nowrap nav-link">
-                                    <img src="{{ asset('images/companyprofile/' . $logo) }}" class="img-fluid"
-                                        width="100" alt="Image-logo" />
+                                    <img src="{{ asset('images/companyprofile/' . Cache::get('companyprofile')->logo) }}"
+                                        class="img-fluid" width="100" alt="Image-logo" />
                                 </a>
                             </li>
 
@@ -309,8 +319,8 @@
                         </ul>
                         <div class="d-block d-xl-none">
                             <a href="/cmslpktsukuba/" class="text-nowrap nav-link">
-                                <img src="{{ asset('images/companyprofile/' . $logo) }}" width="90"
-                                    alt="Image-logo" />
+                                <img src="{{ asset('images/companyprofile/' . Cache::get('companyprofile')->logo) }}"
+                                    width="90" alt="Image-logo" />
                             </a>
                         </div>
                         <a class="navbar-toggler nav-icon-hover-bg rounded-circle p-0 mx-0 border-0"
@@ -353,7 +363,7 @@
                                             aria-expanded="false">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-profile-img">
-                                                    <img src="{{ asset('images/companyprofile/' . $logo) }}"
+                                                    <img src="{{ asset('images/companyprofile/' . Cache::get('companyprofile')->logo) }}"
                                                         class="rounded-circle" width="auto" height="50"
                                                         alt="" />
                                                 </div>
@@ -366,7 +376,7 @@
                                                     <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
                                                 </div>
                                                 <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                                                    <img src="{{ asset('images/companyprofile/' . $logo) }}"
+                                                    <img src="{{ asset('images/companyprofile/' . Cache::get('companyprofile')->logo) }}"
                                                         class="rounded-circle img-fluid w-30" alt="logo" />
                                                     <div class="ms-3">
                                                         <h5 class="mb-1 fs-3">{{ Auth::user()->name }}</h5>
