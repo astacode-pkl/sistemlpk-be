@@ -21,6 +21,7 @@ class HomeController extends Controller
         // $galleries = Gallery::all();
         $heroes = Hero::orderBy('position')->get();
         $categories = Category::with('galleries')->paginate(6);
+        $programs = Program::all();
         
         //variabel default
         // $otherPhotos = [];

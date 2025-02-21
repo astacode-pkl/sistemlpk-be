@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="{{ asset('images/companyprofile/' . $companyprofile->logo_mark) }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/companyprofile/' . $companyProfile->logo_mark) }}" />
     @vite('resources/css/app.css')
- 
 
-    <title>{{ $companyprofile->name }}</title>
+
+    <title>{{ $companyProfile->name }}</title>
 </head>
 
 <body>
@@ -20,9 +20,11 @@
             <!-- Logo w/ Collapse Button -->
             <div class="flex items-center justify-between">
                 <a class="flex gap-3" href="#" aria-label="Brand">
-                {{-- logo --}}
-                    <img src="{{ asset('images/companyprofile/' . $companyprofile->logo_mark) }}" alt="logo" class="w-10">
-                    <img src="{{ asset('images/companyprofile/' . $companyprofile->logo_type) }}" alt="nama" class="w-20">
+                    {{-- logo --}}
+                    <img src="{{ asset('images/companyprofile/' . $companyProfile->logo_mark) }}" alt="logo"
+                        class="w-10">
+                    <img src="{{ asset('images/companyprofile/' . $companyProfile->logo_type) }}" alt="nama"
+                        class="w-20">
                 </a>
                 <!-- Collapse Button -->
                 <div class="md:hidden">
@@ -95,7 +97,7 @@
 
                                 <a class="flex-none text-xl font-semibold text-white focus:outline-none focus:opacity-80"
                                     aria-label="Brand">Tentang</a>
-                    
+
                                 <p
                                     class="mt-3 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200 cursor-default">
                                     didirikan pada bulan Agustus 2024 di
@@ -104,16 +106,16 @@
                                 </p>
                                 <div class="mt-4">
                                     <a class="flex-none text-xl font-semibold text-white focus:outline-none focus:opacity-80"
-                                        aria-label="Brand">{{ $companyprofile->name }}</a>
+                                        aria-label="Brand">{{ $companyProfile->name }}</a>
                                     <p>
                                         <a
                                             class="inline-block mt-3 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200 cursor-default">
-                                            {{ $companyprofile->address }}</a>
+                                            {{ $companyProfile->address }}</a>
                                     </p>
                                     <p>
                                         <a class="inline-block mt-3 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
-                                            href="mailto:{{ $companyprofile->email }}">
-                                            {{ $companyprofile->email }}</a>
+                                            href="mailto:{{ $companyProfile->email }}">
+                                            {{ $companyProfile->email }}</a>
                                     </p>
                                 </div>
                             </div>
@@ -152,15 +154,15 @@
                     <div class="mt-3 space-y-3">
                         <p>
                             <a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
-                                href="{{ $companyprofile->instagram }}">Instagram</a>
+                                href="{{ $companyProfile->instagram }}">Instagram</a>
                         </p>
                         <p>
                             <a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
-                                href="{{ $companyprofile->tiktok }}">Tiktok</a>
+                                href="{{ $companyProfile->tiktok }}">Tiktok</a>
                         </p>
                         <p>
                             <a class="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200"
-                                href="{{ $companyprofile->whatsapp }}">Whatsapp</a>
+                                href="{{ $companyProfile->whatsapp }}">Whatsapp</a>
                         </p>
                     </div>
                 </div>
@@ -170,7 +172,7 @@
                 class="mt-5 sm:mt-12 grid gap-y-2 sm:gap-y-0 sm:flex sm:justify-center md:items-center sm:items-center text-center">
                 <div class="flex justify-center items-center">
                     <p class="text-sm text-center text-gray-400">
-                        &copy; 2025 {{ $companyprofile->name }} All Right Reserved
+                        &copy; 2025 {{ $companyProfile->name }} All Right Reserved
                     </p>
                 </div>
             </div>

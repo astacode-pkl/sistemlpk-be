@@ -30,16 +30,16 @@ class AppServiceProvider extends ServiceProvider
         // end
         View::composer('*', function ($view) {
             
-            static $companyprofile = null;
+            static $companyProfile = null;
     
-            if ($companyprofile === null) {
-                $companyprofile = \App\Models\CompanyProfile::first()->get();
-                foreach ($companyprofile as $item) {
-                    $companyprofile = $item;
+            if ($companyProfile === null) {
+                $companyProfile = \App\Models\CompanyProfile::first()->get();
+                foreach ($companyProfile as $item) {
+                    $companyProfile = $item;
                 }
             }
             
-            $view->with('companyprofile', $companyprofile);
+            $view->with('companyProfile', $companyProfile);
         });     
 
     
