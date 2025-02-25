@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="border-bottom title-part-padding d-flex justify-content-between">
                     <h4 class="card-title mb-0">Benefits</h4>
-                    <a href="/cmslpktsukuba/benefits/create">
+                    <a href="/Admin/benefits/create">
 
                         <button class="btn btn-primary">
                             <i class="ti ti-plus"></i>
@@ -40,12 +40,12 @@
                                     <td>{{ $benefit->programs->title }}</td>
 
                                     <td class="center ">
-                                        <a href="/cmslpktsukuba/benefits/{{ Crypt::encryptString($benefit->id) }}/edit"><button
+                                        <a href="/Admin/benefits/{{ Crypt::encryptString($benefit->id) }}/edit"><button
                                                 class="btn btn-primary px-4 ">
                                                 <i class="ti ti-pencil fs-5"></i>
                                                 Edit</button></a>
 
-                                        <form action="/benefits/cmslpktsukuba//{{ Crypt::encryptString($benefit->id) }}" method="POST"
+                                        <form action="/Admin/benefits/{{ Crypt::encryptString($benefit->id) }}" method="POST"
                                             class="d-inline">
                                             @csrf
                                             @method('delete')

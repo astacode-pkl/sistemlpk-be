@@ -55,7 +55,7 @@
                                 <x-alert></x-alert>
                                 <h2 class="mb-3 fs-7 fw-bolder">Log in</h2>
                                 <p class=" mb-9">Please enter your email and password to login</p>
-                                <form action="/cmslpktsukuba/login" method="post">
+                                <form action="/Admin/login" method="post">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Email</label>

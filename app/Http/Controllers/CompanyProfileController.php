@@ -59,10 +59,10 @@ class CompanyProfileController extends Controller
     {
         $request->validate(
             [
-                'logo' => 'image|mimes:jpeg,png,jpg',
-                'logo_type' => 'image|mimes:jpeg,png,jpg',
-                'logo_mark' => 'image|mimes:jpeg,png,jpg',
-                'advertisement' => 'image|mimes:jpeg,png,jpg',
+                'logo' => 'image|mimes:jpeg,png,jpg,webp',
+                'logo_type' => 'image|mimes:jpeg,png,jpg,webp',
+                'logo_mark' => 'image|mimes:jpeg,png,jpg,webp',
+                'advertisement' => 'image|mimes:jpeg,png,jpg,webp',
             ]
         );
         $id = Crypt::decryptString($id);

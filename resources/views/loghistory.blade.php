@@ -34,7 +34,7 @@
                                     <td>{{ $loghistory->old_data }}</td>
                                     <td>{{ $loghistory->new_data }}</td>
                                     <td>
-                                        <form action="/cmslpktsukuba/loghistories/{{ Crypt::encryptString($loghistory->id) }}"
+                                        <form action="/Admin/loghistories/{{ Crypt::encryptString($loghistory->id) }}"
                                             method="POST" class="d-inline" id="form_delete">
 
                                             @csrf

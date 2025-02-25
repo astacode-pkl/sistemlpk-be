@@ -53,7 +53,7 @@ class BenefitController extends Controller
             'program_id' => $validated['program_id']
         ]);
         LogHistory::record('Create',  auth()->user()->name . ' created new Benefit',$newData);
-        return redirect('/benefits')->with('success', 'Benefit created successfully!!');
+        return redirect('/Admin/benefits')->with('success', 'Benefit created successfully!!');
     }
 
     /**
@@ -102,7 +102,7 @@ class BenefitController extends Controller
         $table->update();
         $newData = Benefit::where('id',$id)->get();
         LogHistory::record('Update',  auth()->user()->name . ' updated Benefit',$newData,$oldData);
-        return redirect('/benefits')->with('success', 'Benefit updated successfully!!');
+        return redirect('/Admin/benefits')->with('success', 'Benefit updated successfully!!');
     }
 
     /**

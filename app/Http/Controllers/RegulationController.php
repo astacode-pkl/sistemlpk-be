@@ -53,7 +53,7 @@ class RegulationController extends Controller
             'program_id' => $validated['program_id']
         ]);
         LogHistory::record('Create',  auth()->user()->name . ' created new Regulation',$newData);
-        return redirect('/cmslpktsukuba/regulations')->with('success', 'Regulation created successfully!');
+        return redirect('/Admin/regulations')->with('success', 'Regulation created successfully!');
     }
 
     /**
@@ -103,7 +103,7 @@ class RegulationController extends Controller
         $table->update();
         $newData = Regulation::where('id',$id)->get();
         LogHistory::record('Update',  auth()->user()->name . ' updated Regulation',$newData,$oldData);
-        return redirect('cmslpktsukuba/regulations')->with('success', 'Regulation updated successfully!!');
+        return redirect('Admin/regulations')->with('success', 'Regulation updated successfully!!');
     }
 
     /**

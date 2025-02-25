@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="border-bottom title-part-padding d-flex justify-content-between">
                         <h4 class="card-title mb-0">Categories</h4>
-                        <a href="/cmslpktsukuba/categories/create">
+                        <a href="/Admin/categories/create">
 
                             <button class="btn btn-primary">
                                 <i class="ti ti-plus"></i>
@@ -41,12 +41,12 @@
 
                                         <td class="center">
 
-                                            <a href="/cmslpktsukuba/categories/{{ Crypt::encryptString($category->id) }}/edit"><button
+                                            <a href="/Admin/categories/{{ Crypt::encryptString($category->id) }}/edit"><button
                                                     class="btn btn-primary px-4">
                                                     <i class="ti ti-pencil fs-5"></i>
                                                     Edit</button></a>
 
-                                            <form action="/cmslpktsukuba/categories/{{ Crypt::encryptString($category->id) }}"
+                                            <form action="/Admin/categories/{{ Crypt::encryptString($category->id) }}"
                                                 method="POST" class="d-inline" id="form_delete">
 
                                                 @csrf

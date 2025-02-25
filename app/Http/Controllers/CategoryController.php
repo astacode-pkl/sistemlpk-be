@@ -43,7 +43,7 @@ class CategoryController extends Controller
         $newData = Category::create($validated); 
         LogHistory::record('Create',  auth()->user()->name.' created new Category',$newData);
 
-        return redirect('/cmslpktsukuba/categories/')->with('success', 'Category created successfully!!');
+        return redirect('/Admin/categories/')->with('success', 'Category created successfully!!');
     }
 
     /**

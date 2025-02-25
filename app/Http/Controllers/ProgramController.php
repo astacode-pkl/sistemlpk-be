@@ -88,12 +88,8 @@ class ProgramController extends Controller
         $program->update(['image' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
         $newData = Program::where('id',$id)->get();
         LogHistory::record('Update',  auth()->user()->name.' updated Program',$newData,$oldData);
-        return redirect('/cmslpktsukuba/programs')->with('success', 'Program updated successfully!!');
+        return redirect('/Admin/programs')->with('success', 'Program updated successfully!!');
     }
-
-
-
-
 
     /**
      * Remove the specified resource from storage.

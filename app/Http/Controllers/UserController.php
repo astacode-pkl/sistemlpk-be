@@ -29,7 +29,7 @@ class UserController extends Controller
             return redirect()->intended('/');
 
         }
-        return back()->with('error', 'Log in is failed');
+        return back()->with('error', 'Login failed: Email or password is incorrect');
     }
     public function logout()
     {
@@ -37,6 +37,6 @@ class UserController extends Controller
         Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
-        return redirect('/cmslpktsukuba');
+        return redirect('/Admin');
     }
 }

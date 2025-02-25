@@ -9,13 +9,13 @@
     <x-alert></x-alert>
     <div class="border-bottom title-part-padding d-flex justify-content-between  align-items-center">
         <h4 class="card-title mb-0">heroes</h4>
-        <a href="/cmslpktsukuba/heroes/create">
+        <a href="/Admin/heroes/create">
             <button class="btn btn-primary">
                 <i class="ti ti-plus"></i>
                 Create</button>
         </a>
     </div>
-    <form action="/cmslpktsukuba/heroes/update-position" method="POST">
+    <form action="/Admin/heroes/update-position" method="POST">
         @csrf  
         
                  <ul id="sortable">
@@ -33,7 +33,7 @@
                                     <h3>Slide {{ $hero->position }}</h3>
                                 </div>
                                 <div class="col-md-2 d-flex align-items-center justify-content-center gap-2" style="cursor: pointer;">
-                                   <a href="/cmslpktsukuba/heroes/edit/{{ Crypt::encryptString($hero->id) }}" class="btn btn-primary py-2">
+                                   <a href="/Admin/heroes/edit/{{ Crypt::encryptString($hero->id) }}" class="btn btn-primary py-2">
                                   
                                         <i class="ti ti-pencil"></i>
                                  

@@ -8,7 +8,7 @@
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Create Regulation</h4>
                 </div>
-                <form action="/cmslpktsukuba/regulations" method="POST" enctype="multipart/form-data">
+                <form action="/Admin/regulations" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="row pt-3">
@@ -17,8 +17,8 @@
                                     <div class=" mb-3 flex-grow-1 ">
                                         <label for="floatingTextarea" class="mb-2">Icon</label>
                                         <textarea class="form-control @error('icon') is-invalid      
-                                    @enderror w-100  "
-                                            placeholder="please enter text svg for icon you can find on web hero icons..." id="floatingTextarea" name="icon"
+                                    @enderror w-100"
+                                            placeholder="please enter text svg for icon you can find on web hero icons..." id="textareaicon" name="icon"
                                             required></textarea>
                                         @error('icon')
                                             <div id="validationServer04Feedback" class="invalid-feedback">
@@ -72,7 +72,7 @@
                                         Create
                                     </div>
                                 </button>
-                                <a href="/cmslpktsukuba/regulations">
+                                <a href="/Admin/regulations">
                                     <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                         <div class="d-flex align-items-center">
                                             <i class="ti ti-circle-x me-1 fs-5"></i>
@@ -92,7 +92,7 @@
         <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
         <script>
             $(document).ready(function() {
-                $('#floatingTextarea').on('keyup', function() {
+                $('#textareaicon').on('keyup', function() {
                     $('#icon-preview').html($(this).val());
                 });
             });

@@ -4,5 +4,5 @@
         width="100%">
     <h1 class="fw-semibold mb-7 fs-9">Error!!!</h1>
     <h4 class="fw-semibold mb-7">{{ $message }}</h4>
-    <button onclick="history.back()" class="btn btn-primary" role="button">Back</button>
+    <button onclick="history.back()" class="btn btn-primary mb-4 w-20" role="button">Back</button>
 @endsection
