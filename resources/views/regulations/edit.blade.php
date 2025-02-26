@@ -8,7 +8,7 @@
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Edit Regulation</h4>
                 </div>
-                <form action="/cmslpktsukuba/regulations/{{ Crypt::encryptString($regulation->id) }}" method="POST"
+                <form action="/admin/regulations/{{ Crypt::encryptString($regulation->id) }}" method="POST"
                     enctype="multipart/form-data">
                     @method('put')
                     @csrf
@@ -20,15 +20,17 @@
                                         <label for="floatingTextarea" class="mb-2">Icon</label>
                                         <textarea class="form-control @error('icon') is-invalid      
                                     @enderror w-100  "
-                                            placeholder="please enter text svg for icon you can find on web hero icons..." id="floatingTextarea" name="icon" required>{{ $regulation->icon }}</textarea>
-                                            @error('icon')
+                                            placeholder="please enter text svg for icon you can find on web hero icons..." id="floatingTextarea" name="icon"
+                                            required>{{ $regulation->icon }}</textarea>
+                                        @error('icon')
                                             <div id="validationServer04Feedback" class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                            @enderror
-                                        </div>
-                                        
-                                    <div id="icon-preview" class="w-50 fst-italic "   style="max-width: 40px">{!! $regulation->icon !!}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div id="icon-preview" class="w-50 fst-italic " style="max-width: 40px">
+                                        {!! $regulation->icon !!}</div>
                                 </div>
 
                                 <div class="mb-3">
@@ -66,43 +68,43 @@
                                     @enderror
                                 </div>
 
+                            </div>
+                            <!--/span-->
                         </div>
-                        <!--/span-->
-                    </div>
-                    <div class="form-actions text-end">
-                        <div class="card-body border-top">
-                            <button type="submit" class="btn btn-primary  px-4">
-                                <div class="d-flex align-items-center">
-                                    <i class="ti ti-circle-check me-1 fs-5"></i>
-                                    Update
-                                </div>
-                            </button>
-                            <a href="/cmslpktsukuba/regulations">
-                                <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
+                        <div class="form-actions text-end">
+                            <div class="card-body border-top">
+                                <button type="submit" class="btn btn-primary  px-4">
                                     <div class="d-flex align-items-center">
-                                        <i class="ti ti-circle-x me-1 fs-4"></i>
-                                        Cancel
+                                        <i class="ti ti-circle-check me-1 fs-5"></i>
+                                        Update
                                     </div>
                                 </button>
-                            </a>
+                                <a href="/admin/regulations">
+                                    <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
+                                        <div class="d-flex align-items-center">
+                                            <i class="ti ti-circle-x me-1 fs-4"></i>
+                                            Cancel
+                                        </div>
+                                    </button>
+                                </a>
+                            </div>
                         </div>
                     </div>
+                </form>
             </div>
-            </form>
+            <!-- ---------------------
+                                                                                                                        end Person Info
+                                                                                                                    ---------------- -->
         </div>
-        <!-- ---------------------
-                                                                                                                    end Person Info
-                                                                                                                ---------------- -->
-    </div>
     </div>
     @push('script')
-    <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#floatingTextarea').on('keyup',function(){
-                $('#icon-preview').html($(this).val());
+        <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#floatingTextarea').on('keyup', function() {
+                    $('#icon-preview').html($(this).val());
+                });
             });
-        });
-    </script>
+        </script>
     @endpush
 @endsection

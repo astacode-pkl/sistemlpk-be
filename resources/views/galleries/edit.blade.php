@@ -1,14 +1,14 @@
 @extends('layouts.app') @section('content')
-<x-card-header>
-    Gallery
-</x-card-header>
+    <x-card-header>
+        Gallery
+    </x-card-header>
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Edit Gallery</h4>
                 </div>
-                <form action="/cmslpktsukuba/galleries/{{ Crypt::encryptString($gallery->id) }}" method="POST"
+                <form action="/admin/galleries/{{ Crypt::encryptString($gallery->id) }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     @method('put')
@@ -73,11 +73,11 @@
                             <div class="card-body border-top">
                                 <button type="submit" class="btn btn-primary  px-4">
                                     <div class="d-flex align-items-center">
-                                       <i class="ti ti-circle-check me-1 fs-5"></i>
-                                         Update
+                                        <i class="ti ti-circle-check me-1 fs-5"></i>
+                                        Update
                                     </div>
                                 </button>
-                                <a href="/cmslpktsukuba/galleries/">
+                                <a href="/admin/galleries/">
                                     <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                         <div class="d-flex align-items-center">
                                             <i class="ti ti-circle-x me-1 fs-5"></i>
@@ -91,12 +91,11 @@
                 </form>
             </div>
             <!-- ---------------------
-                                                                                                                end Person Info
-                                                                                                            ---------------- -->
+                                                                                                                    end Person Info
+                                                                                                                ---------------- -->
         </div>
     </div>
     @push('script')
-
-<script src="{{asset('js/imagePreview.js')}}"></script>
-@endpush
+        <script src="{{ asset('js/imagePreview.js') }}"></script>
+    @endpush
 @endsection

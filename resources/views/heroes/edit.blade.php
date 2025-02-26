@@ -1,15 +1,14 @@
 @extends('layouts.app') @section('content')
-<x-card-header>
-    Hero
-</x-card-header>
+    <x-card-header>
+        Hero
+    </x-card-header>
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Edit Hero</h4>
                 </div>
-                <form action="{{ route('update.heroes',$hero->id) }}" method="POST"
-                    enctype="multipart/form-data">
+                <form action="{{ route('update.heroes', $hero->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="card-body">
@@ -35,14 +34,15 @@
                                     <label class="control-label mb-2" for="position">Position</label>
                                     <input type="number" id="position"
                                         class="form-control @error('position') is-invalid @enderror"
-                                        value="{{ $hero->position }}" placeholder="Please enter position..." name="position">
+                                        value="{{ $hero->position }}" placeholder="Please enter position..."
+                                        name="position">
                                     @error('position')
                                         <div id="validationServer04Feedback" class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
-                              
+
                             </div>
                             <!--/span-->
 
@@ -55,11 +55,11 @@
                             <div class="card-body border-top">
                                 <button type="submit" class="btn btn-primary  px-4">
                                     <div class="d-flex align-items-center">
-                                       <i class="ti ti-circle-check me-1 fs-5"></i>
-                                         Update
+                                        <i class="ti ti-circle-check me-1 fs-5"></i>
+                                        Update
                                     </div>
                                 </button>
-                                <a href="/cmslpktsukuba/heroes/">
+                                <a href="/admin/heroes/">
                                     <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                         <div class="d-flex align-items-center">
                                             <i class="ti ti-circle-x me-1 fs-5"></i>
@@ -73,12 +73,11 @@
                 </form>
             </div>
             <!-- ---------------------
-                                                                                                                end Person Info
-                                                                                                            ---------------- -->
+                                                                                                                    end Person Info
+                                                                                                                ---------------- -->
         </div>
     </div>
     @push('script')
-
-<script src="{{asset('js/imagePreview.js')}}"></script>
-@endpush
+        <script src="{{ asset('js/imagePreview.js') }}"></script>
+    @endpush
 @endsection

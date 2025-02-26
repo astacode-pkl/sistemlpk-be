@@ -1,7 +1,7 @@
 @extends('layouts.app') @section('content')
-<x-card-header>
-    Heroes
-</x-card-header>
+    <x-card-header>
+        Heroes
+    </x-card-header>
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -39,8 +39,9 @@
                                 <div class="mb-3 d-none">
                                     <label class="control-label mb-2" for="position">position</label>
                                     <input type="number" id="position"
-                                        class="form-control @error('position') is-invalid @enderror" value="{{ $newPosition }}"
-                                        name="position" placeholder="Please enter Position..." required>
+                                        class="form-control @error('position') is-invalid @enderror"
+                                        value="{{ $newPosition }}" name="position" placeholder="Please enter Position..."
+                                        required>
                                     @error('position')
                                         <div id="validationServer04Feedback" class="invalid-feedback">
                                             {{ $message }}
@@ -62,7 +63,7 @@
                                         Save
                                     </div>
                                 </button>
-                                <a href="/cmslpktsukuba/heroes/">
+                                <a href="/admin/heroes/">
                                     <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                         <div class="">
                                             <i class="ti ti-circle-x me-1 fs-5"></i>
@@ -76,12 +77,11 @@
                 </form>
             </div>
             <!-- ---------------------
-                                                                                                                end Person Info
-                                                                                                            ---------------- -->
+                                                                                                                    end Person Info
+                                                                                                                ---------------- -->
         </div>
     </div>
     @push('script')
-
-<script src="{{asset('js/imagePreview.js')}}"></script>
-@endpush
+        <script src="{{ asset('js/imagePreview.js') }}"></script>
+    @endpush
 @endsection

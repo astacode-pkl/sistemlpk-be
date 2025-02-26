@@ -9,8 +9,7 @@
             <h4 class="mb-0 text-white">Company Profile</h4>
         </div>
 
-        <form action="/cmslpktsukuba/companyprofile/{{ Crypt::encryptString(1) }}" method="post"
-            enctype="multipart/form-data">
+        <form action="/admin/companyprofile/{{ Crypt::encryptString(1) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="card-body">
@@ -183,7 +182,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="form-actions text-end">
                     <div class="card-body border-top">
                         <button type="submit" class="btn btn-primary px-4" onclick="Decision(event)">
@@ -202,5 +201,14 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="{{ asset('js/sweetalert.js') }}"></script>
         <script src="{{ asset('js/imagePreview.js') }}"></script>
+        <script >
+        const textarea = document.querySelectorAll('#floatingTextarea')
+        for (let i = 0; i < textarea.length; i++) {
+          textarea[i].addEventListener('input' , function(){
+              textarea[i].style.height = '';
+              textarea[i].style.height = textarea[i].scrollHeight + 'px'
+          });
+        
+      }</script>
     @endpush
 @endsection

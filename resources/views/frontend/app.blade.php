@@ -100,7 +100,7 @@
 
                                 <p
                                     class="mt-3 text-gray-400 hover:text-gray-200 focus:outline-none focus:text-gray-200 cursor-default">
-                                    didirikan pada bulan Agustus 2024 di
+                                    {{ $companyProfile->name }} didirikan pada bulan Agustus 2024 di
                                     Ciawi, Kabupaten Tasikmalaya, Jawa Barat Indonesia. dan
                                     telah mendapatkan izin resmi dari pemerintah Indonesia.
                                 </p>

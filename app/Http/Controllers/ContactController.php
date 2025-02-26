@@ -103,6 +103,6 @@ class ContactController extends Controller
         $oldData = Contact::where('id',$id)->get();
         $table->delete();
         LogHistory::record('Delete',  auth()->user()->name.' deleted Inbox',$oldData);
-        return redirect('inbox')->with('success', 'Data deleted successfully!!');
+        return redirect('admin/inbox')->with('success', 'Data deleted successfully!!');
     }
 }

@@ -15,38 +15,17 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // $companyProfile = CompanyProfile::first();
-        // $advertisement = CompanyProfile::first()->value('advertisement')->get();
-        // Cache::put('companyprofile', $companyProfile);
-        // $galleries = Gallery::all();
-        $heroes = Hero::orderBy('position')->get();
-        $categories = Category::with('galleries')->paginate(6);
-        $programs = Program::all();
         
-        //variabel default
-        // $otherPhotos = [];
-        // $graduations = [];
+        $heroes = Hero::orderBy('position')->get();
+        $categories = Category::with([
+            'galleries'=>function($query){
+                $query->limit(4);
+            }
+        ])->get();
 
-        // foreach ($galleries as $gallery) {
-        //     switch ($gallery->categories->title) {
-        //         case 'Kelulusan':
-        //             $graduations[] = $gallery;
-        //             break;
-                
-        //         default:             
-        //         $otherPhotos[] = $gallery;
-        //             break;
-        //     }
-        // }
-        // $otherPhotos = collect($otherPhotos);
-        // if(count($otherPhotos) >= 4 ){
-        //     $otherPhotos = $otherPhotos->random(4);
-        // }   
-
+        $programs = Program::all();
         return view('frontend.home', [
             'programs' => $programs,
-            // 'graduations' => $graduations,
-            // 'otherphotos' => $otherPhotos,
             'heroes' => $heroes,
             'categories' => $categories
         ]);

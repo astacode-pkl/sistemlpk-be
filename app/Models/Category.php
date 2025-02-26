@@ -16,4 +16,7 @@ class Category extends Model
     public function galleries() : HasMany {
         return $this->hasMany(Gallery::class);
     }
+    public function limitGalleries() {
+        return $this->galLeries()->limit(4);
+    }
 }

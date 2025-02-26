@@ -9,7 +9,8 @@
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Edit Program</h4>
                 </div>
-                <form action="/cmslpktsukuba/programs/{{ Crypt::encryptString($program->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="/admin/programs/{{ Crypt::encryptString($program->id) }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('patch')
                     <div class="card-body">
@@ -31,7 +32,8 @@
                                     <label class="control-label mb-2" for="title">Title</label>
                                     <input type="text" id="title"
                                         class="form-control @error('title') is-invalid   @enderror"
-                                        value="{{ $program->title }}" name="title" placeholder="Please enter title..." required>
+                                        value="{{ $program->title }}" name="title" placeholder="Please enter title..."
+                                        required>
                                     @error('title')
                                         <div id="validationServer04Feedback" class="invalid-feedback">
                                             {{ $message }}
@@ -41,8 +43,8 @@
 
                                 <div class="mb-3">
                                     <label class="control-label mb-2" for="description">Description</label>
-                                    <textarea class="form-control @error('description') is-invalid   @enderror"
-                                     name="description" placeholder="Please enter description..." required>{{ $program->description }}</textarea>
+                                    <textarea class="form-control @error('description') is-invalid   @enderror" id="floatingTextarea" name="description"
+                                        placeholder="Please enter description..." required>{{ $program->description }}</textarea>
                                     @error('description')
                                         <div id="validationServer04Feedback" class="invalid-feedback">
                                             {{ $message }}
@@ -64,10 +66,10 @@
                                 <button type="submit" class="btn btn-primary py-2 px-4">
                                     <div class="d-flex align-items-center">
                                         <i class="ti ti-circle-check me-1 fs-5"></i>
-                                         Update
+                                        Update
                                     </div>
                                 </button>
-                                <a href="/cmslpktsukuba/programs/">
+                                <a href="/admin/programs/">
                                     <button type="button" class=" btn btn-danger px-4 py-2 text-white">
                                         <div class="d-flex align-items-center">
                                             <i class="ti ti-circle-x me-1 fs-5"></i>
@@ -81,12 +83,18 @@
                 </form>
             </div>
             <!-- ---------------------
-                                                                                                                    end Program
-                                                                                                                ---------------- -->
+                                                                                                                        end Program
+                                                                                                                    ---------------- -->
         </div>
     </div>
     @push('script')
-
-<script src="{{asset('js/imagePreview.js')}}"></script>
-@endpush
+        <script src="{{ asset('js/imagePreview.js') }}"></script>
+        <script >
+        const textarea = document.getElementById('floatingTextarea')
+          textarea.addEventListener('input' , function(){
+              textarea.style.height = '';
+              textarea.style.height = textarea.scrollHeight + 'px'
+          });
+        </script>
+    @endpush
 @endsection

@@ -37,7 +37,7 @@
                 <!-- ----------------------------------- -->
                 <div class=" d-flex align-content-center justify-content-center overflow-hidden">
                     <div class="d-flex align-content-center justify-content-center w-100 p-2">
-                        <a href="/cmslpktsukuba"><img
+                        <a href="/admin"><img
                                 src="{{ asset('images/companyprofile/' . $companyProfile->logo) }}" class=" w-100"
                                 style="max-width: 135px;" /></a>
                     </div>
@@ -61,8 +61,8 @@
                         <!-- Dashboard -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba')) active @endif"
-                                href="/cmslpktsukuba" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('admin')) active @endif"
+                                href="/admin" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-home"></i>
                                 </span>
@@ -80,8 +80,8 @@
                         <!-- Categories -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/categories')) active @endif"
-                                href="/cmslpktsukuba/categories" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('admin/categories','admin/categories/*')) active @endif"
+                                href="/admin/categories" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-list-details"></i>
                                 </span>
@@ -92,8 +92,8 @@
                         <!-- Gallery -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/galleries')) active @endif"
-                                href="/cmslpktsukuba/galleries" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('admin/galleries','admin/galleries/*')) active @endif"
+                                href="/admin/galleries" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-photo"></i>
                                 </span>
@@ -105,8 +105,8 @@
                             <!-- ---------------------------------- -->
                         <li class="sidebar-item">
                             <a class="sidebar-link 
-                        @if (request()->is(['cmslpktsukuba/programs', 'cmslpktsukuba/programs/create'])) active @endif"
-                                href="/cmslpktsukuba/programs" aria-expanded="false">
+                        @if (request()->is(['admin/programs','admin/programs/*'])) active @endif"
+                                href="/admin/programs" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-layout"></i>
                                 </span>
@@ -117,8 +117,8 @@
                         <!-- Regulations -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/regulations')) active @endif"
-                                href="/cmslpktsukuba/regulations" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('admin/regulations','admin/regulations/*')) active @endif"
+                                href="/admin/regulations" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-book"></i>
                                 </span>
@@ -130,8 +130,8 @@
                         <!-- Benefits -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/benefits')) active @endif"
-                                href="/cmslpktsukuba/benefits" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('admin/benefits','admin/benefits/*')) active @endif"
+                                href="/admin/benefits" aria-expanded="false">
                                 <span class="d-flex">
                                     <i class="ti ti-chart-pie"></i>
                                 </span>
@@ -143,8 +143,8 @@
                         <!-- heroes -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/heroes')) active @endif"
-                                href="/cmslpktsukuba/heroes" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('admin/heroes','admin/heroes/*')) active @endif"
+                                href="/admin/heroes" aria-expanded="false">
                                 <span class="d-flex">
                                     <i class="ti ti-slideshow"></i>
                                 </span>
@@ -162,8 +162,8 @@
                         <!-- Company Profile -->
                         <!-- ---------------------------------- -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/companyprofile')) active @endif"
-                                href="/cmslpktsukuba/companyprofile" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('admin/companyprofile')) active @endif"
+                                href="/admin/companyprofile" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-id-badge"></i>
                                 </span>
@@ -171,8 +171,8 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link @if (request()->is('cmslpktsukuba/loghistories')) active @endif"
-                                href="/cmslpktsukuba/loghistories" aria-expanded="false">
+                            <a class="sidebar-link @if (request()->is('admin/loghistories')) active @endif"
+                                href="/admin/loghistories" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-history"></i>
                                 </span>
@@ -198,15 +198,8 @@
                                     <i class="ti ti-menu-2"></i>
                                 </a>
                             </li>
-                            {{-- search --}}
-                            {{-- <li class="nav-item nav-icon-hover-bg rounded-circle d-none d-lg-flex">
-                                <a class="nav-link" href="javascript:void(0)" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
-                                    <i class="ti ti-search"></i>
-                                </a>
-                            </li> --}}
                             <li class="nav-item nav-icon-hover-bg rounded-circle d-none d-lg-flex position-relative">
-                                <a class="nav-link" href="/cmslpktsukuba/inbox">
+                                <a class="nav-link" href="/admin/inbox">
                                     <i class="ti ti-inbox position-relative"></i>
                                 </a>
                                 @if (Session::get('countUnread') > 0)
@@ -221,8 +214,8 @@
 
 
                         <div class="d-block d-lg-none py-4">
-                            <a href="/cmslpktsukuba/" class="text-nowrap logo-img">
-                                <img src="{{ asset('images/companyprofile/' . $companyProfile->logo) }}"
+                            <a href="/admin/" class="text-nowrap logo-img">
+                                <img src="{{ asset('images/companyprofile/' . $companyProfile->logo_type) }}"
                                     width="90%" style="max-width:70px;" />
                             </a>
                         </div>
@@ -262,7 +255,7 @@
                                                     </div>
                                                 </div>
 
-                                                <form action="/logout" method="post">
+                                                <form action="/admin/logout" method="post">
                                                     <div class="d-grid py-4 px-7 pt-8">
                                                         @csrf
                                                         <button type="submit" class="btn btn-primary">Log
@@ -297,14 +290,14 @@
                                 </a>
                             </li>
                             <li class="nav-item d-none d-xl-block">
-                                <a href="/cmslpktsukuba" class="text-nowrap nav-link">
-                                    <img src="{{ asset('images/companyprofile/' . $companyProfile->logo) }}"
+                                <a href="/admin" class="text-nowrap nav-link">
+                                    <img src="{{ asset('images/companyprofile/' . $companyProfile->logo_type) }}"
                                         class="img-fluid" width="100" alt="Image-logo" />
                                 </a>
                             </li>
 
                             <li class="nav-item nav-icon-hover-bg rounded-circle d-none d-lg-flex position-relative">
-                                <a class="nav-link" href="/cmslpktsukuba/inbox">
+                                <a class="nav-link" href="/admin/inbox">
                                     <i class="ti ti-inbox position-relative"></i>
                                 </a>
                                 @if (Session::get('countUnread') > 0)
@@ -317,7 +310,7 @@
                             </li>
                         </ul>
                         <div class="d-block d-xl-none">
-                            <a href="/cmslpktsukuba/" class="text-nowrap nav-link">
+                            <a href="/admin/" class="text-nowrap nav-link">
                                 <img src="{{ asset('images/companyprofile/' . $companyProfile->logo) }}"
                                     width="90" alt="Image-logo" />
                             </a>
@@ -385,7 +378,7 @@
                                                     </div>
                                                 </div>
 
-                                                <form action="/logout" method="post">
+                                                <form action="/admin/logout" method="post">
                                                     <div class="d-grid py-4 px-7 pt-8">
                                                         @csrf
                                                         <button type="submit" class="btn btn-primary">Log
@@ -416,7 +409,7 @@
                             <!-- Dashboard -->
                             <!-- =================== -->
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="/cmslpktsukuba">
+                                <a class="sidebar-link" href="/admin">
                                     <span>
                                         <i class="ti ti-home"></i>
                                     </span>
@@ -440,13 +433,13 @@
                                 </a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item">
-                                        <a href="/cmslpktsukuba/categories" class="sidebar-link">
+                                        <a href="/admin/categories" class="sidebar-link">
                                             <i class="ti ti-list-details"></i>
                                             <span class="hide-menu">Categories</span>
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="/cmslpktsukuba/galleries" class="sidebar-link">
+                                        <a href="/admin/galleries" class="sidebar-link">
                                             <i class="ti ti-photo"></i>
                                             <span class="hide-menu">Galleries</span>
                                         </a>
@@ -458,7 +451,7 @@
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="/cmslpktsukuba/regulations" class="sidebar-link">
+                                        <a href="/admin/regulations" class="sidebar-link">
                                             <i class="ti ti-book"></i>
                                             <span class="hide-menu">Regulations</span>
                                         </a>
@@ -470,13 +463,13 @@
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="/cmslpktsukuba/benefits" class="sidebar-link">
+                                        <a href="/admin/benefits" class="sidebar-link">
                                             <i class="ti ti-chart-pie"></i>
                                             <span class="hide-menu">Benefits</span>
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="cmslpktsukuba/heroes" class="sidebar-link">
+                                        <a href="admin/heroes" class="sidebar-link">
                                             <i class="ti ti-slideshow"></i>
                                             <span class="hide-menu">Heroes</span>
                                         </a>
@@ -488,7 +481,7 @@
                             <!-- Dashboard -->
                             <!-- =================== -->
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="/cmslpktsukuba/companyprofile">
+                                <a class="sidebar-link" href="/admin/companyprofile">
                                     <span>
                                         <i class="ti ti-id-badge"></i>
                                     </span>
@@ -496,7 +489,7 @@
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="/cmslpktsukuba/loghitories">
+                                <a class="sidebar-link" href="/admin/loghitories">
                                     <span>
                                         <i class="ti ti-history"></i>
                                     </span>
@@ -720,29 +713,29 @@
 
 
     <div class="dark-transparent sidebartoggler"></div>
-    <script src="{{ asset('template/back') }}/dist/js/vendor.min.js"></script>
+    {{-- <script src="{{ asset('template/back') }}/dist/js/vendor.min.js"></script> --}}
     <!-- Import Js Files -->
 
     <script src="{{ asset('template/back') }}/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('template/back') }}/dist/libs/simplebar/dist/simplebar.min.js"></script>
+    {{-- <script src="{{ asset('template/back') }}/dist/libs/simplebar/dist/simplebar.min.js"></script> --}}
     <script src="{{ asset('template/back') }}/dist/js/theme/app.init.js"></script>
     <script src="{{ asset('template/back') }}/dist/js/theme/theme.js"></script>
-    <script src="{{ asset('template/back') }}/dist/js/script.js"></script>
+    {{-- <script src="{{ asset('template/back') }}/dist/js/script.js"></script> --}}
     {{-- My javascript --}}
-    <script src="{{ asset('js/script.js') }}"></script>
+    {{-- <script src="{{ asset('js/script.js') }}"></script> --}}
     {{-- My javascript --}}
     <script src="{{ asset('template/back') }}/dist/js/theme/app.min.js"></script>
-    <script src="{{ asset('template/back') }}/dist/js/theme/sidebarmenu.js"></script>
+    {{-- <script src="{{ asset('template/back') }}/dist/js/theme/sidebarmenu.js"></script> --}}
 
-    <script src="{{ asset('template/back') }}/dist/js/plugins/mindmup-editabletable.js"></script>
-    <script src="{{ asset('template/back') }}/dist/libs/vanilla-datatables-editable/datatable.editable.min.js"></script>
-    <script src="{{ asset('template/back') }}/dist/js/plugins/numeric-input-example.js"></script>
+    {{-- <script src="{{ asset('template/back') }}/dist/js/plugins/mindmup-editabletable.js"></script> --}}
+    {{-- <script src="{{ asset('template/back') }}/dist/libs/vanilla-datatables-editable/datatable.editable.min.js"></script> --}}
+    {{-- <script src="{{ asset('template/back') }}/dist/js/plugins/numeric-input-example.js"></script> --}}
 
 
     <!-- solar icons -->
-    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-    <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/owl.carousel/dist/owl.carousel.min.js">
-    </script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script> --}}
+    {{-- <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/owl.carousel/dist/owl.carousel.min.js"> --}}
+    {{-- </script> --}}
     {{-- <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/apexcharts/dist/apexcharts.min.js">
     </script> --}}
     {{-- <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/js/dashboards/dashboard.js"></script> --}}

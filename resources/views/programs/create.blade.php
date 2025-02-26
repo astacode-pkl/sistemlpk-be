@@ -6,13 +6,13 @@
 
         <div class="col-lg-12">
             <!-- ---------------------
-                                                                                                                            start Program
-                                                                                                                        ---------------- -->
+                                                                                                                                start Program
+                                                                                                                            ---------------- -->
             <div class="card">
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Create Program</h4>
                 </div>
-                <form action="/cmslpktsukuba/programs/" method="POST" enctype="multipart/form-data">
+                <form action="/admin/programs/" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="row pt-3">
@@ -58,8 +58,8 @@
 
                                 <div class="mb-3 ">
                                     <label class="control-label mb-2" for="description">Description</label>
-                                    <textarea class="form-control  @error('description') is-invalid   @enderror" id="floatingTextarea" name="description"
-                                        placeholder="Please enter description..." required></textarea>
+                                    <textarea class="form-control @error('description') is-invalid   @enderror" id="floatingTextarea" name="description"
+                                        placeholder="Please enter description..."  required></textarea>
                                     @error('description')
                                         <div id="validationServer04Feedback" class="invalid-feedback">
                                             {{ $message }}
@@ -88,7 +88,7 @@
                                         Save
                                     </div>
                                 </button>
-                                <a href="/cmslpktsukuba/programs/">
+                                <a href="/admin/programs/">
                                     <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                         <div class="d-flex align-items-center">
                                             <i class="ti ti-circle-x me-1 fs-5"></i>
@@ -102,11 +102,18 @@
                 </form>
             </div>
             <!-- ---------------------
-                                                                                                                            end Program
-                                                                                                                        ---------------- -->
+                                                                                                                                end Program
+                                                                                                                            ---------------- -->
         </div>
     </div>
     @push('script')
         <script src="{{ asset('js/imagePreview.js') }}"></script>
+         <script >
+        const textarea = document.getElementById('floatingTextarea')
+          textarea.addEventListener('input' , function(){
+              textarea.style.height = '';
+              textarea.style.height = textarea.scrollHeight + 'px'
+          });
+        </script>
     @endpush
 @endsection

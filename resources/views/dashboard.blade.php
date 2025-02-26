@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-6 col-md-6 mb-4">
-            <a href="/cmslpktsukuba/categories">
+            <a href="/admin/categories">
                 <div class="card border-bottom border-danger">
                     <div class="card-body">
                         <div class="d-flex no-block align-items-center">
@@ -20,13 +20,13 @@
             </a>
         </div>
         <div class="col-lg-6 col-md-6 mb-4">
-            <a href="/cmslpktsukuba/galleries">
+            <a href="/admin/galleries">
                 <div class="card border-bottom border-primary">
                     <div class="card-body">
                         <div class="d-flex no-block align-items-center">
                             <div>
                                 <h2 class="fs-7">{{ $galleries }}</h2>
-                                <h6 class="fw-medium text-primary mb-0">Galeries</h6>
+                                <h6 class="fw-medium text-primary mb-0">Galleries</h6>
                             </div>
                             <div class="ms-auto">
                                 <span class="text-primary display-6"> <i class="ti ti-photo"></i></span>
@@ -38,7 +38,7 @@
             </a>
         </div>
         <div class="col-lg-6 col-md-6 mb-4">
-            <a href="/cmslpktsukuba/regulations">
+            <a href="/admin/regulations">
                 <div class="card border-bottom border-success">
                     <div class="card-body">
                         <div class="d-flex no-block align-items-center">
@@ -56,7 +56,7 @@
             </a>
         </div>
         <div class="col-lg-6 col-md-6 mb-4">
-            <a href="/cmslpktsukuba/programs">
+            <a href="/admin/programs">
                 <div class="card border-bottom border-danger">
                     <div class="card-body">
                         <div class="d-flex no-block align-items-center">
@@ -74,7 +74,7 @@
             </a>
         </div>
         <div class="col-lg-6 col-md-6 mb-4">
-            <a href="/cmslpktsukuba/benefits">
+            <a href="/admin/benefits">
                 <div class="card border-bottom border-info">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
@@ -92,7 +92,7 @@
             </a>
         </div>
         <div class="col-lg-6 col-md-6 mb-4">
-            <a href="/cmslpktsukuba/inbox">
+            <a href="/admin/inbox">
                 <div class="card border-bottom border-success">
                     <div class="card-body">
                         <div class="d-flex no-block align-items-center">
@@ -110,7 +110,7 @@
             </a>
         </div>
         <div class="col-lg-6 col-md-6 mb-4">
-            <a href="/cmslpktsukuba/heroes">
+            <a href="/admin/heroes">
                 <div class="card border-bottom border-success">
                     <div class="card-body">
                         <div class="d-flex no-block align-items-center">

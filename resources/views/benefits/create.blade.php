@@ -8,7 +8,7 @@
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Create Benefit</h4>
                 </div>
-                <form action="/cmslpktsukuba/benefits" method="POST" enctype="multipart/form-data">
+                <form action="/admin/benefits" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="row pt-3">
@@ -28,7 +28,37 @@
                                     </div>
 
                                     <div id="icon-preview" class="w-50 fst-italic ms-5" style="max-width: 40px"></div>
-
+                                </div>
+                                <div class="mb-3">
+                                    <div class=" mb-3">
+                                        <label for="floatingInput" class="mb-2">Title</label>
+                                        <input type="text"
+                                            class="form-control @error('title') is-invalid      
+                                    @enderror"
+                                            name="title" id="floatingInput" placeholder="please enter title..." required>
+                                        @error('title')
+                                            <div id="validationServer04Feedback" class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label class="mr-sm-2 mb-2" for="inlineFormCustomSelect">Program</label>
+                                    <select class="form-select mr-sm-2  @error('category_id') is-invalid @enderror"
+                                        name="program_id" id="inlineFormCustomSelect" required>
+                                        <option value="">Choose: Program</option>
+                                        @forelse ($programs as $program)
+                                            <option value="{{ $program->id }}">{{ $program->title }}</option>
+                                        @empty
+                                            <option value="">Program not found</option>
+                                        @endforelse
+                                    </select>
+                                    @error('program_id')
+                                        <div id="validationServer04Feedback" class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <!--/span-->
                             </div>
@@ -40,7 +70,7 @@
                                             Save
                                         </div>
                                     </button>
-                                    <a href="/cmslpktsukuba/benefits">
+                                    <a href="/admin/benefits">
                                         <button type="button" class="btn btn-danger  px-4 ms-2 text-white">
                                             <div class="d-flex align-items-center">
                                                 <i class="ti ti-circle-x me-1 fs-5"></i>
@@ -54,8 +84,8 @@
                 </form>
             </div>
             <!-- ---------------------
-                                                                                                                        end Person Info
-                                                                                                                    ---------------- -->
+                                                                                                                                    end Person Info
+                                                                                                                                ---------------- -->
         </div>
     </div>
     @push('script')

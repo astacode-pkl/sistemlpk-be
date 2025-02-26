@@ -45,7 +45,7 @@ class HeroController extends Controller
 
         $newData = Hero::create(['position' => $validated['position'], 'image' => $imageName]);
         LogHistory::record('Create', auth()->user()->name . ' created new Hero', $newData);
-        return redirect('/cmslpktsukuba/heroes')->with('success', 'Hero created successfully!!');
+        return redirect('/admin/heroes')->with('success', 'Hero created successfully!!');
     }
 
     /**
@@ -84,7 +84,7 @@ class HeroController extends Controller
         $hero->update(['image' => $imageName]);
         $newData = Hero::where('id', $id)->get();
         LogHistory::record('Update',  auth()->user()->name . ' updated Hero', $newData, $oldData);
-        return redirect('/cmslpktsukuba/heroes')->with('success', 'Hero updated succesfully!');
+        return redirect('/admin/heroes')->with('success', 'Hero updated succesfully!');
     }
 
     /**

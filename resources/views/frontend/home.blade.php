@@ -91,7 +91,7 @@
                                 <div
                                     class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
                                     <h3 class="text-white text-base sm:text-lg md:text-xl font-semibold text-center px-4">
-                                        {{ $category->title }}</h3>
+                                        {{ $gallery->title }}</h3>
                                 </div>
                             </div>
                         </div>
@@ -135,7 +135,7 @@
     </p>
     <div class="card-container grid grid-cols-1 md:grid-cols-2 gap-8 px-8">
         @foreach ($programs as $program)
-            <div class="flex flex-col bg-gray-50 border shadow-sm rounded-xl hover:drop-shadow-lg transition duration-500 hover:scale-110 group"
+            <div class="flex flex-col bg-gray-50 border shadow-sm rounded-xl hover:drop-shadow-lg transition duration-500 group"
                 data-aos="fade-up">
                 <div class="p-4 md:p-7">
                     <img src="{{ asset('images/programs/' . $program->image) }}" alt="program"

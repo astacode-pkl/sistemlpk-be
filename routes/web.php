@@ -24,7 +24,7 @@ Route::resource('/kontak', App\Http\Controllers\Frontend\ContactController::clas
 
 
 
-Route::prefix('cmslpktsukuba')->group(function () {
+Route::prefix('admin')->group(function () {
 
 
     Route::middleware(['guest'])->group(function () {
