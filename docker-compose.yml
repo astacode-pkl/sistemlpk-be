@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sistem_lpk
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www/html
+      - /var/www/html/node_modules
+    environment:
+      - DB_HOST=mysql
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+
+  webserver:
+    image: nginx:alpine
+    container_name: lpk_webserver
+    restart: unless-stopped
+    ports:
+      - "83:80"
+    volumes:
+      - ./:/var/www/html
+      - ./docker/nginx:/etc/nginx/conf.d
+    depends_on:
+      - app
+
