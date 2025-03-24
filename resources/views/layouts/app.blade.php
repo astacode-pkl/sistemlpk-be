@@ -6,10 +6,7 @@
 
     <!-- Favicon icon-->
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/companyprofile/' . $companyProfile->logo_mark) }}" />
-
-    <!-- CSS DataTables -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-
+    <link rel="stylesheet" href="{{ asset('template/back') }}/dist/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
     <!-- Core Css -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link id="themeColors" rel="stylesheet" href="{{ asset('template/back') }}/dist/css/styles.css" />

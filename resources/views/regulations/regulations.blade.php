@@ -1,33 +1,23 @@
 @extends('layouts.app') @section('content')
-    <x-card-header>
-        Regulations
-    </x-card-header>
-    @if (session('success'))
-        <div class="alert alert-info alert-dismissible fade show mb-3" role="alert">
-            <div class="text-primary">{{ session('success') }}</div>
+<x-card-header>
+    Regulations
+</x-card-header>
+<x-alert />
 
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-
-
-    <div class="row">
-        <div class="col-sm-12">
-            <!-- Column -->
-            <div class="card">
-                <div class="border-bottom title-part-padding d-flex justify-content-between">
-                    <h4 class="card-title mb-0">Regulations</h4>
+<section class="datatables">
+    <div class="card">
+        <div class="card-body">
+            <div class="mb-2">
+                <div class="d-flex align-items-end flex-column mb-2">
                     <a href="/admin/regulations/create">
-
                         <button class="btn btn-primary">
                             <i class="ti ti-plus"></i>
-                            Create</button>
+                            Create
+                        </button>
                     </a>
                 </div>
-
-                <div class="card-body overflow-x-auto">
-
-                    <table class="table table-striped table-bordered text-center" id="datatable">
+                <div class="table-responsive m-t-40">
+                    <table id="datatable" class="table border display table-bordered overflow-x-auto">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -39,44 +29,43 @@
                         </thead>
                         <tbody>
                             @foreach ($regulations as $regulation)
-                                <tr id="{{ $loop->iteration }}" class="gradeC">
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{!! $regulation->icon !!}</td>
-                                    <td>{{ $regulation->title }}</td>
-                                    <td>{{ $regulation->programs->title }}</td>
+                            <tr id="{{ $loop->iteration }}" class="gradeC">
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{!! $regulation->icon !!}</td>
+                                <td>{{ $regulation->title }}</td>
+                                <td>{{ $regulation->programs->title }}</td>
 
-                                    <td class="center">
-                                        <a href="/admin/regulations/{{ Crypt::encryptString($regulation->id) }}/edit"><button
-                                                class="btn btn-primary px-4 ">
-                                                <i class="ti ti-pencil fs-5"></i>
-                                                Edit</button></a>
+                                <td class="center">
+                                    <a href="/admin/regulations/{{ Crypt::encryptString($regulation->id) }}/edit"><button
+                                            class="btn btn-primary px-4 ">
+                                            <i class="ti ti-pencil fs-5"></i>
+                                            Edit</button></a>
 
-                                        <form action="/admin/regulations/{{ Crypt::encryptString($regulation->id) }}"
-                                            method="POST">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-danger px-4 py-2"
-                                                onclick="deleteItem(event)">
-                                                <i class="ti ti-trash fs-5"></i>
-                                                Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                    <form action="/admin/regulations/{{ Crypt::encryptString($regulation->id) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger px-4 py-2"
+                                            onclick="deleteItem(event)">
+                                            <i class="ti ti-trash fs-5"></i>
+                                            Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
                             @endforeach
-
                         </tbody>
-
                     </table>
                 </div>
             </div>
         </div>
     </div>
-    @push('script')
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="{{ asset('js/sweetalert.js') }}"></script>
-        <!-- datatable -->
-        <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
-        <script src="{{ asset('js/datatable.js') }}"></script>
-        <script src="{{ asset('template/back') }}/dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    @endpush
+</section>
+@push('script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('js/sweetalert.js') }}"></script>
+<!-- datatable -->
+<script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
+<script src="{{ asset('js/datatable.js') }}"></script>
+<script src="{{ asset('template/back') }}/dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+@endpush
 @endsection
