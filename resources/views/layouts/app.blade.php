@@ -14,10 +14,10 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link id="themeColors" rel="stylesheet" href="{{ asset('template/back') }}/dist/css/styles.css" />
     <link rel="stylesheet" href="{{ asset('template/back') }}/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
+    
     @stack('style')
-    {{-- @vite('resources/css/app.css') --}}
 
-    <title>{{ $companyProfile->name }}</title>
+    <title>{{ Str::title($companyProfile->name) }}</title>
     <!-- Owl Carousel  -->
 
 </head>
@@ -292,7 +292,7 @@
                             <li class="nav-item d-none d-xl-block">
                                 <a href="/admin" class="text-nowrap nav-link">
                                     <img src="{{ asset('images/companyprofile/' . $companyProfile->logo_type) }}"
-                                        class="img-fluid" width="100" alt="Image-logo" />
+                                        class="img-fluid" width="100" alt="logo" />
                                 </a>
                             </li>
 
@@ -312,7 +312,7 @@
                         <div class="d-block d-xl-none">
                             <a href="/admin/" class="text-nowrap nav-link">
                                 <img src="{{ asset('images/companyprofile/' . $companyProfile->logo) }}"
-                                    width="90" alt="Image-logo" />
+                                    width="90" alt="logo" />
                             </a>
                         </div>
                         <a class="navbar-toggler nav-icon-hover-bg rounded-circle p-0 mx-0 border-0"
@@ -357,7 +357,7 @@
                                                 <div class="user-profile-img">
                                                     <img src="{{ asset('images/companyprofile/' . $companyProfile->logo) }}"
                                                         class="rounded-circle" width="auto" height="50"
-                                                        alt="" />
+                                                        alt="logo" />
                                                 </div>
                                             </div>
                                         </a>
