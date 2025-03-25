@@ -3,7 +3,7 @@
     <!-- hero -->
     <div class="relative h-screen overflow-hidden">
         <!-- Overlay -->
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center z-10">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center z-10" >
             <h1 class="text-3xl font-semibold">
                 {{ $companyProfile->name }} <br />{{ $companyProfile->slogan }}
             </h1>
@@ -82,7 +82,7 @@
                 <p class="text-center text-gray-600 mb-10 animate-fade-in" data-aos="fade-up">{{ $category->title }}</p>
                 <x-frontend.graduation-photos>
                     @foreach ($category->galleries as $gallery)
-                        <div class="flex-shrink-0 w-[100%] md:w-[30.5%] lg:w-[23.5%] cursor-pointer">
+                        <div class="flex-shrink-0 w-[100%] md:w-[30.5%] lg:w-[23.5%] cursor-pointer" data-aos="fade-up">
                             <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 h-full"
                                 onclick="openModal({{ $gallery->id }})">
                                 <img src="{{ asset('images/galleries/' . $gallery->image) }}" alt="{{ $gallery->title }}"
@@ -103,7 +103,7 @@
                 <x-frontend.other-photos>
                     @foreach ($category->galleries as $gallery)
                         <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 h-full cursor-pointer"
-                            onclick="openModalOtherPhotos('{{ $gallery->id }}')">
+                            onclick="openModalOtherPhotos('{{ $gallery->id }}')" data-aos="fade-up">
                             <img src="{{ asset('images/galleries/' . $gallery->image) }}" alt="{{ $gallery->title }}"
                                 class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
                             <div

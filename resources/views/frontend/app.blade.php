@@ -5,9 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/companyprofile/' . $companyProfile->logo_mark) }}" />
-    @vite('resources/css/app.css')
-
-
+    @vite('resources/css/app.css', 'resources/js/app.js')
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>{{ $companyProfile->name }}</title>
 </head>
 
@@ -206,6 +205,10 @@
         collapseButton.addEventListener('click', () => {
             collapseContent.classList.toggle('hidden');
         });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
     </script>
 </body>
 

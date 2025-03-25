@@ -1,43 +1,42 @@
-
-    <div class="galeri">
-        <div class="relative px-5 mt-5 mb-10" id="gallery">
-            <div class="overflow-hidden rounded-md">
-                <div id="slider" class="flex gap-4 transition-transform duration-300 container mx-auto ease-in-out">
-                    {{$slot}}   
-                </div>
+<div class="galeri" data-aos="fade-up">
+    <div class="relative px-5 mt-5 mb-10" id="gallery">
+        <div class="overflow-hidden rounded-md">
+            <div id="slider" class="flex gap-4 transition-transform duration-300 container mx-auto ease-in-out">
+                {{ $slot }}
             </div>
-            <!-- Prev Button -->
-            <button id="prevButton"
-                class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-md rounded-full p-2 sm:p-3 transition-all duration-300">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                </svg>
-            </button>
-
-            <!-- Next Button -->
-            <button id="nextButton"
-                class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-md rounded-full p-2 sm:p-3 transition-all duration-300">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-            </button>
         </div>
+        <!-- Prev Button -->
+        <button id="prevButton"
+            class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-md rounded-full p-2 sm:p-3 transition-all duration-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
 
-        <!-- Modal -->
-        <div id="modal" class="fixed inset-0 z-50 overflow-hidden bg-black bg-opacity-80 hidden">
-            <div class="flex items-center justify-center min-h-screen p-4">
-                <button type="button" class="absolute top-2 right-2 text-white hover:text-gray-200" id="closeModal">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-                        </path>
-                    </svg>
-                </button>
+        <!-- Next Button -->
+        <button id="nextButton"
+            class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-md rounded-full p-2 sm:p-3 transition-all duration-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+    </div>
+</div>
 
-                <div class="transform transition-all duration-300 max-w-4xl w-full md:w-1/2">
-                    <img id="modalImage" class="w-full rounded-lg shadow-xl" />
-                    <h3 id="modalTitle"
-                        class="text-white text-base sm:text-lg md:text-xl font-semibold mt-4 text-center px-2"></h3>
-                </div>
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 z-50 overflow-hidden bg-black bg-opacity-80 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <button type="button" class="absolute top-2 right-2 text-white hover:text-gray-200" id="closeModal">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <div class="transform transition-all duration-300 max-w-4xl w-full md:w-1/2">
+                <img id="modalImage" class="w-full rounded-lg shadow-xl" />
+                <h3 id="modalTitle"
+                    class="text-white text-base sm:text-lg md:text-xl font-semibold mt-4 text-center px-2"></h3>
             </div>
         </div>
     </div>
@@ -52,7 +51,11 @@
     const nextButton = document.getElementById('nextButton');
 
     let currentSlide = 0;
-    const slidesToShow = { mobile: 1, tablet: 3, desktop: 4 };
+    const slidesToShow = {
+        mobile: 1,
+        tablet: 3,
+        desktop: 4
+    };
 
     // Ambil data dari Laravel dengan aman
     const images = {!! json_encode($galleries) !!};
@@ -73,6 +76,17 @@
 
         prevButton.style.opacity = prevButton.disabled ? '0.5' : '1';
         nextButton.style.opacity = nextButton.disabled ? '0.5' : '1';
+    }
+
+    // Hide or show navigation buttons based on the number of images
+    function updateButtonVisibility() {
+        if (images.length < 5) {
+            prevButton.style.display = 'hidden';
+            nextButton.style.display = 'hidden';
+        } else {
+            prevButton.style.display = 'block';
+            nextButton.style.display = 'block';
+        }
     }
 
     function getSlidesToShow() {
@@ -125,7 +139,12 @@
         }
     });
 
-    window.addEventListener('resize', updateSliderPosition);
+    window.addEventListener('resize', () => {
+        updateSliderPosition();
+        updateButtonVisibility(); // Update button visibility on window resize
+    });
 
+    // Initial updates
     updateSliderPosition();
+    updateButtonVisibility(); // Check visibility on initial load
 </script>

@@ -1,4 +1,4 @@
-<div class="container mx-auto p-5">
+<div class="container mx-auto p-5" data-aos="fade-up">
     <div id="gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {{ $slot }}
     </div>

@@ -18,7 +18,7 @@
         "vite": "^6.0"
     },
     "dependencies": {
-        "aos": "^2.3.4",
+        "aos": "^3.0.0-beta.6",
         "laravel-mix": "^6.0.49",
         "preline": "^2.7.0",
         "sweetalert2": "^11.15.10",
