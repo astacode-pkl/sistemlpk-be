@@ -97,8 +97,8 @@ class HeroController extends Controller
         $table = Hero::find($id);
         if ($table != null) {
             $oldData = Hero::where('id', $id)->get();
-            $imageName = $this->destroyImage('images/heroes/', $table->image);
-            $table->delete(['image' => $imageName]);
+            $this->destroyImage('images/heroes/', $table->image);
+            $table->delete();
             LogHistory::record('Delete', auth()->user()->name . ' deleted Hero', $oldData);
             return redirect()->back()->with('success', 'Hero deleted successfully!!');
         }

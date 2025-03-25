@@ -1,13 +1,11 @@
 @extends('layouts.app') @section('content')
-    <x-card-header>
-        Programs
-    </x-card-header>
+    <x-breadcrumb></x-breadcrumb>
     <div class="row">
 
         <div class="col-lg-12">
             <!-- ---------------------
-                                                                                                                                start Program
-                                                                                                                            ---------------- -->
+                                                                                                                                    start Program
+                                                                                                                                ---------------- -->
             <div class="card">
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Create Program</h4>
@@ -59,7 +57,7 @@
                                 <div class="mb-3 ">
                                     <label class="control-label mb-2" for="description">Description</label>
                                     <textarea class="form-control @error('description') is-invalid   @enderror" id="floatingTextarea" name="description"
-                                        placeholder="Please enter description..."  required></textarea>
+                                        placeholder="Please enter description..." required></textarea>
                                     @error('description')
                                         <div id="validationServer04Feedback" class="invalid-feedback">
                                             {{ $message }}
@@ -102,18 +100,18 @@
                 </form>
             </div>
             <!-- ---------------------
-                                                                                                                                end Program
-                                                                                                                            ---------------- -->
+                                                                                                                                    end Program
+                                                                                                                                ---------------- -->
         </div>
     </div>
     @push('script')
         <script src="{{ asset('js/imagePreview.js') }}"></script>
-         <script >
-        const textarea = document.getElementById('floatingTextarea')
-          textarea.addEventListener('input' , function(){
-              textarea.style.height = '';
-              textarea.style.height = textarea.scrollHeight + 'px'
-          });
+        <script>
+            const textarea = document.getElementById('floatingTextarea')
+            textarea.addEventListener('input', function() {
+                textarea.style.height = '';
+                textarea.style.height = textarea.scrollHeight + 'px'
+            });
         </script>
     @endpush
 @endsection

@@ -1,7 +1,5 @@
 @extends('layouts.app') @section('content')
-    <x-card-header>
-        Regulations
-    </x-card-header>
+    <x-breadcrumb></x-breadcrumb>
     @if (session('success'))
         <div class="alert alert-info alert-dismissible fade show mb-3" role="alert">
             <div class="text-primary">{{ session('success') }}</div>

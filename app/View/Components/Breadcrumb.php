@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components\Frontend;
+namespace App\View\Components;
 
 use Closure;
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
 class Breadcrumb extends Component
 {
@@ -27,7 +27,7 @@ class Breadcrumb extends Component
     public function render(): View|Closure|string
     {
         $segments = collect(request()->segments())->filter(function ($segment) {
-            dd($segment);
+            $segment = (string) $segment;
             return strlen($segment) < 20;
         })->toArray(); // Mengambil segment dari URL
         return view('components.breadcrumb', compact('segments'));

@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <x-card-header>
-        Company Profile
-    </x-card-header>
+   <x-breadcrumb></x-breadcrumb>
     <x-alert></x-alert>
     <div class="card">
         <div class="card-header bg-primary">

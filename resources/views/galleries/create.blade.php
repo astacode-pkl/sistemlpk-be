@@ -1,12 +1,10 @@
 @extends('layouts.app') @section('content')
-    <x-card-header>
-        Galleries
-    </x-card-header>
+    <x-breadcrumb></x-breadcrumb>
     <div class="row">
         <div class="col-lg-12">
             <!-- ---------------------
-                                                                                                                    start Person Info
-                                                                                                                ---------------- -->
+                                                                                                                        start Person Info
+                                                                                                                    ---------------- -->
             <div class="card">
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Create Gallery</h4>
@@ -96,8 +94,8 @@
                 </form>
             </div>
             <!-- ---------------------
-                                                                                                                    end Person Info
-                                                                                                                ---------------- -->
+                                                                                                                        end Person Info
+                                                                                                                    ---------------- -->
         </div>
     </div>
     @push('script')

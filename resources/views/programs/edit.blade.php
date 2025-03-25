@@ -1,7 +1,5 @@
 @extends('layouts.app') @section('content')
-    <x-card-header>
-        Programs
-    </x-card-header>
+    <x-breadcrumb></x-breadcrumb>
     <div class="row">
         <div class="col-lg-12">
 
@@ -83,18 +81,18 @@
                 </form>
             </div>
             <!-- ---------------------
-                                                                                                                        end Program
-                                                                                                                    ---------------- -->
+                                                                                                                            end Program
+                                                                                                                        ---------------- -->
         </div>
     </div>
     @push('script')
         <script src="{{ asset('js/imagePreview.js') }}"></script>
-        <script >
-        const textarea = document.getElementById('floatingTextarea')
-          textarea.addEventListener('input' , function(){
-              textarea.style.height = '';
-              textarea.style.height = textarea.scrollHeight + 'px'
-          });
+        <script>
+            const textarea = document.getElementById('floatingTextarea')
+            textarea.addEventListener('input', function() {
+                textarea.style.height = '';
+                textarea.style.height = textarea.scrollHeight + 'px'
+            });
         </script>
     @endpush
 @endsection

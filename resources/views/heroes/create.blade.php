@@ -1,7 +1,5 @@
 @extends('layouts.app') @section('content')
-    <x-card-header>
-        Heroes
-    </x-card-header>
+    <x-breadcrumb></x-breadcrumb>
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -77,8 +75,8 @@
                 </form>
             </div>
             <!-- ---------------------
-                                                                                                                    end Person Info
-                                                                                                                ---------------- -->
+                                                                                                                        end Person Info
+                                                                                                                    ---------------- -->
         </div>
     </div>
     @push('script')
