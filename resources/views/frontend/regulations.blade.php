@@ -18,7 +18,7 @@
 
                             <div class="flex flex-wrap justify-start p-4 text-center gap-5 border rounded-lg shadow-lg">
                                 <div class="w-full md:w-1/2">
-                                    <img src="{{ asset('images/programs/' . $program->image) }}" alt="Description"
+                                    <img src="{{ asset('storage/' . $program->image) }}" alt="Description"
                                         class="w-full h-full rounded-lg mb-4 md:mb-0">
                                 </div>
                                 <div class="w-full md:w-[39%]">

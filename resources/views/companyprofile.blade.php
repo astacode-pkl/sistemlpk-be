@@ -106,7 +106,7 @@
                     <div class="mb-3">
                         <label class="control-label" for="address">Logo</label>
 
-                        <img src="{{ asset('images/companyprofile/' . $companyProfile->logo) }}"
+                        <img src="{{ asset('storage/' . $companyProfile->logo) }}"
                             class="img-fluid rounded-top w-xs-100 d-block my-3" alt="" id="preview"
                             style="max-width:230px;" />
                         <div class="input-group">
@@ -125,7 +125,7 @@
                     <div class="mb-3">
                         <label class="control-label" for="address">Logo Mark (Graphical logo)</label>
 
-                        <img src="{{ asset('images/companyprofile/' . $companyProfile->logo_mark) }}"
+                        <img src="{{ asset('storage/' . $companyProfile->logo_mark) }}"
                             class="img-fluid rounded-top  w-xs-100 d-block my-3" alt="" id="preview"
                             style="max-width:230px;" />
                         <div class="input-group">
@@ -144,7 +144,7 @@
                     <div class="mb-3">
                         <label class="control-label" for="address">Logo Type (Text logo)</label>
 
-                        <img src="{{ asset('images/companyprofile/' . $companyProfile->logo_type) }}"
+                        <img src="{{ asset('storage/' . $companyProfile->logo_type) }}"
                             class="img-fluid rounded-top w-xs-100 d-block my-3" alt="" id="preview"
                             style="max-width:230px;" />
                         <div class="input-group">
@@ -165,7 +165,7 @@
                 <div class="mb-3">
                     <label class="control-label" for="address">Advertisement</label>
 
-                    <img src="{{ asset('images/companyprofile/' . $companyProfile->advertisement) }}"
+                    <img src="{{ asset('storage/' . $companyProfile->advertisement) }}"
                         class="img-fluid rounded-top w-xs-100 d-block my-3" alt="" id="preview"
                         style="max-width:230px;" />
                     <div class="input-group">

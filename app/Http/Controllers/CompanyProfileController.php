@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\CompanyProfile;
 use Illuminate\Support\Facades\Cache;
+use App\Helpers\ImageHelper;
 use Illuminate\Support\Facades\Crypt;
 
 class CompanyProfileController extends Controller
@@ -98,19 +99,22 @@ class CompanyProfileController extends Controller
         $advertisement = $table->advertisement;
         if ($request->file('logo') !== null) {
             # code...
-            $logo = $this->updateImage('images/companyprofile/',$table->logo,$request->file('logo'));
+            ImageHelper::deleteImage($table->image);
+            $logo = ImageHelper::processImage($request->file('logo'), 'images/company-profile/');
         }
         if ($request->file('logo_type') !== null){
-
-            $logoType = $this->updateImage('images/companyprofile/',$table->logo_type,$request->file('logo_type'));
+            ImageHelper::deleteImage($table->image);
+            $logoType = ImageHelper::processImage($request->file('logo_type'), 'images/company-profile/');
         }
         if ($request->file('logo_mark') !== null) {
             # code...
-            $logoMark = $this->updateImage('images/companyprofile/',$table->logo_mark,$request->file('logo_mark'));
+            ImageHelper::deleteImage($table->image);
+            $logoMark = ImageHelper::processImage($request->file('logo_mark'), 'images/company-profile/');
         }
         if ($request->file('advertisement') !== null) {
             # code...
-            $advertisement = $this->updateImage('images/companyprofile/',$table->advertisement,$request->file('advertisement'));
+            ImageHelper::deleteImage($table->image);
+            $advertisement = ImageHelper::processImage($request->file('advertisement'), 'images/company-profile/');
         }
         
         $oldData = CompanyProfile::where('id',$id)->get();
