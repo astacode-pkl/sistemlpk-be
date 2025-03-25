@@ -8,16 +8,16 @@
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Create Category</h4>
                 </div>
-                <form action="/admin/categories/" method="POST" enctype="multipart/form-data">
+                <form action="/admin/categories/" method="POST" enctype="multipart/form-data" id="form">
                     @csrf
                     <div class="card-body">
                         <div class="row pt-3">
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <div class=" mb-3">
-                                        <label class="mb-2" for="floatingInput">Title</label>
+                                        <label class="control-label col-form-label" for="floatingInput">Title</label>
                                         <input type="text" class="form-control  @error('title') is-invalid  @enderror"
-                                            name="title" id="floatingInput" placeholder="Please enter title..." required>
+                                            name="title" id="floatingInput" placeholder="Please enter title..." value="{{ old('title') }}" required>
                                         @error('title')
                                             <div id="validationServer04Feedback" class="invalid-feedback">
                                                 {{ $message }}
@@ -55,4 +55,12 @@
                                                                                                                                 ---------------- -->
         </div>
     </div>
+
+    @push('script')
+        <script src="//cdn.jsdelivr.net/jquery.dirtyforms/2.0.0/jquery.dirtyforms.min.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function() {
+                $('form').dirtyForms();
+            });
+    @endpush
 @endsection

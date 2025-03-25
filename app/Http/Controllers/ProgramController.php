@@ -17,7 +17,7 @@ class ProgramController extends Controller
     {
 
         $programs = Program::latest()->get();
-        return view('programs.program', compact('programs'));
+        return view('programs.programs', compact('programs'));
     }
 
     /**

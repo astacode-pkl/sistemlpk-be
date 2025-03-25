@@ -6,8 +6,7 @@
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Edit Regulation</h4>
                 </div>
-                <form action="/admin/regulations/{{ Crypt::encryptString($regulation->id) }}" method="POST"
-                    enctype="multipart/form-data">
+                <form action="/admin/regulations/{{ Crypt::encryptString($regulation->id) }}" method="POST" enctype="multipart/form-data" id="form">
                     @method('put')
                     @csrf
                     <div class="card-body">
@@ -97,11 +96,11 @@
     </div>
     @push('script')
         <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
+        <script src="//cdn.jsdelivr.net/jquery.dirtyforms/2.0.0/jquery.dirtyforms.min.js" type="text/javascript"></script>
         <script>
+            //check form is changed or n
             $(document).ready(function() {
-                $('#floatingTextarea').on('keyup', function() {
-                    $('#icon-preview').html($(this).val());
-                });
+                $('form').dirtyForms();
             });
         </script>
     @endpush

@@ -6,18 +6,17 @@
                 <div class="card-header bg-primary">
                     <h4 class="mb-0 text-white">Create Regulation</h4>
                 </div>
-                <form action="/admin/regulations" method="POST" enctype="multipart/form-data">
+                <form action="/admin/regulations" method="POST" enctype="multipart/form-data" id="form">
                     @csrf
                     <div class="card-body">
                         <div class="row pt-3">
-                            <div class="col-md-6">
-                                <div class="d-flex align-items-center gap-3">
+                            <div class="">
+                                <div class="d-flex align-items-center">
                                     <div class=" mb-3 flex-grow-1 ">
-                                        <label for="floatingTextarea" class="mb-2">Icon</label>
-                                        <textarea class="form-control @error('icon') is-invalid      
-                                    @enderror w-100  "
+                                        <label for="floatingTextarea" class="control-label col-form-label">Icon</label>
+                                        <textarea class="form-control @error('icon') is-invalid @enderror w-100"
                                             placeholder="please enter text svg for icon you can find on web hero icons..." id="floatingTextarea" name="icon"
-                                            required></textarea>
+                                            required>{{ old('icon') }}</textarea>
                                         @error('icon')
                                             <div id="validationServer04Feedback" class="invalid-feedback">
                                                 {{ $message }}
@@ -27,13 +26,13 @@
 
                                     <div id="icon-preview" class="w-50 fst-italic ms-5" style="max-width: 40px"></div>
                                 </div>
+
                                 <div class="mb-3">
                                     <div class=" mb-3">
-                                        <label for="floatingInput" class="mb-2">Title</label>
+                                        <label for="floatingInput" class="control-label col-form-label">Title</label>
                                         <input type="text"
-                                            class="form-control @error('title') is-invalid      
-                                    @enderror"
-                                            name="title" id="floatingInput" placeholder="please enter title..." required>
+                                            class="form-control @error('title') is-invalid @enderror"
+                                            name="title" id="floatingInput" placeholder="please enter title..." value="{{ old('title') }}" required>
                                         @error('title')
                                             <div id="validationServer04Feedback" class="invalid-feedback">
                                                 {{ $message }}
@@ -41,13 +40,14 @@
                                         @enderror
                                     </div>
                                 </div>
+
                                 <div class="form-group mb-4">
-                                    <label class="mr-sm-2 mb-2" for="inlineFormCustomSelect">Program</label>
+                                    <label class="control-label col-form-label" for="inlineFormCustomSelect">Program</label>
                                     <select class="form-select mr-sm-2  @error('category_id') is-invalid @enderror"
                                         name="program_id" id="inlineFormCustomSelect" required>
                                         <option value="">Choose: Program</option>
                                         @forelse ($programs as $program)
-                                            <option value="{{ $program->id }}">{{ $program->title }}</option>
+                                            <option value="{{ $program->id }}">{{ old('program_id', $program->title) }}</option>
                                         @empty
                                             <option value="">Program not found</option>
                                         @endforelse
@@ -59,9 +59,9 @@
                                     @enderror
                                 </div>
 
-                            </div>
-                            <!--/span-->
+                            </div>                            
                         </div>
+
                         <div class="form-actions text-end">
                             <div class="card-body border-top">
                                 <button type="submit" class="btn btn-primary  px-4">
@@ -80,6 +80,7 @@
                                 </a>
                             </div>
                         </div>
+
                     </div>
                 </form>
             </div>
@@ -88,11 +89,11 @@
     </div>
     @push('script')
         <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
+        <script src="//cdn.jsdelivr.net/jquery.dirtyforms/2.0.0/jquery.dirtyforms.min.js" type="text/javascript"></script>
         <script>
+            //check form is changed or n
             $(document).ready(function() {
-                $('#floatingTextarea').on('keyup', function() {
-                    $('#icon-preview').html($(this).val());
-                });
+                $('form').dirtyForms();
             });
         </script>
     @endpush

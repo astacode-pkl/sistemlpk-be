@@ -3,7 +3,7 @@
 
 <head>
     <!--  Title -->
-    <title>{{ $companyProfile->name }} - Login</title>
+    <title>{{ Str::title($companyProfile->name) }} - Login</title>
     <!--  Required Meta Tag -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -61,13 +61,13 @@
                                         <label for="exampleInputEmail1" class="form-label">Email</label>
                                         <input type="email" name="email" class="form-control"
                                             id="exampleInputEmail1" aria-describedby="emailHelp"
-                                            placeholder="Enter your email">
+                                            placeholder="Enter your email...">
                                     </div>
                                     <div class="mb-4">
                                         <label for="exampleInputPassword1" class="form-label">Password</label>
                                         <div class="input-group">
                                             <input type="password" name="password" class="form-control"
-                                                id="exampleInputPassword1" placeholder="Enter your password">
+                                                id="exampleInputPassword1" placeholder="Enter your password...">
                                             <span class="input-group-text" onclick="togglePassword()">
                                                 <i class="fa fa-eye" id="togglePassword"></i>
                                             </span>
