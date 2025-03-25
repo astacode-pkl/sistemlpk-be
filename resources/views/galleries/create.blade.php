@@ -1,7 +1,5 @@
 @extends('layouts.app') @section('content')
-<x-card-header>
-    Galleries
-</x-card-header>
+<x-breadcrumb></x-breadcrumb>
 <div class="row">
     <div class="col-lg-12">
         <!-- ---------------------
@@ -11,7 +9,7 @@
             <div class="card-header bg-primary">
                 <h4 class="mb-0 text-white">Create Gallery</h4>
             </div>
-            <form action="/admin/galleries/" method="POST" enctype="multipart/form-data" id="form">
+            <form action="/admin/galleries" method="POST" enctype="multipart/form-data" id="form">
                 @csrf
                 <div class="card-body">
                     <div class="row pt-3 ">
@@ -20,7 +18,7 @@
                             <div class="mb-3">
                                 <label class="control-label col-form-label" for="image">Image</label>
                                 <div class="custom-file ">
-                                    <input type="file" class="form-control  @error('image') is-invalid @enderror"
+                                    <input type="file" class="form-control @error('image') is-invalid @enderror"
                                         id="image" aria-describedby="inputGroupFileAddon01" name="image" required>
                                     @error('image')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
@@ -91,13 +89,11 @@
                 </div>
             </form>
         </div>
-        <!-- ---------------------
-                                                                                                                    end Person Info
-                                                                                                                ---------------- -->
     </div>
 </div>
+
 @push('script')
-{{-- <script src="//cdn.jsdelivr.net/jquery.dirtyforms/2.0.0/jquery.dirtyforms.min.js" type="text/javascript"></script> --}}
+<script src="//cdn.jsdelivr.net/jquery.dirtyforms/2.0.0/jquery.dirtyforms.min.js" type="text/javascript"></script>
 <script>
             document.getElementById('image').addEventListener('change', function(event) {
                 let preview = document.getElementById('preview');
@@ -114,10 +110,9 @@
                     preview.innerHTML = '<div class="">Image preview here</div>';
                 }
             });
-
-            // $(document).ready(function() {
-            //     $('form').dirtyForms();
-            // });
+            $(document).ready(function() {
+                $('form').dirtyForms();
+            });
 </script>
 @endpush
 @endsection

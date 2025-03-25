@@ -1,13 +1,8 @@
 @extends('layouts.app') @section('content')
-<x-card-header>
-    Programs
-</x-card-header>
+<x-breadcrumb></x-breadcrumb>
 <div class="row">
 
     <div class="col-lg-12">
-        <!-- ---------------------
-                                                                                                                                start Program
-                                                                                                                            ---------------- -->
         <div class="card">
             <div class="card-header bg-primary">
                 <h4 class="mb-0 text-white">Create Program</h4>

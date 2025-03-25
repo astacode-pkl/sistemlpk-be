@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<x-card-header>
-    Programs
-</x-card-header>
+<x-breadcrumb />
 <x-alert />
 
 <section class="datatables">

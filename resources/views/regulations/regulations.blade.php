@@ -1,8 +1,6 @@
 @extends('layouts.app') @section('content')
-<x-card-header>
-    Regulations
-</x-card-header>
-<x-alert />
+<x-breadcrumb></x-breadcrumb>
+<x-alert></x-alert>
 
 <section class="datatables">
     <div class="card">

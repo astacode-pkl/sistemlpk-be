@@ -1,7 +1,5 @@
 @extends('layouts.app') @section('content')
-<x-card-header>
-    Benefits
-</x-card-header>
+<x-breadcrumb></x-breadcrumb>
 <div class="row">
     <div class="col-lg-12">
         <div class="card">

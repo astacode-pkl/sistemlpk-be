@@ -1,7 +1,5 @@
 @extends('layouts.app') @section('content')
-<x-card-header>
-    Categories
-</x-card-header>
+<x-breadcrumb></x-breadcrumb>
 <x-alert />
 
 <section class="datatables">

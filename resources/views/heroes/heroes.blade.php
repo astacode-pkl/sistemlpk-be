@@ -2,9 +2,7 @@
     @push('style')
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
     @endpush
-    <x-card-header>
-        Heroes
-    </x-card-header>
+    <x-breadcrumb></x-breadcrumb>
     <x-alert></x-alert>
     <div class="border-bottom title-part-padding d-flex justify-content-between  align-items-center">
         <h4 class="card-title mb-0">heroes</h4>
@@ -33,7 +31,7 @@
                                 </div>
                                 <div class="col-md-2 d-flex align-items-center justify-content-center gap-2 mb-2"
                                     style="cursor: pointer;">
-                                    <a href="/admin/heroes/edit/{{ Crypt::encryptString($hero->id) }}"
+                                    <a href="/admin/heroes/{{ Crypt::encryptString($hero->id) }}/edit"
                                         class="btn btn-primary py-2">
 
                                         <i class="ti ti-pencil"></i>

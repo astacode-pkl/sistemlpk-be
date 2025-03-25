@@ -1,14 +1,11 @@
 @extends('layouts.app')
 @section('content')
-<x-card-header>
-    Company Profile
-</x-card-header>
+<x-breadcrumb></x-breadcrumb>
 <x-alert></x-alert>
 <div class="card">
     <div class="card-header bg-primary">
         <h4 class="mb-0 text-white">Company Profile</h4>
     </div>
-
     <form action="/admin/companyprofile/{{ Crypt::encryptString($companyProfile->id) }}" method="post" enctype="multipart/form-data" id="form">
         @csrf
         @method('put')
@@ -16,7 +13,7 @@
             <div class="row pt-3">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label class="control-label" for="name">Name</label>
+                        <label class="control-label col-form-label" for="name">Name</label>
                         <input type="text" id="name" name="name" class="form-control"
                             value="{{ $companyProfile->name }}">
                     </div>
@@ -24,7 +21,7 @@
                 <!--/span-->
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label class="control-label" for="slogan">Slogan</label>
+                        <label class="control-label col-form-label" for="slogan">Slogan</label>
                         <input type="text" id="slogan" name="slogan" class="form-control"
                             value="{{ $companyProfile->slogan }}">
                     </div>
@@ -34,14 +31,14 @@
             <div class="row pt-3">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label class="control-label" for="email">Email</label>
+                        <label class="control-label col-form-label" for="email">Email</label>
                         <input type="email" id="email" name="email" class="form-control"
                             value="{{ $companyProfile->email }}">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label class="control-label" for="ig">Instagram Link</label>
+                        <label class="control-label col-form-label" for="ig">Instagram Link</label>
                         <input type="text" id="ig" name="instagram" class="form-control"
                             value="{{ $companyProfile->instagram }}">
                     </div>
@@ -50,7 +47,7 @@
             <div class="row pt-3">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label class="control-label" for="wa">WhatsApp Link</label>
+                        <label class="control-label col-form-label" for="wa">WhatsApp Link</label>
                         <input type="text" id="wa" name="whatsapp" class="form-control"
                             value="{{ $companyProfile->whatsapp }}">
                     </div>
@@ -58,7 +55,7 @@
                 <!--/span-->
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label class="control-label" for="tiktok">TikTok Link</label>
+                        <label class="control-label col-form-label" for="tiktok">TikTok Link</label>
                         <input type="text" id="tiktok" name="tiktok" class="form-control"
                             value="{{ $companyProfile->tiktok }}">
                     </div>
@@ -68,14 +65,14 @@
             <div class="row pt-3">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label class="control-label">Vision</label>
+                        <label class="control-label col-form-label">Vision</label>
                         <textarea class="form-control" id="floatingTextarea"
                             name="vision">{{ $companyProfile->vision }}</textarea>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label class="control-label">Mission</label>
+                        <label class="control-label col-form-label">Mission</label>
                         <textarea class="form-control" name="mission"
                             id="floatingTextarea">{{ $companyProfile->mission }}</textarea>
                     </div>
@@ -84,14 +81,14 @@
             <div class="row pt-3">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label class="control-label">Address</label>
+                        <label class="control-label col-form-label">Address</label>
                         <textarea class="form-control" name="address"
                             id="floatingTextarea">{{ $companyProfile->address }}</textarea>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label class="control-label">Map</label>
+                        <label class="control-label col-form-label">Map</label>
                         <textarea class="form-control" name="map"
                             id="floatingTextarea">{{ $companyProfile->map }}</textarea>
                     </div>
@@ -100,7 +97,7 @@
             <div class="row pt-3">
                 <div class="col">
                     <div class="mb-3">
-                        <label class="control-label" for="history">History</label>
+                        <label class="control-label col-form-label" for="history">History</label>
                         <textarea class="form-control" name="history"
                             id="floatingTextarea">{{ $companyProfile->history }}</textarea>
                     </div>
@@ -109,7 +106,7 @@
             <div class="d-flex pt-3 gap-3">
 
                 <div class="mb-3">
-                    <label class="control-label" for="address">Logo</label>
+                    <label class="control-label col-form-label" for="address">Logo</label>
 
                     <img src="{{ asset('images/companyprofile/' . $companyProfile->logo) }}"
                         class="img-fluid rounded-top w-xs-100 d-block my-3" alt="" id="preview"
@@ -127,7 +124,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="control-label" for="address">Logo Mark (Graphical logo)</label>
+                    <label class="control-label col-form-label" for="address">Logo Mark (Graphical logo)</label>
 
                     <img src="{{ asset('images/companyprofile/' . $companyProfile->logo_mark) }}"
                         class="img-fluid rounded-top  w-xs-100 d-block my-3" alt="" id="preview"
@@ -146,7 +143,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="control-label" for="address">Logo Type (Text logo)</label>
+                    <label class="control-label col-form-label" for="address">Logo Type (Text logo)</label>
 
                     <img src="{{ asset('images/companyprofile/' . $companyProfile->logo_type) }}"
                         class="img-fluid rounded-top w-xs-100 d-block my-3" alt="" id="preview"
@@ -167,7 +164,7 @@
 
             </div>
             <div class="mb-3">
-                <label class="control-label" for="address">Advertisement</label>
+                <label class="control-label col-form-label" for="address">Advertisement</label>
 
                 <img src="{{ asset('images/companyprofile/' . $companyProfile->advertisement) }}"
                     class="img-fluid rounded-top w-xs-100 d-block my-3" alt="" id="preview" style="max-width:230px;" />

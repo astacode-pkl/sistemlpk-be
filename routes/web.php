@@ -63,7 +63,7 @@ Route::prefix('admin')->group(function () {
         Route::controller(HeroController::class)->group(function () {
             Route::post('/heroes/update-position', 'updatePosition')->name('update.heroes');
             Route::get('/heroes', 'index');
-            Route::get('/heroes/edit/{id}', 'edit');
+            Route::get('/heroes/{id}/edit', 'edit');
             Route::get('/heroes/create', 'create');
             Route::post('/heroes', 'store')->name('store.heroes');
             Route::get('/heroes/delete/{id}', 'destroy')->name('destroyHero');

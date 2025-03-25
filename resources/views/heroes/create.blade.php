@@ -1,7 +1,5 @@
 @extends('layouts.app') @section('content')
-    <x-card-header>
-        Heroes
-    </x-card-header>
+    <x-breadcrumb></x-breadcrumb>
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -36,10 +34,10 @@
                         </div>
 
                         <div class="mb-3 d-none">
-                            <label class="control-label col-form-label" for="position">position</label>
+                            <label class="control-label mb-2" for="position">position</label>
                             <input type="number" id="position"
                                 class="form-control @error('position') is-invalid @enderror"
-                                value="{{ old('position') }}" name="position" placeholder="Please enter Position..."
+                                value="{{ $newPosition }}" name="position" placeholder="Please enter Position..."
                                 required>
                             @error('position')
                                 <div id="validationServer04Feedback" class="invalid-feedback">
@@ -70,8 +68,8 @@
                 </form>
             </div>
             <!-- ---------------------
-                                                                                                                    end Person Info
-                                                                                                                ---------------- -->
+                                                                                                                        end Person Info
+                                                                                                                    ---------------- -->
         </div>
     </div>
     @push('script')

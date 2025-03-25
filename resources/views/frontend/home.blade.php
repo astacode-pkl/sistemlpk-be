@@ -164,49 +164,46 @@
         </p>
 
         <!-- step -->
-        <div class="bg-white  rounded-lg p-6 flex items-center justify-center flex-col">
-            <ul class="flex items-center justify-center gap-4 mb-6 cursor-pointer">
+        <div class="bg-white px-7 max-w-7xl rounded-lg p-6 flex items-center justify-center flex-col">
+            <ul class="flex items-center justify-center flex-wrap gap-4 sm:gap-2 mb-6 cursor-pointer">
                 <li class="flex items-center" data-step="1">
                     <span
-                        class="w-10 h-10 bg-gray-200 hover:bg-blue-600 active:bg-blue-600 rounded-full flex justify-center items-center text-lg font-bold">1</span>
-                    <span class="ml-4 text-sm font-medium">{{ $companyProfile->name }}</span>
-                    <div class="flex-1 h-1 bg-gray-300 mx-4"></div>
+                        class="w-8 h-8 bg-gray-200 hover:bg-blue-600 active:bg-blue-600 rounded-full flex justify-center items-center text-sm font-bold">1</span>
+                    <span class="ml-2 text-xs font-medium">{{ $companyProfile->name }}</span>
                 </li>
                 <li class="flex items-center" data-step="2">
                     <span
-                        class="w-10 h-10 bg-gray-200 hover:bg-blue-600 active:bg-blue-600 rounded-full flex justify-center items-center text-lg font-bold">2</span>
-                    <span class="ml-4 text-sm font-medium">Seleksi</span>
-                    <div class="flex-1 h-1 bg-gray-300 mx-4"></div>
+                        class="w-8 h-8 bg-gray-200 hover:bg-blue-600 active:bg-blue-600 rounded-full flex justify-center items-center text-sm font-bold">2</span>
+                    <span class="ml-2 text-xs font-medium">Seleksi</span>
                 </li>
                 <li class="flex items-center" data-step="3">
                     <span
-                        class="w-10 h-10 bg-gray-200 hover:bg-blue-600 active:bg-blue-600 rounded-full flex justify-center items-center text-lg font-bold">3</span>
-                    <span class="ml-4 text-sm font-medium">Pelatihan</span>
-                    <div class="flex-1 h-1 bg-gray-300 mx-4"></div>
+                        class="w-8 h-8 bg-gray-200 hover:bg-blue-600 active:bg-blue-600 rounded-full flex justify-center items-center text-sm font-bold">3</span>
+                    <span class="ml-2 text-xs font-medium">Pelatihan</span>
                 </li>
                 <li class="flex items-center" data-step="4">
                     <span
-                        class="w-10 h-10 bg-gray-200 hover:bg-blue-600 active:bg-blue-600 rounded-full flex justify-center items-center text-lg font-bold">4</span>
-                    <span class="ml-4 text-sm font-medium">Jepang</span>
+                        class="w-8 h-8 bg-gray-200 hover:bg-blue-600 active:bg-blue-600 rounded-full flex justify-center items-center text-sm font-bold">4</span>
+                    <span class="ml-2 text-xs font-medium">Jepang</span>
                 </li>
             </ul>
 
-            <div class="w-5/6 flex justify-center items-center h-48 bg-gray-50 border border-dashed border-gray-300 rounded-lg"
+            <div class="w-5/6 flex justify-center items-center h-48 bg-gray-50 border border-dashed border-gray-300 rounded-lg px-3"
                 data-content="1" style="display: flex;">
-                <h3 class="text-gray-600 text-xl">Pra Medical → Bahasa → Jepang → Matematika → Psikotes → FMD</h3>
+                <h3 class="text-gray-600 text-xl text-center">Pra Medical → Bahasa → Jepang → Matematika → Psikotes → FMD</h3>
             </div>
-            <div class="w-5/6 flex justify-center items-center h-48 bg-gray-50 border border-dashed border-gray-300 rounded-lg"
+            <div class="w-5/6 flex justify-center items-center h-48 bg-gray-50 border border-dashed border-gray-300 rounded-lg px-3"
                 data-content="2" style="display: none;">
-                <h3 class="text-gray-600 text-xl">Matematika → Kesemaptaan → Fisik → Psikotes (Swasta) → Bahasa
+                <h3 class="text-gray-600 text-xl text-center">Matematika → Kesempatan → Fisik → Psikotes (Swasta) → Bahasa
                     Jepang → Wawancara → MCU</h3>
             </div>
-            <div class="w-5/6 flex justify-center items-center h-48 bg-gray-50 border border-dashed border-gray-300 rounded-lg"
+            <div class="w-5/6 flex justify-center items-center h-48 bg-gray-50 border border-dashed border-gray-300 rounded-lg px-3"
                 data-content="3" style="display: none;">
-                <h3 class="text-gray-600 text-xl">Bahasa Jepang → Budaya Jepang → Pengurusan Dokumen</h3>
+                <h3 class="text-gray-600 text-xl text-center">Bahasa Jepang → Budaya Jepang → Pengurusan Dokumen</h3>
             </div>
-            <div class="w-5/6 flex justify-center items-center h-48 bg-gray-50 border border-dashed border-gray-300 rounded-lg"
+            <div class="w-5/6 flex justify-center items-center h-48 bg-gray-50 border border-dashed border-gray-300 rounded-lg px-3"
                 data-content="4" style="display: none;">
-                <h3 class="text-gray-600 text-xl">Berangkat Ke Jepang</h3>
+                <h3 class="text-gray-600 text-xl text-center">Berangkat Ke Jepang</h3>
             </div>
         </div>
     </div>

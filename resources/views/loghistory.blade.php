@@ -1,7 +1,5 @@
 @extends('layouts.app') @section('content')
-    <x-card-header>
-        Log Histories
-    </x-card-header>
+    <x-breadcrumb></x-breadcrumb>
     <x-alert></x-alert>
     <div class="row">
         <div class="col-md-12 ">

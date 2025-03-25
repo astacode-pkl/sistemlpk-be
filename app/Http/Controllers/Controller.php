@@ -6,8 +6,8 @@ abstract class Controller
 {
     public function uploadImage($destination,$image){
         $destinationPath = $destination;
-        //sh1 file name
         
+        //sh1 file name
         $sha1FileName = sha1($image->getClientOriginalName());
         $imageMimeType = $image->getMimeType();
 

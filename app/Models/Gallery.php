@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Gallery extends Model
 {
     protected $guarded = ['id'];
-    // protected $table = 'galleries';
+    protected $table = 'galleries';
     protected $with = ['categories'];
 
     public function categories() : BelongsTo {
