@@ -25,7 +25,7 @@
                         <div class="w-100">
                             <div class="row align-content-center">
                                 <div class="col-md-3 ">
-                                    <img src="{{ asset('images/heroes/' . $hero->image) }}" alt="image-slide"
+                                    <img src="{{ asset('storage/' . $hero->image) }}" alt="image-slide"
                                         style="max-width: 250px; min-width: 100%;">
                                 </div>
                                 <div class="col-md-7 bg-white d-flex align-items-center justify-content-center">

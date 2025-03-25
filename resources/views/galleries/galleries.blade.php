@@ -30,7 +30,7 @@
                                 <tr id="{{ $loop->iteration }}" class="gradeC">
                                     <td>{{ $loop->iteration }}</td>
                                     <td><a data-bs-toggle="modal" data-bs-target="#imageModal{{ $loop->iteration }}"><img
-                                                src="{{ asset('images/galleries/' . $gallery->image) }}" alt="img-gallery"
+                                                src="{{ asset('storage/'.$gallery->image) }}" alt="img-gallery"
                                                 style="max-width:100px;" class="w-100"></a></td>
                                     <!-- Modal -->
                                     <div class="modal fade" id="imageModal{{ $loop->iteration }}" tabindex="-1"

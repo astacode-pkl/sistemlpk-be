@@ -33,7 +33,7 @@
                                     <td>
                                         <a href="#" data-bs-toggle="modal"
                                             data-bs-target="#imageModal{{ $loop->iteration }}">
-                                            <img src="{{ asset('images/programs/' . $programs->image) }}" alt="img-gallery"
+                                            <img src="{{ asset("storage/{$programs->image}") }}" alt="img-gallery"
                                                 width="100">
                                         </a>
                                         <!-- Modal -->

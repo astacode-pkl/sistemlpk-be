@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Hero;
+use App\Helpers\ImageHelper;
 use Illuminate\Support\Facades\Crypt;
-
 use App\Models\LogHistory;
 use Illuminate\Http\Request;
 
@@ -40,9 +40,7 @@ class HeroController extends Controller
                 'image' => 'image|mimes:jpeg,png,jpg'
             ]
         );
-
-        $imageName = $this->uploadImage('images/heroes/', $request->file('image'));
-
+        $imageName = ImageHelper::processImage($request->file('image'), 'images/heroes/');
         $newData = Hero::create(['position' => $validated['position'], 'image' => $imageName]);
         LogHistory::record('Create', auth()->user()->name . ' created new Hero', $newData);
         return redirect('/admin/heroes')->with('success', 'Hero created successfully!!');
@@ -80,7 +78,15 @@ class HeroController extends Controller
         $hero = Hero::find($id);
         $hero->position = $request->position;
         $oldData = Hero::where('id', $id)->get();
-        $imageName = $this->updateImage('images/heroes/', $hero->image, $request->file('image'));
+        if ($request->hasFile('image')){
+            ImageHelper::deleteImage($hero->image);
+            $imageName = ImageHelper::processImage($request->file('image'),'images/heroes');
+
+        }else{
+            $imageName = $hero->image;
+
+        }
+        
         $hero->update(['image' => $imageName]);
         $newData = Hero::where('id', $id)->get();
         LogHistory::record('Update',  auth()->user()->name . ' updated Hero', $newData, $oldData);
@@ -97,7 +103,7 @@ class HeroController extends Controller
         $table = Hero::find($id);
         if ($table != null) {
             $oldData = Hero::where('id', $id)->get();
-            $imageName = $this->destroyImage('images/heroes/', $table->image);
+            $imageName = ImageHelper::deleteImage($hero->image);
             $table->delete(['image' => $imageName]);
             LogHistory::record('Delete', auth()->user()->name . ' deleted Hero', $oldData);
             return redirect()->back()->with('success', 'Hero deleted successfully!!');

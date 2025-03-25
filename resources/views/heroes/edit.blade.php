@@ -47,7 +47,7 @@
                             <!--/span-->
 
                             <div class="position-relative col-md-4 mb-2" id="display">
-                                <img src="{{ asset('images/heroes/' . $hero->image) }}"
+                                <img src="{{ asset('storage/' . $hero->image) }}"
                                     class="card-img-top rounded-1 d-block" id="preview" alt="...">
                             </div>
                         </div>
