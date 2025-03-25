@@ -56,12 +56,13 @@
         </ul>
     </form>
     @push('script')
-        <!-- datatable -->
-        <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
-        <script src="{{ asset('js/datatable.js') }}"></script>
-        <script src="{{ asset('template/back') }}/dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <!-- datatable -->
+    <script src="{{ asset('template/back') }}/dist/libs/jquery/dist/jquery.min.js"></script>
+    <script src="{{ asset('js/datatable.js') }}"></script>
+    <script src="{{ asset('template/back') }}/dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ui-touch-punch@0.2.3/jquery.ui.touch-punch.min.js"></script>
         <script>
             $(function() {
                 $("#sortable").sortable({

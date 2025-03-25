@@ -26,9 +26,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->render(function (DecryptException $e) {
             return response()->view('errors.400', ['message' => 'Can not decrypt the given value'], 400);
         });
-        $exceptions->render(function (ErrorException $e) {
-            return response()->view('errors.400', ['message' => $e->getMessage()], 400);
-        });
+        // $exceptions->render(function (ErrorException $e) {
+        //     return response()->view('errors.400', ['message' => $e->getMessage()], 400);
+        // });
         $exceptions->render(function (QueryException $e) {
             return response()->view('errors.500', ['message' => $e->getMessage()], 500);
         });

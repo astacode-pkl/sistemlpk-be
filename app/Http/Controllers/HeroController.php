@@ -25,7 +25,7 @@ class HeroController extends Controller
      */
     public function create()
     {
-        $newPosition = count(Hero::all()) + 1;
+        $newPosition = Hero::max('position') + 1;
         return view('heroes.create', compact('newPosition'));
     }
 
@@ -36,7 +36,7 @@ class HeroController extends Controller
     {
         $validated = $request->validate(
             [
-                'position' => 'required|max:20|numeric|unique:heroes',
+                'position' => 'required|max:20|numeric',
                 'image' => 'image|mimes:jpeg,png,jpg'
             ]
         );

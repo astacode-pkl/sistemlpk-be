@@ -14,7 +14,7 @@
     
     @stack('style')
 
-    <title>{{ Str::title($companyProfile->name) }}</title>
+    <title>{{ $companyProfile->name }}</title>
     <!-- Owl Carousel  -->
 
 </head>
