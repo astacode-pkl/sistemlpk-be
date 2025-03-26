@@ -51,8 +51,8 @@
                                 
                             </div>
 
-                            <div class="col-6 d-flex align-items-center justify-content-center " id="preview">
-                                <img src="{{ asset('images/programs/' . $program->image) }}"
+                            <div class="position-relative col-md-4 mb-2" id="display">
+                                <img src="{{ asset('storage/' . $program->image) }}"
                                     class="card-img-top rounded-1 d-block" id="preview" alt="{{ $program->image }}">
                             </div>
                             <!-- end preview image -->

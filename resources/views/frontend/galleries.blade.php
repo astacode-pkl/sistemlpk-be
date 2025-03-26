@@ -10,7 +10,7 @@
                     <div class="flex-shrink-0 w-[100%] md:w-[30.5%] lg:w-[23.5%] cursor-pointer">
                         <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 h-full"
                             onclick="openModal({{ $gallery->id }})">
-                            <img src="{{ asset('images/galleries/' . $gallery->image) }}" alt="{{ $gallery->title }}"
+                            <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title }}"
                                 id="img"
                                 class="w-full h-auto transform group-hover:scale-105 transition-transform duration-300" />
                             <div
@@ -30,7 +30,7 @@
                 @foreach ($category->galleries as $gallery)
                     <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 h-full cursor-pointer"
                         onclick="openModalOtherPhotos('{{ $gallery->id }}')">
-                        <img src="{{ asset('images/galleries/' . $gallery->image) }}" alt="{{ $gallery->title }}"
+                        <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title }}"
                             class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
                         <div
                             class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">

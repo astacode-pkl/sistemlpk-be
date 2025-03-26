@@ -22,7 +22,7 @@
             <div id="carousel-body" class="flex w-full transition-transform duration-700">
                 @foreach ($heroes as $hero)
                     <div class="min-w-full flex justify-center items-center h-screen">
-                        <img src="{{ asset('images/heroes/' . $hero->image) }}" class="object-cover h-full w-full"
+                        <img src="{{ asset('storage/' . $hero->image) }}" class="object-cover h-full w-full"
                             alt="Slide 1">
                     </div>
                 @endforeach
@@ -45,7 +45,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 w-full max-w-7xl">
             <div class="flex justify-center items-center col-span-1 md:col-span-1 md:order-2 order-1" data-aos="fade-up"
                 data-aos-delay="200">
-                <img src="{{ asset('images/companyprofile/' . $companyProfile->advertisement) }}" alt="misi"
+                <img src="{{ asset('storage/' . $companyProfile->advertisement) }}" alt="misi"
                     class="w-[90%] h-full lg:w-full object-cover bg-gray-50 shadow-lg rounded-lg" />
             </div>
             <div class="p-10 bg-gray-50 shadow-lg rounded-lg mx-auto col-span-1 md:col-span-2 md:order-1 order-2"
@@ -85,7 +85,7 @@
                         <div class="flex-shrink-0 w-[100%] md:w-[30.5%] lg:w-[23.5%] cursor-pointer" data-aos="fade-up">
                             <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 h-full"
                                 onclick="openModal({{ $gallery->id }})">
-                                <img src="{{ asset('images/galleries/' . $gallery->image) }}" alt="{{ $gallery->title }}"
+                                <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title }}"
                                     id="img"
                                     class="w-full h-auto transform group-hover:scale-105 transition-transform duration-300" />
                                 <div
@@ -104,7 +104,7 @@
                     @foreach ($category->galleries as $gallery)
                         <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 h-full cursor-pointer"
                             onclick="openModalOtherPhotos('{{ $gallery->id }}')" data-aos="fade-up">
-                            <img src="{{ asset('images/galleries/' . $gallery->image) }}" alt="{{ $gallery->title }}"
+                            <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title }}"
                                 class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
                             <div
                                 class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
@@ -138,7 +138,7 @@
             <div class="flex flex-col bg-gray-50 border shadow-sm rounded-xl hover:drop-shadow-lg transition duration-500 group"
                 data-aos="fade-up">
                 <div class="p-4 md:p-7">
-                    <img src="{{ asset('images/programs/' . $program->image) }}" alt="program"
+                    <img src="{{ asset('storage/' . $program->image) }}" alt="program"
                         class="rounded-lg mb-3 group-hover:brightness-90 brightness-75 transition duration-200">
                     <h3 class="text-xl font-bold text-blue-600 transition duration-200">
                         {{ $program->title }}

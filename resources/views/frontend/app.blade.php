@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="{{ asset('images/companyprofile/' . $companyProfile->logo_mark) }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('storage/' . $companyProfile->logo_mark) }}" />
     @vite('resources/css/app.css', 'resources/js/app.js')
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>{{ $companyProfile->name }}</title>
@@ -20,9 +20,9 @@
             <div class="flex items-center justify-between">
                 <a class="flex gap-3" href="#" aria-label="Brand">
                     {{-- logo --}}
-                    <img src="{{ asset('images/companyprofile/' . $companyProfile->logo_mark) }}" alt="logo"
+                    <img src="{{ asset('storage/' . $companyProfile->logo_mark) }}" alt="logo"
                         class="w-10">
-                    <img src="{{ asset('images/companyprofile/' . $companyProfile->logo_type) }}" alt="nama"
+                    <img src="{{ asset('storage/' . $companyProfile->logo_type) }}" alt="nama"
                         class="w-20">
                 </a>
                 <!-- Collapse Button -->

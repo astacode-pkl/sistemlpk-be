@@ -6,6 +6,8 @@ use App\Models\LogHistory;
 use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use App\Helpers\ImageHelper;
+
 
 
 class ProgramController extends Controller
@@ -40,9 +42,7 @@ class ProgramController extends Controller
                 'description' => 'required'
             ]
         );
-        // $program = new Program;
-
-        $imageName = $this->uploadImage('images/programs/', $request->file('image'));
+        $imageName = ImageHelper::processImage($request->file('image'), 'images/programs/');
         $newData = Program::create(['image' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
         LogHistory::record('Create',  auth()->user()->name . ' created new Program', $newData);
 
@@ -81,7 +81,12 @@ class ProgramController extends Controller
         $program->title = $request->title;
         $program->description = $request->description;
         $oldData = Program::where('id', $id)->get();
-        $imageName = $this->updateImage('images/programs/', $program->image, $request->file('image'));
+        if ($request->hasFile('image')) {
+            ImageHelper::deleteImage($program->image);
+            $imageName = ImageHelper::processImage($request->file('image'), 'images/galleries/');
+        } else {
+            $imageName = $program->image;
+        }
         $program->update(['image' => $imageName, 'title' => $validated['title'], 'description' => $validated['description']]);
         $newData = Program::where('id', $id)->get();
         LogHistory::record('Update',  auth()->user()->name . ' updated Program', $newData, $oldData);
@@ -100,7 +105,7 @@ class ProgramController extends Controller
         $id = Crypt::decryptString($id);
         $program = Program::find($id);
         $oldData = Program::where('id', $id)->get();
-        $imageName = $this->destroyImage('images/programs/', $program->image);
+        $imageName = ImageHelper::deleteImage($program->image);
         $program->delete(['image' => $imageName]);
         LogHistory::record('Delete',  auth()->user()->name . ' deleted Program', '', $oldData);
         return redirect()->back()->with('success', 'Program deleted successfully!!');

@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Favicon icon-->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('images/companyprofile/' . $companyProfile->logo_mark) }}" />
-    <link rel="stylesheet" href="{{ asset('template/back') }}/dist/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('storage/' . $companyProfile->logo_mark) }}" />
+
+    <!-- CSS DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
     <!-- Core Css -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link id="themeColors" rel="stylesheet" href="{{ asset('template/back') }}/dist/css/styles.css" />
@@ -35,7 +38,7 @@
                 <div class=" d-flex align-content-center justify-content-center overflow-hidden">
                     <div class="d-flex align-content-center justify-content-center w-100 p-2">
                         <a href="/admin"><img
-                                src="{{ asset('images/companyprofile/' . $companyProfile->logo) }}" class=" w-100"
+                                src="{{ asset('storage/' . $companyProfile->logo) }}" class=" w-100"
                                 style="max-width: 135px;" /></a>
                     </div>
                     <a href="javascript:void(0)"
@@ -212,7 +215,7 @@
 
                         <div class="d-block d-lg-none py-4">
                             <a href="/admin/" class="text-nowrap logo-img">
-                                <img src="{{ asset('images/companyprofile/' . $companyProfile->logo_type) }}"
+                                <img src="{{ asset('storage/' . $companyProfile->logo_type) }}"
                                     width="90%" style="max-width:70px;" />
                             </a>
                         </div>
@@ -230,7 +233,7 @@
                                             aria-expanded="false">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-profile-img overflow-hidden">
-                                                    <img src="{{ asset('images/companyprofile/' . $companyProfile->logo) }}"
+                                                    <img src="{{ asset('storage/' . $companyProfile->logo) }}"
                                                         class="rounded-circle border img-fluid " width="40rem" />
                                                 </div>
                                             </div>
@@ -242,7 +245,7 @@
                                                     <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
                                                 </div>
                                                 <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                                                    <img src="{{ asset('images/companyprofile/' . $companyProfile->logo) }}"
+                                                    <img src="{{ asset('storage/' . $companyProfile->logo) }}"
                                                         class="rounded-circle img-fluid w-30" alt="logo" />
                                                     <div class="ms-3">
                                                         <h5 class="mb-1 fs-3">{{ auth()->user()->name }}</h5>
@@ -288,8 +291,8 @@
                             </li>
                             <li class="nav-item d-none d-xl-block">
                                 <a href="/admin" class="text-nowrap nav-link">
-                                    <img src="{{ asset('images/companyprofile/' . $companyProfile->logo_type) }}"
-                                        class="img-fluid" width="100" alt="logo" />
+                                    <img src="{{ asset('storage/' . $companyProfile->logo_type) }}"
+                                        class="img-fluid" width="100" alt="Image-logo" />
                                 </a>
                             </li>
 
@@ -308,8 +311,8 @@
                         </ul>
                         <div class="d-block d-xl-none">
                             <a href="/admin/" class="text-nowrap nav-link">
-                                <img src="{{ asset('images/companyprofile/' . $companyProfile->logo) }}"
-                                    width="90" alt="logo" />
+                                <img src="{{ asset('storage/' . $companyProfile->logo) }}"
+                                    width="90" alt="Image-logo" />
                             </a>
                         </div>
                         <a class="navbar-toggler nav-icon-hover-bg rounded-circle p-0 mx-0 border-0"
@@ -352,7 +355,7 @@
                                             aria-expanded="false">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-profile-img">
-                                                    <img src="{{ asset('images/companyprofile/' . $companyProfile->logo) }}"
+                                                    <img src="{{ asset('storage/' . $companyProfile->logo) }}"
                                                         class="rounded-circle" width="auto" height="50"
                                                         alt="logo" />
                                                 </div>
@@ -365,7 +368,7 @@
                                                     <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
                                                 </div>
                                                 <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                                                    <img src="{{ asset('images/companyprofile/' . $companyProfile->logo) }}"
+                                                    <img src="{{ asset('storage/' . $companyProfile->logo) }}"
                                                         class="rounded-circle img-fluid w-30" alt="logo" />
                                                     <div class="ms-3">
                                                         <h5 class="mb-1 fs-3">{{ Auth::user()->name }}</h5>

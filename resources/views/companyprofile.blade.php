@@ -108,79 +108,81 @@
                 <div class="mb-3">
                     <label class="control-label col-form-label" for="address">Logo</label>
 
-                    <img src="{{ asset('images/companyprofile/' . $companyProfile->logo) }}"
-                        class="img-fluid rounded-top w-xs-100 d-block my-3" alt="" id="preview"
-                        style="max-width:230px;" />
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input type="file" id="fileInput" class="form-control @error('logo') is-invalid @enderror "
-                                name="logo" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                            @error('logo')
-                            <div id="validationServer04Feedback" class="invalid-feedback">
-                                {{ $message }}
+                        <img src="{{ asset('storage/' . $companyProfile->logo) }}"
+                            class="img-fluid rounded-top w-xs-100 d-block my-3" alt="" id="preview"
+                            style="max-width:230px;" />
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" id="fileInput"
+                                    class="form-control @error('logo') is-invalid @enderror " name="logo"
+                                    id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                @error('logo')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
-                            @enderror
                         </div>
                     </div>
-                </div>
-                <div class="mb-3">
-                    <label class="control-label col-form-label" for="address">Logo Mark (Graphical logo)</label>
+                    <div class="mb-3">
+                        <label class="control-label" for="address">Logo Mark (Graphical logo)</label>
 
-                    <img src="{{ asset('images/companyprofile/' . $companyProfile->logo_mark) }}"
-                        class="img-fluid rounded-top  w-xs-100 d-block my-3" alt="" id="preview"
-                        style="max-width:230px;" />
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input type="file" id="fileInput"
-                                class="form-control @error('logo_mark') is-invalid @enderror " name="logo_mark"
-                                id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                            @error('logo_mark')
-                            <div id="validationServer04Feedback" class="invalid-feedback">
-                                {{ $message }}
+                        <img src="{{ asset('storage/' . $companyProfile->logo_mark) }}"
+                            class="img-fluid rounded-top  w-xs-100 d-block my-3" alt="" id="preview"
+                            style="max-width:230px;" />
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" id="fileInput"
+                                    class="form-control @error('logo_mark') is-invalid @enderror " name="logo_mark"
+                                    id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                @error('logo_mark')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
-                            @enderror
                         </div>
                     </div>
-                </div>
-                <div class="mb-3">
-                    <label class="control-label col-form-label" for="address">Logo Type (Text logo)</label>
+                    <div class="mb-3">
+                        <label class="control-label" for="address">Logo Type (Text logo)</label>
 
-                    <img src="{{ asset('images/companyprofile/' . $companyProfile->logo_type) }}"
-                        class="img-fluid rounded-top w-xs-100 d-block my-3" alt="" id="preview"
-                        style="max-width:230px;" />
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input type="file" id="fileInput"
-                                class="form-control @error('logo_type') is-invalid @enderror " name="logo_type"
-                                id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                            @error('logo_type')
-                            <div id="validationServer04Feedback" class="invalid-feedback">
-                                {{ $message }}
+                        <img src="{{ asset('storage/' . $companyProfile->logo_type) }}"
+                            class="img-fluid rounded-top w-xs-100 d-block my-3" alt="" id="preview"
+                            style="max-width:230px;" />
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" id="fileInput"
+                                    class="form-control @error('logo_type') is-invalid @enderror " name="logo_type"
+                                    id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                @error('logo_type')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
-                            @enderror
                         </div>
                     </div>
-                </div>
 
             </div>
             <div class="mb-3">
                 <label class="control-label col-form-label" for="address">Advertisement</label>
 
-                <img src="{{ asset('images/companyprofile/' . $companyProfile->advertisement) }}"
-                    class="img-fluid rounded-top w-xs-100 d-block my-3" alt="" id="preview" style="max-width:230px;" />
-                <div class="input-group">
-                    <div class="custom-file">
-                        <input type="file" id="fileInput"
-                            class="form-control @error('advertisement') is-invalid @enderror " name="advertisement"
-                            id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                        @error('advertisement')
-                        <div id="validationServer04Feedback" class="invalid-feedback">
-                            {{ $message }}
+                    <img src="{{ asset('storage/' . $companyProfile->advertisement) }}"
+                        class="img-fluid rounded-top w-xs-100 d-block my-3" alt="" id="preview"
+                        style="max-width:230px;" />
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" id="fileInput"
+                                class="form-control @error('advertisement') is-invalid @enderror " name="advertisement"
+                                id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                            @error('advertisement')
+                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
-                        @enderror
                     </div>
                 </div>
-            </div>
 
 
             <div class="form-actions text-end">

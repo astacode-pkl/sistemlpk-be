@@ -43,8 +43,8 @@
 
                             </div>
 
-                            <div class="col-6 d-flex align-items-center justify-content-center " id="preview">
-                                <img src="{{ asset('images/heroes/' . $hero->image) }}"
+                            <div class="position-relative col-md-4 mb-2" id="display">
+                                <img src="{{ asset('storage/' . $hero->image) }}"
                                     class="card-img-top rounded-1 d-block" id="preview" alt="...">
                             </div>
 

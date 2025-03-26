@@ -65,7 +65,7 @@
                             </div>
 
                             <div class="col-6 d-flex align-items-center justify-content-center " id="preview">
-                                <img src="{{ asset('images/galleries/' . $gallery->image) }}"
+                                <img src="{{ asset('storage/' . $gallery->image) }}"
                                     class="card-img-top rounded-1 d-block" id="preview" alt="...">
                             </div>
 

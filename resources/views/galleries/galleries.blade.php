@@ -26,47 +26,47 @@
                         </thead>
                         <tbody>
                             @foreach ($galleries as $gallery)
-                            <tr id="{{ $loop->iteration }}" class="gradeC">
-                                <td>{{ $loop->iteration }}</td>
-                                <td><a data-bs-toggle="modal" data-bs-target="#imageModal{{ $loop->iteration }}"><img
-                                            src="{{ asset('images/galleries/' . $gallery->image) }}" alt="img-gallery"
-                                            style="max-width:100px;" class="w-100"></a></td>
-                                <!-- Modal -->
-                                <div class="modal fade" id="imageModal{{ $loop->iteration }}" tabindex="-1"
-                                    aria-labelledby="imageModalLabel{{ $loop->iteration }}" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="imageModalLabel{{ $loop->iteration }}">
-                                                    {{ $gallery->title }}</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img src="{{ asset('images/galleries/' . $gallery->image) }}"
-                                                    alt="img-gallery" class="img-fluid">
+                                <tr id="{{ $loop->iteration }}" class="gradeC">
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td><a data-bs-toggle="modal" data-bs-target="#imageModal{{ $loop->iteration }}"><img
+                                                src="{{ asset('storage/'.$gallery->image) }}" alt="img-gallery"
+                                                style="max-width:100px;" class="w-100"></a></td>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="imageModal{{ $loop->iteration }}" tabindex="-1"
+                                        aria-labelledby="imageModalLabel{{ $loop->iteration }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="imageModalLabel{{ $loop->iteration }}">
+                                                        {{ $gallery->title }}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img src="{{ asset('images/galleries/' . $gallery->image) }}"
+                                                        alt="img-gallery" class="img-fluid">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <td>{{ $gallery->title }}</td>
-                                <td>{{ $gallery->categories->title }}</td>
-                                <td>
-                                    <a href="/admin/galleries/{{ Crypt::encryptString($gallery->id) }}/edit"><button
-                                            class="btn btn-primary px-4">
-                                            <i class="ti ti-pencil fs-5"></i>
-                                            Edit</button></a>
-                                    <form action="/admin/galleries/{{ Crypt::encryptString($gallery->id) }}"
-                                        method="POST" class="d-inline ">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-danger px-4 " id="delete"
-                                            onclick="deleteItem(event)">
-                                            <i class="ti ti-trash fs-5"></i>
-                                            Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
+                                    <td>{{ $gallery->title }}</td>
+                                    <td>{{ $gallery->categories->title }}</td>
+                                    <td>
+                                        <a href="/admin/galleries/{{ Crypt::encryptString($gallery->id) }}/edit"><button
+                                                class="btn btn-primary px-4">
+                                                <i class="ti ti-pencil fs-5"></i>
+                                                Edit</button></a>
+                                        <form action="/admin/galleries/{{ Crypt::encryptString($gallery->id) }}"
+                                            method="POST" class="d-inline ">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger px-4 " id="delete"
+                                                onclick="deleteItem(event)">
+                                                <i class="ti ti-trash fs-5"></i>
+                                                Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
