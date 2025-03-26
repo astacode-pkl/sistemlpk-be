@@ -68,4 +68,5 @@
             <script src="{{ asset('js/datatable.js') }}"></script>
             <script src="{{ asset('template/back') }}/dist/libs/datatables.net/js/jquery.dataTables.min.js"></script>
         @endpush
+        
     @endsection

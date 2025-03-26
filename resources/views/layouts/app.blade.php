@@ -8,13 +8,13 @@
     <link rel="shortcut icon" type="image/png" href="{{ asset('storage/' . $companyProfile->logo_mark) }}" />
 
     <!-- CSS DataTables -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
     <!-- Core Css -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link id="themeColors" rel="stylesheet" href="{{ asset('template/back') }}/dist/css/styles.css" />
     <link rel="stylesheet" href="{{ asset('template/back') }}/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
-    
+    <link rel="stylesheet"
+    href="{{ asset('template/back') }}/dist/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
     @stack('style')
 
     <title>{{ $companyProfile->name }}</title>

@@ -43,7 +43,7 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <img src="{{ asset('images/galleries/' . $gallery->image) }}"
+                                                    <img src="{{ asset('storage/' . $gallery->image) }}"
                                                         alt="img-gallery" class="img-fluid">
                                                 </div>
                                             </div>
