@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 use Illuminate\Support\Facades\Storage;
 
-class ImageHelper
+class ImageHelper {
 
 
     public static function processImage($imageFile, $path)
