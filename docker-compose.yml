@@ -32,7 +32,7 @@ services:
       
   mysql:
       image: mysql:8.0
-      container_name: koyasai_mysql
+      container_name: lpk
       restart: unless-stopped
       environment:
         MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
